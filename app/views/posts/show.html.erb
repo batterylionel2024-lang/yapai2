@@ -1,4 +1,4 @@
-<% content_for :title, @post.meta_title.presence || "#{@post.title} - Lincaps Blog" %>
+<% content_for :title, @post.meta_title.presence || "#{@post.title} - Yapai Blog" %>
 <% content_for :meta_description, @post.meta_description.presence || @post.summary %>
 <% if @post.meta_keywords.present? %>
   <% content_for :meta_keywords, @post.meta_keywords %>
@@ -15,7 +15,7 @@
   <!-- Article header -->
   <header class="mb-10">
     <div class="flex items-center gap-3 mb-5">
-      <span class="px-3 py-1 bg-primary/10 text-primary text-xs font-bold rounded-full uppercase tracking-widest">Lincaps Blog</span>
+      <span class="px-3 py-1 bg-primary/10 text-primary text-xs font-bold rounded-full uppercase tracking-widest">Yapai Blog</span>
       <span class="text-xs text-slate-400 font-medium"><%= @post.published_at&.strftime("%B %d, %Y") %></span>
     </div>
     <h1 class="text-4xl md:text-5xl font-black text-slate-900 leading-tight tracking-tight mb-6"><%= @post.title %></h1>

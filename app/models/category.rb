@@ -10,10 +10,12 @@ class Category < ApplicationRecord
   default_scope { order(:position, :id) }
 
   validates :name, presence: true
-  validates :category_kind, presence: true, inclusion: { in: %w[a b c d] }
+  validates :category_kind, presence: true, inclusion: { in: %w[apple huawei oppo vivo xiaomi custom] }
   validates :slug, presence: true, uniqueness: true, format: { with: /\A[a-z0-9-]+\z/, message: "只能包含小写字母、数字和连字符" }
   
   scope :visible, -> { where(hidden: false) }
+
+  after_commit :clear_cache
 
   def to_param
     slug.presence || id.to_s
@@ -68,6 +70,12 @@ class Category < ApplicationRecord
   end
 
   private
+
+  def clear_cache
+    %w[apple huawei oppo vivo xiaomi custom].each do |kind|
+      Rails.cache.delete("categories_for_kind_#{kind}")
+    end
+  end
 
   def leaf_category_constraint_for_parent
     return if parent_id.nil?

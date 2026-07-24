@@ -52,7 +52,9 @@ class Admin::BaseController < ApplicationController
   end
 
   def set_unread_count
-    @unread_messages_count = ContactMessage.where(read: false).count
+    @unread_messages_count = Rails.cache.fetch("admin_unread_messages_count", expires_in: 5.minutes) do
+      ContactMessage.where(read: false).count
+    end
   end
   
   def check_admin

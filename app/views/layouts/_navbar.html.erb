@@ -3,17 +3,17 @@
     <div class="flex items-center">
       <a href="<%= root_path %>" class="md:hidden flex items-center mr-2">
         <% if @site_config.logo.attached? %>
-          <%= image_tag @site_config.logo, class: "h-6 w-auto object-contain", alt: @site_config.name %>
+          <%= image_tag @site_config.logo, class: "h-10 w-auto object-contain", alt: @site_config.name %>
         <% else %>
-          <%= image_tag "hatlogo.png", class: "h-6 w-auto object-contain", alt: "Lincaps" %>
-        <% end %>
-      </a>
-      <a href="<%= root_path %>" class="hidden md:flex items-center space-x-3 rtl:space-x-reverse mr-4 md:mr-12 flex-shrink-0">
-        <% if @site_config.logo.attached? %>
-          <%= image_tag @site_config.logo, class: "h-8 sm:h-10 md:h-12 lg:h-14 w-auto max-w-[120px] sm:max-w-[150px] md:max-w-[200px] lg:max-w-[240px] object-contain transition-all duration-300", alt: @site_config.name %>
-        <% else %>
-          <%= image_tag "hatlogo.png", class: "h-8 sm:h-10 md:h-12 lg:h-14 w-auto max-w-[120px] sm:max-w-[150px] md:max-w-[200px] lg:max-w-[240px] object-contain transition-all duration-300", alt: "Lincaps" %>
-        <% end %>
+          <%= image_tag "yapai.webp", class: "h-10 w-auto object-contain", alt: "Yapai" %>
+<% end %>
+</a>
+<a href="<%= root_path %>" class="hidden md:flex items-center space-x-3 rtl:space-x-reverse mr-4 md:mr-12 flex-shrink-0">
+  <% if @site_config.logo.attached? %>
+    <%= image_tag @site_config.logo, class: "h-12 sm:h-14 md:h-16 lg:h-20 w-auto max-w-[160px] sm:max-w-[200px] md:max-w-[280px] lg:max-w-[320px] object-contain transition-all duration-300", alt: @site_config.name %>
+  <% else %>
+    <%= image_tag "yapai.webp", class: "h-12 sm:h-14 md:h-16 lg:h-20 w-auto max-w-[160px] sm:max-w-[200px] md:max-w-[280px] lg:max-w-[320px] object-contain transition-all duration-300", alt: "Yapai" %>
+  <% end %>
       </a>
     </div>
     <div class="flex md:order-2 space-x-3 items-center">
@@ -84,7 +84,7 @@
           <%= link_to t('navbar.factory'), factory_path, class: "block py-2 px-3 #{current_page?(factory_path) ? 'text-primary font-bold border-b-2 border-primary' : 'text-slate-600 hover:text-primary'} transition-all duration-300 rounded-sm md:bg-transparent md:p-0" %>
         </li>
 
-        <% [ 'a', 'b', 'c' ].each do |kind| %>
+        <% [ 'apple', 'huawei', 'oppo', 'vivo', 'xiaomi', 'custom' ].each do |kind| %>
           <% categories_for_kind(kind).each do |category| %>
             <li class="relative group/cat-0" data-navbar-target="rootDropdown">
               <div class="flex items-center">

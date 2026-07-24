@@ -28,7 +28,7 @@ Rails.application.configure do
   # Active Storage host configuration
   config.active_storage.variant_processor = :vips
   config.after_initialize do
-    ActiveStorage::Current.url_options = { host: ENV.fetch("APP_HOST", "lincaps.com"), protocol: "https" }
+    ActiveStorage::Current.url_options = { host: ENV.fetch("APP_HOST", "yapaibattery.com"), protocol: "https" }
   end
 
   # Assume all access to the app is happening through a SSL-terminating reverse proxy.
@@ -67,7 +67,7 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
 
   # Set host to be used by links generated in mailer templates.
-  config.action_mailer.default_url_options = { host: ENV.fetch("APP_HOST", "lincaps.com") }
+  config.action_mailer.default_url_options = { host: ENV.fetch("APP_HOST", "yapaibattery.com") }
   Rails.application.routes.default_url_options = config.action_mailer.default_url_options
 
   config.action_mailer.delivery_method = :resend
@@ -88,8 +88,8 @@ Rails.application.configure do
   # Enable DNS rebinding protection and other `Host` header attacks.
   # Allow Railway dynamic subdomains and explicit production domain.
   config.hosts.clear
-  config.hosts << "www.lincaps.com"
-  config.hosts << "lincaps.com"
+  config.hosts << "www.yapaibattery.com"
+  config.hosts << "yapaibattery.com"
   config.hosts << /.*/ # Allow all hosts (Railway handles SSL/redirect)
   # Skip DNS rebinding protection for the default health check endpoint.
   config.host_authorization = { exclude: ->(request) { request.path == "/up" } }

@@ -155,13 +155,13 @@ class Admin::SkusController < Admin::BaseController
     CSV.generate(headers: true) do |csv|
       # 定义表头
       base_headers = ["ID", "Position", "Name", "Channel", "Category Path", "Price", "Status", "Image URLs"]
-      hat_headers = [
+      battery_headers = [
         "Item", "Item No.", "Product Name", "Material", "Specification", 
-        "Head Circumference", "Brim Length", "Closure Type", "Embroidery/Print", 
-        "Color", "MOQ", "Sample Time", "Production Lead Time", "Packing", 
+        "Voltage", "Capacity", "Battery Cell", "Compatible Brands", 
+        "Color/Appearance", "MOQ", "Sample Time", "Production Lead Time", "Packing", 
         "Carton Size", "Gross Weight"
       ]
-      csv << base_headers + hat_headers + ["Standard Features HTML"]
+      csv << base_headers + battery_headers + ["Standard Features HTML"]
 
       categories_cache = Category.all.includes(:parent).index_by(&:id)
 
@@ -181,14 +181,14 @@ class Admin::SkusController < Admin::BaseController
           image_urls
         ]
         
-        hat_row = [
+        battery_row = [
           sku.item, sku.item_no, sku.product_name, sku.material, sku.specification,
           sku.head_circumference, sku.brim_length, sku.closure_type, sku.embroidery_print,
           sku.color, sku.moq, sku.sample_time, sku.production_lead_time, sku.packing,
           sku.carton_size, sku.gross_weight
         ]
         
-        csv << row + hat_row + [sku.standard_features.to_s]
+        csv << row + battery_row + [sku.standard_features.to_s]
       end
     end
   end

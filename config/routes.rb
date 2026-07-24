@@ -30,8 +30,6 @@ Rails.application.routes.draw do
         delete :clean
       end
     end
-    resources :about_carousels
-    resources :home_products
     resources :login_logs, only: [:index] do
       collection do
         delete :clear
@@ -51,7 +49,7 @@ Rails.application.routes.draw do
     resource :profile, controller: 'profiles', only: [:show, :edit, :update]
   end
 
-  %w[a b c].each do |kind|
+  %w[apple huawei oppo vivo xiaomi custom].each do |kind|
     get kind, to: "channels#index", defaults: { kind: kind }, as: "#{kind}_channel"
   end
 

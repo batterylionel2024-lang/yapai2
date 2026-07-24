@@ -2,7 +2,7 @@
 
 后台
 * ...
-帽子网站
+yapai网站
 
 全栈技术: ruby on rails
 

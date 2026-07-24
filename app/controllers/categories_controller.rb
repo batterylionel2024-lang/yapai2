@@ -2,8 +2,8 @@ class CategoriesController < ApplicationController
   def index
     @kind = params[:kind]
     
-    # 安全检查: 只允许 a, b, c 这三个频道，防止 Dangerous Send 漏洞
-    unless @kind.nil? || %w[a b c].include?(@kind)
+    # 安全检查: 只允许指定频道，防止 Dangerous Send 漏洞
+    unless @kind.nil? || %w[apple huawei oppo vivo xiaomi custom].include?(@kind)
       redirect_to categories_path, alert: "无效的分类频道"
       return
     end

@@ -5,6 +5,6 @@ class SiteConfig < ApplicationRecord
   has_one_attached :robots
 
   def self.get
-    first_or_create!(name: "Lincaps")
+    first_or_create!(name: "Yapai")
   end
 end

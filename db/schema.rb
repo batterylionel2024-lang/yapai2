@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_16_070238) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_24_110000) do
   create_table "a_sku_details", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "net_capacity"
@@ -21,16 +21,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_16_070238) do
     t.string "unit_dimensions"
     t.datetime "updated_at", null: false
     t.string "voltage_frequency"
-  end
-
-  create_table "about_carousels", force: :cascade do |t|
-    t.boolean "active"
-    t.datetime "created_at", null: false
-    t.text "description"
-    t.string "link"
-    t.integer "position"
-    t.string "title"
-    t.datetime "updated_at", null: false
   end
 
   create_table "action_text_rich_texts", force: :cascade do |t|
@@ -137,6 +127,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_16_070238) do
     t.boolean "read", default: false
     t.string "subject"
     t.datetime "updated_at", null: false
+    t.index ["read"], name: "index_contact_messages_on_read"
   end
 
   create_table "home_products", force: :cascade do |t|
@@ -234,6 +225,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_16_070238) do
     t.datetime "updated_at", null: false
     t.string "visor"
     t.index ["category_id"], name: "index_skus_on_category_id"
+    t.index ["status"], name: "index_skus_on_status"
   end
 
   create_table "solid_cable_messages", force: :cascade do |t|
@@ -413,6 +405,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_16_070238) do
     t.datetime "visit_time"
     t.index ["session_id", "visit_time"], name: "index_visit_records_on_session_id_and_visit_time"
     t.index ["session_id"], name: "index_visit_records_on_session_id"
+    t.index ["visit_time"], name: "index_visit_records_on_visit_time"
   end
 
   create_table "visits", force: :cascade do |t|

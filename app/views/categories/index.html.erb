@@ -8,9 +8,12 @@
             "#{@current_category.localized_name} - #{t('home.index.hero_title_2')}"
           elsif kind_val
             case kind_val.to_s
-            when 'a' then "#{t('navbar.cooling')} - #{t('home.index.hero_title_2')}"
-            when 'b' then "#{t('navbar.cooking')} - #{t('home.index.hero_title_2')}"
-            when 'c' then "#{t('navbar.stainless')} - #{t('home.index.hero_title_2')}"
+            when 'apple' then "#{t('navbar.apple')} - #{t('home.index.hero_title_2')}"
+            when 'huawei' then "#{t('navbar.huawei')} - #{t('home.index.hero_title_2')}"
+            when 'oppo' then "#{t('navbar.oppo')} - #{t('home.index.hero_title_2')}"
+            when 'vivo' then "#{t('navbar.vivo')} - #{t('home.index.hero_title_2')}"
+            when 'xiaomi' then "#{t('navbar.xiaomi')} - #{t('home.index.hero_title_2')}"
+            when 'custom' then "#{t('navbar.custom')} - #{t('home.index.hero_title_2')}"
             end
           else
             "#{t('categories.explore_all')} - #{t('home.index.hero_title_2')}"
@@ -21,9 +24,10 @@
                   @current_category.meta_description
                 elsif kind_val
                   case kind_val.to_s
-                  when 'a' then t('home.about.product_lines.performance_desc')
-                  when 'b' then t('home.about.product_lines.fashion_desc')
-                  when 'c' then t('home.about.product_lines.custom_desc')
+                  when 'apple' then t('home.about.product_lines.performance_desc')
+                  when 'oppo' then t('home.about.product_lines.fashion_desc')
+                  when 'custom' then t('home.about.product_lines.custom_desc')
+                  when 'huawei', 'xiaomi', 'vivo' then t('categories.all_products_desc')
                   end
                 else
                   t('categories.all_products_desc')
@@ -39,18 +43,24 @@
               @current_category.localized_name
             elsif kind_val
               case kind_val.to_s
-              when 'a' then t('navbar.cooling')
-              when 'b' then t('navbar.cooking')
-              when 'c' then t('navbar.stainless')
+              when 'apple' then t('navbar.apple')
+              when 'huawei' then t('navbar.huawei')
+              when 'oppo' then t('navbar.oppo')
+              when 'vivo' then t('navbar.vivo')
+              when 'xiaomi' then t('navbar.xiaomi')
+              when 'custom' then t('navbar.custom')
               end
             else
               t('categories.explore_all')
             end
 
   banner_image = case kind_val.to_s
-                 when 'a' then "categorya.webp"
-                 when 'b' then "categoryb.webp"
-                 when 'c' then "categoryc.webp"
+                 when 'apple' then "category1.webp"
+                 when 'huawei' then "category2.webp"
+                 when 'oppo' then "category3.webp"
+                 when 'vivo' then "category4.webp"
+                 when 'xiaomi' then "category5.webp"
+                 when 'custom' then "category6.webp"
                  else "categories_banner.jpg"
                  end
 %>
@@ -80,7 +90,7 @@
     <div class="relative z-10 h-full flex flex-col justify-center px-7 sm:px-10 md:px-16 max-w-3xl">
       <span class="cb-eyebrow inline-flex items-center gap-2 self-start px-3 py-1 rounded-full bg-white/15 backdrop-blur-md border border-white/20 text-white text-[10px] font-black tracking-[0.2em] uppercase mb-3">
         <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
-        Lincaps Collection
+        Yapai Battery Collection
       </span>
       <h1 class="cb-title text-3xl sm:text-5xl md:text-6xl font-black text-white tracking-tight leading-none drop-shadow-[0_2px_20px_rgba(0,0,0,0.5)]">
         <% heading.to_s.chars.each_with_index do |ch, i| %><span class="cb-char" style="animation-delay: <%= (0.15 + i * 0.04).round(3) %>s"><%= ch == ' ' ? raw('&nbsp;') : ch %></span><% end %>
@@ -164,7 +174,7 @@
             
             <!-- 遮罩与操作 -->
             <div class="absolute inset-0 bg-dark/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center backdrop-blur-[2px] p-6 text-center">
-              <span class="text-[10px] text-white/80 font-bold tracking-widest uppercase mb-4 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">LINCAPS PREMIUM</span>
+              <span class="text-[10px] text-white/80 font-bold tracking-widest uppercase mb-4 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">YAPAI PREMIUM</span>
               <%= link_to sku_path(sku), class: "bg-white text-dark px-6 py-2 rounded-full font-black text-[10px] tracking-widest uppercase shadow-xl hover:scale-105 transition-all transform translate-y-4 group-hover:translate-y-0 duration-500" do %>
                 <%= t('categories.view_details', default: '查看详情') %>
               <% end %>

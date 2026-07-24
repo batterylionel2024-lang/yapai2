@@ -1,4 +1,6 @@
 class Sku < ApplicationRecord
+  after_commit :clear_dashboard_cache
+
   belongs_to :category
   has_many_attached :images do |attachable|
     attachable.variant :thumb, resize_to_limit: [200, 200], format: :webp, saver: { quality: 80 }
@@ -38,5 +40,10 @@ class Sku < ApplicationRecord
     unless category.leaf?
       errors.add(:category_id, "SKU can only be assigned to leaf categories.")
     end
+  end
+
+  def clear_dashboard_cache
+    Rails.cache.delete("admin_total_skus_count")
+    Rails.cache.delete("admin_active_skus_count")
   end
 end

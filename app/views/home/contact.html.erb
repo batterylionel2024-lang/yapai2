@@ -1,9 +1,7 @@
 <style>
-    @keyframes fall {
-        0% { transform: translateY(-80px) rotate(var(--rs)); opacity:0; }
-        8% { opacity: var(--op); }
-        90% { opacity: calc(var(--op) * 0.7); }
-        100% { transform: translateY(110vh) rotate(var(--re)); opacity:0; }
+    @keyframes float {
+        0%, 100% { transform: translateY(0) rotate(var(--rs)); }
+        50% { transform: translateY(-20px) rotate(var(--re)); }
     }
     @keyframes gradientShift {
         0%,100% { background-position: 0% 50%; }
@@ -20,9 +18,9 @@
     .hw {
         position: relative;
         overflow: hidden;
-        padding: 3rem 2rem 2.8rem;
+        padding: 5rem 2rem 4.8rem;
         text-align: center;
-        background: linear-gradient(160deg, #fff8f2 0%, #fdf4ff 40%, #f0f9ff 100%);
+        background: linear-gradient(160deg, #f8fafc 0%, #f1f5f9 40%, #e2e8f0 100%);
     }
     .blob { position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none;z-index:0; }
     .b1{width:360px;height:360px;top:-120px;left:-80px;background:rgba(249,115,22,0.13);}
@@ -31,7 +29,7 @@
     .b4{width:220px;height:220px;bottom:0;right:5%;background:rgba(16,185,129,0.12);}
 
     .caps-layer { position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1; }
-    .cap { position:absolute;top:-80px;line-height:1; }
+    .cap { position:absolute; line-height:1; }
 
     .content { position:relative;z-index:3;max-width:560px;margin:0 auto; }
 
@@ -128,8 +126,8 @@
     </div>
 
     <h1 class="title">
-      <span class="t1">Let's Talk</span>
-      <span class="t2">About Your Project</span>
+      <span class="t1"><%= t('home.contact.hero_title') %></span>
+      <span class="t2">Build Your Brand with Yapai</span>
     </h1>
 
     <div class="rule">
@@ -139,31 +137,31 @@
     </div>
 
     <p class="desc">
-      <em>Custom Cap Manufacturing</em>
+      <em><%= t('home.about.heritage_title') %></em>
       <span class="sep">·</span>
-      OEM &amp; ODM Projects
-
-
+      Professional Support
       <span class="sep">·</span>
-All kinds of caps    </p>
+      High Quality Mobile Batteries
+    </p>
   </div>
 </div>
 
 <script>
-    const CAPS = ["🧢","👒","🤝","🎓","🧢","👒","🎩","🧢","👒","🧢"];
+    const ICONS = ["🔋","⚡","📱","🔋","🔋","⚡","🔋","📱","🔋","⚡"];
     const layer = document.getElementById('caps');
-    for(let i=0;i<40;i++){
+    for(let i=0;i<20;i++){
         const el = document.createElement('div');
         el.className = 'cap';
-        el.textContent = CAPS[i % CAPS.length];
+        el.textContent = ICONS[i % ICONS.length];
         const x = (Math.random()*98).toFixed(1);
-        const dur = (7 + Math.random()*11).toFixed(2);
+        const y = (Math.random()*98).toFixed(1);
+        const dur = (4 + Math.random()*6).toFixed(2);
         const delay = -(Math.random()*parseFloat(dur));
-        const size = (1.0 + Math.random()*1.6).toFixed(2);
-        const op = (0.3 + Math.random()*0.45).toFixed(2);
+        const size = (0.8 + Math.random()*1.2).toFixed(2);
+        const op = (0.1 + Math.random()*0.2).toFixed(2);
         const rs = (Math.random()*30-15).toFixed(0)+'deg';
-        const re = (180+Math.random()*360).toFixed(0)+'deg';
-        el.style.cssText=`--rs:${rs};--re:${re};--op:${op};left:${x}%;font-size:${size}rem;opacity:0;animation:fall ${dur}s ${delay}s linear infinite;`;
+        const re = (Math.random()*30-15).toFixed(0)+'deg';
+        el.style.cssText=`--rs:${rs};--re:${re};left:${x}%;top:${y}%;font-size:${size}rem;opacity:${op};animation:float ${dur}s ${delay}s ease-in-out infinite;`;
         layer.appendChild(el);
     }
 </script>

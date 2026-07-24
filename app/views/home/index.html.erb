@@ -1,6 +1,6 @@
-<% content_for :title, "Lincaps - Custom Hat Manufacturer | Baseball Caps, Trucker Hats & More" %>
-<% content_for :meta_description, "Lincaps is a professional custom hat manufacturer in Qingdao, China with 20+ years of experience. OEM & ODM baseball caps, trucker hats, bucket hats, beanies and more. Factory-direct pricing." %>
-<% content_for :meta_keywords, "custom hat manufacturer, baseball cap OEM, trucker hat manufacturer, bucket hat, beanie cap, Qingdao hat factory, Lincaps, hat ODM China" %>
+<% content_for :title, "Yapai Battery Factory - Professional Mobile Phone Battery Manufacturer" %>
+<% content_for :meta_description, "Yapai Battery Factory is a professional mobile phone battery manufacturer in Guangdong, China. OEM/ODM replacement batteries for iPhone, Huawei, Xiaomi, and 1,000+ brands." %>
+<% content_for :meta_keywords, "mobile phone battery factory, smartphone replacement battery, Yapai Battery, iPhone battery wholesale, OEM battery manufacturer, China battery factory" %>
 
 <%# ============================================================
     Hero Section — Rebuilt Responsive Slideshow
@@ -19,7 +19,7 @@
         class="absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0"
         data-slideshow-target="slide"
       >
-        <%= image_tag "banner#{n}.webp",
+        <%= image_tag "indexbanner#{n}.webp",
                       class: "w-full h-full object-cover object-center scale-105 transition-transform duration-[5000ms]",
                       alt: "",
                       role: "presentation",
@@ -131,64 +131,20 @@
   <!-- Forward strip -->
   <div class="overflow-hidden mb-4">
     <div class="flex gap-5 w-max" style="animation: cap-marquee 32s linear infinite;">
-      <% items = @home_products_row1.any? ? @home_products_row1 : [] %>
-      <% if items.any? %>
-        <% 3.times do %>
-          <% items.each do |product| %>
-            <%= link_to product.link.presence || "javascript:void(0)", class: "relative flex-shrink-0 w-56 h-64 rounded-2xl overflow-hidden group cursor-pointer" do %>
-              <% if product.image.attached? %>
-                <%= image_tag rails_storage_proxy_path(product.image.variant(:marquee)), class: "w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" %>
-              <% end %>
-              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                <span class="text-white font-bold text-sm tracking-wide"><%= product.title %></span>
-              </div>
-            <% end %>
-          <% end %>
-        <% end %>
-      <% else %>
-        <% 2.times do %>
-          <% [["cap1.webp","Baseball Cap"],["cap2.webp","Trucker Hat"],["cap3.webp","Bucket Hat"],["cap4.webp","Flat Brim"],["cap5.webp","Wide Brim"],["cap6.webp"],["cap7.webp"]].each do |img, label| %>
-            <div class="relative flex-shrink-0 w-56 h-64 rounded-2xl overflow-hidden group cursor-pointer">
-              <%= image_tag img, class: "w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" %>
-              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                <span class="text-white font-bold text-sm tracking-wide">cap</span>
-              </div>
+      <% 2.times do %>
+        <% [["iphone.webp","iPhone Battery"],["vivo.webp","Vivo Battery"],["oppo.webp","oppo Battery"],["huawei.webp","Huawei Battery"],["xiaomi.webp","Xiaomi Battery"]].each do |img, label| %>
+          <div class="relative flex-shrink-0 w-56 h-64 rounded-2xl overflow-hidden group cursor-pointer">
+            <%= image_tag img, class: "w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" %>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+              <span class="text-white font-bold text-sm tracking-wide"><%= label %></span>
             </div>
-          <% end %>
+          </div>
         <% end %>
       <% end %>
     </div>
   </div>
   <!-- Reverse strip -->
-  <div class="overflow-hidden">
-    <div class="flex gap-5 w-max" style="animation: cap-marquee-rev 38s linear infinite;">
-      <% items2 = @home_products_row2.any? ? @home_products_row2 : [] %>
-      <% if items2.any? %>
-        <% 3.times do %>
-          <% items2.each do |product| %>
-            <%= link_to product.link.presence || "javascript:void(0)", class: "relative flex-shrink-0 w-44 h-52 rounded-2xl overflow-hidden group cursor-pointer" do %>
-              <% if product.image.attached? %>
-                <%= image_tag rails_storage_proxy_path(product.image.variant(:marquee)), class: "w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" %>
-              <% end %>
-              <div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3">
-                <span class="text-white font-bold text-xs tracking-wide"><%= product.title %></span>
-              </div>
-            <% end %>
-          <% end %>
-        <% end %>
-      <% else %>
-        <% 2.times do %>
-          <% ["2cap1.webp", "2cap2.webp", "2cap3.webp", "2cap4.webp", "2cap5.webp", "2cap6.webp", "2cap7.webp", "2cap8.webp"].each do |img| %>
-            <div class="relative flex-shrink-0 w-44 h-52 rounded-2xl overflow-hidden group cursor-pointer">
-              <%= image_tag img, class: "w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" %>
-              <div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3">
-              </div>
-            </div>
-          <% end %>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
+
 </div>
 
 <!-- ===== FEATURED PRODUCTS GRID ===== -->
@@ -222,7 +178,10 @@
         <% end %>
       <% else %>
         <% [
-          { img: "product_baseball_cap.webp",    name: "Baseball Cap",           tag: "Best Seller", color: "primary",   fit: "cover" }
+          { img: "iphone.webp",    name: "iPhone Battery",           tag: "Best Seller", color: "primary",   fit: "cover" },
+          { img: "oppo.webp",      name: "Android Battery",          tag: "Premium",     color: "secondary", fit: "cover" },
+          { img: "huawei.webp",    name: "Huawei Battery",           tag: "High Capacity", color: "accent",    fit: "cover" },
+          { img: "xiaomi.webp",    name: "Xiaomi Battery",           tag: "New Arrival", color: "primary",   fit: "cover" }
         ].each_with_index do |cap, i| %>
           <div class="reveal-product group relative rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer" style="transition-delay: <%= i * 80 %>ms">
             <div class="aspect-[3/4] overflow-hidden bg-white">
@@ -267,22 +226,28 @@
       
       <div class="lg:w-1/2 grid grid-cols-1 gap-6 reveal-right">
         <h3 class="text-2xl font-black text-slate-900 mb-2"><%= t('home.index.core_products_title') %></h3>
-        <% ['a', 'b', 'c'].each do |kind| %>
+        <% ['apple', 'huawei', 'oppo', 'vivo', 'xiaomi', 'custom'].each do |kind| %>
           <% 
             name = case kind
-                   when 'a' then t('navbar.cooling')
-                   when 'b' then t('navbar.cooking')
-                   when 'c' then t('navbar.stainless')
+                   when 'apple' then t('navbar.apple')
+                   when 'huawei' then t('navbar.huawei')
+                   when 'oppo' then t('navbar.oppo')
+                   when 'vivo' then t('navbar.vivo')
+                   when 'xiaomi' then t('navbar.xiaomi')
+                   when 'custom' then t('navbar.custom')
                    end
             desc = case kind
-                   when 'a' then t('home.index.strengths.no_moq.desc')
-                   when 'b' then t('home.index.strengths.flexible.desc')
-                   when 'c' then t('home.index.strengths.direct_factory.desc')
+                   when 'apple' then t('home.index.strengths.no_moq.desc')
+                   when 'oppo' then t('home.index.strengths.flexible.desc')
+                   when 'custom' then t('home.index.strengths.direct_factory.desc')
+                   when 'huawei' then t('home.index.partner_brands.brand_3') # Reuse brand translations
+                   when 'xiaomi' then t('home.index.partner_brands.brand_4')
+                   when 'vivo' then t('home.index.partner_brands.brand_5')
                    end
             color = case kind
-                    when 'a' then 'primary'
-                    when 'b' then 'secondary'
-                    when 'c' then 'accent'
+                    when 'apple', 'huawei' then 'primary'
+                    when 'oppo', 'xiaomi' then 'secondary'
+                    when 'custom', 'vivo' then 'accent'
                     end
           %>
           <%= link_to channel_path(kind), class: "group p-6 bg-slate-50 rounded-3xl border border-slate-100 hover:bg-white hover:shadow-xl transition-all duration-300 flex items-center justify-between" do %>

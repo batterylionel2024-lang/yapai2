@@ -5,7 +5,7 @@ namespace :mail_test do
     puts "Delivery Method: #{Rails.application.config.action_mailer.delivery_method}"
     puts "Resend API Key present: #{ENV['RESEND_API_KEY'].present?}"
     puts "Mailer From: #{ENV['MAILER_FROM'] || 'Not set (using default)'}"
-    puts "Contact Form To: #{ENV['CONTACT_FORM_TO'] || 'Not set (using default: Caroline@lincaps.com)'}"
+    puts "Contact Form To: #{ENV['CONTACT_FORM_TO'] || 'Not set (using default: Caroline@yapaibattery.com)'}"
     puts "Queue Adapter: #{Rails.application.config.active_job.queue_adapter}"
     
     if ENV['RESEND_API_KEY'].blank?
@@ -27,7 +27,7 @@ namespace :mail_test do
         message: "This is a test message to verify mailer configuration."
       )
       
-      puts "Attempting to send test email to #{ENV.fetch("CONTACT_FORM_TO", "Caroline@lincaps.com")}..."
+      puts "Attempting to send test email to #{ENV.fetch("CONTACT_FORM_TO", "Caroline@yapaibattery.com")}..."
       NotificationMailer.contact_notification(message).deliver_now
       puts "SUCCESS: Email sent successfully (deliver_now)!"
     rescue => e

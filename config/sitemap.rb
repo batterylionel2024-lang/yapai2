@@ -1,5 +1,5 @@
 # Set the host name for URL creation
-SitemapGenerator::Sitemap.default_host = 'https://lincaps.com'
+SitemapGenerator::Sitemap.default_host = 'https://yapaibattery.com'
 SitemapGenerator::Sitemap.compress = false
 
 SitemapGenerator::Sitemap.create do
@@ -20,8 +20,8 @@ SitemapGenerator::Sitemap.create do
     add sku_path(sku), lastmod: sku.updated_at, priority: 0.6, changefreq: 'weekly'
   end
 
-  # 频道页面 (a, b, c)
-  %w[a b c].each do |kind|
+  # 频道页面 (apple, huawei, oppo, vivo, xiaomi, custom)
+  %w[apple huawei oppo vivo xiaomi custom].each do |kind|
     add send("#{kind}_channel_path"), priority: 0.7, changefreq: 'daily'
   end
 end
