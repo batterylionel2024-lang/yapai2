@@ -123,14 +123,14 @@
 
 </section>
 
-<!-- ===== CAP PRODUCT MARQUEE ===== -->
+<!-- ===== YAPAI PRODUCT MARQUEE ===== -->
 <div class="bg-slate-900 py-8 overflow-hidden">
   <div class="text-center mb-6">
     <span class="text-xs font-black text-slate-500 uppercase tracking-widest">Our Products</span>
   </div>
   <!-- Forward strip -->
   <div class="overflow-hidden mb-4">
-    <div class="flex gap-5 w-max" style="animation: cap-marquee 32s linear infinite;">
+    <div class="flex gap-5 w-max" style="animation: yapai-marquee 32s linear infinite;">
       <% 2.times do %>
         <% [["iphone.webp","iPhone Battery"],["vivo.webp","Vivo Battery"],["oppo.webp","oppo Battery"],["huawei.webp","Huawei Battery"],["xiaomi.webp","Xiaomi Battery"]].each do |img, label| %>
           <div class="relative flex-shrink-0 w-56 h-64 rounded-2xl overflow-hidden group cursor-pointer">
@@ -182,16 +182,16 @@
           { img: "oppo.webp",      name: "Android Battery",          tag: "Premium",     color: "secondary", fit: "cover" },
           { img: "huawei.webp",    name: "Huawei Battery",           tag: "High Capacity", color: "accent",    fit: "cover" },
           { img: "xiaomi.webp",    name: "Xiaomi Battery",           tag: "New Arrival", color: "primary",   fit: "cover" }
-        ].each_with_index do |cap, i| %>
+        ].each_with_index do |yapai, i| %>
           <div class="reveal-product group relative rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer" style="transition-delay: <%= i * 80 %>ms">
             <div class="aspect-[3/4] overflow-hidden bg-white">
-              <%= image_tag cap[:img], class: "w-full h-full #{cap[:fit] == 'contain' ? 'object-contain p-4' : 'object-cover'} group-hover:scale-105 transition-transform duration-700" %>
+              <%= image_tag yapai[:img], class: "w-full h-full #{yapai[:fit] == 'contain' ? 'object-contain p-4' : 'object-cover'} group-hover:scale-105 transition-transform duration-700" %>
             </div>
             <div class="absolute top-3 left-3">
-              <span class="bg-<%= cap[:color] %> text-white text-[10px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full"><%= cap[:tag] %></span>
+              <span class="bg-<%= yapai[:color] %> text-white text-[10px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full"><%= yapai[:tag] %></span>
             </div>
             <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent px-5 pb-6 pt-16">
-              <p class="text-white font-black text-xl leading-tight drop-shadow-lg"><%= cap[:name] %></p>
+              <p class="text-white font-black text-xl leading-tight drop-shadow-lg"><%= yapai[:name] %></p>
               <p class="text-white/75 text-xs font-bold mt-1 uppercase tracking-widest">Custom · OEM · ODM</p>
             </div>
           </div>
@@ -381,11 +381,11 @@
 </div>
 
 <style>
-  @keyframes cap-marquee {
+  @keyframes yapai-marquee {
     from { transform: translateX(0); }
     to   { transform: translateX(-50%); }
   }
-  @keyframes cap-marquee-rev {
+  @keyframes yapai-marquee-rev {
     from { transform: translateX(-50%); }
     to   { transform: translateX(0); }
   }

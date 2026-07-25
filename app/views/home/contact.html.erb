@@ -28,8 +28,8 @@
     .b3{width:300px;height:300px;bottom:-100px;left:30%;background:rgba(236,72,153,0.11);}
     .b4{width:220px;height:220px;bottom:0;right:5%;background:rgba(16,185,129,0.12);}
 
-    .caps-layer { position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1; }
-    .cap { position:absolute; line-height:1; }
+    .yapai-layer { position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1; }
+    .yapai-item { position:absolute; line-height:1; }
 
     .content { position:relative;z-index:3;max-width:560px;margin:0 auto; }
 
@@ -117,7 +117,7 @@
   <div class="blob b2"></div>
   <div class="blob b3"></div>
   <div class="blob b4"></div>
-  <div class="caps-layer" id="caps"></div>
+  <div class="yapai-layer" id="yapai-list"></div>
 
   <div class="content">
     <div class="badge">
@@ -148,10 +148,10 @@
 
 <script>
     const ICONS = ["🔋","⚡","📱","🔋","🔋","⚡","🔋","📱","🔋","⚡"];
-    const layer = document.getElementById('caps');
+    const layer = document.getElementById('yapai-list');
     for(let i=0;i<20;i++){
         const el = document.createElement('div');
-        el.className = 'cap';
+        el.className = 'yapai-item';
         el.textContent = ICONS[i % ICONS.length];
         const x = (Math.random()*98).toFixed(1);
         const y = (Math.random()*98).toFixed(1);

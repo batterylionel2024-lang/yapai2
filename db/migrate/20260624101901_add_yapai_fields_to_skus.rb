@@ -1,4 +1,4 @@
-class AddHatFieldsToSkus < ActiveRecord::Migration[8.1]
+class AddYapaiFieldsToSkus < ActiveRecord::Migration[8.1]
   def change
     add_column :skus, :item_no, :string
     add_column :skus, :material, :string

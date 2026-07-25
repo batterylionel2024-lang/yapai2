@@ -161,7 +161,7 @@
     </div>
   </div>
 
-  <!-- ===== CAPABILITIES ===== -->
+  <!-- ===== YAPAI-ABILITIES ===== -->
   <div class="py-24 sm:py-32">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <div class="text-center mb-16 reveal-up">
@@ -173,16 +173,16 @@
           { title: "Diverse Battery Portfolio", color: "primary", desc: "Replacement batteries for iPhone, Samsung, Huawei, Xiaomi, Vivo, Oppo, and more.", items: ["iPhone Batteries", "Samsung Batteries", "Huawei Batteries", "Xiaomi Batteries", "Vivo & Oppo", "Redmi & Honor"] },
           { title: "Global Reach", color: "secondary", desc: "Products exported to Europe, America, Southeast Asia, Middle East, and Latin America.", items: ["United States", "Germany", "United Kingdom", "Russia", "Brazil", "India"] },
           { title: "Custom Services", color: "accent", desc: "End-to-end customization from cell choice to private labeling and packaging design.", items: ["Custom Capacity", "Private Labeling", "Packaging Design", "BMS Customization", "OEM / ODM", "Small Batch Orders"] }
-        ].each do |cap| %>
+        ].each do |yapai| %>
           <div class="reveal-card bg-white rounded-3xl border border-slate-100 overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300">
-            <div class="h-2 bg-<%= cap[:color] %>"></div>
+            <div class="h-2 bg-<%= yapai[:color] %>"></div>
             <div class="p-8">
-              <h3 class="text-xl font-bold text-slate-900 mb-3"><%= cap[:title] %></h3>
-              <p class="text-slate-500 text-sm leading-relaxed mb-6"><%= cap[:desc] %></p>
+              <h3 class="text-xl font-bold text-slate-900 mb-3"><%= yapai[:title] %></h3>
+              <p class="text-slate-500 text-sm leading-relaxed mb-6"><%= yapai[:desc] %></p>
               <ul class="space-y-2">
-                <% cap[:items].each do |item| %>
+                <% yapai[:items].each do |item| %>
                   <li class="flex items-center gap-2 text-sm text-slate-600">
-                    <svg class="w-4 h-4 text-<%= cap[:color] %> flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <svg class="w-4 h-4 text-<%= yapai[:color] %> flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                       <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
                     </svg>
                     <%= item %>

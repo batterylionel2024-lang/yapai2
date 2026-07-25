@@ -1,5 +1,5 @@
 namespace :setup_products do
-  desc "Clear categories/SKUs and seed 3 categories with 9 hat products"
+  desc "Clear categories/SKUs and seed 3 categories with 9 yapai products"
   task run: :environment do
     puts "Purging existing SKU images..."
     Sku.find_each do |sku|
@@ -13,7 +13,7 @@ namespace :setup_products do
     puts "Creating categories..."
 
     cat_a = Category.create!(
-      name: "Baseball Caps",
+      name: "Baseball Yapais",
       name_zh: "棒球帽",
       category_kind: "a",
       parent_id: nil,
@@ -21,7 +21,7 @@ namespace :setup_products do
     )
 
     cat_b = Category.create!(
-      name: "Fashion Caps",
+      name: "Fashion Yapais",
       name_zh: "时尚帽",
       category_kind: "b",
       parent_id: nil,
@@ -29,7 +29,7 @@ namespace :setup_products do
     )
 
     cat_c = Category.create!(
-      name: "Winter Hats",
+      name: "Winter Yapais",
       name_zh: "冬季帽",
       category_kind: "c",
       parent_id: nil,
@@ -39,15 +39,15 @@ namespace :setup_products do
     puts "Creating SKUs..."
 
     products = [
-      { name: "Baseball Cap",           name_zh: "棒球帽",     category: cat_a, img: "product_baseball_cap.png",    item_no: "LC-001", position: 10 },
-      { name: "Flat Bill Cap",          name_zh: "平沿帽",     category: cat_a, img: "product_flat_bill_cap.png",   item_no: "LC-002", position: 9 },
-      { name: "Quick Dry Baseball Cap", name_zh: "速干棒球帽", category: cat_a, img: "product_quick_dry_cap.png",   item_no: "LC-003", position: 8 },
-      { name: "Trucker Cap",            name_zh: "卡车帽",     category: cat_a, img: "product_trucker_cap.png",     item_no: "LC-004", position: 7 },
-      { name: "Bucket Cap",             name_zh: "渔夫帽",     category: cat_b, img: "product_bucket_cap.png",      item_no: "LC-005", position: 10 },
-      { name: "Visor Cap",              name_zh: "遮阳帽",     category: cat_b, img: "product_visor_cap.png",       item_no: "LC-006", position: 9 },
-      { name: "Kids Cap",               name_zh: "儿童帽",     category: cat_b, img: "product_kids_cap.png",        item_no: "LC-007", position: 8 },
-      { name: "Knit Beanie Cap",        name_zh: "针织毛线帽", category: cat_c, img: "product_knit_beanie_cap.png", item_no: "LC-008", position: 10 },
-      { name: "Winter Hats",            name_zh: "冬季帽",     category: cat_c, img: "product_winter_hats.png",     item_no: "LC-009", position: 9 }
+      { name: "Baseball Yapai",           name_zh: "棒球帽",     category: cat_a, img: "product_baseball_yapai.png",    item_no: "YP-001", position: 10 },
+      { name: "Flat Bill Yapai",          name_zh: "平沿帽",     category: cat_a, img: "product_flat_bill_yapai.png",   item_no: "YP-002", position: 9 },
+      { name: "Quick Dry Baseball Yapai", name_zh: "速干棒球帽", category: cat_a, img: "product_quick_dry_yapai.png",   item_no: "YP-003", position: 8 },
+      { name: "Trucker Yapai",            name_zh: "卡车帽",     category: cat_a, img: "product_trucker_yapai.png",     item_no: "YP-004", position: 7 },
+      { name: "Bucket Yapai",             name_zh: "渔夫帽",     category: cat_b, img: "product_bucket_yapai.png",      item_no: "YP-005", position: 10 },
+      { name: "Visor Yapai",              name_zh: "遮阳帽",     category: cat_b, img: "product_visor_yapai.png",       item_no: "YP-006", position: 9 },
+      { name: "Kids Yapai",               name_zh: "儿童帽",     category: cat_b, img: "product_kids_yapai.png",        item_no: "YP-007", position: 8 },
+      { name: "Knit Beanie Yapai",        name_zh: "针织毛线帽", category: cat_c, img: "product_knit_beanie_yapai.png", item_no: "YP-008", position: 10 },
+      { name: "Winter Yapais",            name_zh: "冬季帽",     category: cat_c, img: "product_winter_yapais.png",     item_no: "YP-009", position: 9 }
     ]
 
     products.each do |p|
