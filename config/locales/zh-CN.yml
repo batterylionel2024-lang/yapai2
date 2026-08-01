@@ -132,3 +132,8 @@ zh-CN:
         inventory:
           title: "稳定库存"
           desc: "常用型号保持稳定现货，发货速度快，降低您的库存压力。"
+  footer:
+    address: "广东省东莞市大朗镇富民南路库赛科技园6栋"
+    company_name: "广东雅派电子科技有限公司"
+    company_desc: "专业手机电池制造商"
+    rights_reserved: "保留所有权利。"
