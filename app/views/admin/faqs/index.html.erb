@@ -1,0 +1,51 @@
+<% content_for :admin_title, "FAQ 问题管理" %>
+
+<div class="mb-6 flex justify-between items-center">
+  <p class="text-slate-600">管理所有的 FAQ 问题和答案。</p>
+  <div class="flex gap-3">
+    <%= link_to "管理分类", admin_faq_categories_path, class: "bg-slate-600 hover:bg-slate-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors" %>
+    <%= link_to "创建新问题", new_admin_faq_path, class: "bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors" %>
+  </div>
+</div>
+
+<div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+  <table class="min-w-full divide-y divide-slate-100">
+    <thead class="bg-slate-50">
+      <tr>
+        <th class="px-6 py-3 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">分类</th>
+        <th class="px-6 py-3 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">问题</th>
+        <th class="px-6 py-3 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">排序</th>
+        <th class="px-6 py-3 text-right text-xs font-bold text-slate-500 uppercase tracking-wider">操作</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-slate-100">
+      <% @faqs.each do |faq| %>
+        <tr class="hover:bg-slate-50 transition-colors">
+          <td class="px-6 py-4">
+            <span class="px-2 py-1 text-xs font-bold rounded-full bg-slate-100 text-slate-600">
+              <%= faq.faq_category.name %>
+            </span>
+          </td>
+          <td class="px-6 py-4">
+            <div class="text-sm font-semibold text-slate-900"><%= faq.question %></div>
+            <div class="text-xs text-slate-400 mt-1 line-clamp-1"><%= faq.answer %></div>
+          </td>
+          <td class="px-6 py-4 text-sm text-slate-500">
+            <%= faq.position %>
+          </td>
+          <td class="px-6 py-4 text-right space-x-3 text-nowrap">
+            <%= link_to "编辑", edit_admin_faq_path(faq), class: "text-blue-600 hover:text-blue-800 text-sm font-medium" %>
+            <%= button_to "删除", admin_faq_path(faq), method: :delete,
+                  data: { confirm: "确定删除这个问题？" },
+                  class: "inline-block text-red-500 hover:text-red-700 text-sm font-medium bg-transparent border-0 cursor-pointer" %>
+          </td>
+        </tr>
+      <% end %>
+      <% if @faqs.empty? %>
+        <tr>
+          <td colspan="4" class="px-6 py-12 text-center text-slate-400 text-sm">暂无问题</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -3,14 +3,17 @@ Rails.application.routes.draw do
   get "categories/index"
   get "categories/show"
   root "home#index"
-  get "about", to: "home#about"
+  get "about", to: redirect("/factory")
   get "factory", to: "home#factory"
+  get "customize", to: "home#customize"
   get "privacy", to: "home#privacy"
-  get "all_products", to: "home#all_products"
+    get "products", to: "home#all_products", as: :products
   get "contact", to: "home#contact"
+  get "faqs", to: "home#faqs"
   post "contact", to: "home#create_contact"
 
   namespace :admin do
+    resources :partners
     root to: "dashboard#index"
     get "dashboard", to: "dashboard#index"
     resources :categories
@@ -24,6 +27,8 @@ Rails.application.routes.draw do
       end
     end
     resources :posts
+    resources :faq_categories
+    resources :faqs
     resources :contact_messages, only: [:index, :show, :destroy]
     resources :visit_records, only: [:index] do
       collection do

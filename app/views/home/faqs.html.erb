@@ -1,0 +1,70 @@
+<div class="bg-slate-50 min-h-screen pb-20">
+  <!-- Header Section -->
+  <div class="bg-dark py-16 mb-12">
+    <div class="max-w-screen-xl mx-auto px-6">
+      <div class="text-center">
+        <h1 class="text-4xl md:text-5xl font-black text-white tracking-tight mb-4">
+          <%= t('home.faqs.title', default: 'FAQs') %>
+        </h1>
+        <p class="text-slate-400 text-lg font-medium max-w-2xl mx-auto">
+          <%= t('home.faqs.subtitle', default: 'Find answers to common questions about our products and services') %>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="max-w-screen-md mx-auto px-6">
+    <div class="space-y-12">
+      <% @faq_categories.each do |category| %>
+        <% next if category.faqs.empty? %>
+        
+        <div>
+          <h2 class="text-2xl font-black text-dark mb-6 flex items-center gap-3">
+            <span class="w-2 h-8 bg-primary rounded-full"></span>
+            <%= category.name %>
+          </h2>
+          
+          <div class="space-y-4">
+            <% category.faqs.each do |faq| %>
+              <div class="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden transition-all duration-300 hover:border-primary/30">
+                <details class="group">
+                  <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+                    <h3 class="text-lg font-bold text-slate-800 pr-8 group-open:text-primary transition-colors">
+                      <%= faq.question %>
+                    </h3>
+                    <div class="flex-shrink-0 text-slate-400 group-open:rotate-180 group-open:text-primary transition-all duration-300">
+                      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                  </summary>
+                  <div class="px-6 pb-6 text-slate-600 leading-relaxed whitespace-pre-wrap border-t border-slate-50 pt-4">
+                    <%= faq.answer %>
+                  </div>
+                </details>
+              </div>
+            <% f=faq %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+
+      <% if @faq_categories.empty? || @faq_categories.all? { |c| c.faqs.empty? } %>
+        <div class="text-center py-20 bg-white rounded-3xl border border-dashed border-slate-200">
+          <p class="text-slate-400 font-medium"><%= t('home.faqs.no_questions', default: 'No FAQs available') %></p>
+        </div>
+      <% end %>
+    </div>
+
+    <!-- Contact CTA -->
+    <div class="mt-20 p-10 bg-primary/5 rounded-[2.5rem] border border-primary/10 text-center">
+      <h3 class="text-xl font-black text-dark mb-4"><%= t('home.faqs.more_questions_title', default: 'Still have questions?') %></h3>
+      <p class="text-slate-600 mb-8"><%= t('home.faqs.more_questions_desc', default: 'If you cannot find the answer you are looking for, please feel free to contact our customer service team.') %></p>
+      <%= link_to t('home.contact_us', default: 'Contact Us'), contact_path, class: "inline-flex items-center px-8 py-3 bg-primary text-white font-black rounded-xl hover:bg-primary-dark transition-all transform hover:scale-105" %>
+    </div>
+  </div>
+</div>
+
+<style>
+  summary::-webkit-details-marker {
+    display: none;
+  }
+</style>

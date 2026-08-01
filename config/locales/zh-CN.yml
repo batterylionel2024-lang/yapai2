@@ -1,0 +1,134 @@
+zh-CN:
+  navbar:
+    search_placeholder: "搜索产品..."
+    all_products: "产品中心"
+    customize: "定制服务"
+    blog: "LATEST INFORMATION"
+    enterprise_updates: "企业动态"
+    industry_news: "行业新闻"
+    all_news: "全部资讯"
+  posts:
+    hero:
+      title: "雅派博客"
+      subtitle: "最新动态"
+      description: "来自广东专业团队的电池制造见解、行业趋势和专业指南。"
+    enterprise_updates:
+      title: "企业动态"
+      subtitle: "公司新闻"
+      description: "了解雅派最新的企业发展、工厂扩张和重要里程碑。"
+    industry_news:
+      title: "行业新闻"
+      subtitle: "市场趋势"
+      description: "针对全球手机电池行业和技术趋势的专业分析与见解。"
+    all: "全部资讯"
+  home:
+    customize:
+      hero:
+        title: "定制服务"
+        subtitle: "从设计到生产，满足您的个性化需求"
+        description: "支持产品定制、外观设计、材料选择和批量生产。展示企业从需求沟通、设计开发到生产交付的完整能力。"
+        cta: "立即咨询"
+        tag: "支持定制"
+      capabilities:
+        title: "定制能力展示"
+        subtitle: "告诉我们您的需求，我们为您实现"
+        items:
+          appearance:
+            title: "外观设计"
+            desc: "支持个性化外壳设计与美学造型定制。"
+          material:
+            title: "材料选择"
+            desc: "提供多种电芯类型与材质方案供您选择。"
+          dimensions:
+            title: "尺寸定制"
+            desc: "根据您的设备要求，精准匹配电池尺寸。"
+          packaging:
+            title: "品牌包装"
+            desc: "提供完整的品牌形象与零售包装解决方案。"
+      process:
+        title: "定制流程"
+        subtitle: "简单清晰的合作流程，让您全程无忧"
+        step1: "需求"
+        step1_desc: "沟通"
+        step2: "方案"
+        step2_desc: "确认"
+        step3: "样品"
+        step3_desc: "制作"
+        step4: "客户"
+        step4_desc: "确认"
+        step5: "批量"
+        step5_desc: "生产"
+        step6: "最终"
+        step6_desc: "交付"
+      design_rd:
+        title: "设计与研发能力"
+        subtitle: "我们不仅能生产，更能提供专业的开发支持"
+        items:
+          product_design: "产品设计"
+          sample_dev: "样品开发"
+          tech_support: "技术支持"
+          process_opt: "工艺优化"
+      production:
+        title: "生产能力展示"
+        subtitle: "工业级品质控制，确保稳定交付"
+        items:
+          scale: "工厂规模"
+          equipment: "生产设备"
+          team: "生产团队"
+          qc: "质量控制"
+      cases:
+        title: "定制案例"
+        subtitle: "证明我们在各行业的实际定制经验与成功结果"
+        case1:
+          requirement: "特殊材料 + 品牌LOGO"
+          solution: "设计开发 + 批量生产"
+          result: "完成交付"
+      faqs:
+        title: "常见问题解答"
+        q1: "最低订单量（MOQ）是多少？"
+        a1: "MOQ 根据定制程度而定，请联系我们的销售团队了解详情。"
+        q2: "定制周期需要多久？"
+        a2: "从设计确认到批量生产通常需要 2-4 周，具体视复杂度而定。"
+        q3: "你们提供样品吗？"
+        a3: "是的，我们在批量生产前提供样品制作服务供客户确认。"
+        q4: "支持哪些修改？"
+        a4: "我们支持对设计、材料、容量以及包装方案的修改。"
+      conversion:
+        title: "准备好开启您的定制项目了吗？"
+        subtitle: "我们的专家团队已准备就绪，为您提供从设计到批量生产的全方位支持。"
+        cta: "立即咨询"
+
+    about:
+      title: "关于我们"
+      subtitle: "公司简介"
+      hero_title: "专注于高品质手机电池制造"
+      hero_desc: "作为一家拥有20年经验的工厂，我们为全球批发商提供 OEM/ODM 电池解决方案。"
+      heritage_title: "我们的背景与实力"
+      heritage_desc_1: "雅派电子科技有限公司总部位于中国广东省，是一家专业从事锂离子电池研发、制造和销售的企业。"
+      heritage_desc_2: "我们拥有先进的生产设备和完善的质量控制体系，确保每一块出厂的电池都符合国际标准。"
+      stats:
+        years: "年行业经验"
+        subsidiaries: "家下属工厂"
+      value_title: "我们的价值"
+      value_desc_1: "我们不仅提供产品，更提供可靠的供应链保障和专业的技术支持。"
+      value_desc_2: "质量是企业的生命线，创新是发展的驱动力。"
+      why_title: "为什么选择雅派？"
+      partners:
+        title: "我们的合作伙伴与客户"
+        subtitle: "全球协作"
+      reasons:
+        pricing:
+          title: "工厂直供价"
+          desc: "从我们在东莞的生产工厂直接获取极具竞争力的价格，确保您的利润最大化。"
+        support:
+          title: "免费定制"
+          desc: "我们为批发商和零售商提供免费的品牌 Logo 定制服务，助您打造自有品牌。"
+        standards:
+          title: "严格标准"
+          desc: "我们的产品通过了 CE, RoHS, FCC 等多项国际认证，品质无忧。"
+        opportunity:
+          title: "市场机遇"
+          desc: "我们紧跟行业趋势，快速推出最新款手机的适配电池，助您抢占先机。"
+        inventory:
+          title: "稳定库存"
+          desc: "常用型号保持稳定现货，发货速度快，降低您的库存压力。"

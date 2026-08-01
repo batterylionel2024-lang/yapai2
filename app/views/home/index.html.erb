@@ -69,19 +69,7 @@
             <%= t("home.index.hero_slides.slide#{i}.desc") %>
           </p>
 
-          <%# Actions %>
-          <div class="flex flex-wrap gap-4 mt-auto">
-            <%= link_to all_products_path,
-                        class: "group relative overflow-hidden px-6 py-3.5 sm:px-8 sm:py-4 bg-primary text-white font-black text-[10px] sm:text-xs tracking-widest uppercase rounded-full shadow-2xl shadow-primary/30 transition-all hover:-translate-y-1 active:scale-95 flex items-center gap-2" do %>
-              <%= t('home.index.explore_products') %>
-              <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-            <% end %>
-
-            <%= link_to contact_path,
-                        class: "px-6 py-3.5 sm:px-8 sm:py-4 bg-white/10 hover:bg-white/20 text-white font-black text-[10px] sm:text-xs tracking-widest uppercase rounded-full border border-white/30 backdrop-blur-md transition-all hover:-translate-y-1 active:scale-95" do %>
-              <%= t('home.index.contact_us') %>
-            <% end %>
-          </div>
+          <%# Actions - Removed as per request %>
         </div>
       <% end %>
     </div>
@@ -126,7 +114,7 @@
 <!-- ===== YAPAI PRODUCT MARQUEE ===== -->
 <div class="bg-slate-900 py-8 overflow-hidden">
   <div class="text-center mb-6">
-    <span class="text-xs font-black text-slate-500 uppercase tracking-widest">Our Products</span>
+    <span class="text-2xl font-black text-slate-500 uppercase tracking-widest">Our Product Catalog</span>
   </div>
   <!-- Forward strip -->
   <div class="overflow-hidden mb-4">
@@ -204,67 +192,24 @@
 <!-- Who We Are & Categories Section -->
 <div class="bg-white py-24 relative overflow-hidden">
   <div class="max-w-screen-xl mx-auto px-6 relative z-10">
-    <div class="flex flex-col lg:flex-row gap-16 items-start mb-24">
-      <div class="lg:w-1/2 reveal-left">
-        <h2 class="text-4xl md:text-5xl font-black text-slate-900 mb-8 leading-tight">
+    <div class="flex flex-col lg:flex-row gap-16 items-start">
+      <div class="w-full reveal-up">
+        <h2 class="text-4xl md:text-5xl font-black text-slate-900 mb-8 leading-tight text-center">
           <%= t('home.index.who_we_are_title') %>
         </h2>
-        <p class="text-slate-500 text-lg leading-relaxed mb-8">
+        <p class="text-slate-500 text-lg leading-relaxed mb-8 text-center max-w-4xl mx-auto">
           <%= t('home.index.who_we_are_desc') %>
         </p>
-        <div class="grid grid-cols-2 gap-4">
-          <div class="p-6 bg-slate-50 rounded-3xl border border-slate-100 shadow-sm">
+        <div class="grid grid-cols-2 gap-4 max-w-2xl mx-auto">
+          <div class="p-6 bg-slate-50 rounded-3xl border border-slate-100 shadow-sm text-center">
             <div class="text-3xl font-black text-primary mb-1">20</div>
             <div class="text-xs font-bold text-slate-400 uppercase tracking-widest"><%= t('home.index.years_history') %></div>
           </div>
-          <div class="p-6 bg-slate-50 rounded-3xl border border-slate-100 shadow-sm">
+          <div class="p-6 bg-slate-50 rounded-3xl border border-slate-100 shadow-sm text-center">
             <div class="text-3xl font-black text-secondary mb-1">100%</div>
             <div class="text-xs font-bold text-slate-400 uppercase tracking-widest"><%= t('home.index.oem_odm_capability') %></div>
           </div>
         </div>
-      </div>
-      
-      <div class="lg:w-1/2 grid grid-cols-1 gap-6 reveal-right">
-        <h3 class="text-2xl font-black text-slate-900 mb-2"><%= t('home.index.core_products_title') %></h3>
-        <% ['apple', 'huawei', 'oppo', 'vivo', 'xiaomi', 'custom'].each do |kind| %>
-          <% 
-            name = case kind
-                   when 'apple' then t('navbar.apple')
-                   when 'huawei' then t('navbar.huawei')
-                   when 'oppo' then t('navbar.oppo')
-                   when 'vivo' then t('navbar.vivo')
-                   when 'xiaomi' then t('navbar.xiaomi')
-                   when 'custom' then t('navbar.custom')
-                   end
-            desc = case kind
-                   when 'apple' then t('home.index.strengths.no_moq.desc')
-                   when 'oppo' then t('home.index.strengths.flexible.desc')
-                   when 'custom' then t('home.index.strengths.direct_factory.desc')
-                   when 'huawei' then t('home.index.partner_brands.brand_3') # Reuse brand translations
-                   when 'xiaomi' then t('home.index.partner_brands.brand_4')
-                   when 'vivo' then t('home.index.partner_brands.brand_5')
-                   end
-            color = case kind
-                    when 'apple', 'huawei' then 'primary'
-                    when 'oppo', 'xiaomi' then 'secondary'
-                    when 'custom', 'vivo' then 'accent'
-                    end
-          %>
-          <%= link_to channel_path(kind), class: "group p-6 bg-slate-50 rounded-3xl border border-slate-100 hover:bg-white hover:shadow-xl transition-all duration-300 flex items-center justify-between" do %>
-            <div class="flex items-center space-x-6">
-              <div class="w-16 h-16 bg-<%= color %>/10 rounded-2xl flex items-center justify-center text-<%= color %> group-hover:scale-110 transition-transform">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-              </div>
-              <div>
-                <h4 class="text-xl font-black text-slate-900 uppercase"><%= name %></h4>
-                <p class="text-sm text-slate-500 font-medium"><%= desc %></p>
-              </div>
-            </div>
-            <div class="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-400 group-hover:bg-<%= color %> group-hover:text-white transition-all">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-            </div>
-          <% end %>
-        <% end %>
       </div>
     </div>
   </div>
@@ -356,7 +301,7 @@
 <!-- Final CTA Section -->
 <div class="bg-white py-24">
   <div class="max-w-screen-xl mx-auto px-6">
-    <div class="relative bg-gradient-to-br from-primary via-primary/90 to-secondary p-12 md:p-20 rounded-[3rem] overflow-hidden shadow-3xl text-center md:text-left flex flex-col md:flex-row items-center justify-between gap-12">
+    <div class="relative bg-primary p-12 md:p-20 rounded-[3rem] overflow-hidden shadow-3xl text-center md:text-left flex flex-col md:flex-row items-center justify-between gap-12">
       <div class="relative z-10 max-w-2xl">
         <h2 class="text-4xl md:text-6xl font-black text-white mb-6 leading-tight">
           <%= t('home.index.final_cta_title') %>
@@ -367,15 +312,11 @@
       </div>
       
       <div class="relative z-10 flex-shrink-0">
-        <%= link_to contact_path, class: "px-12 py-6 bg-white hover:bg-slate-50 text-slate-900 rounded-2xl font-black text-lg tracking-widest uppercase transition-all shadow-2xl flex items-center group" do %>
+        <%= link_to contact_path, class: "px-12 py-6 bg-white hover:bg-slate-50 text-slate-900 rounded-2xl font-black text-lg tracking-widest transition-all shadow-2xl flex items-center group" do %>
           <%= t('home.index.get_free_quote') %>
           <svg class="w-6 h-6 ml-4 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
         <% end %>
       </div>
-      
-      <!-- Decorative circles -->
-      <div class="absolute -top-24 -right-24 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
-      <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-secondary/20 rounded-full blur-3xl"></div>
     </div>
   </div>
 </div>

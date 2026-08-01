@@ -12,13 +12,12 @@
     </div>
     <div class="relative max-w-7xl mx-auto px-6 lg:px-8 text-center">
       <div class="reveal-hero flex flex-col items-center">
-        <p class="text-primary font-semibold tracking-widest uppercase text-sm mb-4">Guangdong · China</p>
+        <p class="text-primary font-semibold tracking-widest uppercase text-sm mb-4">Professional Battery Manufacturer</p>
         <h1 class="text-5xl font-bold tracking-tight text-white sm:text-7xl mb-6 leading-tight">
-          Our Factory &<br><span class="text-primary">Manufacturing</span>
+          <span class="text-primary">About Yapai</span>
         </h1>
         <p class="text-xl leading-8 text-slate-300 max-w-2xl">
-          Professional mobile phone battery manufacturing with advanced technology. We focus on R&D and production to deliver high-quality replacement batteries worldwide.
-        </p>
+          Yapai Battery Factory is a professional mobile phone battery manufacturer headquartered in Guangdong, China, with its production plant located in Dongguan. The company focuses on the R&D, production, and global export of replacement batteries for smartphones.        </p>
       </div>
     </div>
   </div>
@@ -61,13 +60,16 @@
   </div>
 
   <!-- ===== MANUFACTURING EXCELLENCE ===== -->
-  <div class="py-24 sm:py-32">
-    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+  <div class="relative bg-slate-900 py-24 sm:py-32 overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <%= image_tag "factory4.jpg", class: "w-full h-full object-cover" %>
+    </div>
+    <div class="relative mx-auto max-w-7xl px-6 lg:px-8">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         <div class="reveal-left">
           <p class="text-primary font-semibold tracking-widest uppercase text-sm mb-3">Est. 2003</p>
-          <h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl mb-8">Professional Battery Production</h2>
-          <div class="space-y-5 text-base leading-7 text-slate-600">
+          <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl mb-8">Professional Battery Production</h2>
+          <div class="space-y-5 text-base leading-7 text-slate-300">
             <p>
               Yapai Battery Factory is a professional mobile phone battery manufacturer headquartered in Guangdong, China, with its production plant located in Dongguan.
             </p>
@@ -76,21 +78,21 @@
             </p>
           </div>
           <div class="grid grid-cols-2 gap-4 mt-8">
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+            <div class="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition-all">
               <div class="text-primary font-bold text-3xl mb-1">20+</div>
-              <div class="text-sm text-slate-500 uppercase tracking-wider font-semibold">Years Experience</div>
+              <div class="text-sm text-slate-400 uppercase tracking-wider font-semibold">Years Experience</div>
             </div>
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+            <div class="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition-all">
               <div class="text-secondary font-bold text-3xl mb-1">100%</div>
-              <div class="text-sm text-slate-500 uppercase tracking-wider font-semibold">Quality Inspected</div>
+              <div class="text-sm text-slate-400 uppercase tracking-wider font-semibold">Quality Inspected</div>
             </div>
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+            <div class="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition-all">
               <div class="text-accent font-bold text-3xl mb-1">30+</div>
-              <div class="text-sm text-slate-500 uppercase tracking-wider font-semibold">Battery Models</div>
+              <div class="text-sm text-slate-400 uppercase tracking-wider font-semibold">Battery Models</div>
             </div>
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+            <div class="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition-all">
               <div class="text-primary font-bold text-3xl mb-1">OEM</div>
-              <div class="text-sm text-slate-500 uppercase tracking-wider font-semibold">Custom Branding</div>
+              <div class="text-sm text-slate-400 uppercase tracking-wider font-semibold">Custom Branding</div>
             </div>
           </div>
         </div>
@@ -117,33 +119,44 @@
     </div>
   </div>
 
-  <!-- ===== PRODUCTION PROCESS ===== -->
-  <div class="bg-white py-24 sm:py-32">
-    <div class="mx-auto max-w-7xl px-6 lg:px-8">
-      <div class="text-center mb-16 reveal-up">
-        <p class="text-primary font-semibold tracking-widest uppercase text-sm mb-3">How We Work</p>
-        <h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Our Production Process</h2>
-        <p class="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">From design to finished product, every step is handled with precision and care.</p>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
-        <% [
-          { step: "01", title: "R&D & Design", icon: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z", desc: "Our R&D team designs battery circuits and structures based on client requirements or market needs." },
-          { step: "02", title: "Cell Sourcing", icon: "M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4", desc: "High-quality A-grade battery cells sourced from top-tier certified suppliers." },
-          { step: "03", title: "Assembly & Spot Welding", icon: "M13 10V3L4 14h7v7l9-11h-7z", desc: "Precision spot welding and assembly by skilled technicians using automated equipment." },
-          { step: "04", title: "BMS Testing", icon: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z", desc: "Rigorous testing of Battery Management Systems for safety and performance." },
-          { step: "05", title: "QC & Shipping", icon: "M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z", desc: "100% inspection before packing. Shipped to 30+ countries worldwide." }
-        ].each_with_index do |item, i| %>
-          <div class="reveal-process bg-slate-50 rounded-3xl p-6 border border-slate-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 relative" style="transition-delay: <%= i * 80 %>ms">
-            <div class="text-6xl font-black text-slate-100 absolute top-4 right-4 leading-none"><%= item[:step] %></div>
-            <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
-              <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="<%= item[:icon] %>"></path>
-              </svg>
+  <!-- ===== PRODUCTION AND CUSTOMIZATION CAPABILITIES (from about us) ===== -->
+  <div class="py-24 bg-white overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+        <div class="lg:col-span-5 space-y-8">
+          <div>
+            <h2 class="text-4xl font-black text-slate-900 mb-8 tracking-tight"><%= t('home.about.heritage_title') %></h2>
+            <div class="space-y-6">
+              <p class="text-slate-600 text-lg leading-relaxed font-medium">
+                <%= t('home.about.heritage_desc_1') %>
+              </p>
+              <p class="text-slate-600 text-lg leading-relaxed font-medium border-l-4 border-primary pl-6 py-2 bg-slate-50 rounded-r-2xl">
+                <%= t('home.about.heritage_desc_2') %>
+              </p>
             </div>
-            <h3 class="font-bold text-slate-900 mb-2"><%= item[:title] %></h3>
-            <p class="text-slate-500 text-sm leading-relaxed"><%= item[:desc] %></p>
           </div>
-        <% end %>
+          
+          <div class="grid grid-cols-2 gap-6 pt-4">
+            <div class="p-8 bg-slate-50 rounded-[2rem] border border-slate-100 group hover:bg-white hover:shadow-2xl hover:border-primary/20 transition-all duration-500">
+              <div class="text-primary font-black text-4xl mb-3">1,000+</div>
+              <p class="text-sm font-bold text-slate-500 uppercase tracking-widest"><%= t('home.about.stats.years') %></p>
+            </div>
+            <div class="p-8 bg-slate-50 rounded-[2rem] border border-slate-100 group hover:bg-white hover:shadow-2xl hover:border-secondary/20 transition-all duration-500">
+              <div class="text-secondary font-black text-4xl mb-3">5,000+</div>
+              <p class="text-sm font-bold text-slate-500 uppercase tracking-widest"><%= t('home.about.stats.subsidiaries') %></p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="lg:col-span-7 relative group">
+          <div class="aspect-[16/10] lg:aspect-[16/9] rounded-[4rem] overflow-hidden shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] transition-transform duration-700 group-hover:scale-[1.02]">
+            <%= image_tag "global.jpg", class: "w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110", alt: "Yapai Factory" %>
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          </div>
+          <!-- Decorative elements -->
+          <div class="absolute -bottom-12 -left-12 w-64 h-64 bg-primary/10 rounded-full blur-3xl -z-10 animate-pulse"></div>
+          <div class="absolute -top-12 -right-12 w-64 h-64 bg-slate-200/50 rounded-full blur-3xl -z-10"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -161,12 +174,112 @@
     </div>
   </div>
 
+  <!-- Featured Products — Carousel (from about us) -->
+  <div class="py-24 bg-slate-50 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="text-center mb-14">
+        <h2 class="text-3xl font-black text-slate-900 tracking-tight">Featured Products</h2>
+        <p class="mt-4 text-slate-500 font-medium">Crafted with Precision</p>
+      </div>
+
+      <div
+        x-data="{
+          current: 0,
+          total: <%= @featured_categories.count %>,
+          perPage: 3,
+          autoTimer: null,
+          get maxIndex() { return Math.max(0, this.total - this.perPage); },
+          next() { this.current = this.current >= this.maxIndex ? 0 : this.current + 1; },
+          prev() { this.current = this.current <= 0 ? this.maxIndex : this.current - 1; },
+          startAuto() { this.autoTimer = setInterval(() => this.next(), 4000); },
+          stopAuto() { clearInterval(this.autoTimer); }
+        }"
+        x-init="
+          const updatePerPage = () => {
+            if (window.innerWidth < 768) perPage = 1;
+            else if (window.innerWidth < 1024) perPage = 2;
+            else perPage = 3;
+          };
+          updatePerPage();
+          window.addEventListener('resize', () => { updatePerPage(); current = 0; });
+          startAuto();
+        "
+        @mouseenter="stopAuto()"
+        @mouseleave="startAuto()"
+        class="relative"
+      >
+        <!-- Carousel track -->
+        <div class="overflow-hidden">
+          <div
+            class="flex transition-transform duration-700 ease-in-out gap-6"
+            :style="`transform: translateX(calc(-${current} * (100% / ${perPage} + 24px / ${perPage})))`"
+          >
+            <% @featured_categories.each do |category| %>
+              <div class="flex-shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
+                <%= link_to category_path(category), class: "block bg-white rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:border-primary/20 transition-all duration-500 overflow-hidden group" do %>
+                  <div class="relative h-64 bg-slate-50 overflow-hidden">
+                    <% if category.image.attached? %>
+                      <%= image_tag rails_storage_proxy_path(category.image.variant(:featured)),
+                            class: "w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000",
+                            alt: category.name %>
+                    <% else %>
+                      <div class="w-full h-full flex items-center justify-center bg-slate-100">
+                        <svg class="w-12 h-12 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                      </div>
+                    <% end %>
+                    <div class="absolute top-4 left-4">
+                      <span class="px-3 py-1 bg-primary/90 backdrop-blur-sm text-white text-[10px] font-black uppercase tracking-widest rounded-full shadow-lg">
+                        Featured
+                      </span>
+                    </div>
+                  </div>
+                  <div class="p-8 text-center bg-white">
+                    <h3 class="text-xl font-black text-slate-900 group-hover:text-primary transition-colors duration-300"><%= category.name %></h3>
+                    <p class="text-[10px] text-slate-400 font-bold uppercase tracking-[0.2em] mt-2 flex items-center justify-center gap-2">
+                      <span class="w-4 h-[1px] bg-slate-200"></span>
+                      Custom · OEM · ODM
+                      <span class="w-4 h-[1px] bg-slate-200"></span>
+                    </p>
+                  </div>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+        <% if @featured_categories.count > 1 %>
+          <!-- Arrows -->
+          <button @click="prev()" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-6 w-12 h-12 bg-white border border-slate-100 rounded-full shadow-xl flex items-center justify-center text-slate-400 hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 z-10 group/btn">
+            <svg class="w-6 h-6 transform group-hover/btn:-translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path></svg>
+          </button>
+          <button @click="next()" class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-6 w-12 h-12 bg-white border border-slate-100 rounded-full shadow-xl flex items-center justify-center text-slate-400 hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 z-10 group/btn">
+            <svg class="w-6 h-6 transform group-hover/btn:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
+          </button>
+
+          <!-- Dots -->
+          <div class="flex justify-center gap-3 mt-12">
+            <template x-for="i in Math.max(0, total - perPage + 1)" :key="i">
+              <button
+                @click="current = i - 1"
+                :class="current === i - 1 ? 'bg-primary w-8' : 'bg-slate-200 w-2 hover:bg-slate-300'"
+                class="h-2 rounded-full transition-all duration-500"
+              ></button>
+            </template>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
   <!-- ===== YAPAI-ABILITIES ===== -->
-  <div class="py-24 sm:py-32">
-    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+  <div class="relative bg-slate-900 py-24 sm:py-32 overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+      <%= image_tag "factory5.jpg", class: "w-full h-full object-cover" %>
+    </div>
+    <div class="relative mx-auto max-w-7xl px-6 lg:px-8">
       <div class="text-center mb-16 reveal-up">
         <p class="text-primary font-semibold tracking-widest uppercase text-sm mb-3">What We Offer</p>
-        <h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Full-Service Manufacturing</h2>
+        <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">Full-Service Manufacturing</h2>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <% [
@@ -174,14 +287,14 @@
           { title: "Global Reach", color: "secondary", desc: "Products exported to Europe, America, Southeast Asia, Middle East, and Latin America.", items: ["United States", "Germany", "United Kingdom", "Russia", "Brazil", "India"] },
           { title: "Custom Services", color: "accent", desc: "End-to-end customization from cell choice to private labeling and packaging design.", items: ["Custom Capacity", "Private Labeling", "Packaging Design", "BMS Customization", "OEM / ODM", "Small Batch Orders"] }
         ].each do |yapai| %>
-          <div class="reveal-card bg-white rounded-3xl border border-slate-100 overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300">
+          <div class="reveal-card bg-white/5 backdrop-blur-md rounded-3xl border border-white/10 overflow-hidden shadow-sm hover:shadow-xl hover:bg-white/10 transition-all duration-300">
             <div class="h-2 bg-<%= yapai[:color] %>"></div>
             <div class="p-8">
-              <h3 class="text-xl font-bold text-slate-900 mb-3"><%= yapai[:title] %></h3>
-              <p class="text-slate-500 text-sm leading-relaxed mb-6"><%= yapai[:desc] %></p>
+              <h3 class="text-xl font-bold text-white mb-3"><%= yapai[:title] %></h3>
+              <p class="text-slate-400 text-sm leading-relaxed mb-6"><%= yapai[:desc] %></p>
               <ul class="space-y-2">
                 <% yapai[:items].each do |item| %>
-                  <li class="flex items-center gap-2 text-sm text-slate-600">
+                  <li class="flex items-center gap-2 text-sm text-slate-300">
                     <svg class="w-4 h-4 text-<%= yapai[:color] %> flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                       <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
                     </svg>
@@ -196,55 +309,30 @@
     </div>
   </div>
 
-  <!-- ===== QUALITY & CERTIFICATIONS ===== -->
-  <div class="bg-slate-900 py-24 sm:py-32 relative overflow-hidden">
-    <div class="absolute inset-0 opacity-10">
-      <%= image_tag "factory5.jpg", class: "w-full h-full object-cover" %>
-    </div>
-    <div class="relative mx-auto max-w-7xl px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        <div class="reveal-left">
-          <p class="text-primary font-semibold tracking-widest uppercase text-sm mb-3">Quality First</p>
-          <h2 class="text-3xl font-bold text-white sm:text-4xl mb-6">Committed to Excellence</h2>
-          <p class="text-slate-300 text-lg leading-8 mb-8">
-            Every battery that leaves our factory passes through a strict multi-stage quality control process. We adhere to international standards (CE, RoHS, UN38.3) and continuously invest in testing equipment.
-          </p>
-          <div class="space-y-4">
-            <% [
-              "Multi-stage quality inspection including aging and capacity tests",
-              "Advanced automatic spot welding machines for precision",
-              "Battery testing for cycle life, stability and safety performance",
-              "On-time delivery rate exceeding 98%",
-              "Dedicated QC team of 10+ professional inspectors"
-            ].each do |point| %>
-              <div class="flex items-start gap-3">
-                <div class="w-6 h-6 rounded-full bg-primary flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <svg class="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                  </svg>
-                </div>
-                <span class="text-slate-300 text-sm leading-relaxed"><%= point %></span>
-              </div>
-            <% end %>
-          </div>
+  <!-- Partners Section (from about us) -->
+  <% if @partners.present? %>
+    <div class="py-24 bg-white overflow-hidden border-t border-slate-100">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="text-center mb-16 reveal-up">
+          <p class="text-primary font-semibold tracking-widest uppercase text-sm mb-3"><%= t('home.about.partners.subtitle') %></p>
+          <h2 class="text-3xl font-black text-slate-900 tracking-tight"><%= t('home.about.partners.title') %></h2>
         </div>
-        <div class="grid grid-cols-2 gap-4 reveal-right">
-          <% [
-            { label: "On-Time Delivery", value: "98%", sub: "Order fulfillment rate" },
-            { label: "QC Pass Rate", value: "99.5%", sub: "First-pass inspection" },
-            { label: "Lead Time", value: "25–35", sub: "Days for bulk orders" },
-            { label: "Minimum Order", value: "300", sub: "Pieces per style" }
-          ].each do |stat| %>
-            <div class="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-colors">
-              <div class="text-3xl font-black text-primary mb-1"><%= stat[:value] %></div>
-              <div class="text-white font-semibold text-sm mb-1"><%= stat[:label] %></div>
-              <div class="text-slate-400 text-xs"><%= stat[:sub] %></div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center justify-items-center">
+          <% @partners.each do |partner| %>
+            <div class="w-full max-w-[200px] h-32 flex items-center justify-center p-6 grayscale hover:grayscale-0 transition-all duration-500 hover:scale-110 reveal-up">
+              <% if partner.logo.attached? %>
+                <%= image_tag partner.logo, class: "max-w-full max-h-full object-contain", alt: partner.name %>
+              <% else %>
+                <span class="text-slate-300 font-bold"><%= partner.name %></span>
+              <% end %>
             </div>
           <% end %>
         </div>
       </div>
     </div>
-  </div>
+  <% end %>
+
 
   <!-- ===== VISIT US / CTA ===== -->
   <div class="py-24 sm:py-32">

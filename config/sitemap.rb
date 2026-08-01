@@ -6,9 +6,9 @@ SitemapGenerator::Sitemap.create do
   # 首页和 sitemap 索引文件会自动添加
 
   # 静态页面
-  add about_path, priority: 0.5, changefreq: 'monthly'
+  add factory_path, priority: 0.7, changefreq: 'daily'
   add contact_path, priority: 0.5, changefreq: 'monthly'
-  add all_products_path, priority: 0.8, changefreq: 'daily'
+  add products_path, priority: 0.8, changefreq: 'daily'
 
   # 分类页面
   Category.visible.find_each do |category|

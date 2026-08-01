@@ -29,7 +29,8 @@
 
 en:
   navbar:
-    all_products: "All Products"
+    search_placeholder: "Search Products..."
+    all_products: "Catalogs"
     home: "Home"
     apple: "iPhone Series"
     oppo: "oppo"
@@ -38,16 +39,36 @@ en:
     xiaomi: "Xiaomi"
     vivo: "vivo"
     factory: "Factory"
-    about_us: "About Us"
-    contact_us: "Contact Us"
+    customize: "OEM Service"
+    about_us: "About us"
+    contact_us: "Contact us"
     login: "Log In"
     register: "Sign Up"
     admin_dashboard: "Admin Dashboard"
     logout: "Log Out"
+    faqs: "FAQ's"
+    blog: "Latest information"
+    enterprise_updates: "Enterprise Updates"
+    industry_news: "Industry News"
+    all_news: "All News"
   footer:
     quick_links: "Quick Links"
     company_desc: "Professional Mobile Phone Battery Manufacturer"
     rights_reserved: "All Rights Reserved."
+  posts:
+    hero:
+      title: "Yapai Blog"
+      subtitle: "LATEST ARTICLES"
+      description: "Battery manufacturing insights, industry trends, and professional guides from our team in Guangdong."
+    enterprise_updates:
+      title: "Enterprise Updates"
+      subtitle: "COMPANY NEWS"
+      description: "Stay updated with Yapai's latest corporate developments, factory expansions, and milestones."
+    industry_news:
+      title: "Industry News"
+      subtitle: "MARKET TRENDS"
+      description: "Professional analysis and insights into the global mobile phone battery industry and technology trends."
+    all: "All News"
   categories:
     all_products: "All Products"
     all_products_catalog: "All Products Catalog"
@@ -97,6 +118,88 @@ en:
     low_energy: "Eco-Friendly/Low Energy"
     durability: "Built for Durability"
   home:
+    customize:
+      hero:
+        title: "Customized Service"
+        subtitle: "From Design to Production, We Realize Your Personalized Needs."
+        description: "Supporting product customization, appearance design, material selection, and mass production. High-efficiency delivery with professional design & R&D support."
+        cta: "Inquire Now"
+        tag: "Supporting Customization"
+      capabilities:
+        title: "Customization Capabilities"
+        subtitle: "Tell us what you need, and we can make it happen."
+        items:
+          appearance:
+            title: "Appearance Design"
+            desc: "Customized shell design and aesthetic styling."
+          material:
+            title: "Material Selection"
+            desc: "Multiple cell types and material options available."
+          dimensions:
+            title: "Dimension Customization"
+            desc: "Precise size matching for your device requirements."
+          packaging:
+            title: "Brand Packaging"
+            desc: "Complete branding and retail packaging solutions."
+      process:
+        title: "Customization Process"
+        subtitle: "Simple and clear steps for a worry-free cooperation."
+        step1: "Requirement"
+        step1_desc: "Communication"
+        step2: "Solution"
+        step2_desc: "Confirmation"
+        step3: "Sample"
+        step3_desc: "Production"
+        step4: "Customer"
+        step4_desc: "Confirmation"
+        step5: "Batch"
+        step5_desc: "Production"
+        step6: "Final"
+        step6_desc: "Delivery"
+      design_rd:
+        title: "Design & R&D"
+        subtitle: "Not just manufacturing, but also professional development support."
+        items:
+          product_design: "Product Design"
+          sample_dev: "Sample Development"
+          tech_support: "Technical Support"
+          process_opt: "Process Optimization"
+      production:
+        title: "Production Capacity"
+        subtitle: "Stable delivery with industrial-grade quality control."
+        items:
+          scale: "Factory Scale"
+          equipment: "Advanced Equipment"
+          team: "Professional Team"
+          qc: "Quality Control"
+      cases:
+        title: "Custom Cases"
+        subtitle: "Proven experience in delivering high-quality customized solutions."
+        case1:
+          requirement: "Special materials + Brand LOGO"
+          solution: "Design development + Batch production"
+          result: "Completed delivery"
+      faqs:
+        title: "FAQ"
+        q1: "What is the minimum order quantity (MOQ)?"
+        a1: "The MOQ varies depending on the customization level. Please contact our sales team for details."
+        q2: "How long is the customization cycle?"
+        a2: "Usually 2-4 weeks from design confirmation to batch production, depending on the complexity."
+        q3: "Do you provide samples?"
+        a3: "Yes, we provide sample making services for customer confirmation before batch production."
+        q4: "What modifications are supported?"
+        a4: "We support modifications in design, material, capacity, and packaging."
+      conversion:
+        title: "Ready to start your customized project?"
+        subtitle: "Our expert team is ready to help you with everything from design to mass production."
+        cta: "Inquire Now"
+    faqs:
+      title: "FAQs"
+      subtitle: "Find answers to common questions about our products and services"
+      no_questions: "No FAQs available"
+      more_questions_title: "Still have questions?"
+      more_questions_desc: "If you cannot find the answer you are looking for, please feel free to contact our customer service team."
+    contact_us: "Contact Us"
     index:
       hero_slides:
         slide1:
@@ -164,8 +267,8 @@ en:
           title: "Direct Factory"
           desc: "Headquartered in Guangdong with production plant in Dongguan."
       final_cta_title: "Ready to start your first order?"
-      final_cta_desc: "Get a Free Quote & Technical Support Now!"
-      get_free_quote: "Get a Free Quote"
+      final_cta_desc: ""
+      get_free_quote: "Get a order quote"
       features:
         factory_direct:
           title: "Direct Factory"
@@ -179,8 +282,8 @@ en:
     about:
       title: "About Us"
       subtitle: "Professional Battery Manufacturer"
-      hero_title: "About Yapai"
-      hero_desc: "Yapai Battery Factory is a professional mobile phone battery manufacturer headquartered in Guangdong, China, with its production plant located in Dongguan. The company focuses on the R&D, production, and global export of replacement batteries for smartphones."
+      hero_title: "Our Factory & Manufacturing"
+      hero_desc: "Professional mobile phone battery manufacturing with advanced technology. We focus on R&D and production to deliver high-quality replacement batteries worldwide."
       heritage_title: "Production and Customization Capabilities"
       heritage_desc_1: "Daily production capacity exceeds 5,000 battery packs, supporting OEM/ODM orders, and offering free brand logo customization for global wholesalers and retailers."
       heritage_desc_2: "We provide replacement batteries for over 1,000 mainstream mobile phone brands, comprehensively covering popular overseas brands such as iPhone, Huawei, Xiaomi, OPPO, and vivo."
@@ -211,6 +314,9 @@ en:
       become_dealer_desc: "Yapai provides partners with factory-direct pricing, reliable product supply, and free customization services. Together, we build sustainable partnerships designed for long-term success."
       apply_now: "Contact Us"
       why_title: "Why Partner With Yapai?"
+      partners:
+        title: "Our Partners & Clients"
+        subtitle: "Global Collaboration"
       reasons:
         pricing:
           title: "Factory-Direct Pricing"

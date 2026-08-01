@@ -1,0 +1,48 @@
+<% content_for :admin_title, "FAQ 分类管理" %>
+
+<div class="mb-6 flex justify-between items-center">
+  <p class="text-slate-600">管理 FAQ 的分类和显示顺序。</p>
+  <div class="flex gap-3">
+    <%= link_to "管理所有问题", admin_faqs_path, class: "bg-slate-600 hover:bg-slate-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors" %>
+    <%= link_to "创建新分类", new_admin_faq_category_path, class: "bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors" %>
+  </div>
+</div>
+
+<div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+  <table class="min-w-full divide-y divide-slate-100">
+    <thead class="bg-slate-50">
+      <tr>
+        <th class="px-6 py-3 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">分类名称</th>
+        <th class="px-6 py-3 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">排序</th>
+        <th class="px-6 py-3 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">问题数量</th>
+        <th class="px-6 py-3 text-right text-xs font-bold text-slate-500 uppercase tracking-wider">操作</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-slate-100">
+      <% @faq_categories.each do |category| %>
+        <tr class="hover:bg-slate-50 transition-colors">
+          <td class="px-6 py-4 text-sm font-semibold text-slate-900">
+            <%= category.name %>
+          </td>
+          <td class="px-6 py-4 text-sm text-slate-500">
+            <%= category.position %>
+          </td>
+          <td class="px-6 py-4 text-sm text-slate-500">
+            <%= category.faqs.count %>
+          </td>
+          <td class="px-6 py-4 text-right space-x-3">
+            <%= link_to "编辑", edit_admin_faq_category_path(category), class: "text-blue-600 hover:text-blue-800 text-sm font-medium" %>
+            <%= button_to "删除", admin_faq_category_path(category), method: :delete,
+                  data: { confirm: "确定删除这个分类及其下的所有问题？" },
+                  class: "inline-block text-red-500 hover:text-red-700 text-sm font-medium bg-transparent border-0 cursor-pointer" %>
+          </td>
+        </tr>
+      <% end %>
+      <% if @faq_categories.empty? %>
+        <tr>
+          <td colspan="4" class="px-6 py-12 text-center text-slate-400 text-sm">暂无分类</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

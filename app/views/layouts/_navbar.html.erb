@@ -19,47 +19,16 @@
     <div class="flex md:order-2 space-x-3 items-center">
 
       <div class="hidden md:flex">
-        <% if user_signed_in? %>
-          <div class="relative group/user">
-            <button type="button" class="flex items-center space-x-2 text-sm font-medium text-slate-700 hover:text-primary transition-all bg-slate-50 p-1.5 rounded-full border border-slate-200 pr-3">
-              <div class="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-dark flex items-center justify-center text-white text-xs font-black shadow-lg shadow-primary/20">
-                <%= current_user.email[0..1].upcase %>
-              </div>
-              <svg class="w-4 h-4 text-slate-400 group-hover/user:rotate-180 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-            </button>
-
-            <!-- User Dropdown -->
-            <div class="absolute right-0 top-full pt-2 hidden group-hover/user:block w-48 z-50">
-              <div class="bg-white border border-slate-200 rounded-2xl shadow-2xl overflow-hidden backdrop-blur-xl bg-opacity-95 py-2 ring-1 ring-slate-900/5 animate-fade-in-up">
-                <div class="px-4 py-2 border-b border-slate-100 mb-2">
-                  <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest"><%= t('navbar.signed_in_as', default: 'Signed in as') %></p>
-                  <p class="text-xs text-slate-900 font-bold truncate"><%= current_user.email %></p>
-                </div>
-                
-                <% if current_user.admin_role? %>
-                  <%= link_to admin_root_path, class: "flex items-center px-4 py-2 text-sm text-primary hover:bg-slate-50 transition-colors font-bold" do %>
-                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                    <%= t('navbar.admin_dashboard', default: 'Admin Panel') %>
-                  <% end %>
-                <% end %>
-
-                <%= button_to destroy_user_session_path, method: :delete, class: "flex items-center w-full px-4 py-2 text-sm text-red-600 hover:bg-slate-50 transition-colors font-bold text-left" do %>
-                  <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
-                  <%= t('navbar.logout') %>
-                <% end %>
-              </div>
-            </div>
-          </div>
-        <% else %>
-          <div class="flex items-center space-x-1.5">
-            <%= link_to new_user_session_path, class: "group relative p-1.5 text-slate-600 hover:text-slate-900 bg-slate-50 rounded-full border border-slate-200 transition-all hover:shadow-md", title: t('navbar.login') do %>
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path>
+        <%= form_with url: products_path, method: :get, class: "relative group" do %>
+          <div class="relative">
+            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+              <svg class="w-4 h-4 text-slate-400 group-focus-within:text-primary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
               </svg>
-              <span class="absolute -bottom-8 left-1/2 -translate-x-1/2 px-2 py-1 bg-slate-800 text-white text-[10px] rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none z-50">
-                <%= t('navbar.login') %>
-              </span>
-            <% end %>
+            </div>
+            <%= text_field_tag :q, params[:q], 
+                placeholder: t('navbar.search_placeholder'), 
+                class: "block w-full md:w-48 lg:w-64 pl-10 pr-4 py-2 text-sm text-slate-900 border border-slate-200 rounded-full bg-slate-50 focus:ring-primary focus:border-primary transition-all focus:bg-white focus:w-72" %>
           </div>
         <% end %>
       </div>
@@ -77,71 +46,81 @@
         <li>
           <%= link_to t('navbar.home'), root_path, class: "block py-2 px-3 #{current_page?(root_path) ? 'text-primary font-bold border-b-2 border-primary' : 'text-slate-600 hover:text-primary'} transition-all duration-300 rounded-sm md:bg-transparent md:p-0" %>
         </li>
-        <li>
-          <%= link_to t('navbar.about_us'), about_path, class: "block py-2 px-3 #{current_page?(about_path) ? 'text-primary font-bold border-b-2 border-primary' : 'text-slate-600 hover:text-primary'} transition-all duration-300 rounded-sm md:bg-transparent md:p-0" %>
+
+        <li class="relative group/products" data-navbar-target="rootDropdown">
+          <div class="flex items-center">
+            <div class="flex items-center py-2 px-3 text-slate-600 hover:text-primary transition-all duration-300 rounded-sm md:bg-transparent md:p-0 flex-grow cursor-pointer">
+              <span><%= t('navbar.all_products') %></span>
+              <svg class="hidden md:inline-block w-4 h-4 ml-1 transition-transform duration-200 group-hover/products:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </div>
+            <button type="button" data-action="click->navbar#toggleMobileRoot" class="md:hidden ml-auto text-slate-400 p-2 focus:outline-none hover:text-primary transition-colors">
+              <svg class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+          </div>
+
+          <!-- Products Dropdown -->
+          <div class="hidden group-hover/products:block md:absolute md:left-0 md:top-full w-full md:w-64 z-50 pt-2 dropdown-container pointer-events-auto">
+            <div class="bg-white border border-slate-200 rounded-2xl shadow-2xl overflow-visible backdrop-blur-xl bg-opacity-95 py-2 ring-1 ring-slate-900/5 md:animate-fade-in-up">
+              <% [ 'apple', 'huawei', 'oppo', 'vivo', 'xiaomi', 'custom' ].each do |kind| %>
+                <% categories_for_kind(kind).each do |category| %>
+                  <%= render 'layouts/navbar_category', category: category, kind: kind, depth: 1 %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
         </li>
         <li>
           <%= link_to t('navbar.factory'), factory_path, class: "block py-2 px-3 #{current_page?(factory_path) ? 'text-primary font-bold border-b-2 border-primary' : 'text-slate-600 hover:text-primary'} transition-all duration-300 rounded-sm md:bg-transparent md:p-0" %>
         </li>
-
-        <% [ 'apple', 'huawei', 'oppo', 'vivo', 'xiaomi', 'custom' ].each do |kind| %>
-          <% categories_for_kind(kind).each do |category| %>
-            <li class="relative group/cat-0" data-navbar-target="rootDropdown">
-              <div class="flex items-center">
-                <%= link_to category.localized_name, category_path(category), class: "block py-2 px-3 #{params[:id].to_i == category.id ? 'text-primary font-bold border-b-2 border-primary' : 'text-slate-600 hover:text-primary'} transition-all duration-300 rounded-sm md:bg-transparent md:p-0 flex-grow" %>
-                <% if category.children.visible.any? %>
-                  <button type="button" data-action="click->navbar#toggleMobileRoot" class="md:hidden ml-auto text-slate-400 p-2 focus:outline-none">
-                    <svg class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                  </button>
-                <% end %>
-              </div>
-              
-              <% if category.children.visible.any? %>
-                <!-- Desktop/Mobile Dropdown -->
-                <div class="hidden md:group-hover/cat-0:block md:absolute md:left-0 md:top-full w-full md:w-64 z-50 pt-2 dropdown-container pointer-events-auto">
-                  <div class="bg-white border border-slate-200 rounded-2xl shadow-2xl overflow-visible backdrop-blur-xl bg-opacity-95 py-2 ring-1 ring-slate-900/5 md:animate-fade-in-up">
-                    <% category.children.visible.each do |child| %>
-                      <%= render 'layouts/navbar_category', category: child, kind: kind, depth: 1 %>
-                    <% end %>
-                  </div>
-                </div>
-              <% end %>
-            </li>
-          <% end %>
-        <% end %>
-
         <li>
-          <%= link_to "Blog", posts_path, class: "block py-2 px-3 #{current_page?(posts_path) ? 'text-primary font-bold border-b-2 border-primary' : 'text-slate-600 hover:text-primary'} transition-all duration-300 rounded-sm md:bg-transparent md:p-0" %>
+          <%= link_to t('navbar.customize'), customize_path, class: "block py-2 px-3 #{current_page?(customize_path) ? 'text-primary font-bold border-b-2 border-primary' : 'text-slate-600 hover:text-primary'} transition-all duration-300 rounded-sm md:bg-transparent md:p-0" %>
+        </li>
+
+
+        <li class="relative group/blog" data-navbar-target="rootDropdown">
+          <div class="flex items-center">
+            <div class="flex items-center py-2 px-3 text-slate-600 hover:text-primary transition-all duration-300 rounded-sm md:bg-transparent md:p-0 flex-grow cursor-pointer">
+              <span><%= t('navbar.blog') %></span>
+              <svg class="hidden md:inline-block w-4 h-4 ml-1 transition-transform duration-200 group-hover/blog:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </div>
+            <button type="button" data-action="click->navbar#toggleMobileRoot" class="md:hidden ml-auto text-slate-400 p-2 focus:outline-none hover:text-primary transition-colors">
+              <svg class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+          </div>
+
+          <!-- Blog Dropdown -->
+          <div class="hidden group-hover/blog:block md:absolute md:left-0 md:top-full w-full md:w-64 z-50 pt-2 dropdown-container pointer-events-auto">
+            <div class="bg-white border border-slate-200 rounded-2xl shadow-2xl overflow-visible backdrop-blur-xl bg-opacity-95 py-2 ring-1 ring-slate-900/5 md:animate-fade-in-up">
+              <%= link_to posts_path(category: 'enterprise_updates'), class: "block px-4 py-3 text-sm text-slate-600 hover:bg-primary hover:text-white transition-all truncate" do %>
+                <%= t('navbar.enterprise_updates') %>
+              <% end %>
+              <%= link_to posts_path(category: 'industry_news'), class: "block px-4 py-3 text-sm text-slate-600 hover:bg-primary hover:text-white transition-all truncate" do %>
+                <%= t('navbar.industry_news') %>
+              <% end %>
+            </div>
+          </div>
+        </li>
+        <li>
+          <%= link_to t('navbar.faqs', default: 'FAQs'), faqs_path, class: "block py-2 px-3 #{current_page?(faqs_path) ? 'text-primary font-bold border-b-2 border-primary' : 'text-slate-600 hover:text-primary'} transition-all duration-300 rounded-sm md:bg-transparent md:p-0" %>
         </li>
         <li>
           <%= link_to t('navbar.contact_us'), contact_path, class: "block py-2 px-3 #{current_page?(contact_path) ? 'text-primary font-bold border-b-2 border-primary' : 'text-slate-600 hover:text-primary'} transition-all duration-300 rounded-sm md:bg-transparent md:p-0" %>
         </li>
         <li class="md:hidden pt-4 border-t border-slate-100 mt-2">
-          <% if user_signed_in? %>
-            <div class="flex flex-col space-y-3 px-3">
-              <div class="flex items-center space-x-3 mb-2">
-                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-slate-700 to-slate-900 flex items-center justify-center text-white text-xs font-black shadow-lg">
-                  <%= current_user.email[0..1].upcase %>
-                </div>
-                <div>
-                  <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest leading-none mb-1"><%= t('navbar.signed_in_as', default: 'Signed in as') %></p>
-                  <p class="text-xs text-slate-900 font-bold truncate"><%= current_user.email %></p>
-                </div>
+          <%= form_with url: products_path, method: :get, class: "px-3" do %>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
               </div>
-              
-              <div class="flex items-center space-x-4 pt-2">
-                <% if current_user.admin_role? %>
-                  <%= link_to t('navbar.admin_dashboard', default: 'Admin'), admin_root_path, class: "text-primary font-bold text-sm" %>
-                  <span class="text-slate-300">|</span>
-                <% end %>
-                <%= button_to t('navbar.logout'), destroy_user_session_path, method: :delete, class: "text-red-600 font-bold text-sm" %>
-              </div>
-            </div>
-          <% else %>
-            <div class="flex flex-col space-y-4 px-3">
-              <div class="flex flex-col space-y-1.5">
-                <%= link_to t('navbar.login'), new_user_session_path, class: "text-slate-600 hover:text-slate-900 py-1.5 text-xs font-medium border-b border-slate-100" %>
-              </div>
+              <%= text_field_tag :q, params[:q], 
+                  placeholder: t('navbar.search_placeholder'), 
+                  class: "block w-full pl-10 pr-4 py-2 text-xs text-slate-900 border border-slate-200 rounded-full bg-slate-50 focus:ring-primary focus:border-primary transition-all" %>
             </div>
           <% end %>
         </li>

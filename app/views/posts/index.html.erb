@@ -1,17 +1,45 @@
 <% content_for :title, "Blog - Yapai Battery" %>
 <% content_for :meta_description, "Explore mobile phone battery manufacturing insights, trends, and guides from Yapai Battery Factory." %>
 
+<% 
+  hero_title = if params[:category] == 'enterprise_updates'
+    t('posts.enterprise_updates.title')
+  elsif params[:category] == 'industry_news'
+    t('posts.industry_news.title')
+  else
+    nil
+  end
+
+  hero_subtitle = if params[:category] == 'enterprise_updates'
+    t('posts.enterprise_updates.subtitle')
+  elsif params[:category] == 'industry_news'
+    t('posts.industry_news.subtitle')
+  else
+    nil
+  end
+
+  hero_description = if params[:category] == 'enterprise_updates'
+    t('posts.enterprise_updates.description')
+  elsif params[:category] == 'industry_news'
+    t('posts.industry_news.description')
+  else
+    nil
+  end
+%>
+
 <!-- Hero -->
+<% if hero_title.present? && !hero_title.is_a?(Hash) %>
 <div class="bg-slate-50 py-20 border-b border-slate-100">
   <div class="max-w-screen-xl mx-auto px-6 text-center">
     <div class="inline-flex items-center px-4 py-2 bg-white border border-slate-200 rounded-full text-primary text-xs font-black tracking-[0.2em] uppercase mb-6">
       <span class="w-2 h-2 bg-primary rounded-full mr-3 animate-pulse"></span>
-      Latest Articles
+      <%= hero_subtitle %>
     </div>
-    <h1 class="text-5xl font-black text-slate-900 tracking-tight mb-4">Yapai Blog</h1>
-    <p class="text-slate-500 text-lg max-w-2xl mx-auto font-medium">Battery manufacturing insights, industry trends, and professional guides from our team in Guangdong.</p>
+    <h1 class="text-5xl font-black text-slate-900 tracking-tight mb-4"><%= hero_title %></h1>
+    <p class="text-slate-500 text-lg max-w-2xl mx-auto font-medium"><%= hero_description %></p>
   </div>
 </div>
+<% end %>
 
 <!-- Posts grid -->
 <div class="py-20 bg-white">
@@ -33,6 +61,10 @@
 
             <div class="flex flex-col flex-1 p-7">
               <div class="flex items-center gap-2 mb-4">
+                <% if post.category.present? %>
+                  <span class="px-2 py-0.5 bg-primary/10 text-primary text-[10px] font-black uppercase tracking-widest rounded"><%= t("posts.#{post.category}.title") %></span>
+                  <span class="text-slate-200">|</span>
+                <% end %>
                 <span class="text-xs font-bold text-slate-400 uppercase tracking-widest"><%= post.published_at&.strftime("%b %d, %Y") %></span>
               </div>
               <h2 class="text-xl font-black text-slate-900 mb-3 leading-snug group-hover:text-primary transition-colors">
@@ -53,7 +85,7 @@
       <% if @posts.total_pages > 1 %>
         <div class="flex justify-center items-center gap-2 mt-14">
           <% if @posts.prev_page %>
-            <%= link_to posts_path(page: @posts.prev_page), class: "w-10 h-10 flex items-center justify-center rounded-xl border border-slate-200 text-slate-500 hover:bg-primary hover:text-white hover:border-primary transition-all" do %>
+            <%= link_to posts_path(page: @posts.prev_page, category: params[:category]), class: "w-10 h-10 flex items-center justify-center rounded-xl border border-slate-200 text-slate-500 hover:bg-primary hover:text-white hover:border-primary transition-all" do %>
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
             <% end %>
           <% else %>
@@ -67,12 +99,12 @@
             <% if p == @posts.current_page %>
               <span class="w-10 h-10 flex items-center justify-center rounded-xl bg-primary text-white font-bold text-sm shadow-md shadow-primary/30"><%= p %></span>
             <% else %>
-              <%= link_to p, posts_path(page: p), class: "w-10 h-10 flex items-center justify-center rounded-xl border border-slate-200 text-slate-600 hover:bg-primary hover:text-white hover:border-primary transition-all font-semibold text-sm" %>
+              <%= link_to p, posts_path(page: p, category: params[:category]), class: "w-10 h-10 flex items-center justify-center rounded-xl border border-slate-200 text-slate-600 hover:bg-primary hover:text-white hover:border-primary transition-all font-semibold text-sm" %>
             <% end %>
           <% end %>
 
           <% if @posts.next_page %>
-            <%= link_to posts_path(page: @posts.next_page), class: "w-10 h-10 flex items-center justify-center rounded-xl border border-slate-200 text-slate-500 hover:bg-primary hover:text-white hover:border-primary transition-all" do %>
+            <%= link_to posts_path(page: @posts.next_page, category: params[:category]), class: "w-10 h-10 flex items-center justify-center rounded-xl border border-slate-200 text-slate-500 hover:bg-primary hover:text-white hover:border-primary transition-all" do %>
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
             <% end %>
           <% else %>

@@ -13,7 +13,7 @@
         </div>
         <div class="hidden md:block">
           <div class="text-right">
-            <div class="text-3xl font-black text-primary mb-1"><%= Sku.count %></div>
+            <div class="text-3xl font-black text-primary mb-1"><%= Sku.where(status: 'active').count %></div>
             <div class="text-[10px] font-bold text-slate-500 uppercase tracking-widest text-nowrap"><%= t('categories.total_products_count') %></div>
           </div>
         </div>

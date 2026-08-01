@@ -39,7 +39,9 @@
   end
 
   # 当前分类/频道的显示名称 —— 用于 Banner 上的动态文字
-  heading = if @current_category
+  heading = if params[:q].present?
+              "Search Results: #{params[:q]}"
+            elsif @current_category
               @current_category.localized_name
             elsif kind_val
               case kind_val.to_s

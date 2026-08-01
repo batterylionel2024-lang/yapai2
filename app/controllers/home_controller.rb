@@ -6,22 +6,39 @@ class HomeController < ApplicationController
   end
 
   def all_products
-    @skus_by_category = Sku.where(status: 'active').order(position: :asc, created_at: :desc).group_by(&:category_id)
-    @root_categories = Category.where(parent_id: nil).includes(children: { children: { children: :children } })
+    @kind = params[:kind]
+    if params[:q].present?
+      @categories = Category.visible.where(parent_id: nil).includes(children: { children: { children: :children } })
+      @skus = Sku.joins(:category).where(categories: { hidden: false }, status: 'active')
+                 .where("LOWER(skus.name) LIKE ?", "%#{params[:q].downcase}%")
+                 .includes(:category, images_attachments: :blob)
+                 .order(position: :asc, created_at: :desc)
+                 .page(params[:page]).per(20)
+      render "categories/index"
+    else
+      @skus_by_category = Sku.where(status: 'active').order(position: :asc, created_at: :desc).group_by(&:category_id)
+      @root_categories = Category.where(parent_id: nil).includes(children: { children: { children: :children } })
+    end
   end
 
   def contact
     @contact_message = ContactMessage.new
   end
 
-  def about
-    @featured_categories = Category.unscoped.where(featured: true).order(featured_position: :asc, id: :desc).with_attached_image
+  def faqs
+    @faq_categories = FaqCategory.includes(:faqs).order(position: :asc)
   end
+
 
   def privacy
   end
 
   def factory
+    @featured_categories = Category.unscoped.where(featured: true).order(featured_position: :asc, id: :desc).with_attached_image
+    @partners = Partner.all.with_attached_logo
+  end
+
+  def customize
   end
 
   def create_contact

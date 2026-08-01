@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_24_110000) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_30_181201) do
   create_table "a_sku_details", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "net_capacity"
@@ -130,6 +130,22 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_24_110000) do
     t.index ["read"], name: "index_contact_messages_on_read"
   end
 
+  create_table "faq_categories", force: :cascade do |t|
+    t.datetime "created_at", precision: nil, null: false
+    t.text "name"
+    t.integer "position", default: 0
+    t.datetime "updated_at", precision: nil, null: false
+  end
+
+  create_table "faqs", force: :cascade do |t|
+    t.text "answer"
+    t.datetime "created_at", precision: nil, null: false
+    t.integer "faq_category_id", null: false
+    t.integer "position", default: 0
+    t.text "question"
+    t.datetime "updated_at", precision: nil, null: false
+  end
+
   create_table "home_products", force: :cascade do |t|
     t.boolean "active"
     t.datetime "created_at", null: false
@@ -165,7 +181,14 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_24_110000) do
     t.index ["user_id"], name: "index_operation_logs_on_user_id"
   end
 
+  create_table "partners", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "name"
+    t.datetime "updated_at", null: false
+  end
+
   create_table "posts", force: :cascade do |t|
+    t.string "category"
     t.datetime "created_at", null: false
     t.text "meta_description"
     t.string "meta_keywords"
@@ -175,6 +198,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_24_110000) do
     t.text "summary"
     t.string "title"
     t.datetime "updated_at", null: false
+    t.index ["category"], name: "index_posts_on_category"
   end
 
   create_table "site_configs", force: :cascade do |t|
@@ -452,6 +476,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_24_110000) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "faqs", "faq_categories"
   add_foreign_key "login_logs", "users"
   add_foreign_key "operation_logs", "users"
   add_foreign_key "skus", "categories"

@@ -1,0 +1,44 @@
+<%= form_with(model: [:admin, partner], class: "space-y-6") do |f| %>
+  <% if partner.errors.any? %>
+    <div class="bg-red-50 border-l-4 border-red-400 p-4">
+      <div class="flex">
+        <div class="flex-shrink-0">
+          <svg class="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+          </svg>
+        </div>
+        <div class="ml-3">
+          <h3 class="text-sm font-medium text-red-800">保存时发生错误：</h3>
+          <ul class="mt-2 text-sm text-red-700 list-disc list-inside">
+            <% partner.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <div>
+    <%= f.label :name, "合作者名称", class: "block text-sm font-medium text-slate-700 mb-1" %>
+    <%= f.text_field :name, class: "block w-full rounded-lg border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm", placeholder: "例如: Apple, Huawei..." %>
+  </div>
+
+  <div>
+    <%= f.label :logo, "Logo", class: "block text-sm font-medium text-slate-700 mb-1" %>
+    <div class="mt-1 flex items-center space-x-5">
+      <% if partner.logo.attached? %>
+        <div class="flex-shrink-0">
+          <%= image_tag partner.logo, class: "h-20 w-auto object-contain bg-slate-50 border rounded-lg p-2" %>
+        </div>
+      <% end %>
+      <%= f.file_field :logo, class: "block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" %>
+    </div>
+    <p class="mt-2 text-xs text-slate-500">建议使用透明背景的 PNG 或 SVG 格式，宽度至少 400px。</p>
+  </div>
+
+  <div class="pt-5 border-t border-slate-100 flex items-center justify-end space-x-3">
+    <%= link_to "取消", admin_partners_path, class: "px-4 py-2 border border-slate-300 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors" %>
+    <%= f.submit "保存合作者", class: "px-4 py-2 bg-blue-600 border border-transparent rounded-lg text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors" %>
+  </div>
+<% end %>

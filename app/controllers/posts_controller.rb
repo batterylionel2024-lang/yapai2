@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.published.page(params[:page]).per(20)
+    @posts = Post.published
+    @posts = @posts.where(category: params[:category]) if params[:category].present?
+    @posts = @posts.page(params[:page]).per(20)
   end
 
   def show
