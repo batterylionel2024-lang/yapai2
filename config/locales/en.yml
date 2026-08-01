@@ -48,7 +48,7 @@ en:
     logout: "Log Out"
     faqs: "FAQ's"
     blog: "News"
-    enterprise_updates: "ECompany Updates"
+    enterprise_updates: "Company Updates"
     industry_news: "Industry Information"
     all_news: "All News"
   footer:
@@ -77,7 +77,7 @@ en:
     all_products_desc: "Explore Yapai's complete mobile phone battery collection. We provide professional replacement batteries for over 1,000 mainstream brands."
     total_products_count: "Total Products"
     end_of_line: "End of Line"
-    explore_all: "Explore All Yapai Products"
+    explore_all: "Yapai Battery Catalog"
     view_details: "View Details"
     no_skus_title: "No Available Models"
     no_skus_desc: "This category is currently being updated. Please check back later for our latest releases."
@@ -192,7 +192,7 @@ en:
         q4: "What modifications are supported?"
         a4: "We support modifications in design, material, capacity, and packaging."
       conversion:
-        title: "Ready to start your customized project?"
+        title: "Ready To Start Your OEM Order?"
         subtitle: "Our expert team is ready to help you with everything from design to mass production."
         cta: "Inquire Now"
     faqs:
@@ -268,9 +268,9 @@ en:
         direct_factory:
           title: "Direct Factory"
           desc: "Headquartered in Guangdong with production plant in Dongguan."
-      final_cta_title: "Ready to start your first order?"
+      final_cta_title: "Ready To Start Your First Order?"
       final_cta_desc: ""
-      get_free_quote: "Get a order quote"
+      get_free_quote: "Get A Order Quote"
       features:
         factory_direct:
           title: "Direct Factory"
@@ -338,20 +338,20 @@ en:
     contact:
       title: "Contact Yapai"
       subtitle: "Contact Yapai"
-      hero_title: "Partner with Yapai"
+      hero_title: "Professional Partner"
       hero_desc: "Contact our team for product inquiries, customized samples, or business partnerships. We are ready to help your brand grow."
-      send_message: "Send a Message"
+      send_message: "Send Message"
       success_notice: "Message sent successfully. We will contact you as soon as possible."
       form:
         name: "Your Name"
-        name_placeholder: "Enter your name"
-        email: "Email Address"
-        email_placeholder: "example@email.com"
+        name_placeholder: " "
+        email: "Your Contact"
+        email_placeholder: "WhatsApp/WeChat Number"
         subject: "Subject"
         subject_placeholder: "Inquiry topic"
         message: "Message Details"
         message_placeholder: "Describe your needs or questions..."
-        submit: "Send Message Now"
+        submit: "OK"
         privacy_policy_agree: "I have read and agree to the"
         privacy_policy_link: "Privacy Policy"
         privacy_error: "Please agree to the Privacy Policy to continue."
@@ -366,7 +366,7 @@ en:
       view_warranty: "View Details"
     submission_limit: "You are submitting too frequently. Please try again in 1 minute."
   contact_info:
-    address: "Guangdong Province, China"
+    address: "Room 602, Building 6, No. 71 Fumin South Road, Dalang Town, Dongguan City, Guangdong Province"
     phone: "+86 13128888964"
     email: "2446330966@qq.com"
     support_email: "2446330966@qq.com"

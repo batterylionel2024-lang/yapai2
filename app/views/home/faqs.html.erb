@@ -1,17 +1,22 @@
 <div class="bg-slate-50 min-h-screen pb-20">
   <!-- Header Section -->
-  <div class="bg-dark py-16 mb-12">
-    <div class="max-w-screen-xl mx-auto px-6">
+  <section class="relative py-24 md:py-40 flex items-center overflow-hidden mb-20">
+    <div class="absolute inset-0 z-0">
+      <%= image_tag "indexbanner1.webp", class: "w-full h-full object-cover object-center", alt: "FAQs" %>
+      <div class="absolute inset-0 bg-black/60"></div>
+    </div>
+    
+    <div class="max-w-screen-xl mx-auto px-6 relative z-10">
       <div class="text-center">
         <h1 class="text-4xl md:text-5xl font-black text-white tracking-tight mb-4">
           <%= t('home.faqs.title', default: 'FAQs') %>
         </h1>
-        <p class="text-slate-400 text-lg font-medium max-w-2xl mx-auto">
+        <p class="text-slate-300 text-lg font-medium max-w-2xl mx-auto">
           <%= t('home.faqs.subtitle', default: 'Find answers to common questions about our products and services') %>
         </p>
       </div>
     </div>
-  </div>
+  </section>
 
   <div class="max-w-screen-md mx-auto px-6">
     <div class="space-y-12">

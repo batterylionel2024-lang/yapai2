@@ -56,33 +56,6 @@
       </div>
     </div>
 
-    <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
-      <h3 class="text-lg font-medium text-slate-800 mb-6 border-b pb-2">外观与统计</h3>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div>
-          <%= f.label :logo, "网站 Logo", class: "block text-sm font-medium text-slate-700 mb-2" %>
-          <% if @site_config.logo.attached? %>
-            <div class="mb-3">
-              <%= image_tag @site_config.logo, class: "h-12 object-contain bg-slate-100 p-2 rounded" %>
-            </div>
-          <% end %>
-          <%= f.file_field :logo, class: "block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-primary/10 file:text-primary hover:file:bg-primary/20" %>
-        </div>
-        <div>
-          <%= f.label :favicon, "Favicon (16x16 或 32x32)", class: "block text-sm font-medium text-slate-700 mb-2" %>
-          <% if @site_config.favicon.attached? %>
-            <div class="mb-3">
-              <%= image_tag @site_config.favicon, class: "h-8 w-8 object-contain bg-slate-100 p-1 rounded" %>
-            </div>
-          <% end %>
-          <%= f.file_field :favicon, class: "block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-primary/10 file:text-primary hover:file:bg-primary/20" %>
-        </div>
-        <div class="md:col-span-2">
-          <%= f.label :statistics_code, "统计代码 (如 Google Analyics, 百度统计)", class: "block text-sm font-medium text-slate-700 mb-1" %>
-          <%= f.text_area :statistics_code, rows: 5, class: "w-full px-3 py-2 border border-slate-300 rounded-lg font-mono text-xs focus:ring-primary focus:border-primary", placeholder: "<script>...</script>" %>
-        </div>
-      </div>
-    </div>
 
     <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
       <h3 class="text-lg font-medium text-slate-800 mb-6 border-b pb-2">搜索引擎优化 (SEO) 文件</h3>

@@ -3,11 +3,7 @@
         <div class="md:flex md:justify-between">
       <div class="mb-6 md:mb-0">
         <a href="<%= root_path %>" class="flex items-center flex-shrink-0">
-          <% if @site_config.logo.attached? %>
-            <%= image_tag @site_config.logo, class: "h-12 sm:h-16 w-auto max-w-[250px] object-contain", alt: @site_config.name %>
-          <% else %>
-            <%= image_tag "yapai.webp", class: "h-12 sm:h-16 w-auto max-w-[250px] object-contain", alt: "Yapai" %>
-          <% end %>
+          <%= image_tag "yapai.png", class: "h-12 sm:h-16 w-auto max-w-[250px] object-contain", alt: "Yapai" %>
         </a>
         <p class="mt-2 text-sm text-slate-400"><%= t('footer.company_desc') %></p>
         <p class="mt-1 text-xs text-slate-500"><%= t('footer.company_name') %></p>

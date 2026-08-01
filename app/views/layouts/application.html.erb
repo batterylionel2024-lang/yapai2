@@ -12,20 +12,12 @@
 
     <%= yield :head %>
 
-    <% if @site_config.statistics_code.present? %>
-      <%= @site_config.statistics_code.html_safe %>
-    <% end %>
 
     <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
     <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
 
-    <% if @site_config.favicon.attached? %>
-      <link rel="icon" href="<%= rails_blob_path(@site_config.favicon) %>">
-      <link rel="apple-touch-icon" href="<%= rails_blob_path(@site_config.favicon) %>">
-    <% else %>
-      <%= favicon_link_tag "logo.jpg" %>
-      <%= favicon_link_tag "logo.jpg", rel: "apple-touch-icon" %>
-    <% end %>
+    <%= favicon_link_tag "yapai.png" %>
+    <%= favicon_link_tag "yapai.png", rel: "apple-touch-icon" %>
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>

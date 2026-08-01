@@ -139,8 +139,8 @@
 <div class="bg-white py-20 overflow-hidden">
   <div class="max-w-screen-xl mx-auto px-6">
     <div class="text-center mb-14 reveal-up">
-      <p class="text-primary font-semibold tracking-widest uppercase text-xs mb-3">Crafted with Precision</p>
-      <h2 class="text-4xl md:text-5xl font-black text-slate-900">Featured Products</h2>
+      <p class="text-primary font-semibold tracking-widest uppercase text-xs mb-3">Hot Selling</p>
+      <h2 class="text-4xl md:text-5xl font-black text-slate-900">Battery Products</h2>
     </div>
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
       <% if @featured_categories.any? %>
@@ -301,7 +301,11 @@
 <!-- Final CTA Section -->
 <div class="bg-white py-24">
   <div class="max-w-screen-xl mx-auto px-6">
-    <div class="relative bg-primary p-12 md:p-20 rounded-[3rem] overflow-hidden shadow-3xl text-center md:text-left flex flex-col md:flex-row items-center justify-between gap-12">
+    <div class="relative bg-gradient-to-br from-primary from-70% to-secondary/80 p-12 md:p-20 rounded-[3rem] overflow-hidden shadow-3xl text-center md:text-left flex flex-col md:flex-row items-center justify-between gap-12">
+      <!-- Decorative Logo Color Blobs -->
+      <div class="absolute -bottom-24 -right-24 w-64 h-64 bg-secondary rounded-full blur-3xl opacity-40"></div>
+      <div class="absolute -bottom-12 -right-12 w-32 h-32 bg-secondary rounded-full blur-2xl opacity-60 animate-pulse"></div>
+
       <div class="relative z-10 max-w-2xl">
         <h2 class="text-4xl md:text-6xl font-black text-white mb-6 leading-tight">
           <%= t('home.index.final_cta_title') %>

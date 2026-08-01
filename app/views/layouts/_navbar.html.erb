@@ -2,18 +2,10 @@
   <div class="max-w-screen-2xl flex flex-wrap items-center justify-between mx-auto px-4 md:px-8 py-4">
     <div class="flex items-center">
       <a href="<%= root_path %>" class="md:hidden flex items-center mr-2">
-        <% if @site_config.logo.attached? %>
-          <%= image_tag @site_config.logo, class: "h-10 w-auto object-contain", alt: @site_config.name %>
-        <% else %>
-          <%= image_tag "yapai.webp", class: "h-10 w-auto object-contain", alt: "Yapai" %>
-<% end %>
-</a>
-<a href="<%= root_path %>" class="hidden md:flex items-center space-x-3 rtl:space-x-reverse mr-4 md:mr-12 flex-shrink-0">
-  <% if @site_config.logo.attached? %>
-    <%= image_tag @site_config.logo, class: "h-12 sm:h-14 md:h-16 lg:h-20 w-auto max-w-[160px] sm:max-w-[200px] md:max-w-[280px] lg:max-w-[320px] object-contain transition-all duration-300", alt: @site_config.name %>
-  <% else %>
-    <%= image_tag "yapai.webp", class: "h-12 sm:h-14 md:h-16 lg:h-20 w-auto max-w-[160px] sm:max-w-[200px] md:max-w-[280px] lg:max-w-[320px] object-contain transition-all duration-300", alt: "Yapai" %>
-  <% end %>
+        <%= image_tag "yapai.png", class: "h-10 w-auto object-contain", alt: "Yapai" %>
+      </a>
+      <a href="<%= root_path %>" class="hidden md:flex items-center space-x-3 rtl:space-x-reverse mr-4 md:mr-12 flex-shrink-0">
+        <%= image_tag "yapai.png", class: "h-12 sm:h-14 md:h-16 lg:h-20 w-auto max-w-[160px] sm:max-w-[200px] md:max-w-[280px] lg:max-w-[320px] object-contain transition-all duration-300", alt: "Yapai" %>
       </a>
     </div>
     <div class="flex md:order-2 space-x-3 items-center">
@@ -49,12 +41,12 @@
 
         <li class="relative group/products" data-navbar-target="rootDropdown">
           <div class="flex items-center">
-            <div class="flex items-center py-2 px-3 text-slate-600 hover:text-primary transition-all duration-300 rounded-sm md:bg-transparent md:p-0 flex-grow cursor-pointer">
+            <%= link_to categories_path, class: "flex items-center py-2 px-3 text-slate-600 hover:text-primary transition-all duration-300 rounded-sm md:bg-transparent md:p-0 flex-grow cursor-pointer" do %>
               <span><%= t('navbar.all_products') %></span>
               <svg class="hidden md:inline-block w-4 h-4 ml-1 transition-transform duration-200 group-hover/products:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
               </svg>
-            </div>
+            <% end %>
             <button type="button" data-action="click->navbar#toggleMobileRoot" class="md:hidden ml-auto text-slate-400 p-2 focus:outline-none hover:text-primary transition-colors">
               <svg class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
             </button>
@@ -81,12 +73,12 @@
 
         <li class="relative group/blog" data-navbar-target="rootDropdown">
           <div class="flex items-center">
-            <div class="flex items-center py-2 px-3 text-slate-600 hover:text-primary transition-all duration-300 rounded-sm md:bg-transparent md:p-0 flex-grow cursor-pointer">
+            <%= link_to posts_path, class: "flex items-center py-2 px-3 text-slate-600 hover:text-primary transition-all duration-300 rounded-sm md:bg-transparent md:p-0 flex-grow cursor-pointer" do %>
               <span><%= t('navbar.blog') %></span>
               <svg class="hidden md:inline-block w-4 h-4 ml-1 transition-transform duration-200 group-hover/blog:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
               </svg>
-            </div>
+            <% end %>
             <button type="button" data-action="click->navbar#toggleMobileRoot" class="md:hidden ml-auto text-slate-400 p-2 focus:outline-none hover:text-primary transition-colors">
               <svg class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
             </button>
