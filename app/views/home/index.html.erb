@@ -2,9 +2,7 @@
 <% content_for :meta_description, "Yapai Battery Factory is a professional mobile phone battery manufacturer in Guangdong, China. OEM/ODM replacement batteries for iPhone, Huawei, Xiaomi, and 1,000+ brands." %>
 <% content_for :meta_keywords, "mobile phone battery factory, smartphone replacement battery, Yapai Battery, iPhone battery wholesale, OEM battery manufacturer, China battery factory" %>
 
-<%# ============================================================
-    Hero Section — Rebuilt Responsive Slideshow
-    ============================================================ %>
+
 <section
   class="relative -mt-20 w-full overflow-hidden"
   style="height: 100svh; min-height: 600px;"
@@ -120,7 +118,7 @@
   <div class="overflow-hidden mb-4">
     <div class="flex gap-5 w-max" style="animation: yapai-marquee 32s linear infinite;">
       <% 2.times do %>
-        <% [["iphone.webp","iPhone Battery"],["vivo.webp","Vivo Battery"],["oppo.webp","oppo Battery"],["huawei.webp","Huawei Battery"],["xiaomi.webp","Xiaomi Battery"]].each do |img, label| %>
+        <% [["iphone.webp","For iPhone Battery"],["vivo.webp","For Vivo Battery"],["oppo.webp","For Oppo Battery"],["huawei.webp","For Huawei Battery"],["xiaomi.webp","For Xiaomi Battery"]].each do |img, label| %>
           <div class="relative flex-shrink-0 w-56 h-64 rounded-2xl overflow-hidden group cursor-pointer">
             <%= image_tag img, class: "w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" %>
             <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
@@ -215,32 +213,37 @@
   </div>
 </div>
 
-<!-- Customization Process Section -->
-<div class="bg-slate-50 py-24">
-  <div class="max-w-screen-xl mx-auto px-6 text-center">
-    <div class="mb-20 reveal-up">
-      <h2 class="text-4xl md:text-5xl font-black text-slate-900 mb-4"><%= t('home.index.process_title') %></h2>
-      <div class="h-1.5 w-24 bg-primary mx-auto rounded-full"></div>
+<!-- 2. Production Capacity -->
+<section class="py-24 relative overflow-hidden">
+  <div class="absolute inset-0 z-0">
+    <%= image_tag "factory5.jpg", class: "w-full h-full object-cover", alt: "Production Capacity" %>
+    <div class="absolute inset-0 bg-white/90"></div>
+  </div>
+
+  <div class="container mx-auto px-6 relative z-10">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-black text-slate-900 mb-4"><%= t('home.customize.production.title') %></h2>
+      <p class="text-slate-500 max-w-2xl mx-auto"><%= t('home.customize.production.subtitle') %></p>
     </div>
-    
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-12 relative">
-      <!-- Decorative Line -->
-      <div class="hidden md:block absolute top-12 left-0 w-full h-0.5 bg-slate-200 z-0"></div>
-      
-      <% 4.times do |i| %>
-        <div class="relative z-10 group reveal-up" style="transition-delay: <%= i * 100 %>ms">
-          <div class="w-24 h-24 bg-white rounded-full border-4 border-slate-50 shadow-xl mx-auto flex items-center justify-center mb-8 group-hover:border-primary transition-colors duration-500">
-            <span class="text-4xl font-black text-primary"><%= i + 1 %></span>
+
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 mb-16">
+      <% [
+           { label: 'scale', value: '10,000㎡', img: 'factory1.jpg' },
+           { label: 'equipment', value: '50+ Units', img: 'factory2.jpg' },
+           { label: 'team', value: '200+ People', img: 'worker2.jpg' },
+           { label: 'qc', value: '100% Passed', img: 'factory3.jpg' }
+         ].each do |stat| %>
+        <div class="relative group h-64 overflow-hidden rounded-3xl shadow-lg">
+          <%= image_tag stat[:img], class: "w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" %>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6">
+            <span class="text-primary text-2xl font-black mb-1"><%= stat[:value] %></span>
+            <span class="text-white/80 text-xs font-bold uppercase tracking-widest"><%= t("home.customize.production.items.#{stat[:label]}") %></span>
           </div>
-          <h4 class="text-xl font-black text-slate-900 mb-4 uppercase"><%= t("home.index.process.step_#{i+1}_title") %></h4>
-          <p class="text-slate-500 font-medium px-4">
-            <%= t("home.index.process.step_#{i+1}_desc") %>
-          </p>
         </div>
       <% end %>
     </div>
   </div>
-</div>
+</section>
 
 <!-- Manufacturing Excellence Section (Strength) -->
 <div class="bg-white py-24 relative overflow-hidden">

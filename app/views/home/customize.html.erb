@@ -29,37 +29,42 @@
 
 
 
-  <!-- 2. Production Capacity -->
-  <section class="py-24 relative overflow-hidden">
+  <!-- 3. Customization Process -->
+  <section class="relative py-24 overflow-hidden">
     <div class="absolute inset-0 z-0">
-      <%= image_tag "factory5.jpg", class: "w-full h-full object-cover", alt: "Production Capacity" %>
-      <div class="absolute inset-0 bg-white/90"></div>
+      <%= image_tag "factory4.jpg", class: "w-full h-full object-cover", alt: "Production Process" %>
+      <div class="absolute inset-0 bg-slate-900/80"></div>
     </div>
 
     <div class="container mx-auto px-6 relative z-10">
       <div class="text-center mb-16">
-        <h2 class="text-3xl md:text-4xl font-black text-slate-900 mb-4"><%= t('home.customize.production.title') %></h2>
-        <p class="text-slate-500 max-w-2xl mx-auto"><%= t('home.customize.production.subtitle') %></p>
+        <h2 class="text-3xl md:text-4xl font-black text-white mb-4"><%= t('home.customize.process.title') %></h2>
+        <p class="text-white/60 max-w-2xl mx-auto"><%= t('home.customize.process.subtitle') %></p>
       </div>
 
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 mb-16">
-        <% [
-             { label: 'scale', value: '10,000㎡', img: 'factory1.jpg' },
-             { label: 'equipment', value: '50+ Units', img: 'factory2.jpg' },
-             { label: 'team', value: '200+ People', img: 'worker2.jpg' },
-             { label: 'qc', value: '100% Passed', img: 'factory3.jpg' }
-           ].each do |stat| %>
-          <div class="relative group h-64 overflow-hidden rounded-3xl shadow-lg">
-            <%= image_tag stat[:img], class: "w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" %>
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6">
-              <span class="text-primary text-2xl font-black mb-1"><%= stat[:value] %></span>
-              <span class="text-white/80 text-xs font-bold uppercase tracking-widest"><%= t("home.customize.production.items.#{stat[:label]}") %></span>
+      <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-6">
+        <% (1..6).each do |i| %>
+          <div class="relative group">
+            <div class="bg-white/10 backdrop-blur-md p-8 rounded-3xl border border-white/10 hover:bg-primary/20 transition-all duration-500 h-full text-center">
+              <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-black text-xl mx-auto mb-6 shadow-lg shadow-primary/30">
+                <%= i %>
+              </div>
+              <h3 class="text-white font-bold text-lg mb-2"><%= t("home.customize.process.step#{i}") %></h3>
+              <p class="text-white/50 text-sm"><%= t("home.customize.process.step#{i}_desc") %></p>
             </div>
+            <% if i < 6 %>
+              <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 z-20">
+                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </div>
+            <% end %>
           </div>
         <% end %>
       </div>
     </div>
   </section>
+
 
 
 
@@ -95,41 +100,6 @@
 
 
 
-  <!-- 3. Customization Process -->
-  <section class="relative py-24 overflow-hidden">
-    <div class="absolute inset-0 z-0">
-      <%= image_tag "factory4.jpg", class: "w-full h-full object-cover", alt: "Production Process" %>
-      <div class="absolute inset-0 bg-slate-900/80"></div>
-    </div>
-    
-    <div class="container mx-auto px-6 relative z-10">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl md:text-4xl font-black text-white mb-4"><%= t('home.customize.process.title') %></h2>
-        <p class="text-white/60 max-w-2xl mx-auto"><%= t('home.customize.process.subtitle') %></p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-6">
-        <% (1..6).each do |i| %>
-          <div class="relative group">
-            <div class="bg-white/10 backdrop-blur-md p-8 rounded-3xl border border-white/10 hover:bg-primary/20 transition-all duration-500 h-full text-center">
-              <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-black text-xl mx-auto mb-6 shadow-lg shadow-primary/30">
-                <%= i %>
-              </div>
-              <h3 class="text-white font-bold text-lg mb-2"><%= t("home.customize.process.step#{i}") %></h3>
-              <p class="text-white/50 text-sm"><%= t("home.customize.process.step#{i}_desc") %></p>
-            </div>
-            <% if i < 6 %>
-              <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 z-20">
-                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"></path>
-                </svg>
-              </div>
-            <% end %>
-          </div>
-        <% end %>
-      </div>
-    </div>
-  </section>
 
 
 

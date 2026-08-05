@@ -97,6 +97,13 @@ zh-CN:
         title: "准备好开启您的定制项目了吗？"
         subtitle: "我们的专家团队已准备就绪，为您提供从设计到批量生产的全方位支持。"
         cta: "立即咨询"
+    faqs:
+      title: "常见问题解答"
+      subtitle: "在这里您可以找到有关我们产品和服务的常见问题解答"
+      no_questions: "暂无问题"
+      more_questions_title: "还有其他问题吗？"
+      more_questions_desc: "如果您没能找到想要的答案，请随时联系我们的客户服务团队。"
+    contact_us: "联系我们"
 
     about:
       title: "关于我们"

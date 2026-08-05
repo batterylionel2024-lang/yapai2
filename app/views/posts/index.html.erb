@@ -28,33 +28,140 @@
 %>
 
 <!-- Hero -->
-<section class="relative py-24 md:py-40 flex items-center overflow-hidden mb-20 bg-slate-900">
-  <!-- Dynamic Background Effect -->
-  <div class="absolute inset-0 z-0 overflow-hidden">
-    <!-- Animated Gradient -->
-    <div class="absolute inset-0 bg-gradient-to-br from-primary/30 via-slate-900 to-secondary/20 animate-gradient-slow bg-[length:400%_400%]"></div>
-    
-    <!-- Animated Blobs -->
-    <div class="absolute top-0 -left-4 w-72 h-72 bg-primary rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-[blob_7s_infinite]"></div>
-    <div class="absolute top-0 -right-4 w-72 h-72 bg-secondary rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-[blob_7s_infinite_2s]"></div>
-    <div class="absolute -bottom-8 left-20 w-72 h-72 bg-primary rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-[blob_7s_infinite_4s]"></div>
-    
-    <!-- Overlay Grid/Pattern -->
-    <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150"></div>
-    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-slate-900/50 to-slate-900"></div>
-  </div>
+<section class="hero-section mb-20">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-beam"></div>
   
   <div class="max-w-screen-xl mx-auto px-6 relative z-10 w-full">
     <div class="text-center">
-      <div class="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white text-xs font-black tracking-[0.2em] uppercase mb-6">
-        <span class="w-2 h-2 bg-secondary rounded-full mr-3 animate-pulse"></span>
-        <%= hero_subtitle %>
+      <div class="hero-badge">
+        <div class="hero-badge-dot"></div>
+        <span class="hero-badge-text"><%= hero_subtitle %></span>
       </div>
-      <h1 class="text-4xl md:text-5xl font-black text-white tracking-tight mb-4"><%= hero_title %></h1>
-      <p class="text-slate-300 text-lg max-w-2xl mx-auto font-medium"><%= hero_description %></p>
+      <h1 class="hero-title">
+        <%= hero_title %>
+        <span>Yapai Insights</span>
+      </h1>
+      <div class="hero-divider"></div>
+      <p class="hero-subtitle">
+        <%= hero_description %>
+      </p>
     </div>
   </div>
 </section>
+
+<style>
+  .hero-section {
+    position: relative;
+    padding: 4rem 2rem;
+    background: #0f172a; /* Slate 900 */
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .hero-bg-pattern {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 30px 30px;
+  }
+
+  /* Moving light beam effect */
+  .hero-beam {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.03),
+      rgba(255, 255, 255, 0.08),
+      rgba(255, 255, 255, 0.03),
+      transparent
+    );
+    transform: skewX(-25deg);
+    animation: beam-swipe 8s infinite linear;
+  }
+
+  @keyframes beam-swipe {
+    0% { left: -100%; }
+    30% { left: 100%; }
+    100% { left: 100%; }
+  }
+
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(20px); }
+    to { opacity:1; transform:translateY(0); }
+  }
+  @keyframes pulse-soft {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.7; }
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 999px;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.8s ease out;
+  }
+
+  .hero-badge-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--color-secondary, #f97316); /* Logo Orange */
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--color-secondary, #f97316);
+    animation: pulse-soft 2s infinite;
+  }
+
+  .hero-badge-text {
+    color: rgba(255,255,255,0.8);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .hero-title {
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--color-primary, #22c55e); /* Yapai Logo Green */
+    margin-bottom: 1rem;
+    animation: fadeUp 0.8s 0.1s ease out both;
+  }
+
+  .hero-title span {
+    display: block;
+    color: var(--color-secondary, #f97316); /* Yapai Logo Orange */
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+    color: #94a3b8; /* Slate 400 */
+    line-height: 1.6;
+    max-width: 500px;
+    margin: 0 auto;
+    animation: fadeUp 0.8s 0.2s ease out both;
+  }
+
+  .hero-divider {
+    width: 40px;
+    height: 2px;
+    background: rgba(255,255,255,0.2);
+    margin: 1.5rem auto;
+    border-radius: 1px;
+    animation: fadeUp 0.8s 0.3s ease out both;
+  }
+</style>
 
 <!-- Posts grid -->
 <div class="py-20 bg-white">

@@ -38,7 +38,7 @@ en:
     huawei: "Huawei"
     xiaomi: "Xiaomi"
     vivo: "vivo"
-    factory: "Factory"
+    factory: "About us"
     customize: "OEM Service"
     about_us: "About us"
     contact_us: "Contact us"
@@ -63,12 +63,12 @@ en:
       subtitle: "LATEST ARTICLES"
       description: "Battery manufacturing insights, industry trends, and professional guides from our team in Guangdong."
     enterprise_updates:
-      title: "Enterprise Updates"
-      subtitle: "COMPANY NEWS"
+      title: "Company Updates"
+      subtitle: "NEWS"
       description: "Stay updated with Yapai's latest corporate developments, factory expansions, and milestones."
     industry_news:
-      title: "Industry News"
-      subtitle: "MARKET TRENDS"
+      title: "Industry Information"
+      subtitle: "NEWS"
       description: "Professional analysis and insights into the global mobile phone battery industry and technology trends."
     all: "All News"
   categories:
@@ -196,7 +196,7 @@ en:
         subtitle: "Our expert team is ready to help you with everything from design to mass production."
         cta: "Inquire Now"
     faqs:
-      title: "FAQs"
+      title: "FAQ's"
       subtitle: "Find answers to common questions about our products and services"
       no_questions: "No FAQs available"
       more_questions_title: "Still have questions?"
@@ -244,16 +244,6 @@ en:
         brand_9: "OnePlus"
         brand_10: "Infinix"
       core_products_title: "Our Core Battery Series"
-      process_title: "Easy Ordering Process"
-      process:
-        step_1_title: "Inquiry"
-        step_1_desc: "Send us your battery models and quantity requirements."
-        step_2_title: "Quote"
-        step_2_desc: "Receive a professional quote and technical details within 1 hour."
-        step_3_title: "Customization"
-        step_3_desc: "Free brand logo customization for your bulk orders."
-        step_4_title: "Fast Delivery"
-        step_4_desc: "Fast delivery within 72 hours for standard orders."
       strength_title: "Our Strengths"
       strengths:
         no_moq:
