@@ -156,7 +156,7 @@ class Admin::SkusController < Admin::BaseController
       # 定义表头
       base_headers = ["ID", "Position", "Name", "Channel", "Category Path", "Price", "Status", "Image URLs"]
       battery_headers = [
-        "Item", "Item No.", "Product Name", "Material", "Specification", 
+        "Product Name", "Material", "Specification", 
         "Voltage", "Capacity", "Battery Cell", "Compatible Brands", 
         "Color/Appearance", "MOQ", "Sample Time", "Production Lead Time", "Packing", 
         "Carton Size", "Gross Weight"
@@ -182,7 +182,7 @@ class Admin::SkusController < Admin::BaseController
         ]
         
         battery_row = [
-          sku.item, sku.item_no, sku.product_name, sku.material, sku.specification,
+          sku.product_name, sku.material, sku.specification,
           sku.head_circumference, sku.brim_length, sku.closure_type, sku.embroidery_print,
           sku.color, sku.moq, sku.sample_time, sku.production_lead_time, sku.packing,
           sku.carton_size, sku.gross_weight
@@ -217,7 +217,7 @@ class Admin::SkusController < Admin::BaseController
   def sku_params
     params.require(:sku).permit(
       :name, :category_id, :price, :status, :position,
-      :item, :item_no, :product_name, :material, :specification, :head_circumference,
+      :product_name, :material, :specification, :head_circumference,
       :brim_length, :closure_type, :embroidery_print, :color, :moq, :sample_time,
       :production_lead_time, :packing, :carton_size, :gross_weight,
       :standard_features,

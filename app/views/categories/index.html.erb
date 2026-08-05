@@ -81,173 +81,177 @@
     .cb-img, .cb-char, .cb-eyebrow, .cb-desc, .cb-line { animation: none !important; opacity: 1 !important; width: 6rem; transform: none !important; filter: none !important; }
   }
 </style>
-<div class="max-w-screen-xl mx-auto px-4 py-8">
-  <!-- 顶部 Banner:各类帽子展示 + 动态标题 -->
-  <section class="relative mb-10 h-52 sm:h-64 md:h-80 rounded-[2rem] overflow-hidden shadow-xl shadow-slate-900/20">
-    <div class="absolute inset-0 overflow-hidden">
-      <%= image_tag banner_image, alt: heading, loading: "eager", class: "cb-img w-full h-full object-cover" %>
-    </div>
-    <div class="absolute inset-0 bg-gradient-to-r from-slate-950/85 via-slate-900/55 to-slate-900/20"></div>
-    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent"></div>
-    <div class="relative z-10 h-full flex flex-col justify-center px-7 sm:px-10 md:px-16 max-w-3xl">
-      <span class="cb-eyebrow inline-flex items-center gap-2 self-start px-3 py-1 rounded-full bg-white/15 backdrop-blur-md border border-white/20 text-white text-[10px] font-black tracking-[0.2em] uppercase mb-3">
-        <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
-        Yapai Battery Collection
-      </span>
-      <h1 class="cb-title text-3xl sm:text-5xl md:text-6xl font-black text-white tracking-tight leading-none drop-shadow-[0_2px_20px_rgba(0,0,0,0.5)]">
-        <% heading.to_s.chars.each_with_index do |ch, i| %><span class="cb-char" style="animation-delay: <%= (0.15 + i * 0.04).round(3) %>s"><%= ch == ' ' ? raw('&nbsp;') : ch %></span><% end %>
-      </h1>
-      <div class="cb-line h-1 bg-primary rounded-full mt-4 md:mt-5"></div>
-      <p class="cb-desc text-white/80 text-xs sm:text-sm mt-3 md:mt-4 font-medium max-w-xl line-clamp-2 drop-shadow"><%= description %></p>
-    </div>
-  </section>
-
-  <!-- 顶部面包屑导航 (取代分类树) -->
-  <div class="mb-10 sticky top-20 z-10">
-    <nav class="flex items-center overflow-x-auto whitespace-nowrap py-4 px-6 bg-white/80 backdrop-blur-md rounded-2xl border border-slate-200/50 shadow-sm transition-all duration-300">
-      <div class="flex items-center space-x-2 text-sm font-bold">
-        <%= link_to channel_path(@kind), class: "flex items-center text-slate-400 hover:text-slate-900 transition-all group" do %>
-          <span class="p-1.5 rounded-lg bg-slate-100 group-hover:bg-slate-50 transition-colors mr-2">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
-          </span>
-          <span class="tracking-tight uppercase text-[10px]"><%= t('categories.all_products', default: '全部产品') %></span>
-        <% end %>
-        
-        <% if @current_category %>
-          <% @current_category.ancestors_and_self.each do |cat| %>
-            <div class="flex items-center space-x-2">
-              <svg class="w-4 h-4 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-              <%= link_to channel_path(@kind, category_id: cat), class: "px-3 py-1.5 rounded-xl transition-all #{cat == @current_category ? 'bg-primary text-white shadow-lg shadow-primary/30' : 'text-slate-500 hover:bg-slate-100 hover:text-primary'}" do %>
-                <span class="text-xs tracking-wide"><%= cat.localized_name %></span>
-              <% end %>
-            </div>
-          <% end %>
-        <% end %>
-
-        <!-- 动态展示下一级分类 -->
-        <div class="flex items-center space-x-2 border-l border-slate-200 ml-4 pl-4">
-          <svg class="w-4 h-4 text-slate-300 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-          <div class="flex items-center space-x-2">
-            <% if @current_category && @current_category.children.any? %>
-              <% @current_category.children.each do |child| %>
-                <%= link_to channel_path(@kind, category_id: child), class: "px-3 py-1.5 bg-slate-50 border border-slate-100 rounded-xl text-[11px] font-bold text-slate-600 hover:border-slate-400 hover:text-slate-900 hover:bg-white hover:shadow-sm transition-all" do %>
-                  <%= child.localized_name %>
-                <% end %>
-              <% end %>
-            <% elsif @current_category.nil? %>
-              <% @categories.each do |cat| %>
-                <%= link_to channel_path(@kind, category_id: cat), class: "px-3 py-1.5 bg-slate-50 border border-slate-100 rounded-xl text-[11px] font-bold text-slate-600 hover:border-slate-400 hover:text-slate-900 hover:bg-white hover:shadow-sm transition-all" do %>
-                  <%= cat.localized_name %>
-                <% end %>
-              <% end %>
-            <% else %>
-              <span class="text-[10px] font-bold text-slate-300 uppercase tracking-widest italic"><%= t('categories.end_of_line', default: '叶子分类 / End of Line') %></span>
-            <% end %>
-          </div>
-        </div>
+<div class="max-w-screen-2xl mx-auto px-4 py-8">
+    <!-- 顶部 Banner:各类帽子展示 + 动态标题 -->
+    <section class="relative mb-10 h-52 sm:h-64 md:h-80 rounded-[2rem] overflow-hidden shadow-xl shadow-slate-900/20">
+      <div class="absolute inset-0 overflow-hidden">
+        <%= image_tag banner_image, alt: heading, loading: "eager", class: "cb-img w-full h-full object-cover" %>
       </div>
-    </nav>
-  </div>
+      <div class="absolute inset-0 bg-gradient-to-r from-slate-950/85 via-slate-900/55 to-slate-900/20"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent"></div>
+      <div class="relative z-10 h-full flex flex-col justify-center px-7 sm:px-10 md:px-16 max-w-3xl">
+        <span class="cb-eyebrow inline-flex items-center gap-2 self-start px-3 py-1 rounded-full bg-white/15 backdrop-blur-md border border-white/20 text-white text-[10px] font-black tracking-[0.2em] uppercase mb-3">
+          <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+          Yapai Battery Collection
+        </span>
+        <h1 class="cb-title text-3xl sm:text-5xl md:text-6xl font-black text-white tracking-tight leading-none drop-shadow-[0_2px_20px_rgba(0,0,0,0.5)]">
+          <% heading.to_s.chars.each_with_index do |ch, i| %><span class="cb-char" style="animation-delay: <%= (0.15 + i * 0.04).round(3) %>s"><%= ch == ' ' ? raw('&nbsp;') : ch %></span><% end %>
+        </h1>
+        <div class="cb-line h-1 bg-primary rounded-full mt-4 md:mt-5"></div>
+        <p class="cb-desc text-white/80 text-xs sm:text-sm mt-3 md:mt-4 font-medium max-w-xl line-clamp-2 drop-shadow"><%= description %></p>
+      </div>
+    </section>
 
-  <!-- SKU 列表 网格系统 -->
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-5 gap-6 mb-16">
-    <% if @skus.any? %>
-      <% @skus.each do |sku| %>
-        <div class="group bg-white rounded-3xl border border-slate-100 overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-primary/10 hover:border-primary/20 transition-all duration-500 flex flex-col h-full relative">
-          <!-- 强制正方形图片容器 -->
-          <div class="aspect-square bg-slate-50 relative overflow-hidden flex-shrink-0">
-            <% if sku.images.attached? %>
-              <% begin %>
-                <%= image_tag sku.sorted_images.first.variant(resize_to_limit: [600, 600], saver: { quality: 85 }), class: "w-full h-full object-contain p-2 group-hover:scale-105 transition-transform duration-700 ease-out", style: "background-color: transparent;" %>
-              <% rescue ArgumentError, ActiveStorage::InvariableError %>
-                <%= image_tag sku.sorted_images.first.variant(:medium), class: "w-full h-full object-contain p-2 group-hover:scale-105 transition-transform duration-700 ease-out", style: "background-color: transparent;" %>
-              <% rescue ActiveStorage::FileNotFoundError %>
-                <div class="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100">
-                  <svg class="w-16 h-16 text-slate-200 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                  <span class="text-[9px] font-black text-slate-300 uppercase tracking-widest text-center px-2">File Lost (Re-upload)</span>
-                </div>
+    <div class="flex flex-col md:flex-row gap-8">
+      <!-- 左侧 sidebar 导航 -->
+      <aside class="md:w-64 flex-shrink-0">
+        <div class="sticky top-20 bg-white p-6 rounded-3xl border border-slate-100 shadow-sm">
+          <h2 class="text-xs font-black text-slate-400 uppercase tracking-widest mb-6">分类浏览</h2>
+          <nav class="space-y-2">
+            <%= link_to channel_path(@kind), class: "flex items-center text-slate-600 hover:text-primary transition-all p-2 rounded-lg hover:bg-primary/5" do %>
+              <span class="text-sm font-bold"><%= t('categories.all_products', default: '全部产品') %></span>
+            <% end %>
+            
+            <% if @current_category %>
+              <% @current_category.ancestors_and_self.each do |cat| %>
+                <%= link_to channel_path(@kind, category_id: cat), class: "flex items-center #{cat == @current_category ? 'text-primary font-black bg-primary/10' : 'text-slate-600 hover:text-primary'} transition-all p-2 rounded-lg hover:bg-primary/5" do %>
+                  <span class="text-sm font-bold"><%= cat.localized_name %></span>
+                <% end %>
               <% end %>
-            <% else %>
-              <div class="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100">
-                <svg class="w-16 h-16 text-slate-200 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                <span class="text-[9px] font-black text-slate-300 uppercase tracking-widest">Image Coming Soon</span>
+            <% end %>
+            
+            <% if @current_category && @current_category.children.any? %>
+              <div class="pt-4 mt-4 border-t border-slate-100">
+                <h3 class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3">子分类</h3>
+                <% @current_category.children.each do |child| %>
+                  <%= link_to channel_path(@kind, category_id: child), class: "block text-sm font-medium text-slate-500 hover:text-primary py-1" do %>
+                    <%= child.localized_name %>
+                  <% end %>
+                <% end %>
+              </div>
+            <% elsif @current_category.nil? %>
+              <div class="pt-4 mt-4 border-t border-slate-100">
+                <h3 class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3">主要分类</h3>
+                <% @categories.each do |cat| %>
+                  <%= link_to channel_path(@kind, category_id: cat), class: "block text-sm font-medium text-slate-500 hover:text-primary py-1" do %>
+                    <%= cat.localized_name %>
+                  <% end %>
+                <% end %>
               </div>
             <% end %>
-            
-            <!-- 遮罩与操作 -->
-            <div class="absolute inset-0 bg-dark/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center backdrop-blur-[2px] p-6 text-center">
-              <span class="text-[10px] text-white/80 font-bold tracking-widest uppercase mb-4 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">YAPAI PREMIUM</span>
-              <%= link_to sku_path(sku), class: "bg-white text-dark px-6 py-2 rounded-full font-black text-[10px] tracking-widest uppercase shadow-xl hover:scale-105 transition-all transform translate-y-4 group-hover:translate-y-0 duration-500" do %>
-                <%= t('categories.view_details', default: '查看详情') %>
-              <% end %>
-            </div>
-
-            <!-- 右上角分类徽章 -->
-            <div class="absolute top-3 right-3">
-              <span class="bg-white/90 backdrop-blur-md px-2 py-1 rounded-lg text-[8px] font-black text-dark shadow-sm border border-slate-100 tracking-tighter">
-                <%= sku.category.localized_name %>
-              </span>
-            </div>
-          </div>
-
-          <!-- 文本内容容器 -->
-          <div class="p-5 flex flex-col flex-grow bg-white">
-            <h3 class="text-sm font-black text-dark mb-3 group-hover:text-primary transition-colors duration-300 line-clamp-1">
-              <%= sku.name %>
-            </h3>
-            
-            <!-- 核心规格预览 -->
-            <div class="grid grid-cols-2 gap-2 mb-4">
-              <% if sku.fabric.present? %>
-                <div class="p-2 rounded-xl bg-slate-50 border border-slate-100 text-center">
-                  <p class="text-[8px] font-black text-slate-400 uppercase mb-0.5"><%= t('skus.fabric', default: '面料') %></p>
-                  <p class="text-[10px] font-black text-slate-700 truncate"><%= sku.fabric %></p>
-                </div>
-              <% end %>
-              <% if sku.closure.present? %>
-                <div class="p-2 rounded-xl bg-primary/10 border border-primary/20 text-center">
-                  <p class="text-[8px] font-black text-primary uppercase mb-0.5"><%= t('skus.closure', default: '尾带') %></p>
-                  <p class="text-[10px] font-black text-primary truncate"><%= sku.closure %></p>
-                </div>
-              <% end %>
-              <% if sku.fabric.blank? && sku.closure.blank? %>
-                <div class="p-2 rounded-xl bg-slate-50 border border-slate-100 text-center col-span-2">
-                  <p class="text-[8px] font-black text-slate-400 uppercase mb-0.5"><%= t('skus.name', default: '名称') %></p>
-                  <p class="text-[10px] font-black text-slate-700 truncate"><%= sku.name %></p>
-                </div>
-              <% end %>
-            </div>
-
-            <!-- 底部引导 -->
-            <div class="mt-auto pt-4 border-t border-slate-50 flex items-center justify-between">
-              <span class="flex items-center space-x-1">
-                <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
-                <span class="text-[8px] font-black text-slate-400 uppercase tracking-widest">In Production</span>
-              </span>
-              <%= link_to sku_path(sku), class: "text-primary" do %>
-                <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-              <% end %>
-            </div>
-          </div>
-          
-          <%= link_to "", sku_path(sku), class: "absolute inset-0 z-0" %>
+          </nav>
         </div>
-      <% end %>
-    <% else %>
-      <div class="col-span-full py-24 text-center">
-        <div class="bg-white rounded-[2rem] p-16 border border-slate-100 shadow-sm flex flex-col items-center">
-          <div class="w-20 h-20 bg-slate-50 rounded-full flex items-center justify-center mb-6">
-            <svg class="w-10 h-10 text-slate-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
-          </div>
-          <h2 class="text-xl font-black text-slate-900 mb-2"><%= t('categories.no_skus_title', default: '暂无可用型号') %></h2>
-          <p class="text-slate-500 font-medium"><%= t('categories.no_skus_desc', default: '该分类正在不断完善中，请稍后再来查看我们的最新发布。') %></p>
-        </div>
-      </div>
-    <% end %>
-  </div>
+      </aside>
 
-  <!-- 分页控件样式美化 -->
-  <div class="flex justify-center mb-16">
-    <%= paginate @skus %>
+      <!-- SKU 列表 网格系统 -->
+      <main class="flex-1">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-16">
+          <% if @skus.any? %>
+            <% @skus.each do |sku| %>
+              <div class="group bg-white rounded-3xl border border-slate-100 overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-primary/10 hover:border-primary/20 transition-all duration-500 flex flex-col h-full relative">
+                <!-- 强制正方形图片容器 -->
+                <div class="aspect-square bg-slate-50 relative overflow-hidden flex-shrink-0">
+                  <% if sku.images.attached? %>
+                    <% begin %>
+                      <%= image_tag sku.sorted_images.first.variant(resize_to_limit: [600, 600], saver: { quality: 85 }), class: "w-full h-full object-contain p-2 group-hover:scale-105 transition-transform duration-700 ease-out", style: "background-color: transparent;" %>
+                    <% rescue ArgumentError, ActiveStorage::InvariableError %>
+                      <%= image_tag sku.sorted_images.first.variant(:medium), class: "w-full h-full object-contain p-2 group-hover:scale-105 transition-transform duration-700 ease-out", style: "background-color: transparent;" %>
+                    <% rescue ActiveStorage::FileNotFoundError %>
+                      <div class="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100">
+                        <svg class="w-16 h-16 text-slate-200 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        <span class="text-[9px] font-black text-slate-300 uppercase tracking-widest text-center px-2">File Lost (Re-upload)</span>
+                      </div>
+                    <% end %>
+                  <% else %>
+                    <div class="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100">
+                      <svg class="w-16 h-16 text-slate-200 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                      <span class="text-[9px] font-black text-slate-300 uppercase tracking-widest">Image Coming Soon</span>
+                    </div>
+                  <% end %>
+                  
+                  <!-- 遮罩与操作 -->
+                  <div class="absolute inset-0 bg-dark/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center backdrop-blur-[2px] p-6 text-center">
+                    <span class="text-[10px] text-white/80 font-bold tracking-widest uppercase mb-4 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">YAPAI PREMIUM</span>
+                    <%= link_to sku_path(sku), class: "bg-white text-dark px-6 py-2 rounded-full font-black text-[10px] tracking-widest uppercase shadow-xl hover:scale-105 transition-all transform translate-y-4 group-hover:translate-y-0 duration-500" do %>
+                      <%= t('categories.view_details', default: '查看详情') %>
+                    <% end %>
+                  </div>
+
+                  <!-- 右上角分类徽章 -->
+                  <div class="absolute top-3 right-3">
+                    <span class="bg-white/90 backdrop-blur-md px-2 py-1 rounded-lg text-[8px] font-black text-dark shadow-sm border border-slate-100 tracking-tighter">
+                      <%= sku.category.localized_name %>
+                    </span>
+                  </div>
+                  
+                  <!-- 添加到订单按钮 -->
+                  <div class="absolute top-3 left-3 z-10">
+                    <button onclick="addToOrder(<%= sku.id %>)" class="bg-blue-600 text-white px-2 py-1 rounded text-[10px] font-bold shadow-md hover:bg-blue-700">
+                      Add
+                    </button>
+                  </div>
+                </div>
+
+                <!-- 文本内容容器 -->
+                <div class="p-5 flex flex-col flex-grow bg-white">
+                  <h3 class="text-sm font-black text-dark mb-3 group-hover:text-primary transition-colors duration-300 line-clamp-1">
+                    <%= sku.name %>
+                  </h3>
+                  
+                  <!-- 核心规格预览 -->
+                  <div class="grid grid-cols-2 gap-2 mb-4">
+                    <% if sku.fabric.present? %>
+                      <div class="p-2 rounded-xl bg-slate-50 border border-slate-100 text-center">
+                        <p class="text-[8px] font-black text-slate-400 uppercase mb-0.5"><%= t('skus.fabric', default: '面料') %></p>
+                        <p class="text-[10px] font-black text-slate-700 truncate"><%= sku.fabric %></p>
+                      </div>
+                    <% end %>
+                    <% if sku.closure.present? %>
+                      <div class="p-2 rounded-xl bg-primary/10 border border-primary/20 text-center">
+                        <p class="text-[8px] font-black text-primary uppercase mb-0.5"><%= t('skus.closure', default: '尾带') %></p>
+                        <p class="text-[10px] font-black text-primary truncate"><%= sku.closure %></p>
+                      </div>
+                    <% end %>
+                    <% if sku.fabric.blank? && sku.closure.blank? %>
+                      <div class="p-2 rounded-xl bg-slate-50 border border-slate-100 text-center col-span-2">
+                        <p class="text-[8px] font-black text-slate-400 uppercase mb-0.5"><%= t('skus.name', default: '名称') %></p>
+                        <p class="text-[10px] font-black text-slate-700 truncate"><%= sku.name %></p>
+                      </div>
+                    <% end %>
+                  </div>
+
+                  <!-- 底部引导 -->
+                  <div class="mt-auto pt-4 border-t border-slate-50 flex items-center justify-between">
+                    <span class="flex items-center space-x-1">
+                      <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
+                      <span class="text-[8px] font-black text-slate-400 uppercase tracking-widest">In Production</span>
+                    </span>
+                    <%= link_to sku_path(sku), class: "text-primary" do %>
+                      <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    <% end %>
+                  </div>
+                </div>
+                
+                <%= link_to "", sku_path(sku), class: "absolute inset-0 z-0" %>
+              </div>
+            <% end %>
+          <% else %>
+            <div class="col-span-full py-24 text-center">
+              <div class="bg-white rounded-[2rem] p-16 border border-slate-100 shadow-sm flex flex-col items-center">
+                <div class="w-20 h-20 bg-slate-50 rounded-full flex items-center justify-center mb-6">
+                  <svg class="w-10 h-10 text-slate-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                </div>
+                <h2 class="text-xl font-black text-slate-900 mb-2"><%= t('categories.no_skus_title', default: '暂无可用型号') %></h2>
+                <p class="text-slate-500 font-medium"><%= t('categories.no_skus_desc', default: '该分类正在不断完善中，请稍后再来查看我们的最新发布。') %></p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        
+        <!-- 分页控件样式美化 -->
+        <div class="flex justify-center mb-16">
+          <%= paginate @skus %>
+        </div>
+      </main>
+    </div>
   </div>
-</div>

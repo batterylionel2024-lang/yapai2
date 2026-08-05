@@ -81,6 +81,16 @@
       <% end %>
     </div>
 
+    <!-- Cart (Moved to bottom right) -->
+    <div class="fixed right-5 bottom-5 z-50">
+        <button onclick="document.getElementById('cartModal').classList.remove('hidden'); loadCart();"
+                class="relative w-16 h-16 rounded-3xl bg-gradient-to-br from-orange-400 to-orange-500 flex items-center justify-center text-white shadow-2xl shadow-orange-500/50 hover:scale-110 hover:rounded-2xl transition-all duration-300 animate-pulse">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+          <!-- Badge -->
+          <span id="cartCountBadge" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold w-6 h-6 flex items-center justify-center rounded-full border-2 border-white hidden">0</span>
+        </button>
+    </div>
+
     <!-- WeChat Popup -->
     <div id="wechatModal"
          class="fixed inset-0 bg-black/50 z-[999] hidden items-center justify-center"
@@ -113,10 +123,103 @@
             box.classList.add("hidden");
             box.classList.remove("flex");
         }
+        
+        function addToOrder(skuId) {
+            fetch('/order/add_item', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content
+              },
+              body: JSON.stringify({ sku_id: skuId })
+            })
+            .then(response => response.json())
+            .then(data => {
+              alert('已添加到订单');
+              updateCartBadge();
+            });
+        }
+
+        function loadCart() {
+          fetch('/order/cart_items')
+            .then(response => response.json())
+            .then(data => {
+              const container = document.getElementById('cartItems');
+              container.innerHTML = data.items.map(item => `
+                <div class="flex justify-between items-center mb-3 p-2 bg-gray-50 rounded-lg">
+                  <span class="font-medium text-sm text-gray-700">${item.name}</span>
+                  <div class="flex items-center gap-2">
+                    <input type="number" value="${item.quantity}" min="1" class="w-16 border rounded p-1 text-center text-sm" onchange="updateCartQuantity(${item.id}, this.value)">
+                    <button onclick="removeFromCart(${item.id})" class="text-red-500 hover:text-red-700 text-sm">删除</button>
+                  </div>
+                </div>
+              `).join('');
+              updateCartBadge(data.items.length);
+            });
+        }
+
+        function updateCartQuantity(skuId, quantity) {
+            fetch('/order/update_item', {
+              method: 'PATCH',
+              headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content
+              },
+              body: JSON.stringify({ sku_id: skuId, quantity: quantity })
+            })
+            .then(response => response.json())
+            .then(data => {
+              loadCart();
+              updateCartBadge();
+            });
+        }
+
+        function removeFromCart(skuId) {
+            fetch('/order/remove_item', {
+              method: 'DELETE',
+              headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content
+              },
+              body: JSON.stringify({ sku_id: skuId })
+            })
+            .then(response => response.json())
+            .then(data => {
+              loadCart();
+              updateCartBadge();
+            });
+        }
+        
+        function updateCartBadge(count) {
+            const badge = document.getElementById('cartCountBadge');
+            if (count === undefined) {
+                fetch('/order/cart_items')
+                .then(response => response.json())
+                .then(data => {
+                    updateCartBadge(data.items.length);
+                });
+                return;
+            }
+            if (count > 0) {
+                badge.innerText = count;
+                badge.classList.remove('hidden');
+            } else {
+                badge.classList.add('hidden');
+            }
+        }
+        
+        // Initial load
+        document.addEventListener('turbo:load', () => {
+            updateCartBadge();
+        });
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCartBadge();
+        });
     </script>
 
     <%= render "layouts/footer" %>
     <%= render "shared/privacy_modal" %>
+    <%= render "shared/cart_modal" %>
 
     <!-- IP Tracking Consent Banner -->
     <div x-data="{ 

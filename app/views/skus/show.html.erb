@@ -128,8 +128,6 @@
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 mb-12">
         <% [
-          { label: t('skus.item', default: 'Item'), value: @sku.item },
-          { label: t('skus.item_no', default: 'Item No.'), value: @sku.item_no },
           { label: t('skus.material', default: 'Material'), value: @sku.material },
           { label: t('skus.specification', default: 'Specification'), value: @sku.specification },
           { label: t('skus.head_circumference', default: 'Voltage'), value: @sku.head_circumference },
@@ -226,6 +224,9 @@
           <%= link_to contact_path, class: "mt-2 block w-full text-center py-3.5 bg-primary hover:bg-primary/90 text-white rounded-xl font-black text-xs tracking-widest uppercase transition-colors shadow-lg shadow-primary/20" do %>
             Send Enquiry
           <% end %>
+          <button onclick="addToOrder(<%= @sku.id %>)" class="mt-2 block w-full text-center py-3.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-black text-xs tracking-widest uppercase transition-colors shadow-lg shadow-blue-500/20">
+            Add to Order
+          </button>
         </div>
       </div>
     </div>

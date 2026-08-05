@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_30_181201) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_05_204200) do
   create_table "a_sku_details", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "net_capacity"
@@ -179,6 +179,26 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_30_181201) do
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false
     t.index ["user_id"], name: "index_operation_logs_on_user_id"
+  end
+
+  create_table "order_items", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.integer "order_id", null: false
+    t.integer "quantity"
+    t.integer "sku_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_order_items_on_order_id"
+    t.index ["sku_id"], name: "index_order_items_on_sku_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "country"
+    t.datetime "created_at", null: false
+    t.string "email"
+    t.string "name"
+    t.string "phone"
+    t.string "status"
+    t.datetime "updated_at", null: false
   end
 
   create_table "partners", force: :cascade do |t|
@@ -479,5 +499,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_30_181201) do
   add_foreign_key "faqs", "faq_categories"
   add_foreign_key "login_logs", "users"
   add_foreign_key "operation_logs", "users"
+  add_foreign_key "order_items", "orders"
+  add_foreign_key "order_items", "skus"
   add_foreign_key "skus", "categories"
 end

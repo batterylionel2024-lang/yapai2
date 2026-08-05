@@ -52,6 +52,7 @@ Rails.application.routes.draw do
       end
     end
     resource :profile, controller: 'profiles', only: [:show, :edit, :update]
+    resources :orders, only: [:index, :show, :destroy, :update]
   end
 
   %w[apple huawei oppo vivo xiaomi custom].each do |kind|
@@ -61,6 +62,12 @@ Rails.application.routes.draw do
   resources :categories, only: [:index, :show]
   resources :skus, only: [:show]
   resources :posts, only: [:index, :show]
+  resource :order, only: [:create] do
+    post :add_item
+    delete :remove_item
+    patch :update_item
+    get :cart_items
+  end
 
   devise_for :users, controllers: {
     sessions: 'users/sessions'

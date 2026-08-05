@@ -1,0 +1,29 @@
+<div class="max-w-screen-xl mx-auto px-4 py-8">
+  <h1 class="text-2xl font-bold mb-4">订单列表</h1>
+  <table class="w-full bg-white border">
+    <thead>
+      <tr>
+        <th class="border p-2">姓名</th>
+        <th class="border p-2">邮箱</th>
+        <th class="border p-2">国家</th>
+        <th class="border p-2">电话</th>
+        <th class="border p-2">操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @orders.each do |order| %>
+        <tr>
+          <td class="border p-2"><%= order.name %></td>
+          <td class="border p-2"><%= order.email %></td>
+          <td class="border p-2"><%= order.country %></td>
+          <td class="border p-2"><%= order.phone %></td>
+          <td class="border p-2">
+            <%= link_to '查看', admin_order_path(order) %>
+            <%= link_to '删除', admin_order_path(order), method: :delete, data: { confirm: '确定删除?' } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= paginate @orders %>
+</div>

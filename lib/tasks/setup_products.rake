@@ -39,15 +39,15 @@ namespace :setup_products do
     puts "Creating SKUs..."
 
     products = [
-      { name: "Baseball Yapai",           name_zh: "棒球帽",     category: cat_a, img: "product_baseball_yapai.png",    item_no: "YP-001", position: 10 },
-      { name: "Flat Bill Yapai",          name_zh: "平沿帽",     category: cat_a, img: "product_flat_bill_yapai.png",   item_no: "YP-002", position: 9 },
-      { name: "Quick Dry Baseball Yapai", name_zh: "速干棒球帽", category: cat_a, img: "product_quick_dry_yapai.png",   item_no: "YP-003", position: 8 },
-      { name: "Trucker Yapai",            name_zh: "卡车帽",     category: cat_a, img: "product_trucker_yapai.png",     item_no: "YP-004", position: 7 },
-      { name: "Bucket Yapai",             name_zh: "渔夫帽",     category: cat_b, img: "product_bucket_yapai.png",      item_no: "YP-005", position: 10 },
-      { name: "Visor Yapai",              name_zh: "遮阳帽",     category: cat_b, img: "product_visor_yapai.png",       item_no: "YP-006", position: 9 },
-      { name: "Kids Yapai",               name_zh: "儿童帽",     category: cat_b, img: "product_kids_yapai.png",        item_no: "YP-007", position: 8 },
-      { name: "Knit Beanie Yapai",        name_zh: "针织毛线帽", category: cat_c, img: "product_knit_beanie_yapai.png", item_no: "YP-008", position: 10 },
-      { name: "Winter Yapais",            name_zh: "冬季帽",     category: cat_c, img: "product_winter_yapais.png",     item_no: "YP-009", position: 9 }
+      { name: "Baseball Yapai",           name_zh: "棒球帽",     category: cat_a, img: "product_baseball_yapai.png",    position: 10 },
+      { name: "Flat Bill Yapai",          name_zh: "平沿帽",     category: cat_a, img: "product_flat_bill_yapai.png",   position: 9 },
+      { name: "Quick Dry Baseball Yapai", name_zh: "速干棒球帽", category: cat_a, img: "product_quick_dry_yapai.png",   position: 8 },
+      { name: "Trucker Yapai",            name_zh: "卡车帽",     category: cat_a, img: "product_trucker_yapai.png",     position: 7 },
+      { name: "Bucket Yapai",             name_zh: "渔夫帽",     category: cat_b, img: "product_bucket_yapai.png",      position: 10 },
+      { name: "Visor Yapai",              name_zh: "遮阳帽",     category: cat_b, img: "product_visor_yapai.png",       position: 9 },
+      { name: "Kids Yapai",               name_zh: "儿童帽",     category: cat_b, img: "product_kids_yapai.png",        position: 8 },
+      { name: "Knit Beanie Yapai",        name_zh: "针织毛线帽", category: cat_c, img: "product_knit_beanie_yapai.png", position: 10 },
+      { name: "Winter Yapais",            name_zh: "冬季帽",     category: cat_c, img: "product_winter_yapais.png",     position: 9 }
     ]
 
     products.each do |p|
@@ -55,7 +55,6 @@ namespace :setup_products do
         category: p[:category],
         name: p[:name],
         product_name: p[:name],
-        item_no: p[:item_no],
         status: "active",
         position: p[:position],
         moq: "100 pcs",

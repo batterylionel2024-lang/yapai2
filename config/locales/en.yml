@@ -83,8 +83,6 @@ en:
     no_skus_desc: "This category is currently being updated. Please check back later for our latest releases."
     contact_us: "Contact Us"
   skus:
-    item: "Item"
-    item_no: "Item No."
     product_name: "Product Name"
     material: "Material"
     specification: "Specification"
