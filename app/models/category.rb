@@ -10,6 +10,7 @@ class Category < ApplicationRecord
   default_scope { order(:position, :id) }
 
   validates :name, presence: true
+  before_validation :generate_slug, if: -> { slug.blank? }
   validates :category_kind, presence: true, inclusion: { in: %w[apple huawei oppo vivo xiaomi custom] }
   validates :slug, presence: true, uniqueness: true, format: { with: /\A[a-z0-9-]+\z/, message: "只能包含小写字母、数字和连字符" }
   
@@ -77,6 +78,11 @@ class Category < ApplicationRecord
   end
 
   private
+
+  def generate_slug
+    return if name.blank?
+    self.slug = name.parameterize
+  end
 
   def clear_cache
     %w[apple huawei oppo vivo xiaomi custom].each do |kind|

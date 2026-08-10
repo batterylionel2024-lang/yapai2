@@ -62,7 +62,7 @@
       <div>
         <%= f.label :image, "分类封面图 (首页显示用)", class: "block text-sm font-medium text-slate-700 mb-2" %>
         <%= f.file_field :image, class: "w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" %>
-        <% if @category.image.attached? %>
+        <% if @category.image.attached? && @category.image.persisted? %>
           <div class="mt-2">
             <%= image_tag @category.image.variant(:thumb), class: "w-32 h-32 object-cover rounded-lg border" %>
           </div>

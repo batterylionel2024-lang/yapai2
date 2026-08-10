@@ -49,9 +49,12 @@
     </div>
       <hr class="my-6 border-white/10 sm:mx-auto lg:my-8" />
         <div class="sm:flex sm:items-center sm:justify-between">
-            <div class="text-sm text-slate-500 sm:text-center">
+            <div class="text-sm text-slate-500 sm:text-center flex items-center justify-center sm:justify-start">
               © <%= @site_config.copyright_year.presence || Time.current.year %> <a href="<%= root_path %>" class="hover:text-white transition-colors"><%= @site_config.name %>™</a>. <%= t('footer.rights_reserved') %>
-              <%= link_to ".", new_user_session_path, class: "text-slate-900/10 hover:text-slate-500 transition-colors ml-1" %>
+              <%= link_to "·", new_user_session_path, class: "text-slate-500 hover:text-white transition-colors ml-2 text-lg font-bold", title: "Admin Login" %>
+              <% if user_signed_in? %>
+                <%= link_to "·", destroy_user_session_path, data: { turbo_method: :delete }, class: "text-slate-500 hover:text-white transition-colors ml-1 text-lg font-bold", title: "Logout" %>
+              <% end %>
             </div>
             <div class="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
                 <%= link_to t('privacy_policy.title'), privacy_path, class: "text-slate-500 hover:text-white text-sm transition-colors" %>
