@@ -104,154 +104,184 @@
 
     <div class="flex flex-col md:flex-row gap-8">
       <!-- 左侧 sidebar 导航 -->
-      <aside class="md:w-64 flex-shrink-0">
+      <aside class="md:w-64 flex-shrink-0" id="categories_sidebar" data-turbo-permanent>
         <div class="sticky top-20 bg-white p-6 rounded-3xl border border-slate-100 shadow-sm">
           <h2 class="text-xs font-black text-slate-400 uppercase tracking-widest mb-6">分类浏览</h2>
           <nav class="space-y-2">
-            <%= link_to channel_path(@kind), class: "flex items-center text-slate-600 hover:text-primary transition-all p-2 rounded-lg hover:bg-primary/5" do %>
-              <span class="text-sm font-bold"><%= t('categories.all_products', default: '全部产品') %></span>
-            <% end %>
-            
-            <% if @current_category %>
-              <% @current_category.ancestors_and_self.each do |cat| %>
-                <%= link_to channel_path(@kind, category_id: cat), class: "flex items-center #{cat == @current_category ? 'text-primary font-black bg-primary/10' : 'text-slate-600 hover:text-primary'} transition-all p-2 rounded-lg hover:bg-primary/5" do %>
-                  <span class="text-sm font-bold"><%= cat.localized_name %></span>
-                <% end %>
+            <div class="space-y-1">
+              <%= link_to channel_path(@kind), data: { turbo_frame: "skus_list" }, class: "flex items-center text-slate-600 hover:text-primary transition-all p-2 rounded-lg hover:bg-primary/5 #{@current_category.nil? ? 'bg-primary/5 text-primary font-black' : ''}" do %>
+                <span class="text-sm font-bold"><%= t('categories.all_products', default: '全部产品') %></span>
               <% end %>
-            <% end %>
-            
-            <% if @current_category && @current_category.children.any? %>
-              <div class="pt-4 mt-4 border-t border-slate-100">
-                <h3 class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3">子分类</h3>
-                <% @current_category.children.each do |child| %>
-                  <%= link_to channel_path(@kind, category_id: child), class: "block text-sm font-medium text-slate-500 hover:text-primary py-1" do %>
-                    <%= child.localized_name %>
-                  <% end %>
-                <% end %>
-              </div>
-            <% elsif @current_category.nil? %>
-              <div class="pt-4 mt-4 border-t border-slate-100">
-                <h3 class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3">主要分类</h3>
-                <% @categories.each do |cat| %>
-                  <%= link_to channel_path(@kind, category_id: cat), class: "block text-sm font-medium text-slate-500 hover:text-primary py-1" do %>
-                    <%= cat.localized_name %>
-                  <% end %>
-                <% end %>
-              </div>
-            <% end %>
+
+              <%
+                def render_category_tree(view_context, categories, current_category, kind, depth = 0)
+                  categories.map do |cat|
+                    is_active = (cat == current_category)
+                    is_ancestor = current_category && current_category.ancestors_and_self.include?(cat)
+                    has_children = cat.children.visible.any?
+                    
+                    view_context.capture do
+              %>
+                      <div class="category-node" 
+                           data-depth="<%= depth %>" 
+                           id="<%= "category_node_#{cat.id}" %>"
+                           x-data="{ expanded: <%= is_ancestor || is_active ? 'true' : 'false' %> }">
+                        
+                        <div class="flex items-center transition-all rounded-lg hover:bg-primary/5 <%= is_active ? 'bg-primary/10' : '' %>">
+                          <%= view_context.link_to view_context.channel_path(kind, category_id: cat), 
+                              data: { turbo_frame: "skus_list" },
+                              class: "flex-grow flex items-center p-2 #{is_active ? 'text-primary font-black' : 'text-slate-600 hover:text-primary'}",
+                              style: "padding-left: #{depth * 1.25 + 0.5}rem;" do %>
+                            <span class="text-sm <%= is_active ? 'font-black' : 'font-bold' %>"><%= cat.localized_name %></span>
+                          <% end %>
+
+                          <% if has_children %>
+                            <button @click="expanded = !expanded" 
+                                    class="p-2 text-slate-400 hover:text-primary transition-transform duration-200"
+                                    :class="{ 'rotate-90': expanded }">
+                              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                              </svg>
+                            </button>
+                          <% end %>
+                        </div>
+                        
+                        <% if has_children %>
+                          <div class="ml-2 space-y-1 mt-1" 
+                               x-show="expanded" 
+                               x-cloak
+                               x-transition:enter="transition ease-out duration-200"
+                               x-transition:enter-start="opacity-0 -translate-y-2"
+                               x-transition:enter-end="opacity-100 translate-y-0"
+                               style="display: none;" 
+                               :style="expanded ? 'display: block;' : 'display: none;'">
+                            <%= render_category_tree(view_context, cat.children.visible, current_category, kind, depth + 1) %>
+                          </div>
+                        <% end %>
+                      </div>
+              <%
+                    end
+                  end.join.html_safe
+                end
+              %>
+
+              <%= render_category_tree(self, @categories, @current_category, @kind) %>
+            </div>
           </nav>
         </div>
       </aside>
 
       <!-- SKU 列表 网格系统 -->
       <main class="flex-1">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-16">
-          <% if @skus.any? %>
-            <% @skus.each do |sku| %>
-              <div class="group bg-white rounded-3xl border border-slate-100 overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-primary/10 hover:border-primary/20 transition-all duration-500 flex flex-col h-full relative">
-                <!-- 强制正方形图片容器 -->
-                <div class="aspect-square bg-slate-50 relative overflow-hidden flex-shrink-0">
-                  <% if sku.images.attached? %>
-                    <% begin %>
-                      <%= image_tag sku.sorted_images.first.variant(resize_to_limit: [600, 600], saver: { quality: 85 }), class: "w-full h-full object-contain p-2 group-hover:scale-105 transition-transform duration-700 ease-out", style: "background-color: transparent;" %>
-                    <% rescue ArgumentError, ActiveStorage::InvariableError %>
-                      <%= image_tag sku.sorted_images.first.variant(:medium), class: "w-full h-full object-contain p-2 group-hover:scale-105 transition-transform duration-700 ease-out", style: "background-color: transparent;" %>
-                    <% rescue ActiveStorage::FileNotFoundError %>
+        <%= turbo_frame_tag "skus_list", class: "block", data: { turbo_action: "advance" } do %>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-16">
+            <% if @skus.any? %>
+              <% @skus.each do |sku| %>
+                <div class="group bg-white rounded-3xl border border-slate-100 overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-primary/10 hover:border-primary/20 transition-all duration-500 flex flex-col h-full relative">
+                  <!-- 强制正方形图片容器 -->
+                  <div class="aspect-square bg-slate-50 relative overflow-hidden flex-shrink-0">
+                    <% if sku.images.attached? %>
+                      <% begin %>
+                        <%= image_tag sku.sorted_images.first.variant(resize_to_limit: [600, 600], saver: { quality: 85 }), class: "w-full h-full object-contain p-2 group-hover:scale-105 transition-transform duration-700 ease-out", style: "background-color: transparent;" %>
+                      <% rescue ArgumentError, ActiveStorage::InvariableError %>
+                        <%= image_tag sku.sorted_images.first.variant(:medium), class: "w-full h-full object-contain p-2 group-hover:scale-105 transition-transform duration-700 ease-out", style: "background-color: transparent;" %>
+                      <% rescue ActiveStorage::FileNotFoundError %>
+                        <div class="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100">
+                          <svg class="w-16 h-16 text-slate-200 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                          <span class="text-[9px] font-black text-slate-300 uppercase tracking-widest text-center px-2">File Lost (Re-upload)</span>
+                        </div>
+                      <% end %>
+                    <% else %>
                       <div class="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100">
                         <svg class="w-16 h-16 text-slate-200 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                        <span class="text-[9px] font-black text-slate-300 uppercase tracking-widest text-center px-2">File Lost (Re-upload)</span>
+                        <span class="text-[9px] font-black text-slate-300 uppercase tracking-widest">Image Coming Soon</span>
                       </div>
                     <% end %>
-                  <% else %>
-                    <div class="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100">
-                      <svg class="w-16 h-16 text-slate-200 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                      <span class="text-[9px] font-black text-slate-300 uppercase tracking-widest">Image Coming Soon</span>
+                    
+                    <!-- 遮罩与操作 -->
+                    <div class="absolute inset-0 bg-dark/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center backdrop-blur-[2px] p-6 text-center">
+                      <span class="text-[10px] text-white/80 font-bold tracking-widest uppercase mb-4 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">YAPAI PREMIUM</span>
+                      <%= link_to sku_path(sku), data: { turbo: false }, class: "bg-white text-dark px-6 py-2 rounded-full font-black text-[10px] tracking-widest uppercase shadow-xl hover:scale-105 transition-all transform translate-y-4 group-hover:translate-y-0 duration-500" do %>
+                        <%= t('categories.view_details', default: '查看详情') %>
+                      <% end %>
                     </div>
-                  <% end %>
-                  
-                  <!-- 遮罩与操作 -->
-                  <div class="absolute inset-0 bg-dark/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center backdrop-blur-[2px] p-6 text-center">
-                    <span class="text-[10px] text-white/80 font-bold tracking-widest uppercase mb-4 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">YAPAI PREMIUM</span>
-                    <%= link_to sku_path(sku), class: "bg-white text-dark px-6 py-2 rounded-full font-black text-[10px] tracking-widest uppercase shadow-xl hover:scale-105 transition-all transform translate-y-4 group-hover:translate-y-0 duration-500" do %>
-                      <%= t('categories.view_details', default: '查看详情') %>
-                    <% end %>
+
+                    <!-- 右上角分类徽章 -->
+                    <div class="absolute top-3 right-3">
+                      <span class="bg-white/90 backdrop-blur-md px-2 py-1 rounded-lg text-[8px] font-black text-dark shadow-sm border border-slate-100 tracking-tighter">
+                        <%= sku.category.localized_name %>
+                      </span>
+                    </div>
+                    
+                    <!-- 添加到订单按钮 -->
+                    <div class="absolute top-3 left-3 z-10">
+                      <button onclick="addToOrder(<%= sku.id %>)" class="px-3 py-1 bg-white/90 backdrop-blur-md text-primary rounded-full shadow-lg hover:bg-primary hover:text-white transition-all duration-300 transform hover:scale-110 group/btn border border-primary/10" title="Add to Order">
+                        <span class="text-[10px] font-black tracking-wider uppercase"><%= t('skus.add_short', default: 'Add') %></span>
+                      </button>
+                    </div>
                   </div>
 
-                  <!-- 右上角分类徽章 -->
-                  <div class="absolute top-3 right-3">
-                    <span class="bg-white/90 backdrop-blur-md px-2 py-1 rounded-lg text-[8px] font-black text-dark shadow-sm border border-slate-100 tracking-tighter">
-                      <%= sku.category.localized_name %>
-                    </span>
+                  <!-- 文本内容容器 -->
+                  <div class="p-5 flex flex-col flex-grow bg-white">
+                    <h3 class="text-sm font-black text-dark mb-3 group-hover:text-primary transition-colors duration-300 line-clamp-1">
+                      <%= sku.name %>
+                    </h3>
+                    
+                    <!-- 核心规格预览 -->
+                    <div class="grid grid-cols-2 gap-2 mb-4">
+                      <% if sku.fabric.present? %>
+                        <div class="p-2 rounded-xl bg-slate-50 border border-slate-100 text-center">
+                          <p class="text-[8px] font-black text-slate-400 uppercase mb-0.5"><%= t('skus.fabric', default: '面料') %></p>
+                          <p class="text-[10px] font-black text-slate-700 truncate"><%= sku.fabric %></p>
+                        </div>
+                      <% end %>
+                      <% if sku.closure.present? %>
+                        <div class="p-2 rounded-xl bg-primary/10 border border-primary/20 text-center">
+                          <p class="text-[8px] font-black text-primary uppercase mb-0.5"><%= t('skus.closure', default: '尾带') %></p>
+                          <p class="text-[10px] font-black text-primary truncate"><%= sku.closure %></p>
+                        </div>
+                      <% end %>
+                      <% if sku.fabric.blank? && sku.closure.blank? %>
+                        <div class="p-2 rounded-xl bg-slate-50 border border-slate-100 text-center col-span-2">
+                          <p class="text-[8px] font-black text-slate-400 uppercase mb-0.5"><%= t('skus.name', default: '名称') %></p>
+                          <p class="text-[10px] font-black text-slate-700 truncate"><%= sku.name %></p>
+                        </div>
+                      <% end %>
+                    </div>
+
+                    <!-- 底部引导 -->
+                    <div class="mt-auto pt-4 border-t border-slate-50 flex items-center justify-between">
+                      <span class="flex items-center space-x-1">
+                        <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
+                        <span class="text-[8px] font-black text-slate-400 uppercase tracking-widest">In Production</span>
+                      </span>
+                      <%= link_to sku_path(sku), data: { turbo: false }, class: "text-primary" do %>
+                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                      <% end %>
+                    </div>
                   </div>
                   
-                  <!-- 添加到订单按钮 -->
-                  <div class="absolute top-3 left-3 z-10">
-                    <button onclick="addToOrder(<%= sku.id %>)" class="bg-blue-600 text-white px-2 py-1 rounded text-[10px] font-bold shadow-md hover:bg-blue-700">
-                      Add
-                    </button>
-                  </div>
+                  <%= link_to "", sku_path(sku), data: { turbo: false }, class: "absolute inset-0 z-0" %>
                 </div>
-
-                <!-- 文本内容容器 -->
-                <div class="p-5 flex flex-col flex-grow bg-white">
-                  <h3 class="text-sm font-black text-dark mb-3 group-hover:text-primary transition-colors duration-300 line-clamp-1">
-                    <%= sku.name %>
-                  </h3>
-                  
-                  <!-- 核心规格预览 -->
-                  <div class="grid grid-cols-2 gap-2 mb-4">
-                    <% if sku.fabric.present? %>
-                      <div class="p-2 rounded-xl bg-slate-50 border border-slate-100 text-center">
-                        <p class="text-[8px] font-black text-slate-400 uppercase mb-0.5"><%= t('skus.fabric', default: '面料') %></p>
-                        <p class="text-[10px] font-black text-slate-700 truncate"><%= sku.fabric %></p>
-                      </div>
-                    <% end %>
-                    <% if sku.closure.present? %>
-                      <div class="p-2 rounded-xl bg-primary/10 border border-primary/20 text-center">
-                        <p class="text-[8px] font-black text-primary uppercase mb-0.5"><%= t('skus.closure', default: '尾带') %></p>
-                        <p class="text-[10px] font-black text-primary truncate"><%= sku.closure %></p>
-                      </div>
-                    <% end %>
-                    <% if sku.fabric.blank? && sku.closure.blank? %>
-                      <div class="p-2 rounded-xl bg-slate-50 border border-slate-100 text-center col-span-2">
-                        <p class="text-[8px] font-black text-slate-400 uppercase mb-0.5"><%= t('skus.name', default: '名称') %></p>
-                        <p class="text-[10px] font-black text-slate-700 truncate"><%= sku.name %></p>
-                      </div>
-                    <% end %>
+              <% end %>
+            <% else %>
+              <div class="col-span-full py-24 text-center">
+                <div class="bg-white rounded-[2rem] p-16 border border-slate-100 shadow-sm flex flex-col items-center">
+                  <div class="w-20 h-20 bg-slate-50 rounded-full flex items-center justify-center mb-6">
+                    <svg class="w-10 h-10 text-slate-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
                   </div>
-
-                  <!-- 底部引导 -->
-                  <div class="mt-auto pt-4 border-t border-slate-50 flex items-center justify-between">
-                    <span class="flex items-center space-x-1">
-                      <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
-                      <span class="text-[8px] font-black text-slate-400 uppercase tracking-widest">In Production</span>
-                    </span>
-                    <%= link_to sku_path(sku), class: "text-primary" do %>
-                      <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                    <% end %>
-                  </div>
+                  <h2 class="text-xl font-black text-slate-900 mb-2"><%= t('categories.no_skus_title', default: '暂无可用型号') %></h2>
+                  <p class="text-slate-500 font-medium"><%= t('categories.no_skus_desc', default: '该分类正在不断完善中，请稍后再来查看我们的最新发布。') %></p>
                 </div>
-                
-                <%= link_to "", sku_path(sku), class: "absolute inset-0 z-0" %>
               </div>
             <% end %>
-          <% else %>
-            <div class="col-span-full py-24 text-center">
-              <div class="bg-white rounded-[2rem] p-16 border border-slate-100 shadow-sm flex flex-col items-center">
-                <div class="w-20 h-20 bg-slate-50 rounded-full flex items-center justify-center mb-6">
-                  <svg class="w-10 h-10 text-slate-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
-                </div>
-                <h2 class="text-xl font-black text-slate-900 mb-2"><%= t('categories.no_skus_title', default: '暂无可用型号') %></h2>
-                <p class="text-slate-500 font-medium"><%= t('categories.no_skus_desc', default: '该分类正在不断完善中，请稍后再来查看我们的最新发布。') %></p>
-              </div>
-            </div>
-          <% end %>
-        </div>
-        
-        <!-- 分页控件样式美化 -->
-        <div class="flex justify-center mb-16">
-          <%= paginate @skus %>
-        </div>
+          </div>
+          
+          <!-- 分页控件样式美化 -->
+          <div class="flex justify-center mb-16">
+            <%= paginate @skus %>
+          </div>
+        <% end %>
       </main>
     </div>
   </div>

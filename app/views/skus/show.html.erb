@@ -154,10 +154,10 @@
       <!-- 操作区域 -->
       <div class="mt-auto space-y-4">
         <div class="grid grid-cols-1 gap-4">
-          <%= link_to contact_path, class: "w-full inline-flex justify-center items-center px-10 py-5 bg-primary hover:bg-primary/90 text-white rounded-[1.5rem] font-black text-sm tracking-widest uppercase transition-all duration-300 shadow-2xl shadow-primary/30 group" do %>
-            <span><%= t('skus.get_quote') %></span>
-            <svg class="w-5 h-5 ml-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-          <% end %>
+          <button onclick="addToOrder(<%= @sku.id %>)" class="w-full inline-flex justify-center items-center px-10 py-5 bg-primary hover:bg-primary/90 text-white rounded-[1.5rem] font-black text-sm tracking-widest uppercase transition-all duration-300 shadow-2xl shadow-primary/30 group">
+            <span><%= t('skus.add_to_order') %></span>
+            <svg class="w-5 h-5 ml-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"></path></svg>
+          </button>
         </div>
         <p class="text-[9px] text-slate-400 text-center sm:text-left font-bold uppercase tracking-tighter">
           <%= t('skus.spec_notice') %>
@@ -224,9 +224,6 @@
           <%= link_to contact_path, class: "mt-2 block w-full text-center py-3.5 bg-primary hover:bg-primary/90 text-white rounded-xl font-black text-xs tracking-widest uppercase transition-colors shadow-lg shadow-primary/20" do %>
             Send Enquiry
           <% end %>
-          <button onclick="addToOrder(<%= @sku.id %>)" class="mt-2 block w-full text-center py-3.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-black text-xs tracking-widest uppercase transition-colors shadow-lg shadow-blue-500/20">
-            Add to Order
-          </button>
         </div>
       </div>
     </div>

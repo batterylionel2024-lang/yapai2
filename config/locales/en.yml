@@ -98,6 +98,8 @@ en:
     carton_size: "Carton Size"
     gross_weight: "Gross Weight"
     features: "Detailed Description"
+    add_to_order: "ADD TO ORDER"
+    add_short: "Add"
     get_quote: "Get Professional Quote"
     download_manual: "Download Manual"
     download_spec_sheet: "Download Spec Sheet"

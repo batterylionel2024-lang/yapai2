@@ -66,7 +66,14 @@ class Category < ApplicationRecord
   end
 
   def localized_name
-    name
+    case I18n.locale.to_sym
+    when :en
+      name
+    when :"zh-CN", :zh
+      name_zh.presence || name
+    else
+      name_zh.presence || name
+    end
   end
 
   private
