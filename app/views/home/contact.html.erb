@@ -11,7 +11,7 @@
     .hero-section {
         position: relative;
         padding: 4rem 2rem;
-        background: #0f172a; /* Slate 900 */
+        background: #14a84e; /* Logo Green */
         overflow: hidden;
         text-align: center;
     }
@@ -19,34 +19,10 @@
     .hero-bg-pattern {
         position: absolute;
         inset: 0;
-        background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+        background-image: radial-gradient(rgba(255,255,255,0.15) 1px, transparent 1px);
         background-size: 30px 30px;
     }
 
-    /* Moving light beam effect */
-    .hero-beam {
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-            90deg,
-            transparent,
-            rgba(255, 255, 255, 0.03),
-            rgba(255, 255, 255, 0.08),
-            rgba(255, 255, 255, 0.03),
-            transparent
-        );
-        transform: skewX(-25deg);
-        animation: beam-swipe 8s infinite linear;
-    }
-
-    @keyframes beam-swipe {
-        0% { left: -100%; }
-        30% { left: 100%; }
-        100% { left: 100%; }
-    }
 
     .hero-content {
         position: relative;
@@ -60,8 +36,8 @@
         align-items: center;
         gap: 8px;
         padding: 6px 16px;
-        background: rgba(255,255,255,0.05);
-        border: 1px solid rgba(255,255,255,0.1);
+        background: rgba(255,255,255,0.2);
+        border: 1px solid rgba(255,255,255,0.3);
         border-radius: 999px;
         margin-bottom: 1.5rem;
         animation: fadeUp 0.8s ease out;
@@ -70,14 +46,15 @@
     .hero-badge-dot {
         width: 6px;
         height: 6px;
-        background: var(--color-secondary); /* Match Logo Orange */
+        background: #fff; /* White dot */
         border-radius: 50%;
-        box-shadow: 0 0 10px var(--color-secondary);
+        box-shadow: 0 0 10px #fff;
         animation: pulse-soft 2s infinite;
     }
 
     .hero-badge-text {
-        color: rgba(255,255,255,0.8);
+        color: #fff;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.1);
         font-size: 11px;
         font-weight: 700;
         letter-spacing: 0.15em;
@@ -89,19 +66,20 @@
         font-weight: 900;
         line-height: 1.1;
         letter-spacing: -0.02em;
-        color: var(--color-primary); /* Yapai Logo Green */
+        color: #fff; /* White title */
+        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
         margin-bottom: 1rem;
         animation: fadeUp 0.8s 0.1s ease out both;
     }
 
     .hero-title span {
         display: block;
-        color: var(--color-secondary); /* Yapai Logo Orange */
+        color: rgba(255,255,255,0.9);
     }
 
     .hero-subtitle {
         font-size: 1rem;
-        color: #94a3b8; /* Slate 400 */
+        color: rgba(255,255,255,0.85); /* Light subtitle */
         line-height: 1.6;
         max-width: 500px;
         margin: 0 auto;
@@ -111,7 +89,7 @@
     .hero-divider {
         width: 40px;
         height: 2px;
-        background: rgba(255,255,255,0.2);
+        background: rgba(255,255,255,0.4);
         margin: 1.5rem auto;
         border-radius: 1px;
         animation: fadeUp 0.8s 0.3s ease out both;
@@ -120,7 +98,6 @@
 
 <div class="hero-section">
   <div class="hero-bg-pattern"></div>
-  <div class="hero-beam"></div>
 
   <div class="hero-content">
     <div class="hero-badge">
