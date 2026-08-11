@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  has_many :login_logs, dependent: :destroy
+  has_many :operation_logs, dependent: :destroy
+
   after_commit :clear_dashboard_cache
 
   # Include default devise modules. Others available are:

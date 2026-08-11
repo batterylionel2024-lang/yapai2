@@ -81,14 +81,38 @@
       <% end %>
     </div>
 
-    <!-- Cart (Moved to bottom right) -->
-    <div class="fixed right-5 bottom-5 z-50">
+    <!-- Cart (Enhanced Battery Factory Style) -->
+    <div class="fixed right-6 bottom-6 z-50 group">
         <button onclick="document.getElementById('cartModal').classList.remove('hidden'); loadCart();"
-                class="relative w-16 h-16 rounded-3xl bg-gradient-to-br from-orange-400 to-orange-500 flex items-center justify-center text-white shadow-2xl shadow-orange-500/50 hover:scale-110 hover:rounded-2xl transition-all duration-300 animate-pulse">
-          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-          <!-- Badge -->
-          <span id="cartCountBadge" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold w-6 h-6 flex items-center justify-center rounded-full border-2 border-white hidden">0</span>
+                class="relative flex flex-col items-center justify-center w-20 h-20 bg-slate-900 text-white rounded-2xl shadow-[0_20px_50px_-15px_rgba(0,0,0,0.3)] hover:shadow-orange-500/40 transition-all duration-500 hover:-translate-y-2 active:scale-95 group overflow-hidden border border-white/10">
+          
+          <!-- Background Glow Effect -->
+          <div class="absolute inset-0 bg-gradient-to-br from-orange-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          
+          <!-- Battery "Tip" Decoration -->
+          <div class="absolute top-0 left-1/2 -translate-x-1/2 w-6 h-1.5 bg-gradient-to-r from-orange-400 to-orange-600 rounded-b-md shadow-sm"></div>
+
+          <!-- Icon & Badge Container -->
+          <div class="relative z-10 mb-1 mt-1">
+            <svg class="w-8 h-8 text-orange-500 group-hover:text-orange-400 transition-colors duration-300 drop-shadow-[0_0_8px_rgba(249,115,22,0.4)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+            </svg>
+            
+            <!-- Animated Badge -->
+            <span id="cartCountBadge" class="absolute -top-2 -right-3 bg-red-600 text-white text-[11px] font-black w-6 h-6 flex items-center justify-center rounded-full border-2 border-slate-900 shadow-lg transform group-hover:scale-110 transition-transform hidden">0</span>
+          </div>
+
+          <!-- Label -->
+          <span class="relative z-10 text-[10px] font-black uppercase tracking-wider text-slate-400 group-hover:text-white transition-colors duration-300">
+            Inquiry
+          </span>
+
+          <!-- Floating Particles / Glow Animation -->
+          <div class="absolute bottom-0 left-0 w-full h-1 bg-orange-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
         </button>
+        
+        <!-- Pulse effect for attention -->
+        <div class="absolute -inset-1 bg-orange-500 rounded-2xl opacity-20 group-hover:opacity-0 animate-pulse -z-10"></div>
     </div>
 
     <!-- WeChat Popup -->
@@ -135,9 +159,42 @@
             })
             .then(response => response.json())
             .then(data => {
-              alert('已添加到订单');
+              showToast('Success', 'Added to Inquiry List');
               updateCartBadge();
             });
+        }
+
+        function showToast(title, message) {
+            // Create toast element if it doesn't exist
+            let toast = document.getElementById('yapaiToast');
+            if (!toast) {
+                toast = document.createElement('div');
+                toast.id = 'yapaiToast';
+                toast.className = 'fixed top-24 right-5 z-[100] transform transition-all duration-500 translate-x-full';
+                document.body.appendChild(toast);
+            }
+            
+            toast.innerHTML = `
+                <div class="bg-slate-900 border-l-4 border-orange-500 text-white px-6 py-4 rounded-xl shadow-2xl flex items-center gap-4 min-w-[300px]">
+                    <div class="bg-orange-500/20 p-2 rounded-lg">
+                        <svg class="w-6 h-6 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <p class="font-bold text-sm">${title}</p>
+                        <p class="text-xs text-slate-400">${message}</p>
+                    </div>
+                </div>
+            `;
+            
+            // Show
+            setTimeout(() => toast.classList.remove('translate-x-full'), 100);
+            
+            // Hide
+            setTimeout(() => {
+                toast.classList.add('translate-x-full');
+            }, 3000);
         }
 
         function loadCart() {
@@ -150,7 +207,7 @@
                   <span class="font-medium text-sm text-gray-700">${item.name}</span>
                   <div class="flex items-center gap-2">
                     <input type="number" value="${item.quantity}" min="1" class="w-16 border rounded p-1 text-center text-sm" onchange="updateCartQuantity(${item.id}, this.value)">
-                    <button onclick="removeFromCart(${item.id})" class="text-red-500 hover:text-red-700 text-sm">删除</button>
+                    <button onclick="removeFromCart(${item.id})" class="text-red-500 hover:text-red-700 text-sm">Remove</button>
                   </div>
                 </div>
               `).join('');

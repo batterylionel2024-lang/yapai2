@@ -1,22 +1,30 @@
 <div id="cartModal" class="fixed inset-0 bg-black/50 z-[999] hidden flex items-center justify-center backdrop-blur-sm p-4" onclick="this.classList.add('hidden')">
   <div class="bg-white rounded-3xl p-8 shadow-2xl w-full max-w-6xl border border-orange-100 h-[85vh] flex flex-col md:flex-row gap-8" onclick="event.stopPropagation()">
-    <!-- 左侧：购物车内容 (黄金分割 1.6 : 1) -->
+    <!-- 左侧：询价内容 (黄金分割 1.6 : 1) -->
     <div class="flex-[1.6] flex flex-col min-h-0">
-      <h2 class="text-2xl font-bold mb-6 text-gray-800 shrink-0">您的订单购物车</h2>
-      <div id="cartItems" class="overflow-y-auto pr-2 flex-grow min-h-[200px]">
+      <h2 class="text-2xl font-bold mb-6 text-gray-800 shrink-0 flex items-center gap-2">
+        <svg class="w-8 h-8 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
+        我的询价清单 (Inquiry Cart)
+      </h2>
+      <div id="cartItems" class="overflow-y-auto pr-2 flex-grow min-h-[200px] custom-scrollbar">
         <%# Items will be rendered here by JS %>
       </div>
     </div>
     
     <!-- 右侧：表单 (黄金分割 1 : 1.6) -->
     <div class="flex-[1] shrink-0 border-t md:border-t-0 md:border-l pt-6 md:pt-0 md:pl-8 flex flex-col">
-      <h3 class="text-lg font-bold mb-4 text-gray-700">填写您的订单信息</h3>
+      <h3 class="text-lg font-bold mb-4 text-gray-700 flex items-center gap-2">
+        <svg class="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+        填写您的询价信息
+      </h3>
       <%= form_with url: order_path, method: :post, id: "orderForm", class: "space-y-4" do |f| %>
-        <%= f.text_field :name, placeholder: "姓名 (Name)", class: "w-full border-2 border-gray-200 p-3 rounded-xl focus:border-orange-500 focus:ring-orange-500 transition", required: true %>
-        <%= f.text_field :country, placeholder: "国家 (Country)", class: "w-full border-2 border-gray-200 p-3 rounded-xl focus:border-orange-500 focus:ring-orange-500 transition", required: true %>
-        <%= f.text_field :phone, placeholder: "联系电话 (Phone)", class: "w-full border-2 border-gray-200 p-3 rounded-xl focus:border-orange-500 focus:ring-orange-500 transition", required: true %>
-        <%= f.email_field :email, placeholder: "邮箱 (Email)", class: "w-full border-2 border-gray-200 p-3 rounded-xl focus:border-orange-500 focus:ring-orange-500 transition", required: true %>
-        <%= f.submit "提交订单 (Submit Order)", class: "w-full bg-orange-500 hover:bg-orange-600 text-white p-4 rounded-xl font-bold text-lg shadow-lg shadow-orange-500/30 transition-all hover:scale-[1.02]" %>
+        <%= f.text_field :name, placeholder: "您的姓名 (Your Name)", class: "w-full border-2 border-gray-100 p-4 rounded-xl focus:border-orange-500 focus:ring-orange-500 transition-all bg-gray-50", required: true %>
+        <%= f.text_field :country, placeholder: "国家 (Country)", class: "w-full border-2 border-gray-100 p-4 rounded-xl focus:border-orange-500 focus:ring-orange-500 transition-all bg-gray-50", required: true %>
+        <%= f.text_field :phone, placeholder: "联系电话/WhatsApp (Phone/WhatsApp)", class: "w-full border-2 border-gray-100 p-4 rounded-xl focus:border-orange-500 focus:ring-orange-500 transition-all bg-gray-50", required: true %>
+        <%= f.email_field :email, placeholder: "邮箱 (Email Address)", class: "w-full border-2 border-gray-100 p-4 rounded-xl focus:border-orange-500 focus:ring-orange-500 transition-all bg-gray-50", required: true %>
+        <div class="pt-4">
+          <%= f.submit "获取专业报价 (Get Professional Quote)", class: "w-full bg-slate-900 hover:bg-orange-600 text-white p-5 rounded-xl font-bold text-lg shadow-xl shadow-slate-900/20 transition-all hover:scale-[1.02] cursor-pointer" %>
+        </div>
       <% end %>
     </div>
   </div>
