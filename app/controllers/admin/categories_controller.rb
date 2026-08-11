@@ -51,6 +51,6 @@ class Admin::CategoriesController < Admin::BaseController
   end
 
   def category_params
-    params.require(:category).permit(:name, :slug, :parent_id, :category_kind, :hidden, :position, :featured, :featured_position, :image, :meta_title, :meta_description, :meta_keywords)
+    params.require(:category).permit(:name, :slug, :parent_id, :category_kind, :hidden, :position, :featured, :featured_position, :image, :meta_title, :meta_description, :meta_keywords, :keywords)
   end
 end

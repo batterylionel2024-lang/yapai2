@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_05_204200) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_11_161447) do
   create_table "a_sku_details", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "net_capacity"
@@ -106,6 +106,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_05_204200) do
     t.boolean "featured", default: false
     t.integer "featured_position", default: 0
     t.boolean "hidden", default: false, null: false
+    t.string "keywords"
     t.text "meta_description"
     t.string "meta_keywords"
     t.string "meta_title"

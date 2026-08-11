@@ -10,6 +10,7 @@ class Category < ApplicationRecord
   default_scope { order(:position, :id) }
 
   validates :name, presence: true
+  validates :keywords, length: { maximum: 255 }
   before_validation :generate_slug, if: -> { slug.blank? }
   validates :category_kind, presence: true, inclusion: { in: %w[apple huawei oppo vivo xiaomi samsung transsion custom] }
   validates :slug, presence: true, uniqueness: true, format: { with: /\A[a-z0-9-]+\z/, message: "只能包含小写字母、数字和连字符" }
