@@ -1,0 +1,58 @@
+<%= form_with(model: [:admin, home_product], local: true, class: "space-y-6") do |f| %>
+  <% if home_product.errors.any? %>
+    <div class="bg-red-50 border-l-4 border-red-400 p-4 mb-6">
+      <div class="flex">
+        <div class="ml-3">
+          <p class="text-sm text-red-700">
+            <%= pluralize(home_product.errors.count, "error") %> prohibited this product from being saved:
+          </p>
+          <ul class="list-disc list-inside text-sm text-red-600 mt-2">
+            <% home_product.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="md:col-span-2">
+        <%= f.label :title, "产品标题", class: "block text-sm font-medium text-slate-700 mb-1" %>
+        <%= f.text_field :title, class: "w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-primary focus:border-primary", placeholder: "例如: For iPhone Battery" %>
+      </div>
+
+      <div>
+        <%= f.label :row, "显示行数", class: "block text-sm font-medium text-slate-700 mb-1" %>
+        <%= f.select :row, [[ "第一行 (顺时针)", 1 ], [ "第二行 (逆时针)", 2 ]], {}, class: "w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-primary focus:border-primary" %>
+      </div>
+
+      <div>
+        <%= f.label :position, "排序位置", class: "block text-sm font-medium text-slate-700 mb-1" %>
+        <%= f.number_field :position, class: "w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-primary focus:border-primary", placeholder: "数字越小越靠前" %>
+      </div>
+
+      <div class="md:col-span-2">
+        <%= f.label :image, "展示图片", class: "block text-sm font-medium text-slate-700 mb-1" %>
+        <% if home_product.image.attached? %>
+          <div class="mb-3">
+            <%= image_tag home_product.image, class: "h-32 w-32 object-cover rounded-lg border border-slate-200" %>
+          </div>
+        <% end %>
+        <%= f.file_field :image, class: "block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-primary/10 file:text-primary hover:file:bg-primary/20" %>
+        <p class="mt-2 text-xs text-slate-400">推荐尺寸: 224x256px (w:56, h:64 Tailwind units)</p>
+      </div>
+
+      <div class="flex items-center mt-2">
+        <%= f.check_box :active, class: "h-4 w-4 text-primary border-slate-300 rounded focus:ring-primary" %>
+        <%= f.label :active, "启用显示", class: "ml-2 block text-sm text-slate-700" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex justify-end gap-3">
+    <%= link_to "取消", admin_home_products_path, class: "px-6 py-2 border border-slate-300 text-slate-700 font-medium rounded-lg hover:bg-slate-50 transition-colors" %>
+    <%= f.submit "保存产品", class: "px-6 py-2 bg-primary text-white font-medium rounded-lg hover:bg-primary/90 transition-colors shadow-sm" %>
+  </div>
+<% end %>

@@ -1,0 +1,48 @@
+<% content_for :admin_title, "首页轮播产品管理" %>
+
+<div class="flex justify-between items-center mb-6">
+  <p class="text-slate-500 text-sm">管理首页 "OUR PRODUCT CATALOG" 模块的两行轮播内容。</p>
+  <%= link_to "新增产品", new_admin_home_product_path, class: "px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors shadow-sm text-sm font-medium" %>
+</div>
+
+<div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+  <table class="w-full text-left border-collapse">
+    <thead>
+      <tr class="bg-slate-50 border-b border-slate-200">
+        <th class="px-6 py-4 text-xs font-black uppercase tracking-widest text-slate-500">预览</th>
+        <th class="px-6 py-4 text-xs font-black uppercase tracking-widest text-slate-500">标题</th>
+        <th class="px-6 py-4 text-xs font-black uppercase tracking-widest text-slate-500">行数</th>
+        <th class="px-6 py-4 text-xs font-black uppercase tracking-widest text-slate-500">排序</th>
+        <th class="px-6 py-4 text-xs font-black uppercase tracking-widest text-slate-500">状态</th>
+        <th class="px-6 py-4 text-xs font-black uppercase tracking-widest text-slate-500 text-right">操作</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-slate-100">
+      <% @home_products.each do |hp| %>
+        <tr class="hover:bg-slate-50/50 transition-colors">
+          <td class="px-6 py-4">
+            <% if hp.image.attached? %>
+              <%= image_tag hp.image, class: "h-12 w-12 object-cover rounded-lg border" %>
+            <% else %>
+              <div class="h-12 w-12 bg-slate-100 rounded-lg flex items-center justify-center text-[10px] text-slate-400">无图</div>
+            <% end %>
+          </td>
+          <td class="px-6 py-4 font-bold text-slate-700"><%= hp.title %></td>
+          <td class="px-6 py-4 text-sm">第 <%= hp.row %> 行</td>
+          <td class="px-6 py-4 text-sm"><%= hp.position %></td>
+          <td class="px-6 py-4">
+            <% if hp.active? %>
+              <span class="px-2 py-1 bg-green-100 text-green-700 text-[10px] font-black uppercase rounded-full">已启用</span>
+            <% else %>
+              <span class="px-2 py-1 bg-slate-100 text-slate-500 text-[10px] font-black uppercase rounded-full">已禁用</span>
+            <% end %>
+          </td>
+          <td class="px-6 py-4 text-right space-x-3 text-sm">
+            <%= link_to "编辑", edit_admin_home_product_path(hp), class: "text-primary hover:underline" %>
+            <%= link_to "删除", admin_home_product_path(hp), data: { turbo_method: :delete, turbo_confirm: "确定要删除吗？" }, class: "text-red-500 hover:underline" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

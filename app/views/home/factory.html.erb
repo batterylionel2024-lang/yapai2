@@ -5,65 +5,72 @@
 <div class="bg-slate-50 min-h-screen overflow-x-hidden">
 
   <!-- Hero Section -->
-  <div class="relative bg-[#14a84e] py-36 sm:py-44 overflow-hidden">
+  <div class="relative bg-slate-900 py-36 sm:py-44 overflow-hidden">
     <div class="absolute inset-0">
-      <%= image_tag "factory1.jpg", class: "w-full h-full object-cover opacity-20" %>
-      <div class="absolute inset-0 bg-[#14a84e]/80"></div>
+      <%= image_tag "factory1.jpg", class: "w-full h-full object-cover opacity-30" %>
+      <div class="absolute inset-0 bg-gradient-to-br from-slate-900/90 via-slate-900/40 to-primary/20"></div>
     </div>
     <div class="relative max-w-7xl mx-auto px-6 lg:px-8 text-center">
       <div class="reveal-hero flex flex-col items-center">
-        <p class="text-white/90 font-bold tracking-[0.2em] uppercase text-xs mb-4 px-4 py-1 bg-white/20 backdrop-blur-md rounded-full border border-white/30">Professional Battery Manufacturer</p>
-        <h1 class="text-5xl font-black tracking-tight text-white sm:text-7xl mb-6 leading-tight drop-shadow-md">
-          About <span class="text-white">Yapai</span>
+        <p class="text-white/90 font-bold tracking-[0.2em] uppercase text-xs mb-4 px-4 py-1 bg-white/10 backdrop-blur-md rounded-full border border-white/20">
+          Professional Battery Manufacturer
+        </p>
+        <h1 class="text-5xl font-black tracking-tight text-white sm:text-7xl mb-6 leading-tight drop-shadow-2xl">
+          About <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-emerald-400">Yapai</span>
         </h1>
-        <p class="text-xl leading-8 text-white max-w-2xl font-medium drop-shadow-sm">
-          Yapai Battery Factory is a professional mobile phone battery manufacturer headquartered in Guangdong, China, with its production plant located in Dongguan. The company focuses on the R&D, production, and global export of replacement batteries for smartphones.        </p>
+        <p class="text-xl leading-8 text-slate-300 max-w-2xl font-medium drop-shadow-sm">
+          Yapai Battery Factory is a professional mobile phone battery manufacturer headquartered in Guangdong, China, with its production plant located in Dongguan. The company focuses on the R&D, production, and global export of replacement batteries for smartphones.
+        </p>
       </div>
     </div>
+    <!-- Decorative elements -->
+    <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-primary/20 rounded-full blur-[100px] animate-pulse"></div>
+    <div class="absolute -top-24 -left-24 w-72 h-72 bg-emerald-500/10 rounded-full blur-[80px]"></div>
   </div>
 
   <!-- ===== MARQUEE PHOTO STRIP ===== -->
-  <div class="bg-slate-900 py-6 overflow-hidden">
-    <div class="flex gap-4" style="animation: marquee-strip 28s linear infinite; width: max-content;">
+  <div class="bg-slate-900 py-8 overflow-hidden relative z-10 -mt-10 rounded-t-[3rem] shadow-[0_-20px_50px_rgba(0,0,0,0.1)]">
+    <div class="flex gap-6" style="animation: marquee-strip 28s linear infinite; width: max-content;">
       <% 2.times do %>
-        <%= image_tag "factory1.jpg", class: "h-48 w-80 object-cover rounded-xl flex-shrink-0" %>
-        <%= image_tag "factory2.jpg", class: "h-48 w-80 object-cover rounded-xl flex-shrink-0" %>
-        <%= image_tag "factory3.jpg", class: "h-48 w-80 object-cover rounded-xl flex-shrink-0" %>
-        <%= image_tag "factory4.jpg", class: "h-48 w-80 object-cover rounded-xl flex-shrink-0" %>
-        <%= image_tag "factory5.jpg", class: "h-48 w-80 object-cover rounded-xl flex-shrink-0" %>
+        <%= image_tag "factory1.jpg", class: "h-56 w-80 object-cover rounded-2xl flex-shrink-0 shadow-lg border border-white/5" %>
+        <%= image_tag "factory2.jpg", class: "h-56 w-80 object-cover rounded-2xl flex-shrink-0 shadow-lg border border-white/5" %>
+        <%= image_tag "factory3.jpg", class: "h-56 w-80 object-cover rounded-2xl flex-shrink-0 shadow-lg border border-white/5" %>
+        <%= image_tag "factory4.jpg", class: "h-56 w-80 object-cover rounded-2xl flex-shrink-0 shadow-lg border border-white/5" %>
+        <%= image_tag "factory5.jpg", class: "h-56 w-80 object-cover rounded-2xl flex-shrink-0 shadow-lg border border-white/5" %>
       <% end %>
     </div>
   </div>
 
   <!-- ===== ANIMATED STATS ===== -->
-  <div class="bg-primary py-16">
+  <div class="bg-slate-900 py-20 border-t border-white/5">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
         <div class="reveal-stat">
           <div class="text-5xl font-black text-white mb-2"><span class="counter" data-target="20">0</span>+</div>
-          <div class="text-primary-foreground/80 text-sm font-semibold uppercase tracking-widest">Years Experience</div>
+          <div class="text-white/70 text-sm font-semibold uppercase tracking-widest">Years Experience</div>
         </div>
         <div class="reveal-stat">
           <div class="text-5xl font-black text-white mb-2"><span class="counter" data-target="200">0</span>+</div>
-          <div class="text-primary-foreground/80 text-sm font-semibold uppercase tracking-widest">Skilled Workers</div>
+          <div class="text-white/70 text-sm font-semibold uppercase tracking-widest">Skilled Workers</div>
         </div>
         <div class="reveal-stat">
           <div class="text-5xl font-black text-white mb-2"><span class="counter" data-target="30">0</span>+</div>
-          <div class="text-primary-foreground/80 text-sm font-semibold uppercase tracking-widest">Countries Served</div>
+          <div class="text-white/70 text-sm font-semibold uppercase tracking-widest">Countries Served</div>
         </div>
         <div class="reveal-stat">
           <div class="text-5xl font-black text-white mb-2"><span class="counter" data-target="5000000">0</span>+</div>
-          <div class="text-primary-foreground/80 text-sm font-semibold uppercase tracking-widest">Battery Packs Per Year</div>
+          <div class="text-white/70 text-sm font-semibold uppercase tracking-widest">Battery Packs Per Year</div>
         </div>
       </div>
     </div>
   </div>
 
   <!-- ===== MANUFACTURING EXCELLENCE ===== -->
-  <div class="relative bg-slate-900 py-24 sm:py-32 overflow-hidden">
+  <div class="relative bg-slate-900 py-24 sm:py-32 overflow-hidden -mt-1">
     <div class="absolute inset-0 opacity-20">
       <%= image_tag "factory4.jpg", class: "w-full h-full object-cover" %>
     </div>
+    <div class="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-slate-900 to-transparent"></div>
     <div class="relative mx-auto max-w-7xl px-6 lg:px-8">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         <div class="reveal-left">
@@ -79,19 +86,19 @@
           </div>
           <div class="grid grid-cols-2 gap-4 mt-8">
             <div class="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition-all">
-              <div class="text-primary font-bold text-3xl mb-1">20+</div>
+              <div class="text-white font-bold text-3xl mb-1">20+</div>
               <div class="text-sm text-slate-400 uppercase tracking-wider font-semibold">Years Experience</div>
             </div>
             <div class="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition-all">
-              <div class="text-secondary font-bold text-3xl mb-1">100%</div>
+              <div class="text-white font-bold text-3xl mb-1">100%</div>
               <div class="text-sm text-slate-400 uppercase tracking-wider font-semibold">Quality Inspected</div>
             </div>
             <div class="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition-all">
-              <div class="text-accent font-bold text-3xl mb-1">30+</div>
+              <div class="text-white font-bold text-3xl mb-1">30+</div>
               <div class="text-sm text-slate-400 uppercase tracking-wider font-semibold">Battery Models</div>
             </div>
             <div class="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition-all">
-              <div class="text-primary font-bold text-3xl mb-1">OEM</div>
+              <div class="text-white font-bold text-3xl mb-1">OEM</div>
               <div class="text-sm text-slate-400 uppercase tracking-wider font-semibold">Custom Branding</div>
             </div>
           </div>
@@ -120,7 +127,7 @@
   </div>
 
   <!-- ===== PRODUCTION AND CUSTOMIZATION CAPABILITIES (from about us) ===== -->
-  <div class="py-24 bg-white overflow-hidden">
+  <div class="py-24 bg-white overflow-hidden relative z-10 -mt-12 rounded-t-[4rem] shadow-[0_-30px_60px_rgba(0,0,0,0.02)]">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
         <div class="lg:col-span-5 space-y-8">
@@ -162,20 +169,20 @@
   </div>
 
   <!-- ===== SECOND MARQUEE (reverse) ===== -->
-  <div class="bg-slate-100 py-6 overflow-hidden">
-    <div class="flex gap-4" style="animation: marquee-strip-reverse 35s linear infinite; width: max-content;">
+  <div class="bg-slate-50 py-12 overflow-hidden border-y border-slate-100">
+    <div class="flex gap-6" style="animation: marquee-strip-reverse 35s linear infinite; width: max-content;">
       <% 2.times do %>
-        <%= image_tag "factory5.jpg", class: "h-40 w-64 object-cover rounded-xl flex-shrink-0" %>
-        <%= image_tag "factory4.jpg", class: "h-40 w-64 object-cover rounded-xl flex-shrink-0" %>
-        <%= image_tag "factory3.jpg", class: "h-40 w-64 object-cover rounded-xl flex-shrink-0" %>
-        <%= image_tag "factory2.jpg", class: "h-40 w-64 object-cover rounded-xl flex-shrink-0" %>
-        <%= image_tag "factory1.jpg", class: "h-40 w-64 object-cover rounded-xl flex-shrink-0" %>
+        <%= image_tag "factory5.jpg", class: "h-44 w-72 object-cover rounded-2xl flex-shrink-0 shadow-md grayscale hover:grayscale-0 transition-all duration-500" %>
+        <%= image_tag "factory4.jpg", class: "h-44 w-72 object-cover rounded-2xl flex-shrink-0 shadow-md grayscale hover:grayscale-0 transition-all duration-500" %>
+        <%= image_tag "factory3.jpg", class: "h-44 w-72 object-cover rounded-2xl flex-shrink-0 shadow-md grayscale hover:grayscale-0 transition-all duration-500" %>
+        <%= image_tag "factory2.jpg", class: "h-44 w-72 object-cover rounded-2xl flex-shrink-0 shadow-md grayscale hover:grayscale-0 transition-all duration-500" %>
+        <%= image_tag "factory1.jpg", class: "h-44 w-72 object-cover rounded-2xl flex-shrink-0 shadow-md grayscale hover:grayscale-0 transition-all duration-500" %>
       <% end %>
     </div>
   </div>
 
   <!-- Featured Products — Carousel (from about us) -->
-  <div class="py-24 bg-slate-50 overflow-hidden">
+  <div class="py-24 bg-slate-50 overflow-hidden relative z-10 -mt-16 rounded-t-[4rem] shadow-[0_-20px_40px_rgba(0,0,0,0.03)] border-t border-slate-100">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="text-center mb-14">
         <h2 class="text-3xl font-black text-slate-900 tracking-tight">Featured Products</h2>
@@ -272,10 +279,11 @@
   </div>
 
   <!-- ===== YAPAI-ABILITIES ===== -->
-  <div class="relative bg-slate-900 py-24 sm:py-32 overflow-hidden">
+  <div class="relative bg-slate-900 py-24 sm:py-32 overflow-hidden -mt-16 z-10 rounded-t-[4rem]">
     <div class="absolute inset-0 opacity-10">
       <%= image_tag "factory5.jpg", class: "w-full h-full object-cover" %>
     </div>
+    <div class="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-black/20 to-transparent"></div>
     <div class="relative mx-auto max-w-7xl px-6 lg:px-8">
       <div class="text-center mb-16 reveal-up">
         <p class="text-primary font-semibold tracking-widest uppercase text-sm mb-3">What We Offer</p>
@@ -311,7 +319,7 @@
 
   <!-- Partners Section (from about us) -->
   <% if @partners.present? %>
-    <div class="py-24 bg-white overflow-hidden border-t border-slate-100">
+    <div class="py-24 bg-white overflow-hidden border-t border-slate-100 relative z-20 -mt-12 rounded-t-[4rem]">
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
         <div class="text-center mb-16 reveal-up">
           <p class="text-primary font-semibold tracking-widest uppercase text-sm mb-3"><%= t('home.about.partners.subtitle') %></p>
@@ -335,9 +343,9 @@
 
 
   <!-- ===== VISIT US / CTA ===== -->
-  <div class="py-24 sm:py-32">
+  <div class="py-24 sm:py-32 bg-white relative z-20 -mt-16 rounded-t-[4rem] shadow-[0_-30px_60px_rgba(0,0,0,0.05)]">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
-      <div class="bg-white border border-slate-100 rounded-3xl overflow-hidden shadow-2xl flex flex-col lg:flex-row reveal-up">
+      <div class="bg-white border border-slate-100 rounded-[3rem] overflow-hidden shadow-2xl flex flex-col lg:flex-row reveal-up">
         <div class="p-12 lg:p-16 lg:w-3/5">
           <p class="text-primary font-semibold tracking-widest uppercase text-sm mb-3">Open Door Policy</p>
           <h2 class="text-3xl font-bold tracking-tight text-slate-900 mb-6">Visit Our Factory</h2>
@@ -385,8 +393,12 @@
     transform: translateY(24px);
     transition: opacity 0.7s ease, transform 0.7s ease;
   }
+  .reveal-hero { transition-delay: 0.1s; }
   .reveal-left { transform: translateX(-32px); }
   .reveal-right { transform: translateX(32px); }
+  .reveal-card:nth-child(1) { transition-delay: 0.1s; }
+  .reveal-card:nth-child(2) { transition-delay: 0.2s; }
+  .reveal-card:nth-child(3) { transition-delay: 0.3s; }
 
   .revealed {
     opacity: 1 !important;

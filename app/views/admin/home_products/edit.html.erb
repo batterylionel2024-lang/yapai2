@@ -1,0 +1,9 @@
+<% content_for :admin_title, "编辑首页轮播产品" %>
+
+<div class="mb-6 flex items-center gap-2 text-sm text-slate-500">
+  <%= link_to "产品列表", admin_home_products_path, class: "hover:text-primary transition-colors" %>
+  <span class="text-slate-300">/</span>
+  <span>编辑产品</span>
+</div>
+
+<%= render "form", home_product: @home_product %>

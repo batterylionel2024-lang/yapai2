@@ -3,6 +3,9 @@ class HomeController < ApplicationController
 
   def index
     @featured_categories = Category.unscoped.where(featured: true).order(featured_position: :asc, id: :desc).with_attached_image
+    @site_config = SiteConfig.get
+    @home_products_1 = HomeProduct.active.row_1.with_attached_image
+    @home_products_2 = HomeProduct.active.row_2.with_attached_image
   end
 
   def all_products

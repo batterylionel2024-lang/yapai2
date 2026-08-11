@@ -23,7 +23,13 @@ class Admin::SiteConfigsController < Admin::BaseController
     params.require(:site_config).permit(
       :name, :meta_title, :meta_keywords, :meta_description,
       :phone, :email, :address, :copyright_year, :statistics_code,
-      :logo, :favicon, :sitemap, :robots
+      :logo, :favicon, :sitemap, :robots,
+      :infra_title, :infra_subtitle,
+      :infra_label_1, :infra_value_1, :infra_image_1,
+      :infra_label_2, :infra_value_2, :infra_image_2,
+      :infra_label_3, :infra_value_3, :infra_image_3,
+      :infra_label_4, :infra_value_4, :infra_image_4,
+      :strength_image
     )
   end
 end

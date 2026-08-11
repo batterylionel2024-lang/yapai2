@@ -46,6 +46,7 @@ Rails.application.routes.draw do
       end
     end
     resource :site_config, only: [:edit, :update]
+    resources :home_products
     resources :users, only: [:index, :edit, :update, :destroy] do
       member do
         patch :promote

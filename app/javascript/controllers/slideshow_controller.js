@@ -55,8 +55,8 @@ export default class extends Controller {
     }
 
     if (this.indicatorTargets[this.index]) {
-      this.indicatorTargets[this.index].classList.remove('bg-white', 'h-10')
-      this.indicatorTargets[this.index].classList.add('bg-white/20', 'h-1')
+      this.indicatorTargets[this.index].classList.remove('bg-white', 'h-10', 'w-1.5')
+      this.indicatorTargets[this.index].classList.add('bg-white/20', 'h-1', 'w-full')
     }
 
     this.index = index
@@ -78,8 +78,8 @@ export default class extends Controller {
     }
 
     if (this.indicatorTargets[this.index]) {
-      this.indicatorTargets[this.index].classList.remove('bg-white/20', 'h-1')
-      this.indicatorTargets[this.index].classList.add('bg-white', 'h-10')
+      this.indicatorTargets[this.index].classList.remove('bg-white/20', 'h-1', 'w-full')
+      this.indicatorTargets[this.index].classList.add('bg-white', 'h-10', 'w-1.5')
     }
 
     if (this.hasCounterTarget) {
