@@ -24,13 +24,13 @@
 
 
     <div class="mb-6">
-      <%= f.label :category_kind, "所属频道 (apple: iPhone Series, huawei: Huawei, oppo: oppo, vivo: vivo, xiaomi: Xiaomi, custom: OEM/ODM)", class: "block text-sm font-medium text-slate-700 mb-2" %>
+      <%= f.label :category_kind, "所属频道 (apple: iPhone Series, huawei: Huawei, oppo: oppo, vivo: vivo, xiaomi: Xiaomi, samsung: Samsung, transsion: Transsion, custom: OEM/ODM)", class: "block text-sm font-medium text-slate-700 mb-2" %>
       <% if @category.parent %>
-        <%= f.select :category_kind, [["iPhone Series (apple)", "apple"], ["Huawei (huawei)", "huawei"], ["oppo (oppo)", "oppo"], ["vivo (vivo)", "vivo"], ["Xiaomi (xiaomi)", "xiaomi"], ["OEM/ODM (custom)", "custom"]], {}, class: "w-full px-4 py-2 border border-slate-300 rounded-lg bg-slate-50 cursor-not-allowed opacity-50", disabled: true %>
+        <%= f.select :category_kind, [["iPhone Series (apple)", "apple"], ["Huawei (huawei)", "huawei"], ["oppo (oppo)", "oppo"], ["vivo (vivo)", "vivo"], ["Xiaomi (xiaomi)", "xiaomi"], ["Samsung (samsung)", "samsung"], ["Transsion (transsion)", "transsion"], ["OEM/ODM (custom)", "custom"]], {}, class: "w-full px-4 py-2 border border-slate-300 rounded-lg bg-slate-50 cursor-not-allowed opacity-50", disabled: true %>
         <%= f.hidden_field :category_kind %>
         <p class="mt-1 text-xs text-slate-500">子分类必须与父分类频道一致</p>
       <% else %>
-        <%= f.select :category_kind, [["iPhone Series (apple)", "apple"], ["Huawei (huawei)", "huawei"], ["oppo (oppo)", "oppo"], ["vivo (vivo)", "vivo"], ["Xiaomi (xiaomi)", "xiaomi"], ["OEM/ODM (custom)", "custom"]], { include_blank: "请选择频道" }, class: "w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" %>
+        <%= f.select :category_kind, [["iPhone Series (apple)", "apple"], ["Huawei (huawei)", "huawei"], ["oppo (oppo)", "oppo"], ["vivo (vivo)", "vivo"], ["Xiaomi (xiaomi)", "xiaomi"], ["Samsung (samsung)", "samsung"], ["Transsion (transsion)", "transsion"], ["OEM/ODM (custom)", "custom"]], { include_blank: "请选择频道" }, class: "w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" %>
       <% end %>
     </div>
 

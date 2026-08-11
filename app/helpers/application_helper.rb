@@ -12,6 +12,8 @@ module ApplicationHelper
     when 'oppo' then oppo_channel_path(options)
     when 'vivo' then vivo_channel_path(options)
     when 'xiaomi' then xiaomi_channel_path(options)
+    when 'samsung' then samsung_channel_path(options)
+    when 'transsion' then transsion_channel_path(options)
     when 'custom' then custom_channel_path(options)
     else categories_path(options)
     end

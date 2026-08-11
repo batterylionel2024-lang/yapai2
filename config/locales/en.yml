@@ -37,6 +37,8 @@ en:
     custom: "OEM/ODM"
     huawei: "Huawei"
     xiaomi: "Xiaomi"
+    samsung: "Samsung"
+    transsion: "Transsion"
     vivo: "vivo"
     factory: "About us"
     customize: "OEM Service"

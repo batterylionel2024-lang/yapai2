@@ -56,10 +56,9 @@
             </button>
           </div>
 
-          <!-- Products Dropdown -->
           <div class="hidden group-hover/products:block md:absolute md:left-0 md:top-full w-full md:w-64 z-50 pt-2 dropdown-container pointer-events-auto">
             <div class="bg-white border border-slate-200 rounded-2xl shadow-2xl overflow-visible backdrop-blur-xl bg-opacity-95 py-2 ring-1 ring-slate-900/5 md:animate-fade-in-up">
-              <% [ 'apple', 'huawei', 'oppo', 'vivo', 'xiaomi', 'custom' ].each do |kind| %>
+              <% [ 'apple', 'huawei', 'oppo', 'vivo', 'xiaomi', 'samsung', 'transsion', 'custom' ].each do |kind| %>
                 <% categories_for_kind(kind).each do |category| %>
                   <%= render 'layouts/navbar_category', category: category, kind: kind, depth: 1 %>
                 <% end %>

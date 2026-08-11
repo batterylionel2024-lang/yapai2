@@ -11,7 +11,7 @@ class Category < ApplicationRecord
 
   validates :name, presence: true
   before_validation :generate_slug, if: -> { slug.blank? }
-  validates :category_kind, presence: true, inclusion: { in: %w[apple huawei oppo vivo xiaomi custom] }
+  validates :category_kind, presence: true, inclusion: { in: %w[apple huawei oppo vivo xiaomi samsung transsion custom] }
   validates :slug, presence: true, uniqueness: true, format: { with: /\A[a-z0-9-]+\z/, message: "只能包含小写字母、数字和连字符" }
   
   scope :visible, -> { where(hidden: false) }
@@ -85,7 +85,7 @@ class Category < ApplicationRecord
   end
 
   def clear_cache
-    %w[apple huawei oppo vivo xiaomi custom].each do |kind|
+    %w[apple huawei oppo vivo xiaomi samsung transsion custom].each do |kind|
       Rails.cache.delete("categories_for_kind_#{kind}")
     end
   end

@@ -55,7 +55,7 @@ Rails.application.routes.draw do
     resources :orders, only: [:index, :show, :destroy, :update]
   end
 
-  %w[apple huawei oppo vivo xiaomi custom].each do |kind|
+  %w[apple huawei oppo vivo xiaomi samsung transsion custom].each do |kind|
     get kind, to: "channels#index", defaults: { kind: kind }, as: "#{kind}_channel"
   end
 
