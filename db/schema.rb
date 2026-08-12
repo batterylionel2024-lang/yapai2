@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_11_161447) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_11_220000) do
   create_table "a_sku_details", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "net_capacity"
@@ -227,6 +227,16 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_11_161447) do
     t.string "copyright_year"
     t.datetime "created_at", null: false
     t.string "email"
+    t.string "infra_label_1"
+    t.string "infra_label_2"
+    t.string "infra_label_3"
+    t.string "infra_label_4"
+    t.string "infra_subtitle"
+    t.string "infra_title"
+    t.string "infra_value_1"
+    t.string "infra_value_2"
+    t.string "infra_value_3"
+    t.string "infra_value_4"
     t.string "meta_description"
     t.string "meta_keywords"
     t.string "meta_title"

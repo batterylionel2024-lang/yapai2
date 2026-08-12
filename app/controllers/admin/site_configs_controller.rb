@@ -29,7 +29,8 @@ class Admin::SiteConfigsController < Admin::BaseController
       :infra_label_2, :infra_value_2, :infra_image_2,
       :infra_label_3, :infra_value_3, :infra_image_3,
       :infra_label_4, :infra_value_4, :infra_image_4,
-      :strength_image
+      :strength_image,
+      factory_images: []
     )
   end
 end

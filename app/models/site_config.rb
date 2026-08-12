@@ -9,6 +9,7 @@ class SiteConfig < ApplicationRecord
   has_one_attached :infra_image_3
   has_one_attached :infra_image_4
   has_one_attached :strength_image
+  has_many_attached :factory_images
 
   def self.get
     first_or_create!(name: "Yapai")

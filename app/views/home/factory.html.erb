@@ -31,12 +31,20 @@
   <!-- ===== MARQUEE PHOTO STRIP ===== -->
   <div class="bg-slate-900 py-8 overflow-hidden relative z-10 -mt-10 rounded-t-[3rem] shadow-[0_-20px_50px_rgba(0,0,0,0.1)]">
     <div class="flex gap-6" style="animation: marquee-strip 28s linear infinite; width: max-content;">
-      <% 2.times do %>
-        <%= image_tag "factory1.jpg", class: "h-56 w-80 object-cover rounded-2xl flex-shrink-0 shadow-lg border border-white/5" %>
-        <%= image_tag "factory2.jpg", class: "h-56 w-80 object-cover rounded-2xl flex-shrink-0 shadow-lg border border-white/5" %>
-        <%= image_tag "factory3.jpg", class: "h-56 w-80 object-cover rounded-2xl flex-shrink-0 shadow-lg border border-white/5" %>
-        <%= image_tag "factory4.jpg", class: "h-56 w-80 object-cover rounded-2xl flex-shrink-0 shadow-lg border border-white/5" %>
-        <%= image_tag "factory5.jpg", class: "h-56 w-80 object-cover rounded-2xl flex-shrink-0 shadow-lg border border-white/5" %>
+      <% if @site_config.factory_images.attached? %>
+        <% 2.times do %>
+          <% @site_config.factory_images.each do |image| %>
+            <%= image_tag image, class: "h-56 w-80 object-cover rounded-2xl flex-shrink-0 shadow-lg border border-white/5" %>
+          <% end %>
+        <% end %>
+      <% else %>
+        <% 2.times do %>
+          <%= image_tag "factory1.jpg", class: "h-56 w-80 object-cover rounded-2xl flex-shrink-0 shadow-lg border border-white/5" %>
+          <%= image_tag "factory2.jpg", class: "h-56 w-80 object-cover rounded-2xl flex-shrink-0 shadow-lg border border-white/5" %>
+          <%= image_tag "factory3.jpg", class: "h-56 w-80 object-cover rounded-2xl flex-shrink-0 shadow-lg border border-white/5" %>
+          <%= image_tag "factory4.jpg", class: "h-56 w-80 object-cover rounded-2xl flex-shrink-0 shadow-lg border border-white/5" %>
+          <%= image_tag "factory5.jpg", class: "h-56 w-80 object-cover rounded-2xl flex-shrink-0 shadow-lg border border-white/5" %>
+        <% end %>
       <% end %>
     </div>
   </div>
