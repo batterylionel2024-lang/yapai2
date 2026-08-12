@@ -100,7 +100,7 @@
 </section>
 
 <!-- ===== YAPAI PRODUCT MARQUEE (Anchor & Overlap) ===== -->
-<div id="marquee" class="relative z-20 -mt-20 bg-white pt-24 pb-16 overflow-hidden rounded-t-[4rem] shadow-[0_-20px_50px_rgba(0,0,0,0.03)] border-t border-slate-100">
+<div id="marquee" class="relative z-20 -mt-20 bg-slate-50 pt-24 pb-16 overflow-hidden rounded-t-[4rem] shadow-[0_-20px_50px_rgba(0,0,0,0.03)] border-t border-slate-100">
   <div class="absolute top-0 left-1/2 -translate-x-1/2 w-px h-24 bg-gradient-to-b from-primary/30 to-transparent"></div>
   <!-- Forward strip -->
   <div class="overflow-hidden mb-4">
@@ -108,11 +108,11 @@
       <% if @home_products_1.any? %>
         <% 2.times do %>
           <% @home_products_1.each do |hp| %>
-            <div class="relative flex-shrink-0 w-56 h-64 rounded-2xl overflow-hidden group cursor-pointer">
+            <div class="relative flex-shrink-0 w-56 h-64 rounded-2xl overflow-hidden group cursor-pointer shadow-md">
               <% if hp.image.attached? %>
                 <%= image_tag hp.image, class: "w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" %>
               <% else %>
-                <div class="w-full h-full bg-slate-100 flex items-center justify-center text-slate-300 italic text-xs"><%= hp.title %></div>
+                <div class="w-full h-full bg-white flex items-center justify-center text-slate-300 italic text-xs"><%= hp.title %></div>
               <% end %>
               <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-100 transition-opacity duration-300 flex items-end p-4">
                 <span class="text-white font-bold text-sm tracking-wide"><%= hp.title %></span>
@@ -123,7 +123,7 @@
       <% else %>
         <% 2.times do %>
           <% [["iphone.webp","For iPhone Battery"],["vivo.webp","For Vivo Battery"],["oppo.webp","For Oppo Battery"],["huawei.webp","For Huawei Battery"],["xiaomi.webp","For Xiaomi Battery"]].each do |img, label| %>
-            <div class="relative flex-shrink-0 w-56 h-64 rounded-2xl overflow-hidden group cursor-pointer">
+            <div class="relative flex-shrink-0 w-56 h-64 rounded-2xl overflow-hidden group cursor-pointer shadow-md">
               <%= image_tag img, class: "w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" %>
               <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-100 transition-opacity duration-300 flex items-end p-4">
                 <span class="text-white font-bold text-sm tracking-wide"><%= label %></span>
@@ -140,11 +140,11 @@
       <% if @home_products_2.any? %>
         <% 2.times do %>
           <% @home_products_2.each do |hp| %>
-            <div class="relative flex-shrink-0 w-56 h-64 rounded-2xl overflow-hidden group cursor-pointer">
+            <div class="relative flex-shrink-0 w-56 h-64 rounded-2xl overflow-hidden group cursor-pointer shadow-md">
               <% if hp.image.attached? %>
                 <%= image_tag hp.image, class: "w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" %>
               <% else %>
-                <div class="w-full h-full bg-slate-100 flex items-center justify-center text-slate-300 italic text-xs"><%= hp.title %></div>
+                <div class="w-full h-full bg-white flex items-center justify-center text-slate-300 italic text-xs"><%= hp.title %></div>
               <% end %>
               <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-100 transition-opacity duration-300 flex items-end p-4">
                 <span class="text-white font-bold text-sm tracking-wide"><%= hp.title %></span>
@@ -155,7 +155,7 @@
       <% else %>
         <% 2.times do %>
           <% [["huawei.webp","For Huawei Battery"],["xiaomi.webp","For Xiaomi Battery"],["iphone.webp","For iPhone Battery"],["vivo.webp","For Vivo Battery"],["oppo.webp","For Oppo Battery"]].each do |img, label| %>
-            <div class="relative flex-shrink-0 w-56 h-64 rounded-2xl overflow-hidden group cursor-pointer">
+            <div class="relative flex-shrink-0 w-56 h-64 rounded-2xl overflow-hidden group cursor-pointer shadow-md">
               <%= image_tag img, class: "w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" %>
               <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-100 transition-opacity duration-300 flex items-end p-4">
                 <span class="text-white font-bold text-sm tracking-wide"><%= label %></span>
@@ -177,7 +177,7 @@
     <div class="flex flex-col lg:flex-row gap-16 items-start">
       <div class="w-full reveal-up">
         <div class="text-center mb-6">
-           <span class="eyebrow-unified eyebrow-primary">01. Who We Are</span>
+           <span class="eyebrow-unified eyebrow-primary"> Who We Are</span>
         </div>
         <h2 class="h2-unified mb-10 text-center">
           <%= t('home.index.who_we_are_title') %>
@@ -211,7 +211,7 @@
   <div class="narrative-container relative z-10">
     <div class="text-center mb-24 reveal-up">
       <div class="flex justify-center mb-4">
-        <span class="eyebrow-unified">02. Hot Selling</span>
+        <span class="eyebrow-unified">Hot Selling</span>
       </div>
       <h2 class="h2-unified">Battery Products</h2>
       <div class="w-24 h-1.5 bg-primary mx-auto mt-8 rounded-full"></div>
@@ -277,7 +277,7 @@
     <div class="flex flex-col md:flex-row items-end justify-between mb-24 reveal-up">
       <div class="text-left">
         <div class="flex justify-start mb-4">
-          <span class="eyebrow-unified eyebrow-primary">03. Infrastructure</span>
+          <span class="eyebrow-unified eyebrow-primary"> Infrastructure</span>
         </div>
         <h2 class="h2-unified mb-4"><%= @site_config.infra_title.presence || t('home.customize.production.title') %></h2>
       </div>
@@ -349,7 +349,7 @@
       
       <div class="order-1 lg:order-2 reveal-right">
         <div class="flex justify-start mb-6">
-          <span class="eyebrow-unified eyebrow-primary">05. Why Choose Us</span>
+          <span class="eyebrow-unified eyebrow-primary"> Why Choose Us</span>
         </div>
         <h2 class="h2-unified mb-12">
           <%= t('home.index.strength_title') %>

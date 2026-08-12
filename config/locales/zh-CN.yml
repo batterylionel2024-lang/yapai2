@@ -22,6 +22,33 @@ zh-CN:
       description: "针对全球手机电池行业和技术趋势的专业分析与见解。"
     all: "全部资讯"
   home:
+    contact:
+      title: "联系雅派"
+      subtitle: "联系雅派"
+      hero_title: "专业的合作伙伴"
+      hero_desc: "联系我们的团队进行产品咨询、定制样品或业务合作。我们已准备好助您的品牌成长。"
+      send_message: "发送消息"
+      success_notice: "消息发送成功。我们将尽快与您联系。"
+      form:
+        name: "您的姓名"
+        name_placeholder: " "
+        email: "联系方式"
+        email_placeholder: "WhatsApp/微信"
+        message: "留言详情"
+        message_placeholder: "请描述您的需求或问题..."
+        submit: "提交"
+        privacy_policy_agree: "我已阅读并同意"
+        privacy_policy_link: "隐私政策"
+        privacy_error: "请同意隐私政策以继续。"
+        verification_failed: "提交前请完成安全验证。"
+        assistance_title: "安全检查"
+        assistance_link: "需要验证"
+      address_title: "我们的地址"
+      phone_title: "服务电话"
+      email_title: "官方邮箱"
+      support_card_title: "需要专业支持？"
+      support_card_desc: "为您的品牌发展提供专业支持和咨询服务。"
+      view_warranty: "查看详情"
     customize:
       hero:
         title: "定制服务"
@@ -147,3 +174,41 @@ zh-CN:
     company_name: "广东雅派电子科技有限公司"
     company_desc: "专业手机电池制造商"
     rights_reserved: "保留所有权利。"
+    
+  contact_info:
+    address: "广东省东莞市大朗镇富民南路71号6栋602室"
+    phone: "+86 18124935425"
+    email: "Caroline@yapaibattery.com"
+    support_email: "Caroline@yapaibattery.com"
+
+  privacy_policy:
+    ip_banner:
+      title: "访问者体验与分析"
+      content: "我们收集您的 IP 地址和访问数据以改进我们的服务和网站安全。继续访问即表示您同意我们的数据收集政策。"
+      accept: "接受"
+      decline: "拒绝"
+      learn_more: "隐私政策"
+    title: "隐私政策"
+    introduction: "您的隐私对我们非常重要。本隐私政策解释了我们如何收集、使用和保护您的信息。"
+    data_collection:
+      title: "我们收集哪些信息"
+      content: "我们收集您通过联系表单提供的信息，包括您的姓名、电子邮件地址、电话号码和产品详情。我们还出于分析和安全目的收集 IP 地址。"
+    usage:
+      title: "我们如何使用您的信息"
+      content: "我们收集的信息用于回复您的咨询、提供专业支持并改进我们的服务。"
+    sharing:
+      title: "信息共享"
+      content: "我们不会出售您的个人信息。我们可能仅为了履行您的服务请求而与授权的服务提供商共享信息。"
+    deletion:
+      title: "如何删除您的数据"
+      content: "您有权要求删除您的个人数据。"
+    contact_us:
+      title: "联系我们删除"
+      content: "如需请求删除数据或对我们的隐私惯例有任何疑问，请通过 Caroline@yapaibattery.com 与我们联系。"
+    close: "关闭"
+
+  cookie_banner:
+    message: "我们出于分析和安全目的收集 IP 地址。"
+    accept: "接受"
+    decline: "拒绝"
+    privacy_policy: "隐私政策"

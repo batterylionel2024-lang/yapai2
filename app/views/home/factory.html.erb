@@ -180,11 +180,11 @@
   <div class="bg-slate-50 py-12 overflow-hidden border-y border-slate-100">
     <div class="flex gap-6" style="animation: marquee-strip-reverse 35s linear infinite; width: max-content;">
       <% 2.times do %>
-        <%= image_tag "factory5.jpg", class: "h-44 w-72 object-cover rounded-2xl flex-shrink-0 shadow-md grayscale hover:grayscale-0 transition-all duration-500" %>
-        <%= image_tag "factory4.jpg", class: "h-44 w-72 object-cover rounded-2xl flex-shrink-0 shadow-md grayscale hover:grayscale-0 transition-all duration-500" %>
-        <%= image_tag "factory3.jpg", class: "h-44 w-72 object-cover rounded-2xl flex-shrink-0 shadow-md grayscale hover:grayscale-0 transition-all duration-500" %>
-        <%= image_tag "factory2.jpg", class: "h-44 w-72 object-cover rounded-2xl flex-shrink-0 shadow-md grayscale hover:grayscale-0 transition-all duration-500" %>
-        <%= image_tag "factory1.jpg", class: "h-44 w-72 object-cover rounded-2xl flex-shrink-0 shadow-md grayscale hover:grayscale-0 transition-all duration-500" %>
+        <%= image_tag "factory5.jpg", class: "h-44 w-72 object-cover rounded-2xl flex-shrink-0 shadow-md transition-all duration-500" %>
+        <%= image_tag "factory4.jpg", class: "h-44 w-72 object-cover rounded-2xl flex-shrink-0 shadow-md transition-all duration-500" %>
+        <%= image_tag "factory3.jpg", class: "h-44 w-72 object-cover rounded-2xl flex-shrink-0 shadow-md transition-all duration-500" %>
+        <%= image_tag "factory2.jpg", class: "h-44 w-72 object-cover rounded-2xl flex-shrink-0 shadow-md transition-all duration-500" %>
+        <%= image_tag "factory1.jpg", class: "h-44 w-72 object-cover rounded-2xl flex-shrink-0 shadow-md transition-all duration-500" %>
       <% end %>
     </div>
   </div>
@@ -336,7 +336,7 @@
 
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center justify-items-center">
           <% @partners.each do |partner| %>
-            <div class="w-full max-w-[200px] h-32 flex items-center justify-center p-6 grayscale hover:grayscale-0 transition-all duration-500 hover:scale-110 reveal-up">
+            <div class="w-full max-w-[200px] h-32 flex items-center justify-center p-6 transition-all duration-500 hover:scale-110 reveal-up">
               <% if partner.logo.attached? %>
                 <%= image_tag partner.logo, class: "max-w-full max-h-full object-contain", alt: partner.name %>
               <% else %>
@@ -371,7 +371,7 @@
               <div class="w-10 h-10 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0">
                 <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
               </div>
-              <span class="text-slate-600 font-medium">Guangdong Province, China</span>
+              <span class="text-slate-600 font-medium">Dongguan City, Guangdong Province, China</span>
             </div>
           </div>
           <%= link_to "Watch Factory Video", "https://youtu.be/LMBzklV6Ves", target: "_blank", class: "inline-flex items-center gap-2 px-8 py-4 rounded-full bg-primary text-white font-bold hover:bg-primary/90 transition-all shadow-lg hover:shadow-primary/30 hover:scale-105" %>

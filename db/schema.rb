@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_11_220000) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_12_132100) do
   create_table "a_sku_details", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "net_capacity"
@@ -102,6 +102,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_11_220000) do
 
   create_table "categories", force: :cascade do |t|
     t.string "category_kind"
+    t.integer "channel_id"
     t.datetime "created_at", null: false
     t.boolean "featured", default: false
     t.integer "featured_position", default: 0
@@ -116,8 +117,18 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_11_220000) do
     t.integer "position"
     t.string "slug"
     t.datetime "updated_at", null: false
+    t.index ["channel_id"], name: "index_categories_on_channel_id"
     t.index ["parent_id"], name: "index_categories_on_parent_id"
     t.index ["slug"], name: "index_categories_on_slug"
+  end
+
+  create_table "channels", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "key"
+    t.string "name"
+    t.integer "position", default: 0
+    t.datetime "updated_at", null: false
+    t.index ["key"], name: "index_channels_on_key", unique: true
   end
 
   create_table "contact_messages", force: :cascade do |t|

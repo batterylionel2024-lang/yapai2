@@ -58,7 +58,7 @@ en:
     address: "Building 6, Kusai Science and Technology Park, South Fumin Road, Dalang Town, Dongguan City, Guangdong Province"
     company_desc: "Professional Mobile Phone Battery Manufacturer"
     company_name: "GUANGDONG YAPAI ELECTRONIC TECHNOLOGY CO.,LTD."
-    rights_reserved: "All Rights Reserved."
+    rights_reserved: ""
   posts:
     hero:
       title: "Yapai Blog"
@@ -338,9 +338,7 @@ en:
         name: "Your Name"
         name_placeholder: " "
         email: "Your Contact"
-        email_placeholder: "WhatsApp/WeChat Number"
-        subject: "Subject"
-        subject_placeholder: "Inquiry topic"
+        email_placeholder: "WhatsApp/WeChat"
         message: "Message Details"
         message_placeholder: "Describe your needs or questions..."
         submit: "OK"

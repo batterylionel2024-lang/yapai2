@@ -10,7 +10,7 @@ class NotificationMailer < ApplicationMailer
     
     mail(
       to: recipients,
-      subject: "New Contact Message: #{@contact_message.subject}"
+      subject: "New Contact Message from #{@contact_message.name}"
     )
   end
 end
