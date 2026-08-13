@@ -33,18 +33,19 @@
         <p class="text-xl leading-relaxed text-slate-600 max-w-2xl font-medium mb-10">
           A leading smartphone battery manufacturer specializing in <span class="text-slate-900 font-bold">R&D</span>, <span class="text-slate-900 font-bold">Production</span>, and <span class="text-slate-900 font-bold">Global Export</span> since 2003.
         </p>
-        <div class="flex flex-wrap justify-center gap-4" x-data="{ open: false }">
-          <button @click="open = true" class="group relative px-8 py-4 bg-primary/10 text-primary font-bold rounded-2xl hover:bg-primary/20 transition-all hover:scale-105 active:scale-95 border border-primary/20 flex items-center gap-3 overflow-hidden animate-pulse-gentle">
-            <span class="relative z-10 flex items-center gap-3">
+        <div class="flex flex-wrap justify-center gap-4 reveal-from-right-large" x-data="{ open: false }">
+          <button @click="open = true" class="group relative px-10 py-5 bg-primary text-white font-black rounded-2xl hover:bg-primary/90 transition-all hover:scale-105 active:scale-95 shadow-xl shadow-primary/20 flex items-center gap-4 overflow-hidden animate-pulse-gentle">
+            <span class="relative z-10 flex items-center gap-4">
               <span class="relative flex">
-                <span class="animate-ping-slow absolute inline-flex h-full w-full rounded-full bg-primary opacity-20"></span>
-                <svg class="relative w-7 h-7 fill-current group-hover:scale-110 transition-transform" viewBox="0 0 24 24">
+                <span class="animate-ping-slow absolute inline-flex h-full w-full rounded-full bg-white opacity-40"></span>
+                <span class="animate-ping-slow absolute inline-flex h-[150%] w-[150%] -top-[25%] -left-[25%] rounded-full bg-white opacity-20" style="animation-delay: 0.5s"></span>
+                <svg class="relative w-10 h-10 fill-current group-hover:scale-110 transition-transform" viewBox="0 0 24 24">
                   <path d="M8 5v14l11-7z"/>
                 </svg>
               </span>
-              <span class="text-lg tracking-tight">Watch Yapai Factory Video</span>
+              <span class="text-xl tracking-tight">Watch Yapai Factory Video</span>
             </span>
-            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:animate-shimmer-fast"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:animate-shimmer-fast"></div>
           </button>
 
           <!-- Video Modal -->
@@ -350,8 +351,7 @@
                     <path d="M8 5v14l11-7z"/>
                   </svg>
                 </span>
-
-Watch Yapai Factory Video
+                <span class="text-lg font-bold">Watch Yapai Factory Video</span>
               </span>
               <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:animate-shimmer-fast"></div>
             </button>
@@ -432,7 +432,7 @@ Watch Yapai Factory Video
   }
 
   .reveal-left, .reveal-right, .reveal-up, .reveal-stat,
-  .reveal-hero, .reveal-process, .reveal-card {
+  .reveal-hero, .reveal-process, .reveal-card, .reveal-from-right-large {
     opacity: 0;
     transform: translateY(24px);
     transition: opacity 0.7s ease, transform 0.7s ease;
@@ -440,6 +440,10 @@ Watch Yapai Factory Video
   .reveal-hero { transition-delay: 0.1s; }
   .reveal-left { transform: translateX(-32px); }
   .reveal-right { transform: translateX(32px); }
+  .reveal-from-right-large { 
+    transform: translateX(100vw); 
+    transition: opacity 1.5s cubic-bezier(0.22, 1, 0.36, 1), transform 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
   .reveal-card:nth-child(1) { transition-delay: 0.1s; }
   .reveal-card:nth-child(2) { transition-delay: 0.2s; }
   .reveal-card:nth-child(3) { transition-delay: 0.3s; }
@@ -463,7 +467,7 @@ Watch Yapai Factory Video
   function initFactoryAnimations() {
     // Scroll reveal
     const revealEls = document.querySelectorAll(
-      ".reveal-left, .reveal-right, .reveal-up, .reveal-stat, .reveal-hero, .reveal-process, .reveal-card"
+      ".reveal-left, .reveal-right, .reveal-up, .reveal-stat, .reveal-hero, .reveal-process, .reveal-card, .reveal-from-right-large"
     );
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
