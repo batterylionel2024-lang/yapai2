@@ -1,0 +1,33 @@
+class Admin::HomeSettingsController < Admin::BaseController
+  before_action :require_super_admin
+  before_action :set_site_config
+
+  def edit
+  end
+
+  def update
+    if @site_config.update(home_settings_params)
+      redirect_to edit_admin_home_settings_path, notice: "首页设置已更新。"
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  private
+
+  def set_site_config
+    @site_config = SiteConfig.get
+  end
+
+  def home_settings_params
+    params.require(:site_config).permit(
+      :infra_title, :infra_subtitle,
+      :infra_label_1, :infra_value_1, :infra_image_1,
+      :infra_label_2, :infra_value_2, :infra_image_2,
+      :infra_label_3, :infra_value_3, :infra_image_3,
+      :infra_label_4, :infra_value_4, :infra_image_4,
+      :strength_image,
+      factory_images: []
+    )
+  end
+end

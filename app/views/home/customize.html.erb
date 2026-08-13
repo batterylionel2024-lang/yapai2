@@ -1,96 +1,210 @@
-<% content_for :title, "Customized Service - Professional Mobile Phone Battery OEM/ODM - Yapai" %>
+<% content_for :title, "Professional OEM/ODM Mobile Phone Battery Customization - Yapai" %>
 <% content_for :meta_description, t('home.customize.hero.description') %>
 
-<div class="bg-white">
-  <!-- 1. Hero Section -->
-  <section class="relative py-24 md:py-40 flex items-center overflow-hidden">
+<div class="bg-white overflow-hidden">
+  <!-- 1. Hero Section - Redesigned & Clean -->
+  <section class="relative py-16 flex items-center pt-28 overflow-hidden bg-slate-50">
     <div class="absolute inset-0 z-0">
-      <%= image_tag "indexbanner2.webp", class: "w-full h-full object-cover object-center", alt: "Customization Service" %>
-      <div class="absolute inset-0 bg-black/60"></div>
+      <%= image_tag "indexbanner3.webp", class: "w-full h-full object-cover object-center opacity-20 scale-100", alt: "Yapai Customization" %>
     </div>
     
-    <div class="container mx-auto px-6 relative z-10">
-      <div class="max-w-3xl">
-        <span class="inline-block px-4 py-1.5 bg-primary text-white text-xs font-bold tracking-widest uppercase rounded-full mb-6">
-          <%= t('home.customize.hero.tag') %>
-        </span>
-        <h1 class="text-4xl md:text-6xl font-black text-white leading-tight mb-6">
+    <div class="container mx-auto px-6 relative z-20">
+      <div class="max-w-4xl">
+        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold tracking-widest uppercase mb-6 reveal-fade-in">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+          </span>
+          <span><%= t('home.customize.hero.tag') %></span>
+        </div>
+        
+        <h1 class="text-4xl md:text-6xl font-black text-slate-900 leading-tight mb-6 reveal-up">
           <%= t('home.customize.hero.title') %><br/>
-          <span class="text-primary"><%= t('home.customize.hero.subtitle') %></span>
+          <span class="text-primary">
+            <%= t('home.customize.hero.subtitle') %>
+          </span>
         </h1>
-        <p class="text-lg text-white/80 mb-10 leading-relaxed max-w-2xl">
+        
+        <p class="text-lg md:text-xl text-slate-600 mb-8 leading-relaxed max-w-2xl font-medium reveal-up" style="transition-delay: 200ms;">
           <%= t('home.customize.hero.description') %>
         </p>
-
+        
+        <div class="flex flex-wrap items-center gap-6 reveal-up" style="transition-delay: 400ms;">
+          <%= link_to contact_path, class: "group relative inline-flex items-center px-8 py-3.5 bg-primary text-white font-bold rounded-xl overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-lg shadow-primary/20" do %>
+            <span class="relative z-10"><%= t('home.customize.hero.cta') %></span>
+            <svg class="relative z-10 w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+          <% end %>
+          
+          <div class="flex items-center space-x-3 py-2 px-4 bg-white/50 backdrop-blur-sm rounded-xl border border-slate-100">
+            <div class="flex -space-x-2">
+              <% [1, 2, 3].each do |i| %>
+                <div class="w-8 h-8 rounded-full border-2 border-white bg-slate-100 overflow-hidden">
+                  <%= image_tag "worker#{i}.jpg", class: "w-full h-full object-cover" rescue image_tag "yapai.png" %>
+                </div>
+              <% end %>
+            </div>
+            <div class="text-xs">
+              <div class="text-slate-900 font-bold">500+ Brands</div>
+              <div class="text-slate-500">Global Support</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-
-
-
-  <!-- 3. Customization Process -->
-  <section class="relative py-24 overflow-hidden">
-    <div class="absolute inset-0 z-0">
-      <%= image_tag "factory4.jpg", class: "w-full h-full object-cover", alt: "Production Process" %>
-      <div class="absolute inset-0 bg-slate-900/80"></div>
-    </div>
-
+  <!-- 2. Capabilities - Grid with Hover Effects -->
+  <section class="py-32 bg-slate-50 relative overflow-hidden">
     <div class="container mx-auto px-6 relative z-10">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl md:text-4xl font-black text-white mb-4"><%= t('home.customize.process.title') %></h2>
-        <p class="text-white/60 max-w-2xl mx-auto"><%= t('home.customize.process.subtitle') %></p>
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+        <div class="max-w-2xl">
+          <span class="text-primary font-black uppercase tracking-[0.2em] text-sm mb-4 block">
+            <%= t('home.customize.capabilities.title') %>
+          </span>
+          <h2 class="text-4xl md:text-5xl font-black text-slate-900 leading-tight">
+            <%= t('home.customize.capabilities.subtitle') %>
+          </h2>
+        </div>
+        <div class="hidden md:block">
+          <div class="w-32 h-px bg-slate-200 mb-4"></div>
+          <p class="text-slate-400 text-sm font-medium">Precision Engineering <br>& Custom Solutions</p>
+        </div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-6">
-        <% (1..6).each do |i| %>
-          <div class="relative group">
-            <div class="bg-white/10 backdrop-blur-md p-8 rounded-3xl border border-white/10 hover:bg-primary/20 transition-all duration-500 h-full text-center">
-              <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-black text-xl mx-auto mb-6 shadow-lg shadow-primary/30">
-                <%= i %>
-              </div>
-              <h3 class="text-white font-bold text-lg mb-2"><%= t("home.customize.process.step#{i}") %></h3>
-              <p class="text-white/50 text-sm"><%= t("home.customize.process.step#{i}_desc") %></p>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <% 
+          caps = [
+            { key: 'appearance', icon: 'M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z' },
+            { key: 'material', icon: 'M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.628.283a2 2 0 01-1.631 0l-.628-.283a6 6 0 00-3.86-.517l-2.387.477a2 2 0 00-1.022.547V18a2 2 0 002 2h11.428a2 2 0 002-2v-2.572zM4 9a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V9z' },
+            { key: 'dimensions', icon: 'M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 4l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4' },
+            { key: 'packaging', icon: 'M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4' }
+          ]
+        %>
+        <% caps.each_with_index do |cap, idx| %>
+          <div class="group bg-white p-10 rounded-[2.5rem] shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 border border-slate-100 reveal-up" style="transition-delay: <%= idx * 100 %>ms;">
+            <div class="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center text-primary mb-8 group-hover:bg-primary group-hover:text-white transition-colors duration-500 shadow-inner">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="<%= cap[:icon] %>"></path>
+              </svg>
             </div>
-            <% if i < 6 %>
-              <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 z-20">
-                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"></path>
-                </svg>
-              </div>
-            <% end %>
+            <h3 class="text-2xl font-black text-slate-900 mb-4 tracking-tight"><%= t("home.customize.capabilities.items.#{cap[:key]}.title") %></h3>
+            <p class="text-slate-500 leading-relaxed"><%= t("home.customize.capabilities.items.#{cap[:key]}.desc") %></p>
           </div>
         <% end %>
       </div>
     </div>
   </section>
 
+  <!-- 3. Dynamic Process Section -->
+  <section class="py-32 bg-slate-900 relative overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <%= image_tag "factory4.jpg", class: "w-full h-full object-cover opacity-20", alt: "Production Process" %>
+      <div class="absolute inset-0 bg-gradient-to-b from-slate-900 via-transparent to-slate-900"></div>
+    </div>
 
+    <div class="container mx-auto px-6 relative z-10">
+      <div class="text-center max-w-3xl mx-auto mb-24">
+        <h2 class="text-4xl md:text-5xl font-black text-white mb-6"><%= t('home.customize.process.title') %></h2>
+        <div class="w-20 h-1.5 bg-primary mx-auto mb-6 rounded-full"></div>
+        <p class="text-slate-400 text-lg leading-relaxed"><%= t('home.customize.process.subtitle') %></p>
+      </div>
 
+      <div class="relative">
+        <!-- Connecting Line (Desktop) -->
+        <div class="hidden lg:block absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-700 to-transparent -translate-y-1/2"></div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 relative z-10">
+          <% (1..6).each do |i| %>
+            <div class="group reveal-up" style="transition-delay: <%= (i-1) * 100 %>ms;">
+              <div class="relative mb-8">
+                <div class="w-20 h-20 bg-slate-800 rounded-3xl flex items-center justify-center border border-slate-700 group-hover:border-primary group-hover:bg-primary transition-all duration-500 mx-auto shadow-2xl relative z-10">
+                  <span class="text-2xl font-black text-white"><%= i.to_s.rjust(2, '0') %></span>
+                </div>
+                <!-- Animated Pulse Effect -->
+                <div class="absolute inset-0 bg-primary/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 scale-125"></div>
+              </div>
+              
+              <div class="text-center">
+                <h3 class="text-white font-bold text-xl mb-3 group-hover:text-primary transition-colors"><%= t("home.customize.process.step#{i}") %></h3>
+                <p class="text-slate-500 text-sm leading-relaxed px-4 group-hover:text-slate-400 transition-colors"><%= t("home.customize.process.step#{i}_desc") %></p>
+              </div>
+              
+              <% if i < 6 %>
+                <div class="hidden lg:block absolute top-10 -right-4 translate-x-1/2 z-20">
+                  <svg class="w-8 h-8 text-slate-700 group-hover:text-primary transition-colors duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7"></path>
+                  </svg>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- 4. Design & R&D Capability -->
-  <section class="py-24 bg-dark text-white">
+  <!-- 4. R&D Capability - Modern Layout -->
+  <section class="py-32 bg-white relative">
     <div class="container mx-auto px-6">
-      <div class="flex flex-col lg:flex-row items-center gap-16">
-        <div class="w-full lg:w-1/2">
-          <div class="relative">
-            <%= image_tag "worker1.jpg", class: "rounded-3xl shadow-2xl relative z-10", alt: "Design & R&D" %>
-            <div class="absolute -top-6 -left-6 w-24 h-24 bg-primary rounded-2xl -z-10 animate-pulse"></div>
-            <div class="absolute -bottom-6 -right-6 w-32 h-32 border-4 border-white/20 rounded-2xl -z-10"></div>
+      <div class="flex flex-col lg:flex-row items-center gap-20">
+        <div class="w-full lg:w-1/2 relative reveal-left">
+          <div class="relative z-10 rounded-[3rem] overflow-hidden shadow-3xl">
+            <%= image_tag "worker1.jpg", class: "w-full aspect-[4/5] object-cover hover:scale-105 transition-transform duration-700", alt: "Yapai R&D" %>
+          </div>
+          <!-- Decorative Background Elements -->
+          <div class="absolute -top-10 -left-10 w-64 h-64 bg-slate-100 rounded-full -z-10"></div>
+          <div class="absolute -bottom-10 -right-10 w-40 h-40 border-[20px] border-primary/10 rounded-full -z-10"></div>
+          
+          <!-- Experience Badge -->
+          <div class="absolute -bottom-6 left-12 bg-slate-900 text-white p-8 rounded-[2rem] shadow-2xl z-20 reveal-up" style="transition-delay: 300ms;">
+            <div class="text-4xl font-black text-primary mb-1">20+</div>
+            <div class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Years Industry Experience</div>
           </div>
         </div>
-        <div class="w-full lg:w-1/2">
-          <h2 class="text-3xl md:text-5xl font-black mb-6"><%= t('home.customize.design_rd.title') %></h2>
-          <p class="text-white/60 text-lg mb-10 leading-relaxed"><%= t('home.customize.design_rd.subtitle') %></p>
+        
+        <div class="w-full lg:w-1/2 reveal-right">
+          <span class="text-primary font-black uppercase tracking-[0.2em] text-sm mb-6 block">Innovation & Quality</span>
+          <h2 class="text-4xl md:text-5xl font-black text-slate-900 mb-8 leading-tight">
+            <%= t('home.customize.design_rd.title') %>
+          </h2>
+          <p class="text-slate-500 text-lg mb-12 leading-relaxed">
+            <%= t('home.customize.design_rd.subtitle') %>
+          </p>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <% ['product_design', 'sample_dev', 'tech_support', 'process_opt'].each do |key| %>
-              <div class="flex items-center gap-4 p-4 bg-white/5 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors">
-                <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
-                  <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+            <% 
+              rd_items = [
+                { key: 'product_design', icon: 'M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z' },
+                { key: 'sample_dev', icon: 'M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.628.283a2 2 0 01-1.631 0l-.628-.283a6 6 0 00-3.86-.517l-2.387.477a2 2 0 00-1.022.547V18a2 2 0 002 2h11.428a2 2 0 002-2v-2.572z' },
+                { key: 'tech_support', icon: 'M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z' },
+                { key: 'process_opt', icon: 'M13 10V3L4 14h7v7l9-11h-7z' }
+              ]
+            %>
+            <% rd_items.each do |item| %>
+              <div class="flex items-start gap-5 p-6 bg-slate-50 rounded-3xl border border-slate-100 hover:border-primary/30 transition-all group">
+                <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-primary shadow-sm group-hover:scale-110 transition-transform flex-shrink-0">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="<%= item[:icon] %>"></path></svg>
                 </div>
-                <span class="font-bold text-sm tracking-wide"><%= t("home.customize.design_rd.items.#{key}") %></span>
+                <div>
+                  <h4 class="font-black text-slate-900 mb-1"><%= t("home.customize.design_rd.items.#{item[:key]}") %></h4>
+                  <p class="text-xs text-slate-400 font-medium tracking-wide uppercase">Professional Service</p>
+                </div>
               </div>
+            <% end %>
+          </div>
+          
+          <div class="mt-12 p-8 bg-slate-900 rounded-[2rem] flex items-center justify-between text-white reveal-up">
+            <div class="flex items-center space-x-4">
+              <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 5.983C3 4.888 3.895 4 5 4h14c1.105 0 2 .888 2 1.983v8.923a1.992 1.992 0 01-2 1.983h-6.6l-2.867 2.7c-.955.897-2.533.225-2.533-1.077v-1.623c-1.105 0-2-.888-2-1.983V5.983z"></path></svg>
+              </div>
+              <div>
+                <div class="font-bold">Need technical advice?</div>
+                <div class="text-slate-400 text-sm">Our engineers are ready to help.</div>
+              </div>
+            </div>
+            <%= link_to contact_path, class: "p-4 bg-white/10 hover:bg-primary transition-colors rounded-xl group" do %>
+              <svg class="w-6 h-6 text-white group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
             <% end %>
           </div>
         </div>
@@ -98,34 +212,80 @@
     </div>
   </section>
 
+  <!-- 5. Conversion - High Energy -->
+  <section class="py-24 px-6">
+    <div class="container mx-auto max-w-6xl">
+      <div class="relative bg-primary rounded-[4rem] overflow-hidden shadow-2xl shadow-primary/20 reveal-up">
+        <!-- Background Patterns -->
+        <div class="absolute inset-0 z-0 opacity-10">
+          <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <defs>
+              <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
+                <path d="M 10 0 L 0 0 0 10" fill="none" stroke="white" stroke-width="0.5"/>
+              </pattern>
+            </defs>
+            <rect width="100" height="100" fill="url(#grid)" />
+          </svg>
+        </div>
 
-
-
-
-
-
-
-
-
-  <!-- 8. Conversion Section -->
-  <section class="py-24 relative overflow-hidden">
-    <div class="absolute inset-0 z-0">
-      <%= image_tag "indexbanner3.webp", class: "w-full h-full object-cover", alt: "Contact Yapai" %>
-      <div class="absolute inset-0 bg-primary/90"></div>
-    </div>
-    <div class="container mx-auto px-6 text-center relative z-10">
-      <h2 class="text-3xl md:text-5xl font-black text-white mb-8"><%= t('home.customize.conversion.title') %></h2>
-      <p class="text-white/80 text-lg mb-12 max-w-2xl mx-auto"><%= t('home.customize.conversion.subtitle') %></p>
-      <%= link_to contact_path, class: "inline-flex items-center px-10 py-5 bg-white text-primary font-black rounded-full hover:bg-slate-50 transition-all transform hover:scale-105 shadow-2xl" do %>
-        <%= t('home.customize.conversion.cta') %>
-        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-      <% end %>
+        <div class="relative z-10 px-8 py-20 md:p-24 text-center">
+          <h2 class="text-4xl md:text-6xl font-black text-white mb-8 leading-tight">
+            <%= t('home.customize.conversion.title') %>
+          </h2>
+          <p class="text-white/80 text-xl mb-12 max-w-2xl mx-auto font-medium leading-relaxed">
+            <%= t('home.customize.conversion.subtitle') %>
+          </p>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+            <%= link_to contact_path, class: "w-full sm:w-auto px-12 py-5 bg-white text-primary font-black text-lg rounded-2xl hover:bg-slate-900 hover:text-white transition-all transform hover:scale-105 shadow-xl" do %>
+              <%= t('home.customize.conversion.cta') %>
+            <% end %>
+            <div class="flex items-center space-x-3 text-white/90 font-bold">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+              </svg>
+              <span>Response within 24 hours</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 </div>
 
 <style>
-  summary::-webkit-details-marker {
-    display: none;
+  @keyframes slow-zoom {
+    0% { transform: scale(1.05); }
+    100% { transform: scale(1.15); }
   }
+  .animate-slow-zoom {
+    animation: slow-zoom 20s infinite alternate ease-in-out;
+  }
+  
+  .reveal-up { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
+  .reveal-left { opacity: 0; transform: translateX(-30px); transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
+  .reveal-right { opacity: 0; transform: translateX(30px); transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
+  .reveal-fade-in { opacity: 0; transition: all 1s ease; }
+  
+  .reveal-visible { opacity: 1; transform: translate(0); }
 </style>
+
+<script>
+  document.addEventListener('turbo:load', () => {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px"
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('reveal-visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right, .reveal-fade-in').forEach(el => {
+      observer.observe(el);
+    });
+  });
+</script>

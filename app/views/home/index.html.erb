@@ -376,28 +376,28 @@
   </div>
 </div>
 
-<!-- Final CTA Section (Deep Overlap) -->
+<!-- Final CTA Section (Redesigned Light Version) -->
 <div id="cta" class="bg-white section-py relative overflow-hidden -mt-20 z-20">
   <div class="narrative-container">
-    <div class="relative bg-slate-900 p-12 md:p-24 rounded-[4rem] overflow-hidden shadow-3xl text-center md:text-left flex flex-col md:flex-row items-center justify-between gap-12 group">
-      <!-- Decorative Logo Color Blobs -->
-      <div class="absolute -bottom-24 -right-24 w-[500px] h-[500px] bg-primary rounded-full blur-[120px] opacity-20 group-hover:opacity-30 transition-opacity duration-1000"></div>
-      <div class="absolute -top-24 -left-24 w-[400px] h-[400px] bg-secondary rounded-full blur-[100px] opacity-10 group-hover:opacity-20 transition-opacity duration-1000"></div>
+    <div class="relative bg-slate-50 p-12 md:p-24 rounded-[4rem] overflow-hidden border border-slate-100 shadow-xl text-center md:text-left flex flex-col md:flex-row items-center justify-between gap-12 group">
+      <!-- Decorative Elements -->
+      <div class="absolute -bottom-24 -right-24 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px] group-hover:bg-primary/20 transition-all duration-1000"></div>
+      <div class="absolute top-0 left-0 w-full h-full opacity-[0.03] pointer-events-none" style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;60&quot; height=&quot;60&quot; viewBox=&quot;0 0 60 60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cg fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;%3E%3Cg fill=&quot;%23000000&quot; fill-opacity=&quot;0.4&quot;%3E%3Cpath d=&quot;M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2v-4h4v-2h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2v-4h4v-2H6z&quot;/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
 
       <div class="relative z-10 max-w-2xl reveal-left">
         <div class="flex justify-center md:justify-start mb-6">
           <span class="eyebrow-unified eyebrow-primary">Final Step</span>
         </div>
-        <h2 class="text-4xl md:text-7xl font-black text-white mb-8 leading-[1.1] uppercase tracking-tighter">
+        <h2 class="text-4xl md:text-7xl font-black text-slate-900 mb-8 leading-[1.1] uppercase tracking-tighter">
           <%= t('home.index.final_cta_title') %>
         </h2>
-        <p class="text-white/50 text-xl font-medium max-w-lg">
+        <p class="text-slate-500 text-xl font-medium max-w-lg">
           <%= t('home.index.final_cta_desc') %>
         </p>
       </div>
       
       <div class="relative z-10 flex-shrink-0 reveal-right">
-        <%= link_to contact_path, class: "px-14 py-8 bg-primary hover:bg-primary/90 text-white rounded-3xl font-black text-xl tracking-widest transition-all shadow-2xl flex items-center group scale-100 hover:scale-105 active:scale-95" do %>
+        <%= link_to contact_path, class: "px-14 py-8 bg-primary hover:bg-slate-900 text-white rounded-3xl font-black text-xl tracking-widest transition-all shadow-2xl shadow-primary/20 flex items-center group scale-100 hover:scale-105 active:scale-95" do %>
           <%= t('home.index.get_free_quote') %>
           <svg class="w-7 h-7 ml-4 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
         <% end %>
