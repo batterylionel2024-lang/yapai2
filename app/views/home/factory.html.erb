@@ -290,11 +290,11 @@
           <h2 class="text-3xl font-black text-slate-900 tracking-tight"><%= t('home.about.partners.title') %></h2>
         </div>
 
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center justify-items-center">
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-items-center">
           <% @partners.each do |partner| %>
-            <div class="w-full max-w-[200px] h-32 flex items-center justify-center p-6 transition-all duration-500 hover:scale-110 reveal-up">
+            <div class="w-full aspect-square flex items-center justify-center p-3 transition-all duration-500 hover:scale-110 reveal-up">
               <% if partner.logo.attached? %>
-                <%= image_tag partner.logo, class: "max-w-full max-h-full object-contain", alt: partner.name %>
+                <%= image_tag partner.logo, class: "w-full h-full object-contain", alt: partner.name %>
               <% else %>
                 <span class="text-slate-300 font-bold"><%= partner.name %></span>
               <% end %>
