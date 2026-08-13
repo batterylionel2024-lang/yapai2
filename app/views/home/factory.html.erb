@@ -5,130 +5,181 @@
 <div class="bg-slate-50 min-h-screen overflow-x-hidden">
 
   <!-- Hero Section -->
-  <div class="relative bg-slate-900 py-36 sm:py-44 overflow-hidden">
+  <div class="relative bg-white py-40 sm:py-56 overflow-hidden">
     <div class="absolute inset-0">
-      <%= image_tag "factory1.jpg", class: "w-full h-full object-cover opacity-30" %>
-      <div class="absolute inset-0 bg-gradient-to-br from-slate-900/90 via-slate-900/40 to-primary/20"></div>
+      <%= image_tag "factory1.jpg", class: "w-full h-full object-cover opacity-10" %>
+      <div class="absolute inset-0 bg-gradient-to-b from-white via-white/80 to-slate-50"></div>
     </div>
+    <!-- Advanced decorative elements -->
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full overflow-hidden pointer-events-none">
+      <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/10 rounded-full blur-[120px] animate-pulse"></div>
+      <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-emerald-500/5 rounded-full blur-[120px]"></div>
+    </div>
+
     <div class="relative max-w-7xl mx-auto px-6 lg:px-8 text-center">
       <div class="reveal-hero flex flex-col items-center">
-        <p class="text-white/90 font-bold tracking-[0.2em] uppercase text-xs mb-4 px-4 py-1 bg-white/10 backdrop-blur-md rounded-full border border-white/20">
-          Professional Battery Manufacturer
-        </p>
-        <h1 class="text-5xl font-black tracking-tight text-white sm:text-7xl mb-6 leading-tight drop-shadow-2xl">
-          About <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-emerald-400">Yapai</span>
+        <div class="inline-flex items-center gap-2 px-4 py-2 bg-slate-900/5 backdrop-blur-xl rounded-full border border-slate-900/10 mb-8 shadow-sm">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+          </span>
+          <p class="text-slate-600 font-bold tracking-[0.2em] uppercase text-[10px]">
+            Professional Battery Manufacturer
+          </p>
+        </div>
+        <h1 class="text-6xl font-black tracking-tighter text-slate-900 sm:text-8xl mb-8 leading-[1.1]">
+          About <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-emerald-500 to-primary animate-gradient-x">Yapai</span>
         </h1>
-        <p class="text-xl leading-8 text-slate-300 max-w-2xl font-medium drop-shadow-sm">
-          Yapai Battery Factory is a professional mobile phone battery manufacturer headquartered in Guangdong, China, with its production plant located in Dongguan. The company focuses on the R&D, production, and global export of replacement batteries for smartphones.
+        <p class="text-xl leading-relaxed text-slate-600 max-w-2xl font-medium mb-10">
+          A leading smartphone battery manufacturer specializing in <span class="text-slate-900 font-bold">R&D</span>, <span class="text-slate-900 font-bold">Production</span>, and <span class="text-slate-900 font-bold">Global Export</span> since 2003.
         </p>
+        <div class="flex flex-wrap justify-center gap-4" x-data="{ open: false }">
+          <button @click="open = true" class="group relative px-8 py-4 bg-primary/10 text-primary font-bold rounded-2xl hover:bg-primary/20 transition-all hover:scale-105 active:scale-95 border border-primary/20 flex items-center gap-3 overflow-hidden animate-pulse-gentle">
+            <span class="relative z-10 flex items-center gap-3">
+              <span class="relative flex">
+                <span class="animate-ping-slow absolute inline-flex h-full w-full rounded-full bg-primary opacity-20"></span>
+                <svg class="relative w-7 h-7 fill-current group-hover:scale-110 transition-transform" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </span>
+              <span class="text-lg tracking-tight">Watch Yapai Factory Video</span>
+            </span>
+            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:animate-shimmer-fast"></div>
+          </button>
+
+          <!-- Video Modal -->
+          <template x-teleport="body">
+            <div x-show="open" 
+                 x-transition:enter="transition ease-out duration-300"
+                 x-transition:enter-start="opacity-0"
+                 x-transition:enter-end="opacity-100"
+                 x-transition:leave="transition ease-in duration-200"
+                 x-transition:leave-start="opacity-100"
+                 x-transition:leave-end="opacity-0"
+                 class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/90 backdrop-blur-sm"
+                 @keydown.escape.window="open = false"
+                 style="display: none;">
+              
+              <div class="relative w-full max-w-5xl aspect-video bg-black rounded-3xl overflow-hidden shadow-2xl"
+                   @click.away="open = false">
+                <button @click="open = false" class="absolute top-4 right-4 z-20 p-2 bg-white/10 hover:bg-white/20 text-white rounded-full transition-colors">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                  </svg>
+                </button>
+                
+                <template x-if="open">
+                  <iframe class="w-full h-full" 
+                          src="https://www.youtube.com/embed/LMBzklV6Ves?autoplay=1" 
+                          title="YouTube video player" 
+                          frameborder="0" 
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                          allowfullscreen>
+                  </iframe>
+                </template>
+              </div>
+            </div>
+          </template>
+        </div>
       </div>
     </div>
-    <!-- Decorative elements -->
-    <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-primary/20 rounded-full blur-[100px] animate-pulse"></div>
-    <div class="absolute -top-24 -left-24 w-72 h-72 bg-emerald-500/10 rounded-full blur-[80px]"></div>
   </div>
 
   <!-- ===== MARQUEE PHOTO STRIP ===== -->
-  <div class="bg-slate-900 py-8 overflow-hidden relative z-10 -mt-10 rounded-t-[3rem] shadow-[0_-20px_50px_rgba(0,0,0,0.1)]">
+  <div class="bg-slate-50 py-8 overflow-hidden relative z-10 -mt-10 rounded-t-[3rem] shadow-[0_-20px_50px_rgba(0,0,0,0.05)] border-t border-slate-100">
     <div class="flex gap-6" style="animation: marquee-strip 28s linear infinite; width: max-content;">
       <% if @site_config.factory_images.attached? %>
         <% 2.times do %>
           <% @site_config.factory_images.each do |image| %>
-            <%= image_tag image, class: "h-56 w-80 object-cover rounded-2xl flex-shrink-0 shadow-lg border border-white/5" %>
+            <%= image_tag image, class: "h-56 w-80 object-cover rounded-2xl flex-shrink-0 shadow-lg border border-white" %>
           <% end %>
         <% end %>
       <% else %>
         <% 2.times do %>
-          <%= image_tag "factory1.jpg", class: "h-56 w-80 object-cover rounded-2xl flex-shrink-0 shadow-lg border border-white/5" %>
-          <%= image_tag "factory2.jpg", class: "h-56 w-80 object-cover rounded-2xl flex-shrink-0 shadow-lg border border-white/5" %>
-          <%= image_tag "factory3.jpg", class: "h-56 w-80 object-cover rounded-2xl flex-shrink-0 shadow-lg border border-white/5" %>
-          <%= image_tag "factory4.jpg", class: "h-56 w-80 object-cover rounded-2xl flex-shrink-0 shadow-lg border border-white/5" %>
-          <%= image_tag "factory5.jpg", class: "h-56 w-80 object-cover rounded-2xl flex-shrink-0 shadow-lg border border-white/5" %>
+          <%= image_tag "factory1.jpg", class: "h-56 w-80 object-cover rounded-2xl flex-shrink-0 shadow-lg border border-white" %>
+          <%= image_tag "factory2.jpg", class: "h-56 w-80 object-cover rounded-2xl flex-shrink-0 shadow-lg border border-white" %>
+          <%= image_tag "factory3.jpg", class: "h-56 w-80 object-cover rounded-2xl flex-shrink-0 shadow-lg border border-white" %>
+          <%= image_tag "factory4.jpg", class: "h-56 w-80 object-cover rounded-2xl flex-shrink-0 shadow-lg border border-white" %>
+          <%= image_tag "factory5.jpg", class: "h-56 w-80 object-cover rounded-2xl flex-shrink-0 shadow-lg border border-white" %>
         <% end %>
       <% end %>
     </div>
   </div>
 
   <!-- ===== ANIMATED STATS ===== -->
-  <div class="bg-slate-900 py-20 border-t border-white/5">
-    <div class="mx-auto max-w-7xl px-6 lg:px-8">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-        <div class="reveal-stat">
-          <div class="text-5xl font-black text-white mb-2"><span class="counter" data-target="20">0</span>+</div>
-          <div class="text-white/70 text-sm font-semibold uppercase tracking-widest">Years Experience</div>
+  <div id="stats" class="bg-white py-24 relative overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent"></div>
+    <div class="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
+        <div class="reveal-stat group">
+          <div class="text-6xl font-black text-slate-900 mb-3 tracking-tighter group-hover:text-primary transition-colors"><span class="counter" data-target="20">0</span>+</div>
+          <div class="text-slate-400 text-xs font-bold uppercase tracking-[0.2em]">Years Experience</div>
         </div>
-        <div class="reveal-stat">
-          <div class="text-5xl font-black text-white mb-2"><span class="counter" data-target="200">0</span>+</div>
-          <div class="text-white/70 text-sm font-semibold uppercase tracking-widest">Skilled Workers</div>
+        <div class="reveal-stat group">
+          <div class="text-6xl font-black text-slate-900 mb-3 tracking-tighter group-hover:text-primary transition-colors"><span class="counter" data-target="200">0</span>+</div>
+          <div class="text-slate-400 text-xs font-bold uppercase tracking-[0.2em]">Skilled Workers</div>
         </div>
-        <div class="reveal-stat">
-          <div class="text-5xl font-black text-white mb-2"><span class="counter" data-target="30">0</span>+</div>
-          <div class="text-white/70 text-sm font-semibold uppercase tracking-widest">Countries Served</div>
+        <div class="reveal-stat group">
+          <div class="text-6xl font-black text-slate-900 mb-3 tracking-tighter group-hover:text-primary transition-colors"><span class="counter" data-target="30">0</span>+</div>
+          <div class="text-slate-400 text-xs font-bold uppercase tracking-[0.2em]">Countries Served</div>
         </div>
-        <div class="reveal-stat">
-          <div class="text-5xl font-black text-white mb-2"><span class="counter" data-target="5000000">0</span>+</div>
-          <div class="text-white/70 text-sm font-semibold uppercase tracking-widest">Battery Packs Per Year</div>
+        <div class="reveal-stat group">
+          <div class="text-6xl font-black text-slate-900 mb-3 tracking-tighter group-hover:text-primary transition-colors"><span class="counter" data-target="5000000">0</span>+</div>
+          <div class="text-slate-400 text-xs font-bold uppercase tracking-[0.2em]">Packs Per Year</div>
         </div>
       </div>
     </div>
   </div>
 
   <!-- ===== MANUFACTURING EXCELLENCE ===== -->
-  <div class="relative bg-slate-900 py-24 sm:py-32 overflow-hidden -mt-1">
-    <div class="absolute inset-0 opacity-20">
+  <div class="relative bg-slate-50 py-24 sm:py-32 overflow-hidden -mt-1 border-y border-slate-100">
+    <div class="absolute inset-0 opacity-5">
       <%= image_tag "factory4.jpg", class: "w-full h-full object-cover" %>
     </div>
-    <div class="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-slate-900 to-transparent"></div>
+    <div class="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-slate-50 to-transparent"></div>
     <div class="relative mx-auto max-w-7xl px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
         <div class="reveal-left">
-          <p class="text-primary font-semibold tracking-widest uppercase text-sm mb-3">Est. 2003</p>
-          <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl mb-8">Professional Battery Production</h2>
-          <div class="space-y-5 text-base leading-7 text-slate-300">
+          <div class="inline-block px-3 py-1 bg-primary/10 border border-primary/20 rounded-lg mb-6">
+            <p class="text-primary font-bold tracking-widest uppercase text-[10px]">Established 2003</p>
+          </div>
+          <h2 class="text-4xl font-black tracking-tighter text-slate-900 sm:text-5xl mb-8 leading-tight">Precision Engineering,<br/>Global Standards.</h2>
+          <div class="space-y-6 text-lg leading-relaxed text-slate-500">
             <p>
-              Yapai Battery Factory is a professional mobile phone battery manufacturer headquartered in Guangdong, China, with its production plant located in Dongguan.
+              Yapai Battery Factory stands at the forefront of mobile energy solutions. Headquartered in Guangdong with high-tech facilities in Dongguan, we bridge the gap between innovation and mass production.
             </p>
             <p>
-              Our factory is equipped with advanced production and testing equipment, with a daily capacity exceeding 5,000 battery packs. We support OEM/ODM orders and offer free brand logo customization.
+              Equipped with fully automated production lines and rigorous aging-test chambers, our daily output exceeds <span class="text-slate-900 font-bold">5,000 packs</span>, ensuring every battery meets international safety benchmarks.
             </p>
           </div>
-          <div class="grid grid-cols-2 gap-4 mt-8">
-            <div class="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition-all">
-              <div class="text-white font-bold text-3xl mb-1">20+</div>
-              <div class="text-sm text-slate-400 uppercase tracking-wider font-semibold">Years Experience</div>
+          <div class="grid grid-cols-2 gap-6 mt-12">
+            <div class="bg-white p-8 rounded-3xl border border-slate-200 hover:border-primary/30 transition-all group shadow-sm hover:shadow-md">
+              <div class="text-primary font-black text-4xl mb-2 group-hover:scale-110 transition-transform origin-left">20+</div>
+              <div class="text-[10px] text-slate-400 uppercase tracking-widest font-black">Years Industry Lead</div>
             </div>
-            <div class="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition-all">
-              <div class="text-white font-bold text-3xl mb-1">100%</div>
-              <div class="text-sm text-slate-400 uppercase tracking-wider font-semibold">Quality Inspected</div>
-            </div>
-            <div class="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition-all">
-              <div class="text-white font-bold text-3xl mb-1">30+</div>
-              <div class="text-sm text-slate-400 uppercase tracking-wider font-semibold">Battery Models</div>
-            </div>
-            <div class="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition-all">
-              <div class="text-white font-bold text-3xl mb-1">OEM</div>
-              <div class="text-sm text-slate-400 uppercase tracking-wider font-semibold">Custom Branding</div>
+            <div class="bg-white p-8 rounded-3xl border border-slate-200 hover:border-primary/30 transition-all group shadow-sm hover:shadow-md">
+              <div class="text-primary font-black text-4xl mb-2 group-hover:scale-110 transition-transform origin-left">100%</div>
+              <div class="text-[10px] text-slate-400 uppercase tracking-widest font-black">Quality Assurance</div>
             </div>
           </div>
         </div>
         <div class="relative reveal-right">
-          <div class="grid grid-cols-2 gap-4">
-            <div class="aspect-[3/4] rounded-2xl overflow-hidden shadow-xl">
-              <%= image_tag "worker3.jpg", class: "w-full h-full object-cover hover:scale-105 transition-transform duration-700" %>
+          <div class="relative z-10 grid grid-cols-2 gap-4">
+            <div class="aspect-[3/4] rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white rotate-[-2deg] hover:rotate-0 transition-all duration-700">
+              <%= image_tag "worker3.jpg", class: "w-full h-full object-cover" %>
             </div>
-            <div class="space-y-4 pt-8">
-              <div class="aspect-square rounded-2xl overflow-hidden shadow-xl">
-                <%= image_tag "worker1.jpg", class: "w-full h-full object-cover hover:scale-105 transition-transform duration-700" %>
+            <div class="space-y-4 pt-12">
+              <div class="aspect-square rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white rotate-[2deg] hover:rotate-0 transition-all duration-700">
+                <%= image_tag "worker1.jpg", class: "w-full h-full object-cover" %>
               </div>
-              <div class="aspect-square rounded-2xl overflow-hidden shadow-xl">
-                <%= image_tag "worker2.jpg", class: "w-full h-full object-cover hover:scale-105 transition-transform duration-700" %>
+              <div class="bg-primary p-8 rounded-[2rem] shadow-2xl shadow-primary/20">
+                <p class="text-slate-900 font-black text-2xl leading-none">5K+</p>
+                <p class="text-slate-900/70 text-[10px] font-black uppercase tracking-widest mt-2">Daily Output</p>
               </div>
             </div>
           </div>
-          <div class="absolute -bottom-6 -left-6 bg-primary p-6 rounded-2xl shadow-xl hidden md:block">
-            <p class="text-white font-bold">R&D and Production Team</p>
-            <p class="text-white/70 text-sm">Professional & Dedicated</p>
-          </div>
+          <!-- Abstract shapes -->
+          <div class="absolute -bottom-10 -right-10 w-64 h-64 bg-primary/20 rounded-full blur-[80px] -z-10 animate-pulse"></div>
         </div>
       </div>
     </div>
@@ -189,113 +240,17 @@
     </div>
   </div>
 
-  <!-- Featured Products — Carousel (from about us) -->
-  <div class="py-24 bg-slate-50 overflow-hidden relative z-10 -mt-16 rounded-t-[4rem] shadow-[0_-20px_40px_rgba(0,0,0,0.03)] border-t border-slate-100">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="text-center mb-14">
-        <h2 class="text-3xl font-black text-slate-900 tracking-tight">Featured Products</h2>
-        <p class="mt-4 text-slate-500 font-medium">Crafted with Precision</p>
-      </div>
-
-      <div
-        x-data="{
-          current: 0,
-          total: <%= @featured_categories.count %>,
-          perPage: 3,
-          autoTimer: null,
-          get maxIndex() { return Math.max(0, this.total - this.perPage); },
-          next() { this.current = this.current >= this.maxIndex ? 0 : this.current + 1; },
-          prev() { this.current = this.current <= 0 ? this.maxIndex : this.current - 1; },
-          startAuto() { this.autoTimer = setInterval(() => this.next(), 4000); },
-          stopAuto() { clearInterval(this.autoTimer); }
-        }"
-        x-init="
-          const updatePerPage = () => {
-            if (window.innerWidth < 768) perPage = 1;
-            else if (window.innerWidth < 1024) perPage = 2;
-            else perPage = 3;
-          };
-          updatePerPage();
-          window.addEventListener('resize', () => { updatePerPage(); current = 0; });
-          startAuto();
-        "
-        @mouseenter="stopAuto()"
-        @mouseleave="startAuto()"
-        class="relative"
-      >
-        <!-- Carousel track -->
-        <div class="overflow-hidden">
-          <div
-            class="flex transition-transform duration-700 ease-in-out gap-6"
-            :style="`transform: translateX(calc(-${current} * (100% / ${perPage} + 24px / ${perPage})))`"
-          >
-            <% @featured_categories.each do |category| %>
-              <div class="flex-shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
-                <%= link_to category_path(category), class: "block bg-white rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:border-primary/20 transition-all duration-500 overflow-hidden group" do %>
-                  <div class="relative h-64 bg-slate-50 overflow-hidden">
-                    <% if category.image.attached? %>
-                      <%= image_tag rails_storage_proxy_path(category.image.variant(:featured)),
-                            class: "w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000",
-                            alt: category.name %>
-                    <% else %>
-                      <div class="w-full h-full flex items-center justify-center bg-slate-100">
-                        <svg class="w-12 h-12 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                      </div>
-                    <% end %>
-                    <div class="absolute top-4 left-4">
-                      <span class="px-3 py-1 bg-primary/90 backdrop-blur-sm text-white text-[10px] font-black uppercase tracking-widest rounded-full shadow-lg">
-                        Featured
-                      </span>
-                    </div>
-                  </div>
-                  <div class="p-8 text-center bg-white">
-                    <h3 class="text-xl font-black text-slate-900 group-hover:text-primary transition-colors duration-300"><%= category.name %></h3>
-                    <p class="text-[10px] text-slate-400 font-bold uppercase tracking-[0.2em] mt-2 flex items-center justify-center gap-2">
-                      <span class="w-4 h-[1px] bg-slate-200"></span>
-                      Custom · OEM · ODM
-                      <span class="w-4 h-[1px] bg-slate-200"></span>
-                    </p>
-                  </div>
-                <% end %>
-              </div>
-            <% end %>
-          </div>
-        </div>
-
-        <% if @featured_categories.count > 1 %>
-          <!-- Arrows -->
-          <button @click="prev()" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-6 w-12 h-12 bg-white border border-slate-100 rounded-full shadow-xl flex items-center justify-center text-slate-400 hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 z-10 group/btn">
-            <svg class="w-6 h-6 transform group-hover/btn:-translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path></svg>
-          </button>
-          <button @click="next()" class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-6 w-12 h-12 bg-white border border-slate-100 rounded-full shadow-xl flex items-center justify-center text-slate-400 hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 z-10 group/btn">
-            <svg class="w-6 h-6 transform group-hover/btn:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
-          </button>
-
-          <!-- Dots -->
-          <div class="flex justify-center gap-3 mt-12">
-            <template x-for="i in Math.max(0, total - perPage + 1)" :key="i">
-              <button
-                @click="current = i - 1"
-                :class="current === i - 1 ? 'bg-primary w-8' : 'bg-slate-200 w-2 hover:bg-slate-300'"
-                class="h-2 rounded-full transition-all duration-500"
-              ></button>
-            </template>
-          </div>
-        <% end %>
-      </div>
-    </div>
-  </div>
 
   <!-- ===== YAPAI-ABILITIES ===== -->
-  <div class="relative bg-slate-900 py-24 sm:py-32 overflow-hidden -mt-16 z-10 rounded-t-[4rem]">
-    <div class="absolute inset-0 opacity-10">
+  <div class="relative bg-white py-24 sm:py-32 overflow-hidden -mt-16 z-10 rounded-t-[4rem] border-t border-slate-100">
+    <div class="absolute inset-0 opacity-5">
       <%= image_tag "factory5.jpg", class: "w-full h-full object-cover" %>
     </div>
-    <div class="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-black/20 to-transparent"></div>
+    <div class="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-slate-50 to-transparent"></div>
     <div class="relative mx-auto max-w-7xl px-6 lg:px-8">
       <div class="text-center mb-16 reveal-up">
         <p class="text-primary font-semibold tracking-widest uppercase text-sm mb-3">What We Offer</p>
-        <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">Full-Service Manufacturing</h2>
+        <h2 class="text-3xl font-black tracking-tight text-slate-900 sm:text-4xl">Full-Service Manufacturing</h2>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <% [
@@ -303,14 +258,14 @@
           { title: "Global Reach", color: "secondary", desc: "Products exported to Europe, America, Southeast Asia, Middle East, and Latin America.", items: ["United States", "Germany", "United Kingdom", "Russia", "Brazil", "India"] },
           { title: "Custom Services", color: "accent", desc: "End-to-end customization from cell choice to private labeling and packaging design.", items: ["Custom Capacity", "Private Labeling", "Packaging Design", "BMS Customization", "OEM / ODM", "Small Batch Orders"] }
         ].each do |yapai| %>
-          <div class="reveal-card bg-white/5 backdrop-blur-md rounded-3xl border border-white/10 overflow-hidden shadow-sm hover:shadow-xl hover:bg-white/10 transition-all duration-300">
+          <div class="reveal-card bg-white rounded-3xl border border-slate-100 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
             <div class="h-2 bg-<%= yapai[:color] %>"></div>
             <div class="p-8">
-              <h3 class="text-xl font-bold text-white mb-3"><%= yapai[:title] %></h3>
-              <p class="text-slate-400 text-sm leading-relaxed mb-6"><%= yapai[:desc] %></p>
+              <h3 class="text-xl font-bold text-slate-900 mb-3"><%= yapai[:title] %></h3>
+              <p class="text-slate-500 text-sm leading-relaxed mb-6"><%= yapai[:desc] %></p>
               <ul class="space-y-2">
                 <% yapai[:items].each do |item| %>
-                  <li class="flex items-center gap-2 text-sm text-slate-300">
+                  <li class="flex items-center gap-2 text-sm text-slate-600">
                     <svg class="w-4 h-4 text-<%= yapai[:color] %> flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                       <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
                     </svg>
@@ -351,33 +306,114 @@
 
 
   <!-- ===== VISIT US / CTA ===== -->
-  <div class="py-24 sm:py-32 bg-white relative z-20 -mt-16 rounded-t-[4rem] shadow-[0_-30px_60px_rgba(0,0,0,0.05)]">
+  <div id="visit" class="py-24 sm:py-32 bg-slate-50 relative z-20 -mt-16 rounded-t-[4rem]">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
-      <div class="bg-white border border-slate-100 rounded-[3rem] overflow-hidden shadow-2xl flex flex-col lg:flex-row reveal-up">
-        <div class="p-12 lg:p-16 lg:w-3/5">
-          <p class="text-primary font-semibold tracking-widest uppercase text-sm mb-3">Open Door Policy</p>
-          <h2 class="text-3xl font-bold tracking-tight text-slate-900 mb-6">Visit Our Factory</h2>
-          <p class="text-slate-500 text-lg mb-8">
-            We welcome all partners to visit our factory in Dongguan. Come see our production lines, meet our team, and discuss your order requirements in person. Let's build a long-term partnership together.
-          </p>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
-            <div class="flex items-center gap-4">
-              <div class="w-10 h-10 bg-secondary/10 rounded-full flex items-center justify-center flex-shrink-0">
-                <svg class="w-5 h-5 text-secondary" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-              </div>
-              <a href="https://wa.me/+8618124935425" target="_blank" class="text-slate-600 font-medium hover:text-secondary transition-colors">+86 181 2493 5425</a>
-            </div>
-            <div class="flex items-center gap-4 sm:col-span-2">
-              <div class="w-10 h-10 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0">
-                <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-              </div>
-              <span class="text-slate-600 font-medium">Dongguan City, Guangdong Province, China</span>
-            </div>
+      <div class="bg-white rounded-[3rem] overflow-hidden shadow-[0_40px_100px_-20px_rgba(0,0,0,0.1)] flex flex-col lg:flex-row reveal-up border border-slate-100">
+        <div class="p-12 lg:p-20 lg:w-3/5">
+          <div class="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 rounded-full mb-6">
+            <span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+            <span class="text-primary font-bold uppercase tracking-widest text-[10px]">Open Door Policy</span>
           </div>
-          <%= link_to "Watch Factory Video", "https://youtu.be/LMBzklV6Ves", target: "_blank", class: "inline-flex items-center gap-2 px-8 py-4 rounded-full bg-primary text-white font-bold hover:bg-primary/90 transition-all shadow-lg hover:shadow-primary/30 hover:scale-105" %>
+          <h2 class="text-4xl font-black tracking-tighter text-slate-900 mb-8 sm:text-5xl">Experience Quality In Person.</h2>
+          <p class="text-slate-500 text-lg leading-relaxed mb-12">
+            We welcome all partners to visit our facility in Dongguan. Transparency is our core value—witness our production lines, meet our engineering team, and discuss your bespoke requirements directly.
+          </p>
+
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-12">
+            <!--
+                        <div class="flex items-start gap-5 group">
+                          <div class="w-12 h-12 bg-slate-500 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:bg-primary transition-colors duration-500">
+                            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                          </div>
+                          <div>
+                            <p class="text-[10px] text-slate-400 font-black uppercase tracking-widest mb-1">WhatsApp Us</p>
+                            <a href="https://wa.me/+8618124935425" target="_blank" class="text-slate-900 font-bold hover:text-primary transition-colors">+86 181 2493 5425</a>
+                          </div>
+                        </div>-->
+                        <div class="flex items-start gap-5 group">
+                          <div class="w-12 h-12 bg-slate-700 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:bg-primary transition-colors duration-500">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                          </div>
+                          <div>
+                            <p class="text-[10px] text-slate-400 font-black uppercase tracking-widest mb-1">Location</p>
+                            <span class="text-slate-500 font-bold">Dongguan City, Guangdong Province, China</span>
+                          </div>
+                        </div>
+          </div>
+          <div class="flex flex-wrap gap-4" x-data="{ open: false }">
+            <button @click="open = true" class="group relative px-10 py-5 rounded-2xl bg-emerald-50 text-emerald-600 font-black hover:bg-emerald-100 transition-all border border-emerald-100 flex items-center gap-3 overflow-hidden animate-pulse-gentle">
+              <span class="relative z-10 flex items-center gap-3">
+                <span class="relative flex">
+                  <span class="animate-ping-slow absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-30"></span>
+                  <svg class="relative w-6 h-6 fill-current" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                </span>
+
+Watch Yapai Factory Video
+              </span>
+              <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:animate-shimmer-fast"></div>
+            </button>
+            <a href="https://wa.me/+8618124935425" target="_blank" class="px-10 py-5 rounded-2xl bg-primary/10 text-primary font-black hover:bg-primary/20 transition-all border border-primary/20 hover:-translate-y-1 active:translate-y-0"> Contact Sales</a>
+
+            <!-- Video Modal (reusing the same logic) -->
+            <template x-teleport="body">
+              <div x-show="open" 
+                   x-transition:enter="transition ease-out duration-300"
+                   x-transition:enter-start="opacity-0"
+                   x-transition:enter-end="opacity-100"
+                   x-transition:leave="transition ease-in duration-200"
+                   x-transition:leave-start="opacity-100"
+                   x-transition:leave-end="opacity-0"
+                   class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/90 backdrop-blur-sm"
+                   @keydown.escape.window="open = false"
+                   style="display: none;">
+                <div class="relative w-full max-w-5xl aspect-video bg-black rounded-3xl overflow-hidden shadow-2xl"
+                     @click.away="open = false">
+                  <button @click="open = false" class="absolute top-4 right-4 z-20 p-2 bg-white/10 hover:bg-white/20 text-white rounded-full transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                  </button>
+                  <template x-if="open">
+                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/LMBzklV6Ves?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                  </template>
+                </div>
+              </div>
+            </template>
+          </div>
         </div>
-        <div class="lg:w-2/5 h-64 lg:h-auto overflow-hidden">
-          <%= image_tag "factory222.jpg", class: "w-full h-full object-cover hover:scale-105 transition-transform duration-700" %>
+
+        <!-- Animation styles -->
+        <style>
+          @keyframes shimmer-fast {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+          }
+          .animate-shimmer-fast {
+            animation: shimmer-fast 1.5s infinite;
+          }
+          @keyframes pulse-gentle {
+            0%, 100% { transform: scale(1); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1); }
+            50% { transform: scale(1.02); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -6px rgba(0, 0, 0, 0.1); }
+          }
+          .animate-pulse-gentle {
+            animation: pulse-gentle 2s infinite ease-in-out;
+          }
+          @keyframes ping-slow {
+            75%, 100% {
+              transform: scale(2);
+              opacity: 0;
+            }
+          }
+          .animate-ping-slow {
+            animation: ping-slow 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+          }
+        </style>
+        <div class="lg:w-2/5 min-h-[400px] relative overflow-hidden group">
+          <%= image_tag "factory222.jpg", class: "absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2s]" %>
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent"></div>
         </div>
       </div>
     </div>
@@ -411,6 +447,15 @@
   .revealed {
     opacity: 1 !important;
     transform: none !important;
+  }
+
+  @keyframes gradient-x {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+  .animate-gradient-x {
+    background-size: 200% 200%;
+    animation: gradient-x 5s ease infinite;
   }
 </style>
 
