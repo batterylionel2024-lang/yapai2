@@ -88,13 +88,21 @@ zh-CN:
         step6: "最终"
         step6_desc: "交付"
       design_rd:
-        title: "设计与研发能力"
-        subtitle: "我们不仅能生产，更能提供专业的开发支持"
+        title: "Logo定制"
+        subtitle: "只需发送您的Logo名称或图片。"
         items:
-          product_design: "产品设计"
-          sample_dev: "样品开发"
-          tech_support: "技术支持"
-          process_opt: "工艺优化"
+          free_design: "免费设计"
+          sample_confirmation: "样品确认"
+          screen_printing: "丝印（黑或白）"
+          uv_printing: "UV印刷（彩色）"
+      packaging_design:
+        title: "包装设计"
+        subtitle: "我们提供纸盒、塑料袋、铁盒等包装。"
+        items:
+          free_design: "免费设计"
+          sample_confirmation: "样品确认"
+          low_moq: "小批量定制"
+          more_languages: "支持多国语言"
       production:
         title: "生产能力展示"
         subtitle: "工业级品质控制，确保稳定交付"

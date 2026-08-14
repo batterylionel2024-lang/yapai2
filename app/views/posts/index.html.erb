@@ -1,6 +1,3 @@
-<% content_for :title, "Blog - Yapai Battery" %>
-<% content_for :meta_description, "Explore mobile phone battery manufacturing insights, trends, and guides from Yapai Battery Factory." %>
-
 <% 
   hero_title = if params[:category] == 'enterprise_updates'
     t('posts.enterprise_updates.title')
@@ -10,6 +7,11 @@
     t('navbar.blog')
   end
 
+  content_for :title, "#{hero_title} - Yapai Battery"
+%>
+<% content_for :meta_description, "Explore mobile phone battery manufacturing insights, trends, and guides from Yapai Battery Factory." %>
+
+<% 
   hero_subtitle = if params[:category] == 'enterprise_updates'
     t('posts.enterprise_updates.subtitle')
   elsif params[:category] == 'industry_news'

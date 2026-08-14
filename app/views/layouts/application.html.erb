@@ -203,11 +203,30 @@
             .then(data => {
               const container = document.getElementById('cartItems');
               container.innerHTML = data.items.map(item => `
-                <div class="flex justify-between items-center mb-3 p-2 bg-gray-50 rounded-lg">
-                  <span class="font-medium text-sm text-gray-700">${item.name}</span>
-                  <div class="flex items-center gap-2">
-                    <input type="number" value="${item.quantity}" min="1" class="w-16 border rounded p-1 text-center text-sm" onchange="updateCartQuantity(${item.id}, this.value)">
-                    <button onclick="removeFromCart(${item.id})" class="text-red-500 hover:text-red-700 text-sm">Remove</button>
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 p-4 bg-gray-50 rounded-2xl border border-gray-100 gap-4">
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600 flex-shrink-0">
+                      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+                    </div>
+                    <span class="font-bold text-gray-800">${item.name}</span>
+                  </div>
+                  
+                  <div class="flex items-center gap-4 w-full sm:w-auto justify-between sm:justify-end">
+                    <div class="flex items-center bg-white rounded-xl border border-gray-200 p-1 shadow-sm">
+                      <button onclick="decrementQuantity(${item.id}, ${item.quantity})" class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-orange-500 hover:bg-orange-50 rounded-lg transition-colors">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path></svg>
+                      </button>
+                      <input type="number" value="${item.quantity}" min="1" 
+                        class="w-12 border-none bg-transparent p-0 text-center text-sm font-bold text-gray-700 focus:ring-0" 
+                        onchange="updateCartQuantity(${item.id}, this.value)">
+                      <button onclick="incrementQuantity(${item.id}, ${item.quantity})" class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-orange-500 hover:bg-orange-50 rounded-lg transition-colors">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                      </button>
+                    </div>
+                    
+                    <button onclick="removeFromCart(${item.id})" class="p-2 text-gray-400 hover:text-red-500 transition-colors">
+                      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                    </button>
                   </div>
                 </div>
               `).join('');
@@ -215,7 +234,19 @@
             });
         }
 
+        function incrementQuantity(skuId, currentQty) {
+          updateCartQuantity(skuId, parseInt(currentQty) + 1);
+        }
+
+        function decrementQuantity(skuId, currentQty) {
+          const newQty = Math.max(1, parseInt(currentQty) - 1);
+          updateCartQuantity(skuId, newQty);
+        }
+
         function updateCartQuantity(skuId, quantity) {
+            quantity = parseInt(quantity);
+            if (isNaN(quantity) || quantity < 1) quantity = 1;
+            
             fetch('/order/update_item', {
               method: 'PATCH',
               headers: {

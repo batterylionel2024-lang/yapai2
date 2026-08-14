@@ -5,83 +5,35 @@
 <div class="bg-slate-50 min-h-screen overflow-x-hidden">
 
   <!-- Hero Section -->
-  <div class="relative bg-white py-40 sm:py-56 overflow-hidden">
+  <div class="relative bg-slate-900 py-24 sm:py-32 overflow-hidden">
     <div class="absolute inset-0">
-      <%= image_tag "factory1.jpg", class: "w-full h-full object-cover opacity-10" %>
-      <div class="absolute inset-0 bg-gradient-to-b from-white via-white/80 to-slate-50"></div>
+      <%= image_tag "factory1.jpg", class: "w-full h-full object-cover opacity-60" %>
+      <div class="absolute inset-0 bg-slate-950/70 mix-blend-multiply"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/20 to-slate-900/40"></div>
     </div>
     <!-- Advanced decorative elements -->
     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full overflow-hidden pointer-events-none">
-      <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/10 rounded-full blur-[120px] animate-pulse"></div>
-      <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-emerald-500/5 rounded-full blur-[120px]"></div>
+      <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-white/5 rounded-full blur-[120px] animate-pulse"></div>
+      <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-slate-400/10 rounded-full blur-[120px]"></div>
     </div>
 
     <div class="relative max-w-7xl mx-auto px-6 lg:px-8 text-center">
       <div class="reveal-hero flex flex-col items-center">
-        <div class="inline-flex items-center gap-2 px-4 py-2 bg-slate-900/5 backdrop-blur-xl rounded-full border border-slate-900/10 mb-8 shadow-sm">
+        <div class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-xl rounded-full border border-white/20 mb-8 shadow-sm">
           <span class="relative flex h-2 w-2">
             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
             <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
           </span>
-          <p class="text-slate-600 font-bold tracking-[0.2em] uppercase text-[10px]">
-            Professional Battery Manufacturer
+          <p class="text-white/90 font-bold tracking-[0.2em] uppercase text-[10px]">
+            PROFESSIONAL BATTERY MANUFACTURER
           </p>
         </div>
-        <h1 class="text-6xl font-black tracking-tighter text-slate-900 sm:text-8xl mb-8 leading-[1.1]">
-          About <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-emerald-500 to-primary animate-gradient-x">Yapai</span>
+        <h1 class="text-6xl font-black tracking-tighter text-white sm:text-8xl mb-8 leading-[1.1]">
+          About <span class="text-transparent bg-clip-text bg-gradient-to-r from-slate-200 via-white to-slate-400 animate-gradient-x">Yapai</span>
         </h1>
-        <p class="text-xl leading-relaxed text-slate-600 max-w-2xl font-medium mb-10">
-          A leading smartphone battery manufacturer specializing in <span class="text-slate-900 font-bold">R&D</span>, <span class="text-slate-900 font-bold">Production</span>, and <span class="text-slate-900 font-bold">Global Export</span> since 2003.
+        <p class="text-xl leading-relaxed text-slate-300 max-w-2xl font-medium mb-12">
+          Yapai Battery Factory is a professional mobile phone battery manufacturer headquartered in Guangdong, China, with its production plant located in Dongguan. The company focuses on the R&D, production, and global export of replacement batteries for smartphones.
         </p>
-        <div class="flex flex-wrap justify-center gap-4 reveal-from-right-large" x-data="{ open: false }">
-          <button @click="open = true" class="group relative px-10 py-5 bg-primary text-white font-black rounded-2xl hover:bg-primary/90 transition-all hover:scale-105 active:scale-95 shadow-xl shadow-primary/20 flex items-center gap-4 overflow-hidden animate-pulse-gentle">
-            <span class="relative z-10 flex items-center gap-4">
-              <span class="relative flex">
-                <span class="animate-ping-slow absolute inline-flex h-full w-full rounded-full bg-white opacity-40"></span>
-                <span class="animate-ping-slow absolute inline-flex h-[150%] w-[150%] -top-[25%] -left-[25%] rounded-full bg-white opacity-20" style="animation-delay: 0.5s"></span>
-                <svg class="relative w-10 h-10 fill-current group-hover:scale-110 transition-transform" viewBox="0 0 24 24">
-                  <path d="M8 5v14l11-7z"/>
-                </svg>
-              </span>
-              <span class="text-xl tracking-tight">Watch Yapai Factory Video</span>
-            </span>
-            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:animate-shimmer-fast"></div>
-          </button>
-
-          <!-- Video Modal -->
-          <template x-teleport="body">
-            <div x-show="open" 
-                 x-transition:enter="transition ease-out duration-300"
-                 x-transition:enter-start="opacity-0"
-                 x-transition:enter-end="opacity-100"
-                 x-transition:leave="transition ease-in duration-200"
-                 x-transition:leave-start="opacity-100"
-                 x-transition:leave-end="opacity-0"
-                 class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/90 backdrop-blur-sm"
-                 @keydown.escape.window="open = false"
-                 style="display: none;">
-              
-              <div class="relative w-full max-w-5xl aspect-video bg-black rounded-3xl overflow-hidden shadow-2xl"
-                   @click.away="open = false">
-                <button @click="open = false" class="absolute top-4 right-4 z-20 p-2 bg-white/10 hover:bg-white/20 text-white rounded-full transition-colors">
-                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                  </svg>
-                </button>
-                
-                <template x-if="open">
-                  <iframe class="w-full h-full" 
-                          src="https://www.youtube.com/embed/LMBzklV6Ves?autoplay=1" 
-                          title="YouTube video player" 
-                          frameborder="0" 
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                          allowfullscreen>
-                  </iframe>
-                </template>
-              </div>
-            </div>
-          </template>
-        </div>
       </div>
     </div>
   </div>
@@ -321,43 +273,35 @@
           </p>
 
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-12">
-            <!--
-                        <div class="flex items-start gap-5 group">
-                          <div class="w-12 h-12 bg-slate-500 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:bg-primary transition-colors duration-500">
-                            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                          </div>
-                          <div>
-                            <p class="text-[10px] text-slate-400 font-black uppercase tracking-widest mb-1">WhatsApp Us</p>
-                            <a href="https://wa.me/+8618124935425" target="_blank" class="text-slate-900 font-bold hover:text-primary transition-colors">+86 181 2493 5425</a>
-                          </div>
-                        </div>-->
-                        <div class="flex items-start gap-5 group">
-                          <div class="w-12 h-12 bg-slate-700 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:bg-primary transition-colors duration-500">
-                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                          </div>
-                          <div>
-                            <p class="text-[10px] text-slate-400 font-black uppercase tracking-widest mb-1">Location</p>
-                            <span class="text-slate-500 font-bold">Dongguan City, Guangdong Province, China</span>
-                          </div>
-                        </div>
+          <div class="flex flex-col gap-8 mb-12">
+            <div class="flex items-center gap-5 group">
+              <div class="w-12 h-12 bg-slate-700 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:bg-primary transition-colors duration-500">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="text-slate-500 font-bold">Dongguan City, Guangdong Province, China</span>
+              </div>
+            </div>
           </div>
-          <div class="flex flex-wrap gap-4" x-data="{ open: false }">
-            <button @click="open = true" class="group relative px-10 py-5 rounded-2xl bg-emerald-50 text-emerald-600 font-black hover:bg-emerald-100 transition-all border border-emerald-100 flex items-center gap-3 overflow-hidden animate-pulse-gentle">
+          <div class="flex flex-col sm:flex-row items-center gap-4" x-data="{ open: false }">
+            <button @click="open = true" class="w-full sm:w-auto group relative px-6 py-4 rounded-2xl bg-emerald-50 text-emerald-600 font-black hover:bg-emerald-100 transition-all border border-emerald-100 flex items-center justify-center gap-3 overflow-hidden animate-pulse-gentle">
               <span class="relative z-10 flex items-center gap-3">
                 <span class="relative flex">
                   <span class="animate-ping-slow absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-30"></span>
-                  <svg class="relative w-6 h-6 fill-current" viewBox="0 0 24 24">
+                  <svg class="relative w-5 h-5 fill-current" viewBox="0 0 24 24">
                     <path d="M8 5v14l11-7z"/>
                   </svg>
                 </span>
-                <span class="text-lg font-bold">Watch Yapai Factory Video</span>
+                <span class="text-base font-bold whitespace-nowrap">Watch Yapai Factory Video</span>
               </span>
               <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:animate-shimmer-fast"></div>
             </button>
-            <a href="https://wa.me/+8618124935425" target="_blank" class="px-10 py-5 rounded-2xl bg-primary/10 text-primary font-black hover:bg-primary/20 transition-all border border-primary/20 hover:-translate-y-1 active:translate-y-0"> Contact Sales</a>
+            <a href="tel:+8618124935425" class="w-full sm:w-auto px-6 py-4 rounded-2xl bg-primary text-white font-black hover:bg-primary/90 transition-all shadow-lg hover:-translate-y-1 active:translate-y-0 flex items-center justify-center gap-3">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+              <span class="text-base whitespace-nowrap">Call Sales Now</span>
+            </a>
 
-            <!-- Video Modal (reusing the same logic) -->
+            <!-- Video Modal -->
             <template x-teleport="body">
               <div x-show="open" 
                    x-transition:enter="transition ease-out duration-300"
@@ -369,6 +313,7 @@
                    class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/90 backdrop-blur-sm"
                    @keydown.escape.window="open = false"
                    style="display: none;">
+                
                 <div class="relative w-full max-w-5xl aspect-video bg-black rounded-3xl overflow-hidden shadow-2xl"
                      @click.away="open = false">
                   <button @click="open = false" class="absolute top-4 right-4 z-20 p-2 bg-white/10 hover:bg-white/20 text-white rounded-full transition-colors">
@@ -376,8 +321,15 @@
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                     </svg>
                   </button>
+                  
                   <template x-if="open">
-                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/LMBzklV6Ves?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <iframe class="w-full h-full" 
+                            src="https://www.youtube.com/embed/LMBzklV6Ves?autoplay=1" 
+                            title="YouTube video player" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            allowfullscreen>
+                    </iframe>
                   </template>
                 </div>
               </div>

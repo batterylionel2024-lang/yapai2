@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   def add_item
     sku = Sku.find(params[:sku_id])
     session[:cart] ||= {}
-    session[:cart][sku.id.to_s] = (session[:cart][sku.id.to_s] || 0) + 1
+    session[:cart][sku.id.to_s] = (session[:cart][sku.id.to_s] || 0) + 30
     render json: { count: session[:cart].values.sum }
   end
 
@@ -42,9 +42,9 @@ class OrdersController < ApplicationController
         @order.order_items.create!(sku_id: sku_id, quantity: quantity)
       end
       session[:cart] = {}
-      render json: { success: true, message: "订单提交成功！" }
+      render json: { success: true, message: "Order submitted successfully!" }
     else
-      render json: { success: false, message: "订单提交失败，请检查填写信息。" }, status: :unprocessable_entity
+      render json: { success: false, message: "Failed to submit order, please check your information." }, status: :unprocessable_entity
     end
   end
 

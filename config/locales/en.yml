@@ -161,13 +161,21 @@ en:
         step6: "Final"
         step6_desc: "Delivery"
       design_rd:
-        title: "Design & R&D"
-        subtitle: "Not just manufacturing, but also professional development support."
+        title: "Logo Design"
+        subtitle: "Just send me your logo name or picture."
         items:
-          product_design: "Product Design"
-          sample_dev: "Sample Development"
-          tech_support: "Technical Support"
-          process_opt: "Process Optimization"
+          free_design: "Free Design"
+          sample_confirmation: "Sample Confirmation"
+          screen_printing: "Screen Printing (Black or White)"
+          uv_printing: "UV Printing (Multi-Color)"
+      packaging_design:
+        title: "Packaging Design"
+        subtitle: "We offer packaging in paper boxes, plastic bags, tin boxes and so on."
+        items:
+          free_design: "Free Design"
+          sample_confirmation: "Sample Confirmation"
+          low_moq: "Low-MOQ Customization"
+          more_languages: "Supports More Languages"
       production:
         title: "Production Capacity"
         subtitle: "Stable delivery with industrial-grade quality control."
