@@ -89,31 +89,31 @@
           <!-- Background Glow Effect -->
           <div class="absolute inset-0 bg-gradient-to-br from-orange-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           
-          <!-- Battery "Tip" Decoration -->
-          <div class="absolute top-0 left-1/2 -translate-x-1/2 w-6 h-1.5 bg-gradient-to-r from-orange-400 to-orange-600 rounded-b-md shadow-sm"></div>
+      <!-- Battery "Tip" Decoration -->
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-6 h-1.5 bg-gradient-to-r from-green-400 to-green-600 rounded-b-md shadow-sm"></div>
 
-          <!-- Icon & Badge Container -->
-          <div class="relative z-10 mb-1 mt-1">
-            <svg class="w-8 h-8 text-orange-500 group-hover:text-orange-400 transition-colors duration-300 drop-shadow-[0_0_8px_rgba(249,115,22,0.4)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
-            </svg>
+      <!-- Icon & Badge Container -->
+      <div class="relative z-10 mb-1 mt-1">
+        <svg class="w-8 h-8 text-green-500 group-hover:text-green-400 transition-colors duration-300 drop-shadow-[0_0_8px_rgba(34,197,94,0.4)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 7h-3V5a2 2 0 00-2-2H8a2 2 0 00-2 2v2H3a1 1 0 00-1 1v11a2 2 0 002 2h16a2 2 0 002-2V8a1 1 0 00-1-1zM8 5h8v2H8V5z"></path>
+        </svg>
             
             <!-- Animated Badge -->
             <span id="cartCountBadge" class="absolute -top-2 -right-3 bg-red-600 text-white text-[11px] font-black w-6 h-6 flex items-center justify-center rounded-full border-2 border-slate-900 shadow-lg transform group-hover:scale-110 transition-transform hidden">0</span>
           </div>
 
-          <!-- Label -->
-          <span class="relative z-10 text-[10px] font-black uppercase tracking-wider text-slate-400 group-hover:text-white transition-colors duration-300">
-            Inquiry
-          </span>
+      <!-- Label -->
+      <span class="relative z-10 text-[10px] font-black uppercase tracking-wider text-slate-400 group-hover:text-white transition-colors duration-300">
+       Add to
+      </span>
 
-          <!-- Floating Particles / Glow Animation -->
-          <div class="absolute bottom-0 left-0 w-full h-1 bg-orange-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
-        </button>
-        
-        <!-- Pulse effect for attention -->
-        <div class="absolute -inset-1 bg-orange-500 rounded-2xl opacity-20 group-hover:opacity-0 animate-pulse -z-10"></div>
-    </div>
+      <!-- Floating Particles / Glow Animation -->
+      <div class="absolute bottom-0 left-0 w-full h-1 bg-green-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+    </button>
+    
+    <!-- Pulse effect for attention -->
+    <div class="absolute -inset-1 bg-green-500 rounded-2xl opacity-20 group-hover:opacity-0 animate-pulse -z-10"></div>
+</div>
 
     <!-- WeChat Popup -->
     <div id="wechatModal"
@@ -159,7 +159,7 @@
             })
             .then(response => response.json())
             .then(data => {
-              showToast('Success', 'Added to Inquiry List');
+              showToast('Success', 'Added to Battery List');
               updateCartBadge();
             });
         }
@@ -175,9 +175,9 @@
             }
             
             toast.innerHTML = `
-                <div class="bg-slate-900 border-l-4 border-orange-500 text-white px-6 py-4 rounded-xl shadow-2xl flex items-center gap-4 min-w-[300px]">
-                    <div class="bg-orange-500/20 p-2 rounded-lg">
-                        <svg class="w-6 h-6 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="bg-slate-900 border-l-4 border-green-500 text-white px-6 py-4 rounded-xl shadow-2xl flex items-center gap-4 min-w-[300px]">
+                    <div class="bg-green-500/20 p-2 rounded-lg">
+                        <svg class="w-6 h-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                         </svg>
                     </div>
@@ -205,8 +205,8 @@
               container.innerHTML = data.items.map(item => `
                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 p-4 bg-gray-50 rounded-2xl border border-gray-100 gap-4">
                   <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600 flex-shrink-0">
-                      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+                    <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center text-green-600 flex-shrink-0">
+                      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 7h-3V5a2 2 0 00-2-2H8a2 2 0 00-2 2v2H3a1 1 0 00-1 1v11a2 2 0 002 2h16a2 2 0 002-2V8a1 1 0 00-1-1zM8 5h8v2H8V5z"></path></svg>
                     </div>
                     <span class="font-bold text-gray-800">${item.name}</span>
                   </div>
