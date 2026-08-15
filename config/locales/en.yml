@@ -73,6 +73,12 @@ en:
       subtitle: "NEWS"
       description: "Professional analysis and insights into the global mobile phone battery industry and technology trends."
     all: "All News"
+    back_to_blog: "Back to News"
+    statistics:
+      title: "Blog Insights"
+      subtitle: "REAL-TIME DATA"
+      total_articles: "Total Articles"
+      read_count: "Read Count"
   categories:
     all_products: "All Products"
     all_products_catalog: "All Products Catalog"
@@ -209,7 +215,7 @@ en:
       title: "FAQ's"
       subtitle: "Find answers to common questions about our products and services"
       no_questions: "No FAQs available"
-      more_questions_title: "Still have questions?"
+      more_questions_title: "Still Have Questions?"
       more_questions_desc: "If you cannot find the answer you are looking for, please feel free to contact our customer service team."
     contact_us: "Contact Us"
     index:

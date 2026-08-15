@@ -11,6 +11,7 @@
       <tr>
         <th class="px-6 py-3 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">标题</th>
         <th class="px-6 py-3 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">状态</th>
+        <th class="px-6 py-3 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">浏览量</th>
         <th class="px-6 py-3 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">发布时间</th>
         <th class="px-6 py-3 text-right text-xs font-bold text-slate-500 uppercase tracking-wider">操作</th>
       </tr>
@@ -28,6 +29,9 @@
             <% else %>
               <span class="px-2 py-1 text-xs font-bold rounded-full bg-slate-100 text-slate-500">草稿</span>
             <% end %>
+          </td>
+          <td class="px-6 py-4 text-sm text-slate-500">
+            <%= number_with_delimiter(post.views_count) %>
           </td>
           <td class="px-6 py-4 text-sm text-slate-500">
             <%= post.published_at&.strftime("%Y-%m-%d") || "-" %>

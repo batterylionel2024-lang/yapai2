@@ -21,6 +21,12 @@ zh-CN:
       subtitle: "市场趋势"
       description: "针对全球手机电池行业和技术趋势的专业分析与见解。"
     all: "全部资讯"
+    back_to_blog: "返回资讯列表"
+    statistics:
+      title: "博客概览"
+      subtitle: "实时数据"
+      total_articles: "文章总数"
+      read_count: "累计阅读"
   home:
     contact:
       title: "联系雅派"

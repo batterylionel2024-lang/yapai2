@@ -18,4 +18,8 @@ class Post < ApplicationRecord
   def published?
     status == "published"
   end
+
+  def increment_views!
+    increment!(:views_count)
+  end
 end

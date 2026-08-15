@@ -7,7 +7,9 @@
 <div class="max-w-screen-lg mx-auto px-6 py-16">
   <!-- Breadcrumb -->
   <nav class="flex items-center gap-2 text-sm text-slate-400 mb-10">
-    <%= link_to "Blog", posts_path, class: "hover:text-primary transition-colors font-medium" %>
+    <%= link_to posts_path, class: "hover:text-primary transition-colors font-medium" do %>
+      <%= t("posts.#{@post.category}.title") %>
+    <% end %>
     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
     <span class="text-slate-600 font-medium truncate"><%= @post.title %></span>
   </nav>
@@ -15,8 +17,15 @@
   <!-- Article header -->
   <header class="mb-10">
     <div class="flex items-center gap-3 mb-5">
-      <span class="px-3 py-1 bg-primary/10 text-primary text-xs font-bold rounded-full uppercase tracking-widest">Yapai Blog</span>
+      <span class="px-3 py-1 bg-primary/10 text-primary text-xs font-bold rounded-full uppercase tracking-widest">
+        YAPAI NEWS
+      </span>
       <span class="text-xs text-slate-400 font-medium"><%= @post.published_at&.strftime("%B %d, %Y") %></span>
+      <span class="text-slate-200">|</span>
+      <span class="flex items-center gap-1 text-xs text-slate-400 font-medium">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+        <%= number_with_delimiter(@post.views_count) %>
+      </span>
     </div>
     <h1 class="text-4xl md:text-5xl font-black text-slate-900 leading-tight tracking-tight mb-6"><%= @post.title %></h1>
     <% if @post.summary.present? %>
@@ -47,7 +56,7 @@
   <div class="mt-16 pt-8 border-t border-slate-100">
     <%= link_to posts_path, class: "inline-flex items-center gap-2 text-slate-500 hover:text-primary font-semibold text-sm transition-colors" do %>
       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-      Back to Blog
+      <%= t('posts.back_to_blog') %>
     <% end %>
   </div>
 </div>
