@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = [ "slide", "content", "indicator", "counter" ]
+  static targets = [ "slide", "content", "counter", "image" ]
 
   connect() {
     this.index = 0
@@ -41,49 +41,32 @@ export default class extends Controller {
   }
 
   showSlide(index) {
+    const isNext = index > this.index || (this.index === this.slideTargets.length - 1 && index === 0);
+    
     // Hide current
     if (this.slideTargets[this.index]) {
-      this.slideTargets[this.index].classList.remove('opacity-100', 'z-10')
-      this.slideTargets[this.index].firstElementChild?.classList.remove('scale-100')
-      this.slideTargets[this.index].firstElementChild?.classList.add('scale-105')
-      this.slideTargets[this.index].classList.add('opacity-0', 'z-0')
+      this.slideTargets[this.index].classList.remove('opacity-100', 'z-10', 'scale-100')
+      this.slideTargets[this.index].classList.add('opacity-0', 'z-0', 'scale-110')
     }
     
     if (this.contentTargets[this.index]) {
       this.contentTargets[this.index].classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto')
-      this.contentTargets[this.index].classList.add('opacity-0', 'translate-y-8', 'pointer-events-none')
-    }
-
-    if (this.indicatorTargets[this.index]) {
-      this.indicatorTargets[this.index].classList.remove('bg-white', 'h-10', 'w-1.5')
-      this.indicatorTargets[this.index].classList.add('bg-white/20', 'h-1', 'w-full')
+      this.contentTargets[this.index].classList.add('opacity-0', 'translate-y-12', 'pointer-events-none')
     }
 
     this.index = index
 
     // Show new
     if (this.slideTargets[this.index]) {
-      this.slideTargets[this.index].classList.remove('opacity-0', 'z-0')
-      this.slideTargets[this.index].classList.add('opacity-100', 'z-10')
-      // Ken Burns effect start
-      setTimeout(() => {
-        this.slideTargets[this.index].firstElementChild?.classList.remove('scale-105')
-        this.slideTargets[this.index].firstElementChild?.classList.add('scale-100')
-      }, 50)
+      this.slideTargets[this.index].classList.remove('opacity-0', 'z-0', 'scale-110')
+      this.slideTargets[this.index].classList.add('opacity-100', 'z-10', 'scale-100')
     }
 
     if (this.contentTargets[this.index]) {
-      this.contentTargets[this.index].classList.remove('opacity-0', 'translate-y-8', 'pointer-events-none')
-      this.contentTargets[this.index].classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto')
-    }
-
-    if (this.indicatorTargets[this.index]) {
-      this.indicatorTargets[this.index].classList.remove('bg-white/20', 'h-1', 'w-full')
-      this.indicatorTargets[this.index].classList.add('bg-white', 'h-10', 'w-1.5')
-    }
-
-    if (this.hasCounterTarget) {
-      this.counterTarget.textContent = (this.index + 1).toString().padStart(2, '0')
+      setTimeout(() => {
+        this.contentTargets[this.index].classList.remove('opacity-0', 'translate-y-12', 'pointer-events-none')
+        this.contentTargets[this.index].classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto')
+      }, 300)
     }
   }
 }

@@ -23,7 +23,19 @@
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <style> [x-cloak] { display: none !important; } </style>
+    <style> 
+      [x-cloak] { display: none !important; } 
+      /* Hide number input spinners for Chrome, Safari, Edge, Opera */
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      /* Hide number input spinners for Firefox */
+      input[type=number] {
+        -moz-appearance: textfield;
+      }
+    </style>
   </head>
 
   <body class="flex flex-col min-h-screen bg-white">
