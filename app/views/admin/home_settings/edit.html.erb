@@ -51,19 +51,6 @@
       </div>
     </div>
 
-    <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
-      <h3 class="text-lg font-medium text-slate-800 mb-6 border-b pb-2">首页 Why Choose Us (05 部分)</h3>
-      <div>
-        <%= f.label :strength_image, "左侧图片", class: "block text-sm font-medium text-slate-700 mb-2" %>
-        <% if @site_config.strength_image.attached? %>
-          <div class="mb-4">
-            <%= image_tag @site_config.strength_image, class: "max-w-md h-auto rounded-xl shadow-sm border" %>
-          </div>
-        <% end %>
-        <%= f.file_field :strength_image, class: "block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-primary/10 file:text-primary hover:file:bg-primary/20" %>
-        <p class="mt-2 text-xs text-slate-400">建议上传大图，将显示在优势模块的左侧。</p>
-      </div>
-    </div>
 
     <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
       <h3 class="text-lg font-medium text-slate-800 mb-6 border-b pb-2">工厂页面 (Factory) 轮播图</h3>

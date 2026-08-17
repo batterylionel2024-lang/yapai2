@@ -146,6 +146,22 @@ zh-CN:
       more_questions_desc: "如果您没能找到想要的答案，请随时联系我们的客户服务团队。"
     contact_us: "联系我们"
 
+    index:
+      hero_slides:
+        slide1:
+          title1: "专业电池工厂"
+          title2: "雅派电池"
+          desc: "总部位于中国广东的专业手机电池制造商。"
+        slide2:
+          title1: "Wide Compatibility"
+          title2: "1,000+ MODELS"
+          desc: "适用于 iPhone、华为、小米、OPPO、vivo 等品牌的替换电池。"
+        slide3:
+          title1: "全球出口"
+          title2: "您值得信赖的合作伙伴"
+          desc: "支持 OEM/ODM 订单，为全球批发商提供免费品牌 Logo 定制。"
+      factory_tour: "参观工厂"
+      explore_more: "探索更多"
     about:
       title: "关于我们"
       subtitle: "公司简介"
