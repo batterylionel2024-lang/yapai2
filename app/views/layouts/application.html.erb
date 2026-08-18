@@ -38,7 +38,8 @@
     </style>
   </head>
 
-  <body class="flex flex-col min-h-screen bg-white">
+  <body class="flex flex-col min-h-screen bg-white" 
+        data-shopping-page="<%= (controller_name == 'categories' || controller_name == 'channels' || controller_name == 'skus') ? 'true' : 'false' %>">
     <%= render "layouts/navbar" %>
     
     <main class="flex-grow pt-20">
@@ -94,7 +95,7 @@
     </div>
 
     <!-- Cart (Enhanced Battery Factory Style) -->
-    <div class="fixed right-6 bottom-6 z-50 group">
+    <div id="cartContainer" class="fixed right-6 bottom-6 z-50 group hidden">
         <button onclick="document.getElementById('cartModal').classList.remove('hidden'); loadCart();"
                 class="relative flex flex-col items-center justify-center w-20 h-20 bg-slate-900 text-white rounded-2xl shadow-[0_20px_50px_-15px_rgba(0,0,0,0.3)] hover:shadow-orange-500/40 transition-all duration-500 hover:-translate-y-2 active:scale-95 group overflow-hidden border border-white/10">
           
@@ -116,7 +117,7 @@
 
       <!-- Label -->
       <span class="relative z-10 text-[10px] font-black uppercase tracking-wider text-slate-400 group-hover:text-white transition-colors duration-300">
-       Add to
+     Add to
       </span>
 
       <!-- Floating Particles / Glow Animation -->
@@ -292,6 +293,8 @@
         
         function updateCartBadge(count) {
             const badge = document.getElementById('cartCountBadge');
+            const cartContainer = document.getElementById('cartContainer');
+            
             if (count === undefined) {
                 fetch('/order/cart_items')
                 .then(response => response.json())
@@ -300,21 +303,34 @@
                 });
                 return;
             }
+            
             if (count > 0) {
                 badge.innerText = count;
                 badge.classList.remove('hidden');
+                cartContainer.classList.remove('hidden');
             } else {
                 badge.classList.add('hidden');
+                // Only hide if not on category/sku pages
+                const isShoppingPage = document.body.dataset.shoppingPage === 'true';
+                if (!isShoppingPage) {
+                    cartContainer.classList.add('hidden');
+                }
             }
         }
         
         // Initial load
-        document.addEventListener('turbo:load', () => {
+        function checkCartDisplay() {
+            const cartContainer = document.getElementById('cartContainer');
+            const isShoppingPage = document.body.dataset.shoppingPage === 'true';
+            
+            if (isShoppingPage) {
+                cartContainer.classList.remove('hidden');
+            }
             updateCartBadge();
-        });
-        document.addEventListener('DOMContentLoaded', () => {
-            updateCartBadge();
-        });
+        }
+
+        document.addEventListener('turbo:load', checkCartDisplay);
+        document.addEventListener('DOMContentLoaded', checkCartDisplay);
     </script>
 
     <%= render "layouts/footer" %>
