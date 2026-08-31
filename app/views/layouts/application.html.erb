@@ -42,7 +42,7 @@
         data-shopping-page="<%= (controller_name == 'categories' || controller_name == 'channels' || controller_name == 'skus') ? 'true' : 'false' %>">
     <%= render "layouts/navbar" %>
     
-    <main class="flex-grow pt-20">
+    <main class="flex-grow pt-20 md:pt-36 lg:pt-40">
       <% if notice %>
         <div class="max-w-screen-xl mx-auto px-5 mt-4">
           <p class="p-4 text-sm text-blue-800 rounded-lg bg-blue-50 border border-blue-100" role="alert"><%= notice %></p>

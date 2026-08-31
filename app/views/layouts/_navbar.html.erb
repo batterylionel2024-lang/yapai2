@@ -34,19 +34,19 @@
       </button>
       </div>
 
-      <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1 flex-grow" id="navbar-sticky" data-navbar-target="menu">
-      <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-slate-100 rounded-lg bg-white md:space-x-4 lg:space-x-6 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-transparent justify-center text-xs lg:text-sm">
+      <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1 md:justify-center flex-grow" id="navbar-sticky" data-navbar-target="menu">
+      <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-slate-100 rounded-lg bg-white md:flex-row md:items-center md:justify-center md:gap-4 lg:gap-6 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-transparent text-xs lg:text-sm">
         <li>
-          <%= link_to t('navbar.home'), root_path, class: "block py-2 px-3 #{current_page?(root_path) ? 'text-primary font-bold border-b-2 border-primary' : 'text-slate-600 hover:text-primary'} transition-all duration-300 rounded-sm md:bg-transparent md:p-0" %>
+          <%= link_to t('navbar.home'), root_path, class: "block py-2 px-3 #{current_page?(root_path) ? 'text-primary font-bold border-b-2 border-primary md:border-b-0 md:bg-primary/10' : 'text-slate-600 hover:text-primary hover:bg-slate-50'} transition-all duration-300 rounded-lg md:rounded-xl md:px-3.5 md:py-2" %>
         </li>
 
         <li>
-          <%= link_to t('navbar.factory'), factory_path, class: "block py-2 px-3 #{current_page?(factory_path) ? 'text-primary font-bold border-b-2 border-primary' : 'text-slate-600 hover:text-primary'} transition-all duration-300 rounded-sm md:bg-transparent md:p-0" %>
+          <%= link_to t('navbar.factory'), factory_path, class: "block py-2 px-3 #{current_page?(factory_path) ? 'text-primary font-bold border-b-2 border-primary md:border-b-0 md:bg-primary/10' : 'text-slate-600 hover:text-primary hover:bg-slate-50'} transition-all duration-300 rounded-lg md:rounded-xl md:px-3.5 md:py-2" %>
         </li>
 
         <li class="relative group/products" data-navbar-target="rootDropdown">
           <div class="flex items-center">
-            <%= link_to categories_path, class: "flex items-center py-2 px-3 text-slate-600 hover:text-primary transition-all duration-300 rounded-sm md:bg-transparent md:p-0 flex-grow cursor-pointer" do %>
+            <%= link_to categories_path, class: "flex items-center py-2 px-3 text-slate-600 hover:text-primary hover:bg-slate-50 transition-all duration-300 rounded-lg md:rounded-xl md:px-3.5 md:py-2 flex-grow cursor-pointer" do %>
               <span><%= t('navbar.all_products') %></span>
             <% end %>
             <button type="button" data-action="click->navbar#toggleMobileRoot" class="md:hidden ml-auto text-slate-400 p-2 focus:outline-none hover:text-primary transition-colors">
@@ -66,13 +66,13 @@
         </li>
 
         <li>
-          <%= link_to t('navbar.customize'), customize_path, class: "block py-2 px-3 #{current_page?(customize_path) ? 'text-primary font-bold border-b-2 border-primary' : 'text-slate-600 hover:text-primary'} transition-all duration-300 rounded-sm md:bg-transparent md:p-0" %>
+          <%= link_to t('navbar.customize'), customize_path, class: "block py-2 px-3 #{current_page?(customize_path) ? 'text-primary font-bold border-b-2 border-primary md:border-b-0 md:bg-primary/10' : 'text-slate-600 hover:text-primary hover:bg-slate-50'} transition-all duration-300 rounded-lg md:rounded-xl md:px-3.5 md:py-2" %>
         </li>
 
 
         <li class="relative group/blog" data-navbar-target="rootDropdown">
           <div class="flex items-center">
-            <%= link_to "javascript:void(0);", class: "flex items-center py-2 px-3 text-slate-600 hover:text-primary transition-all duration-300 rounded-sm md:bg-transparent md:p-0 flex-grow cursor-pointer" do %>
+            <%= link_to "javascript:void(0);", class: "flex items-center py-2 px-3 text-slate-600 hover:text-primary hover:bg-slate-50 transition-all duration-300 rounded-lg md:rounded-xl md:px-3.5 md:py-2 flex-grow cursor-pointer" do %>
               <span><%= t('navbar.blog') %></span>
               <svg class="hidden md:inline-block w-4 h-4 ml-1 transition-transform duration-200 group-hover/blog:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
@@ -96,10 +96,10 @@
           </div>
         </li>
         <li>
-          <%= link_to t('navbar.faqs', default: 'FAQs'), faqs_path, class: "block py-2 px-3 #{current_page?(faqs_path) ? 'text-primary font-bold border-b-2 border-primary' : 'text-slate-600 hover:text-primary'} transition-all duration-300 rounded-sm md:bg-transparent md:p-0" %>
+          <%= link_to t('navbar.faqs', default: 'FAQs'), faqs_path, class: "block py-2 px-3 #{current_page?(faqs_path) ? 'text-primary font-bold border-b-2 border-primary md:border-b-0 md:bg-primary/10' : 'text-slate-600 hover:text-primary hover:bg-slate-50'} transition-all duration-300 rounded-lg md:rounded-xl md:px-3.5 md:py-2" %>
         </li>
         <li>
-          <%= link_to t('navbar.contact_us'), contact_path, class: "block py-2 px-3 #{current_page?(contact_path) ? 'text-primary font-bold border-b-2 border-primary' : 'text-slate-600 hover:text-primary'} transition-all duration-300 rounded-sm md:bg-transparent md:p-0" %>
+          <%= link_to t('navbar.contact_us'), contact_path, class: "block py-2 px-3 #{current_page?(contact_path) ? 'text-primary font-bold border-b-2 border-primary md:border-b-0 md:bg-primary/10' : 'text-slate-600 hover:text-primary hover:bg-slate-50'} transition-all duration-300 rounded-lg md:rounded-xl md:px-3.5 md:py-2" %>
         </li>
         <li class="md:hidden pt-4 border-t border-slate-100 mt-2">
           <%= form_with url: products_path, method: :get, class: "px-3" do %>
@@ -122,11 +122,11 @@
 
   <div class="hidden md:block bg-slate-50/90">
     <div class="max-w-screen-2xl mx-auto px-8">
-      <ul class="flex items-center justify-center gap-1 lg:gap-2 min-h-11" aria-label="Product catalogs">
+      <ul class="flex items-center justify-center gap-4 overflow-x-auto py-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden lg:gap-8 min-h-[52px]" aria-label="Product catalogs">
         <% [ 'apple', 'huawei', 'oppo', 'vivo', 'xiaomi', 'samsung', 'transsion', 'custom' ].each do |kind| %>
           <% categories_for_kind(kind).each do |category| %>
             <li class="relative group/catalog flex-shrink-0" data-navbar-target="rootDropdown">
-              <%= link_to category_path(category), class: "flex items-center gap-1.5 px-3 lg:px-4 py-3 text-[11px] lg:text-xs font-bold uppercase tracking-[0.14em] text-slate-600 hover:text-primary transition-colors duration-200" do %>
+              <%= link_to category_path(category), class: "flex items-center gap-2 whitespace-nowrap rounded-lg px-5 py-3 text-sm font-semibold uppercase tracking-wider text-slate-600 transition-all duration-200 hover:bg-slate-50 hover:text-primary lg:px-7 lg:text-base" do %>
                 <span><%= category.localized_name %></span>
                 <% if category.children.visible.any? %>
                   <svg class="w-3.5 h-3.5 text-slate-400 transition-transform duration-200 group-hover/catalog:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
