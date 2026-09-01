@@ -104,9 +104,9 @@
 
     <div class="flex flex-col md:flex-row gap-8">
       <!-- 左侧 sidebar 导航 -->
-      <aside class="md:w-64 flex-shrink-0" id="categories_sidebar" data-turbo-permanent>
+      <aside class="hidden md:block md:w-64 flex-shrink-0" id="categories_sidebar" data-turbo-permanent>
         <div class="sticky top-20 bg-white p-6 rounded-3xl border border-slate-100 shadow-sm">
-          <h2 class="text-xs font-black text-slate-400 uppercase tracking-widest mb-6">分类浏览</h2>
+          <h2 class="text-xs font-black text-slate-400 uppercase tracking-widest mb-6">Browse Categories</h2>
           <nav class="space-y-2">
             <div class="space-y-1">
               <%= link_to channel_path(@kind), data: { turbo_frame: "skus_list" }, class: "flex items-center text-slate-600 hover:text-primary transition-all p-2 rounded-lg hover:bg-primary/5 #{@current_category.nil? ? 'bg-primary/5 text-primary font-black' : ''}" do %>
@@ -174,7 +174,7 @@
       <!-- SKU 列表 网格系统 -->
       <main class="flex-1">
         <%= turbo_frame_tag "skus_list", class: "block", data: { turbo_action: "advance" } do %>
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-16">
+          <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-16">
             <% if @skus.any? %>
               <% @skus.each do |sku| %>
                 <div class="group bg-white rounded-3xl border border-slate-100 overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-primary/10 hover:border-primary/20 transition-all duration-500 flex flex-col h-full relative">
