@@ -120,34 +120,4 @@
     </div>
   </div>
 
-  <div class="hidden md:block bg-slate-50/90">
-    <div class="max-w-screen-2xl mx-auto px-8">
-      <ul class="flex items-center justify-center gap-4 overflow-x-auto py-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden lg:gap-8 min-h-[52px]" aria-label="Product catalogs">
-        <% [ 'apple', 'huawei', 'oppo', 'vivo', 'xiaomi', 'samsung', 'transsion', 'custom' ].each do |kind| %>
-          <% categories_for_kind(kind).each do |category| %>
-            <li class="relative group/catalog flex-shrink-0" data-navbar-target="rootDropdown">
-              <%= link_to category_path(category), class: "flex items-center gap-2 whitespace-nowrap rounded-lg px-5 py-3 text-sm font-semibold uppercase tracking-wider text-slate-600 transition-all duration-200 hover:bg-slate-50 hover:text-primary lg:px-7 lg:text-base" do %>
-                <span><%= category.localized_name %></span>
-                <% if category.children.visible.any? %>
-                  <svg class="w-3.5 h-3.5 text-slate-400 transition-transform duration-200 group-hover/catalog:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                  </svg>
-                <% end %>
-              <% end %>
-
-              <% if category.children.visible.any? %>
-                <div class="hidden group-hover/catalog:block absolute left-1/2 top-full -translate-x-1/2 w-64 z-50 pt-2 dropdown-container pointer-events-auto">
-                  <div class="bg-white border border-slate-200 rounded-2xl shadow-2xl overflow-visible backdrop-blur-xl bg-opacity-95 py-2 ring-1 ring-slate-900/5 animate-fade-in-up">
-                    <% category.children.visible.each do |sub_category| %>
-                      <%= render 'layouts/navbar_category', category: sub_category, kind: kind, depth: 1 %>
-                    <% end %>
-                  </div>
-                </div>
-              <% end %>
-            </li>
-          <% end %>
-        <% end %>
-      </ul>
-    </div>
-  </div>
 </nav>
