@@ -1,12 +1,14 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = [ "slide", "content", "counter", "image" ]
+  static targets = [ "slide", "content", "counter", "image", "indicator", "toggle" ]
 
   connect() {
     this.index = 0
+    this.paused = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     this.showSlide(0)
     this.startInterval()
+    this.updateToggle()
   }
 
   disconnect() {
@@ -14,6 +16,8 @@ export default class extends Controller {
   }
 
   startInterval() {
+    this.stopInterval()
+    if (this.paused) return
     this.interval = setInterval(() => {
       this.next()
     }, 6000)
@@ -40,9 +44,19 @@ export default class extends Controller {
     this.startInterval()
   }
 
+  toggle() {
+    this.paused = !this.paused
+    this.startInterval()
+    this.updateToggle()
+  }
+
+  updateToggle() {
+    if (!this.hasToggleTarget) return
+    this.toggleTarget.textContent = this.paused ? 'Play' : 'Pause'
+    this.toggleTarget.setAttribute('aria-label', this.paused ? 'Play slideshow' : 'Pause slideshow')
+  }
+
   showSlide(index) {
-    const isNext = index > this.index || (this.index === this.slideTargets.length - 1 && index === 0);
-    
     // Hide current
     if (this.slideTargets[this.index]) {
       this.slideTargets[this.index].classList.remove('opacity-100', 'z-10', 'scale-100')
@@ -55,6 +69,11 @@ export default class extends Controller {
     }
 
     this.index = index
+    this.indicatorTargets.forEach((indicator, i) => indicator.setAttribute('aria-pressed', String(i === index)))
+    this.contentTargets.forEach((content, i) => {
+      content.inert = i !== index
+      content.setAttribute('aria-hidden', String(i !== index))
+    })
 
     // Show new
     if (this.slideTargets[this.index]) {
@@ -63,10 +82,8 @@ export default class extends Controller {
     }
 
     if (this.contentTargets[this.index]) {
-      setTimeout(() => {
-        this.contentTargets[this.index].classList.remove('opacity-0', 'translate-y-12', 'pointer-events-none')
-        this.contentTargets[this.index].classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto')
-      }, 300)
+      this.contentTargets[this.index].classList.remove('opacity-0', 'translate-y-12', 'pointer-events-none')
+      this.contentTargets[this.index].classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto')
     }
   }
 }
