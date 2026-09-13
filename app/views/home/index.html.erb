@@ -124,11 +124,7 @@
 </section>
 
 <!-- ===== YAPAI PRODUCT MARQUEE (Anchor & Overlap) ===== -->
-<div id="marquee" class="relative z-20 bg-slate-50 py-24 overflow-hidden border-t border-slate-100">
-  <div class="narrative-container home-collection-heading">
-    <div><span class="eyebrow-unified">Made for everyday power</span><h2>One manufacturer. More possibilities.</h2></div>
-    <%= link_to "Explore all batteries →", products_path %>
-  </div>
+<div id="marquee" class="relative z-20 bg-slate-50 py-16 md:py-24 overflow-hidden border-t border-slate-100">
   <div class="absolute top-0 left-1/2 -translate-x-1/2 w-px h-24 bg-gradient-to-b from-primary/30 to-transparent"></div>
   <!-- Forward strip -->
   <div class="overflow-hidden mb-4">
@@ -136,7 +132,7 @@
       <% if @home_products_1.any? %>
         <% 2.times do %>
           <% @home_products_1.each do |hp| %>
-            <div class="relative flex-shrink-0 w-56 h-64 rounded-2xl overflow-hidden group cursor-pointer shadow-md bg-white">
+            <div class="relative flex-shrink-0 w-56 h-64 rounded-2xl overflow-hidden group cursor-pointer shadow-md shadow-slate-900/5 bg-white ring-1 ring-slate-200/70">
               <% if hp.image.attached? %>
                 <%= image_tag hp.image, class: "w-full h-full object-contain group-hover:scale-110 transition-transform duration-700" %>
               <% else %>
@@ -151,7 +147,7 @@
       <% else %>
         <% 2.times do %>
           <% [["iphone.webp","For iPhone Battery"],["vivo.webp","For Vivo Battery"],["oppo.webp","For Oppo Battery"],["huawei.webp","For Huawei Battery"],["xiaomi.webp","For Xiaomi Battery"]].each do |img, label| %>
-            <div class="relative flex-shrink-0 w-56 h-64 rounded-2xl overflow-hidden group cursor-pointer shadow-md">
+            <div class="relative flex-shrink-0 w-56 h-64 rounded-2xl overflow-hidden group cursor-pointer shadow-md shadow-slate-900/5 bg-white ring-1 ring-slate-200/70">
               <%= image_tag img, class: "w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" %>
               <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-100 transition-opacity duration-300 flex items-end p-4">
                 <span class="text-white font-bold text-sm tracking-wide"><%= label %></span>
@@ -168,7 +164,7 @@
       <% if @home_products_2.any? %>
         <% 2.times do %>
           <% @home_products_2.each do |hp| %>
-            <div class="relative flex-shrink-0 w-56 h-64 rounded-2xl overflow-hidden group cursor-pointer shadow-md bg-white">
+            <div class="relative flex-shrink-0 w-56 h-64 rounded-2xl overflow-hidden group cursor-pointer shadow-md shadow-slate-900/5 bg-white ring-1 ring-slate-200/70">
               <% if hp.image.attached? %>
                 <%= image_tag hp.image, class: "w-full h-full object-contain group-hover:scale-110 transition-transform duration-700" %>
               <% else %>
@@ -183,7 +179,7 @@
       <% else %>
         <% 2.times do %>
           <% [["huawei.webp","For Huawei Battery"],["xiaomi.webp","For Xiaomi Battery"],["iphone.webp","For iPhone Battery"],["vivo.webp","For Vivo Battery"],["oppo.webp","For Oppo Battery"]].each do |img, label| %>
-            <div class="relative flex-shrink-0 w-56 h-64 rounded-2xl overflow-hidden group cursor-pointer shadow-md">
+            <div class="relative flex-shrink-0 w-56 h-64 rounded-2xl overflow-hidden group cursor-pointer shadow-md shadow-slate-900/5 bg-white ring-1 ring-slate-200/70">
               <%= image_tag img, class: "w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" %>
               <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-100 transition-opacity duration-300 flex items-end p-4">
                 <span class="text-white font-bold text-sm tracking-wide"><%= label %></span>
@@ -224,12 +220,12 @@
         <p class="text-slate-500 text-lg leading-relaxed mb-12 text-center max-w-4xl mx-auto font-medium">
           <%= t('home.index.who_we_are_desc') %>
         </p>
-        <div class="grid grid-cols-2 gap-6 max-w-2xl mx-auto">
-          <div class="card-narrative p-8 text-center group hover:border-primary/30">
+        <div class="grid grid-cols-2 gap-0 max-w-2xl mx-auto divide-x divide-slate-200">
+          <div class="card-narrative p-6 sm:p-8 text-center group hover:border-primary/30">
             <div class="text-4xl font-black text-primary mb-2 group-hover:scale-110 transition-transform">20</div>
             <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest"><%= t('home.index.years_history') %></div>
           </div>
-          <div class="card-narrative p-8 text-center group hover:border-secondary/30">
+          <div class="card-narrative p-6 sm:p-8 text-center group hover:border-secondary/30">
             <div class="text-4xl font-black text-secondary mb-2 group-hover:scale-110 transition-transform">100%</div>
             <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest"><%= t('home.index.oem_odm_capability') %></div>
           </div>
@@ -260,11 +256,11 @@
       <h2 class="h2-unified">Battery Products</h2>
       <div class="w-24 h-1.5 bg-primary mx-auto mt-8 rounded-full"></div>
     </div>
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-10">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-7">
       <% if @featured_categories.any? %>
         <% @featured_categories.each_with_index do |category, i| %>
           <%= link_to category_path(category), 
-                      class: "reveal-product group relative rounded-[2.5rem] overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer", 
+                      class: "reveal-product group relative rounded-2xl overflow-hidden shadow-md shadow-slate-900/5 ring-1 ring-slate-200/80 hover:shadow-xl hover:shadow-slate-900/10 transition-all duration-500 hover:-translate-y-2 cursor-pointer",
                       style: "transition-delay: #{i * 80}ms" do %>
             <div class="aspect-[3/4] overflow-hidden bg-white">
               <% if category.image.attached? %>
@@ -289,7 +285,7 @@
           { img: "huawei.webp",    name: "Huawei Battery",           tag: "High Capacity", color: "accent",    fit: "cover" },
           { img: "xiaomi.webp",    name: "Xiaomi Battery",           tag: "New Arrival", color: "primary",   fit: "cover" }
         ].each_with_index do |yapai, i| %>
-          <div class="reveal-product group relative rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer" style="transition-delay: <%= i * 80 %>ms">
+          <div class="reveal-product group relative rounded-2xl overflow-hidden shadow-md shadow-slate-900/5 ring-1 ring-slate-200/80 hover:shadow-xl hover:shadow-slate-900/10 transition-all duration-500 hover:-translate-y-2 cursor-pointer" style="transition-delay: <%= i * 80 %>ms">
             <div class="aspect-[3/4] overflow-hidden bg-white">
               <%= image_tag yapai[:img], class: "w-full h-full #{yapai[:fit] == 'contain' ? 'object-contain p-4' : 'object-cover'} group-hover:scale-105 transition-transform duration-700" %>
             </div>
@@ -335,7 +331,7 @@
            { label: @site_config.infra_label_3.presence || t("home.customize.production.items.team"), value: @site_config.infra_value_3.presence || '200+ People', img: (@site_config.infra_image_3.attached? ? @site_config.infra_image_3 : 'worker2.jpg') },
            { label: @site_config.infra_label_4.presence || t("home.customize.production.items.qc"), value: @site_config.infra_value_4.presence || '100% Passed', img: (@site_config.infra_image_4.attached? ? @site_config.infra_image_4 : 'factory3.jpg') }
          ].each do |stat| %>
-        <div class="relative group h-64 overflow-hidden rounded-[2.5rem] shadow-lg bg-black">
+        <div class="relative group h-64 overflow-hidden rounded-2xl shadow-lg shadow-slate-900/10 bg-black ring-1 ring-white/10">
           <%= image_tag stat[:img], class: "w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" %>
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6">
             <span class="text-primary/60 text-2xl font-black mb-1"><%= stat[:value] %></span>
@@ -396,8 +392,8 @@
         <div class="space-y-12">
           <% ['no_moq', 'flexible', 'easy_process', 'direct_factory'].each_with_index do |key, idx| %>
             <% color_class = ['text-blue-500', 'text-emerald-500', 'text-amber-500', 'text-blue-500'][idx] %>
-            <div class="flex items-start space-x-6 group reveal-up" style="transition-delay: <%= idx * 100 %>ms">
-              <div class="w-16 h-16 bg-white rounded-[1.5rem] shadow-sm flex-shrink-0 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:-rotate-6 <%= color_class %>">
+            <div class="flex items-start gap-4 sm:gap-6 group reveal-up" style="transition-delay: <%= idx * 100 %>ms">
+              <div class="w-12 h-12 sm:w-16 sm:h-16 bg-white rounded-2xl shadow-sm flex-shrink-0 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:-rotate-6 <%= color_class %>">
                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
               </div>
               <div class="pt-2">
@@ -417,7 +413,7 @@
 <!-- Final CTA Section (Redesigned Light Version) -->
 <div id="cta" class="bg-white section-py relative overflow-hidden z-20">
   <div class="narrative-container">
-    <div class="relative bg-slate-50 p-12 md:p-24 rounded-[4rem] overflow-hidden border border-slate-100 shadow-xl text-center md:text-left flex flex-col md:flex-row items-center justify-between gap-12 group">
+    <div class="relative bg-slate-50 p-8 sm:p-12 md:p-20 rounded-3xl overflow-hidden border border-slate-100 shadow-xl text-center md:text-left flex flex-col md:flex-row items-center justify-between gap-10 group">
       <!-- Decorative Elements -->
       <div class="absolute -bottom-24 -right-24 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px] group-hover:bg-primary/20 transition-all duration-1000"></div>
       <div class="absolute top-0 left-0 w-full h-full opacity-[0.03] pointer-events-none" style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;60&quot; height=&quot;60&quot; viewBox=&quot;0 0 60 60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cg fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;%3E%3Cg fill=&quot;%23000000&quot; fill-opacity=&quot;0.4&quot;%3E%3Cpath d=&quot;M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2v-4h4v-2h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2v-4h4v-2H6z&quot;/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
@@ -435,7 +431,7 @@
       </div>
       
       <div class="relative z-10 flex-shrink-0 reveal-right">
-        <%= link_to contact_path, class: "px-14 py-8 bg-primary hover:bg-slate-900 text-white rounded-3xl font-black text-xl tracking-widest transition-all shadow-2xl shadow-primary/20 flex items-center group scale-100 hover:scale-105 active:scale-95" do %>
+        <%= link_to contact_path, class: "px-8 py-5 bg-primary hover:bg-slate-900 text-white rounded-xl font-black text-base tracking-widest transition-all shadow-xl shadow-primary/20 flex items-center group scale-100 hover:scale-105 active:scale-95" do %>
           <%= t('home.index.get_free_quote') %>
           <svg class="w-7 h-7 ml-4 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
         <% end %>
