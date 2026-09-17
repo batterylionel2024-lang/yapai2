@@ -1,697 +1,249 @@
-<% content_for :title, "Yapai Battery Factory - Professional Mobile Phone Battery Manufacturer" %>
-<% content_for :meta_description, "Yapai Battery Factory is a professional mobile phone battery manufacturer in Guangdong, China. OEM/ODM replacement batteries for iPhone, Huawei, Xiaomi, and 1,000+ brands." %>
-<% content_for :meta_keywords, "mobile phone battery factory, smartphone replacement battery, Yapai Battery, iPhone battery wholesale, OEM battery manufacturer, China battery factory" %>
+<% content_for :title, "Yapai Battery Factory — Energy Engineered to Move" %>
+<% content_for :meta_description, "Yapai is a professional mobile phone battery manufacturer in Dongguan, China, supplying OEM/ODM replacement batteries for 1,000+ models worldwide." %>
+<% content_for :meta_keywords, "mobile phone battery factory, replacement battery manufacturer, OEM battery, ODM battery, Yapai Battery" %>
+<div class="yp-experience"
+     data-controller="energy-experience"
+     data-energy-experience-reduced-motion-value="false">
+  <div class="yp-progress" aria-hidden="true">
+    <span data-energy-experience-target="progress"></span>
+  </div>
 
-
-<div class="bg-white text-slate-900">
-<section
-  id="hero"
-  class="relative min-h-[620px] h-[calc(100svh-7rem)] max-h-[760px] w-full overflow-hidden bg-slate-950"
-  data-controller="slideshow"
-  aria-label="Hero Slideshow"
->
-  <%# ── 1. Background Layers ── %>
-  <div class="absolute inset-0 z-0">
-    <% [1, 2, 3].each_with_index do |n, idx| %>
-      <div
-        class="absolute inset-0 transition-all duration-[1500ms] ease-out <%= idx.zero? ? 'opacity-100 scale-100' : 'opacity-0 scale-110' %> overflow-hidden"
-        data-slideshow-target="slide"
-      >
-        <%# Darkened Image with Parallax-ready styling %>
-        <%= image_tag "indexbanner#{n}.jpg",
-                      class: "w-full h-full object-cover object-center brightness-[0.72]",
-                      alt: "",
-                      role: "presentation",
-                      loading: idx == 0 ? "eager" : "lazy",
-                      data: { slideshow_target: "image" } %>
-        
-        <%# Gradient Overlays %>
-        <div class="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/45 to-slate-950/5"></div>
-        <div class="absolute inset-0 bg-gradient-to-b from-slate-950/20 via-transparent to-slate-950/65"></div>
+  <div class="yp-dark-world" data-energy-experience-target="darkWorld">
+    <div class="yp-stage" aria-hidden="true">
+      <canvas class="yp-webgl" data-energy-experience-target="canvas"></canvas>
+      <div class="yp-stage-glow"></div>
+      <div class="yp-stage-grid"></div>
+      <div class="yp-energy-reticle">
+        <span></span><span></span><span></span>
       </div>
-    <% end %>
-  </div>
+      <div class="yp-battery-signature">
+        <span>YAPAI</span>
+        <small>INTELLIGENT ENERGY CORE</small>
+      </div>
+      <div class="yp-webgl-fallback" data-energy-experience-target="fallback">
+        <span class="yp-fallback-cap"></span>
+        <span class="yp-fallback-charge"></span>
+      </div>
 
-  <%# ── 2. Decorative Elements ── %>
-  <div class="absolute inset-0 z-10 pointer-events-none overflow-hidden opacity-40">
-    <%# Animated Grid Background %>
-    <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-[0.04]"></div>
-    
-    <%# Floating Glows %>
-    <div class="absolute top-1/4 -left-24 w-96 h-96 bg-primary/15 rounded-full blur-[120px]"></div>
-    <div class="absolute bottom-1/4 -right-24 w-96 h-96 bg-primary/10 rounded-full blur-[120px]"></div>
-  </div>
+      <div class="yp-stage-hud">
+        <div class="yp-hud-state">
+          <span class="yp-hud-pulse"></span>
+          <span data-energy-experience-target="stateLabel"><%= t("home.index.experience.hud_state") %></span>
+        </div>
+        <div class="yp-hud-charge">
+          <span><%= t("home.index.experience.energy_core") %></span>
+          <strong data-energy-experience-target="chargeLabel">36%</strong>
+        </div>
+      </div>
+    </div>
 
-  <%# ── 3. Main Content Wrapper ── %>
-  <div class="relative z-20 h-full w-full max-w-[1280px] mx-auto px-6 sm:px-10 lg:px-12">
-    <div class="flex flex-col justify-center h-full max-w-4xl">
-      
-      <% [1, 2, 3].each_with_index do |i, idx| %>
-        <div
-          class="absolute inset-x-6 sm:inset-x-10 lg:inset-x-12 <%= idx.zero? ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12 pointer-events-none' %> transition-all duration-700 ease-out"
-          data-slideshow-target="content"
-        >
-          <%# Tagline %>
-          <div class="flex items-center gap-3 mb-5">
-            <span class="w-8 h-px bg-emerald-300"></span>
-            <span class="text-emerald-300 text-[10px] sm:text-xs font-semibold tracking-[0.28em] uppercase">
-              Innovation & Energy
-            </span>
-          </div>
+    <nav class="yp-scene-nav" aria-label="Homepage chapters">
+      <% %w[hero engineering capacity compatibility products factory-story start-project].each_with_index do |scene, index| %>
+        <a href="#<%= scene %>"
+           data-energy-experience-target="sceneDot"
+           data-scene-name="<%= scene %>"
+           class="<%= "is-active" if index.zero? %>"
+           aria-label="Go to chapter <%= index + 1 %>">
+          <span><%= format("%02d", index + 1) %></span>
+        </a>
+      <% end %>
+    </nav>
 
-          <%# Main Headline Redesign %>
-          <div class="relative mb-8 stagger-2">
-            <h1 class="font-bold text-white leading-[0.96] tracking-[-0.05em] text-[clamp(2.75rem,7vw,5.75rem)]">
-              <span class="block mb-4 text-[0.42em] font-medium tracking-[-0.02em] text-white/65 <%= 'text-[0.8em]' if i == 2 %>"><%= t("home.index.hero_slides.slide#{i}.title1") %></span>
-              <span class="relative inline-block <%= 'text-[0.8em]' if i == 2 %>">
-                <%= t("home.index.hero_slides.slide#{i}.title2") %>
-                <span class="absolute -bottom-3 left-0 w-16 h-1 bg-emerald-400"></span>
-              </span>
+    <div class="yp-dark-content">
+      <section id="hero" class="yp-hero yp-scene" data-scene="hero" data-state-label="<%= t("home.index.experience.states.hero") %>" data-energy-experience-target="scene">
+        <div class="yp-shell yp-hero-grid">
+          <div class="yp-hero-copy">
+            <div class="yp-kicker" data-hero-reveal>
+              <span></span>
+              <%= t("home.index.experience.hero.kicker") %>
+            </div>
+
+            <h1 class="yp-display" data-hero-reveal>
+              <span><%= t("home.index.experience.hero.title_line_1") %></span>
+              <em><%= t("home.index.experience.hero.title_line_2") %></em>
             </h1>
-          </div>
-          <%# Description with better typography %>
-          <div class="max-w-xl mb-9 mt-7">
-            <p class="text-white/75 text-base sm:text-lg leading-relaxed font-normal border-0 p-0">
-              <%= t("home.index.hero_slides.slide#{i}.desc") %>
+
+            <p class="yp-hero-lede" data-hero-reveal>
+              <%= t("home.index.experience.hero.description") %>
             </p>
-          </div>
 
-          <%# Call to Action Button (New Design) %>
-          <div class="flex flex-wrap gap-3 pointer-events-auto">
-            <a href="#products" class="group relative px-6 py-3.5 bg-primary text-white font-semibold text-sm tracking-wide rounded-lg overflow-hidden transition-all hover:bg-emerald-500 hover:-translate-y-0.5">
-              <span class="relative z-10"><%= t("home.index.explore_more") %></span>
-              <span class="absolute right-4 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300">→</span>
-              <div class="absolute inset-0 bg-white/20 translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
-            </a>
-            <a href="/factory" class="px-6 py-3.5 border border-white/30 text-white font-semibold text-sm tracking-wide rounded-lg hover:bg-white hover:text-slate-900 transition-colors">
-              <%= t("home.index.factory_tour") %>
-            </a>
-          </div>
-        </div>
-      <% end %>
-    </div>
-  </div>
-
-  <%# ── 4. Enhanced Navigation ── %>
-  <div class="absolute bottom-8 left-6 lg:left-12 z-30 flex items-center gap-8">
-    <div class="home-slide-controls flex items-center gap-1" aria-label="Slideshow controls">
-      <% 3.times do |index| %>
-        <button type="button" class="px-2.5 py-2 text-xs text-white/60 border-b-2 border-white/20 hover:text-white" data-action="slideshow#goTo" data-index="<%= index %>" data-slideshow-target="indicator" aria-label="Show slide <%= index + 1 %>" aria-pressed="<%= index.zero? %>"><%= format('%02d', index + 1) %></button>
-      <% end %>
-      <button type="button" class="px-2.5 py-2 text-xs text-white/60 hover:text-white" data-action="slideshow#toggle" data-slideshow-target="toggle" aria-label="Pause slideshow">Pause</button>
-    </div>
-
-    <%# Scroll Indicator %>
-    <div class="hidden sm:flex flex-col items-center gap-4">
-      <span class="text-[10px] font-bold text-white/30 uppercase tracking-[0.3em]" style="writing-mode: vertical-rl;">Scroll</span>
-      <div class="w-px h-12 bg-gradient-to-b from-white/30 to-transparent"></div>
-    </div>
-  </div>
-
-  <%# ── 5. Social Links (Visual Fluff) ── %>
-  <div class="absolute bottom-8 right-6 lg:right-12 z-30 hidden lg:flex items-center gap-6">
-    <div class="flex items-center gap-4 text-white/30 text-[10px] font-bold tracking-widest uppercase">
-      <span>Quality</span>
-      <span class="w-2 h-2 rounded-full bg-primary/40"></span>
-      <span>Reliability</span>
-      <span class="w-2 h-2 rounded-full bg-primary/40"></span>
-      <span>Innovation</span>
-    </div>
-  </div>
-</section>
-
-<!-- ===== YAPAI PRODUCT MARQUEE (Anchor & Overlap) ===== -->
-<div id="marquee" class="relative z-20 bg-slate-50 py-12 md:py-16 overflow-hidden border-y border-slate-200/80">
-  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-px h-24 bg-gradient-to-b from-primary/30 to-transparent"></div>
-  <!-- Forward strip -->
-  <div class="overflow-hidden mb-4">
-    <div class="flex gap-5 w-max" style="animation: yapai-marquee 32s linear infinite;">
-      <% if @home_products_1.any? %>
-        <% 2.times do %>
-          <% @home_products_1.each do |hp| %>
-            <div class="relative flex-shrink-0 w-56 h-64 rounded-2xl overflow-hidden group cursor-pointer shadow-md shadow-slate-900/5 bg-white ring-1 ring-slate-200/70">
-              <% if hp.image.attached? %>
-                <%= image_tag hp.image, class: "w-full h-full object-contain group-hover:scale-110 transition-transform duration-700" %>
-              <% else %>
-                <div class="w-full h-full bg-white flex items-center justify-center text-slate-300 italic text-xs"><%= hp.title %></div>
-              <% end %>
-              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-100 transition-opacity duration-300 flex items-end p-4">
-                <span class="text-white font-bold text-sm tracking-wide"><%= hp.title %></span>
-              </div>
-            </div>
-          <% end %>
-        <% end %>
-      <% else %>
-        <% 2.times do %>
-          <% [["iphone.webp","For iPhone Battery"],["vivo.webp","For Vivo Battery"],["oppo.webp","For Oppo Battery"],["huawei.webp","For Huawei Battery"],["xiaomi.webp","For Xiaomi Battery"]].each do |img, label| %>
-            <div class="relative flex-shrink-0 w-56 h-64 rounded-2xl overflow-hidden group cursor-pointer shadow-md shadow-slate-900/5 bg-white ring-1 ring-slate-200/70">
-              <%= image_tag img, class: "w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" %>
-              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-100 transition-opacity duration-300 flex items-end p-4">
-                <span class="text-white font-bold text-sm tracking-wide"><%= label %></span>
-              </div>
-            </div>
-          <% end %>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
-  <!-- Reverse strip -->
-  <div class="overflow-hidden">
-    <div class="flex gap-5 w-max" style="animation: yapai-marquee-rev 32s linear infinite;">
-      <% if @home_products_2.any? %>
-        <% 2.times do %>
-          <% @home_products_2.each do |hp| %>
-            <div class="relative flex-shrink-0 w-56 h-64 rounded-2xl overflow-hidden group cursor-pointer shadow-md shadow-slate-900/5 bg-white ring-1 ring-slate-200/70">
-              <% if hp.image.attached? %>
-                <%= image_tag hp.image, class: "w-full h-full object-contain group-hover:scale-110 transition-transform duration-700" %>
-              <% else %>
-                <div class="w-full h-full bg-white flex items-center justify-center text-slate-300 italic text-xs"><%= hp.title %></div>
-              <% end %>
-              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-100 transition-opacity duration-300 flex items-end p-4">
-                <span class="text-white font-bold text-sm tracking-wide"><%= hp.title %></span>
-              </div>
-            </div>
-          <% end %>
-        <% end %>
-      <% else %>
-        <% 2.times do %>
-          <% [["huawei.webp","For Huawei Battery"],["xiaomi.webp","For Xiaomi Battery"],["iphone.webp","For iPhone Battery"],["vivo.webp","For Vivo Battery"],["oppo.webp","For Oppo Battery"]].each do |img, label| %>
-            <div class="relative flex-shrink-0 w-56 h-64 rounded-2xl overflow-hidden group cursor-pointer shadow-md shadow-slate-900/5 bg-white ring-1 ring-slate-200/70">
-              <%= image_tag img, class: "w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" %>
-              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-100 transition-opacity duration-300 flex items-end p-4">
-                <span class="text-white font-bold text-sm tracking-wide"><%= label %></span>
-              </div>
-            </div>
-          <% end %>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
-</div>
-
-<!-- WHO WE ARE Section (Relocated below Product Catalog) -->
-<div id="about" class="relative overflow-hidden z-20 bg-white">
-  <%# Diagonal background transition %>
-  <div class="absolute inset-0 z-0 hidden">
-    <div class="absolute inset-0 bg-slate-50"></div>
-    <div class="absolute bottom-0 left-0 w-full h-[60%] bg-white -skew-y-3 origin-bottom-left"></div>
-  </div>
-  
-  <%# YAPAI Transparent Symbol %>
-  <div class="absolute top-1/2 left-0 -translate-y-1/2 -translate-x-1/4 select-none pointer-events-none z-0 opacity-[0.03] rotate-[-20deg] hidden">
-    <span class="text-[20rem] font-black tracking-tighter text-slate-900 leading-none">YAPAI</span>
-  </div>
-  
-  <%# Visual Anchor: Connecting Line from above %>
-  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-px h-32 bg-gradient-to-b from-primary/30 to-transparent z-10 hidden"></div>
-
-  <div class="narrative-container relative z-10 py-16 md:py-24">
-    <div class="flex flex-col lg:flex-row gap-16 items-start">
-      <div class="w-full reveal-up">
-        <div class="text-center mb-4">
-           <span class="eyebrow-unified eyebrow-primary"> Who We Are</span>
-        </div>
-        <h2 class="h2-unified mb-6 text-center">
-          <%= t('home.index.who_we_are_title') %>
-        </h2>
-        <p class="text-slate-500 text-base md:text-lg leading-relaxed mb-10 text-center max-w-4xl mx-auto font-normal">
-          <%= t('home.index.who_we_are_desc') %>
-        </p>
-        <div class="grid grid-cols-2 gap-0 max-w-2xl mx-auto divide-x divide-slate-200">
-          <div class="card-narrative p-6 sm:p-8 text-center group hover:border-primary/30">
-            <div class="text-4xl font-black text-primary mb-2 group-hover:scale-110 transition-transform">20</div>
-            <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest"><%= t('home.index.years_history') %></div>
-          </div>
-          <div class="card-narrative p-6 sm:p-8 text-center group hover:border-secondary/30">
-            <div class="text-4xl font-black text-secondary mb-2 group-hover:scale-110 transition-transform">100%</div>
-            <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest"><%= t('home.index.oem_odm_capability') %></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ===== FEATURED PRODUCTS GRID (Rhythm Change: Light) ===== -->
-<div id="products" class="bg-slate-50/70 py-16 md:py-24 relative overflow-hidden z-10">
-  <%# YAPAI Transparent Symbol (Right side) %>
-  <div class="absolute bottom-0 right-0 translate-y-1/4 translate-x-1/4 select-none pointer-events-none z-0 opacity-[0.03] rotate-[15deg] hidden">
-    <span class="text-[25rem] font-black tracking-tighter text-slate-900 leading-none">YAPAI</span>
-  </div>
-
-  <%# Narrative Linkage: A subtle line connecting About to Products %>
-  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-px h-full bg-slate-200/50 z-0 hidden"></div>
-  
-  <%# Background guiding line (Skewed overlay) %>
-  <div class="absolute top-0 right-0 w-1/2 h-full bg-slate-50 -skew-x-12 translate-x-1/3 z-0 opacity-40 hidden"></div>
-  
-  <div class="narrative-container relative z-10">
-    <div class="text-center mb-10 md:mb-14 reveal-up">
-      <div class="flex justify-center mb-3">
-        <span class="eyebrow-unified">Hot Selling</span>
-      </div>
-      <h2 class="h2-unified">Battery Products</h2>
-      <div class="w-12 h-1 bg-primary mx-auto mt-5 rounded-full"></div>
-    </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-7">
-      <% if @featured_categories.any? %>
-        <% @featured_categories.each_with_index do |category, i| %>
-          <%= link_to category_path(category), 
-                      class: "reveal-product group relative rounded-2xl overflow-hidden shadow-md shadow-slate-900/5 ring-1 ring-slate-200/80 hover:shadow-xl hover:shadow-slate-900/10 transition-all duration-500 hover:-translate-y-2 cursor-pointer",
-                      style: "transition-delay: #{i * 80}ms" do %>
-            <div class="aspect-[3/4] overflow-hidden bg-white">
-              <% if category.image.attached? %>
-                <%= image_tag rails_storage_proxy_path(category.image.variant(:featured)), class: "w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" %>
-              <% else %>
-                <div class="w-full h-full bg-slate-100 flex items-center justify-center text-slate-300 italic text-xs">No Image</div>
+            <div class="yp-actions" data-hero-reveal>
+              <a href="#products" class="yp-button yp-button-primary" data-energy-experience-target="magnetic">
+                <span><%= t("home.index.experience.hero.primary_cta") %></span>
+                <i aria-hidden="true">↗</i>
+              </a>
+              <%= link_to contact_path, class: "yp-button yp-button-ghost", data: { energy_experience_target: "magnetic" } do %>
+                <span><%= t("home.index.experience.hero.secondary_cta") %></span>
+                <i aria-hidden="true">→</i>
               <% end %>
             </div>
-            <div class="absolute top-3 left-3">
-              <span class="bg-primary text-white text-[10px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full">Featured</span>
+
+            <dl class="yp-hero-stats" data-hero-reveal>
+              <div>
+                <dt><%= t("home.index.experience.hero.stats.output") %></dt>
+                <dd><span data-energy-experience-target="counter" data-value="5000" data-suffix="+">5,000+</span></dd>
+              </div>
+              <div>
+                <dt><%= t("home.index.experience.hero.stats.models") %></dt>
+                <dd><span data-energy-experience-target="counter" data-value="1000" data-suffix="+">1,000+</span></dd>
+              </div>
+              <div>
+                <dt><%= t("home.index.experience.hero.stats.dispatch") %></dt>
+                <dd><span data-energy-experience-target="counter" data-value="72" data-suffix="H">72H</span></dd>
+              </div>
+            </dl>
+          </div>
+
+          <div class="yp-object-space" aria-hidden="true">
+            <div class="yp-orbit-label yp-orbit-label-a"><span>01</span> OEM / ODM</div>
+            <div class="yp-orbit-label yp-orbit-label-b"><span>02</span> QC VERIFIED</div>
+          </div>
+        </div>
+
+        <a href="#engineering" class="yp-scroll-cue" aria-label="Scroll to engineering chapter">
+          <span><%= t("home.index.experience.scroll") %></span>
+          <i></i>
+        </a>
+      </section>
+
+      <section id="engineering" class="yp-chapter yp-scene" data-scene="engineering" data-state-label="<%= t("home.index.experience.states.engineering") %>" data-energy-experience-target="scene">
+        <div class="yp-shell yp-chapter-grid">
+          <article class="yp-story-card" data-chapter-reveal>
+            <div class="yp-chapter-index">01 <span>/ 03</span></div>
+            <p class="yp-kicker yp-kicker-compact"><%= t("home.index.experience.engineering.kicker") %></p>
+            <h2><%= t("home.index.experience.engineering.title") %></h2>
+            <p><%= t("home.index.experience.engineering.description") %></p>
+            <div class="yp-spec-row">
+              <div><strong>20</strong><span><%= t("home.index.experience.engineering.years") %></span></div>
+              <div><strong>4×</strong><span><%= t("home.index.experience.engineering.qc") %></span></div>
             </div>
-            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent px-5 pb-6 pt-16">
-              <p class="text-white font-black text-xl leading-tight drop-shadow-lg"><%= category.name %></p>
-              <p class="text-white/75 text-xs font-bold mt-1 uppercase tracking-widest"><%= category.keywords.presence || "Custom · OEM · ODM" %></p>
+          </article>
+          <div></div>
+        </div>
+      </section>
+
+      <section id="capacity" class="yp-chapter yp-scene" data-scene="capacity" data-state-label="<%= t("home.index.experience.states.capacity") %>" data-energy-experience-target="scene">
+        <div class="yp-shell yp-chapter-grid yp-chapter-grid-reverse">
+          <div></div>
+          <article class="yp-story-card" data-chapter-reveal>
+            <div class="yp-chapter-index">02 <span>/ 03</span></div>
+            <p class="yp-kicker yp-kicker-compact"><%= t("home.index.experience.capacity.kicker") %></p>
+            <h2><%= t("home.index.experience.capacity.title") %></h2>
+            <p><%= t("home.index.experience.capacity.description") %></p>
+            <div class="yp-meter-list">
+              <div><span><%= t("home.index.experience.capacity.flexibility") %></span><i style="--meter: 92%"></i></div>
+              <div><span><%= t("home.index.experience.capacity.speed") %></span><i style="--meter: 86%"></i></div>
+              <div><span><%= t("home.index.experience.capacity.consistency") %></span><i style="--meter: 96%"></i></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="compatibility" class="yp-chapter yp-scene" data-scene="compatibility" data-state-label="<%= t("home.index.experience.states.compatibility") %>" data-energy-experience-target="scene">
+        <div class="yp-shell yp-chapter-grid">
+          <article class="yp-story-card" data-chapter-reveal>
+            <div class="yp-chapter-index">03 <span>/ 03</span></div>
+            <p class="yp-kicker yp-kicker-compact"><%= t("home.index.experience.compatibility.kicker") %></p>
+            <h2><%= t("home.index.experience.compatibility.title") %></h2>
+            <p><%= t("home.index.experience.compatibility.description") %></p>
+            <div class="yp-brand-cloud" aria-label="Supported device brands">
+              <% %w[iPhone Samsung Huawei Xiaomi OPPO vivo Motorola Infinix].each do |brand| %>
+                <span><%= brand %></span>
+              <% end %>
+            </div>
+          </article>
+          <div></div>
+        </div>
+      </section>
+    </div>
+
+  <section id="products" class="yp-products yp-light-section yp-scene" data-scene="products" data-state-label="<%= t("home.index.experience.states.products") %>" data-energy-experience-target="scene">
+    <div class="yp-shell">
+      <header class="yp-section-heading" data-section-reveal>
+        <div>
+          <p class="yp-kicker yp-kicker-dark"><%= t("home.index.experience.products.kicker") %></p>
+          <h2><%= t("home.index.experience.products.title") %></h2>
+        </div>
+        <div class="yp-section-side">
+          <p><%= t("home.index.experience.products.description") %></p>
+          <%= link_to products_path, class: "yp-text-link" do %>
+            <%= t("home.index.experience.products.view_all") %> <span aria-hidden="true">↗</span>
+          <% end %>
+        </div>
+      </header>
+
+      <div class="yp-product-grid">
+        <% battery_brands = [
+             { name: "iPhone", image: "iphone.webp", tag: "Apple series", tone: "#b8ff3d" },
+             { name: "Samsung", image: "category3.webp", tag: "Galaxy series", tone: "#66b8ff" },
+             { name: "Huawei", image: "huawei.webp", tag: "Mate · P series", tone: "#ff9c2a" },
+             { name: "Xiaomi", image: "xiaomi.webp", tag: "Mi · Redmi series", tone: "#ff6c4a" },
+             { name: "OPPO", image: "oppo.webp", tag: "Find · Reno series", tone: "#7ee8a8" },
+             { name: "vivo", image: "vivo.webp", tag: "X · V series", tone: "#a78bfa" },
+             { name: "Motorola", image: "category5.webp", tag: "Moto series", tone: "#66e0ff" },
+             { name: "Infinix", image: "category6.webp", tag: "Note · Hot series", tone: "#f7d154" }
+           ] %>
+        <% battery_brands.each_with_index do |brand, index| %>
+          <% category = @featured_categories.find { |item| item.name.to_s.downcase.include?(brand[:name].downcase) } %>
+          <% destination = category ? category_path(category) : products_path %>
+          <%= link_to destination, class: "yp-product-card yp-brand-card", style: "--card-accent: #{brand[:tone]}", data: { section_reveal: true, tilt_card: true, brand: brand[:name].downcase } do %>
+            <div class="yp-product-image">
+              <%= image_tag brand[:image], alt: "#{brand[:name]} replacement battery", loading: "lazy" %>
+              <span class="yp-product-number"><%= format("%02d", index + 1) %></span>
+              <span class="yp-brand-chip"><%= brand[:name] %></span>
+            </div>
+            <div class="yp-product-meta">
+              <div>
+                <span><%= brand[:tag] %></span>
+                <h3><%= brand[:name] %> battery</h3>
+              </div>
+              <i aria-hidden="true">↗</i>
             </div>
           <% end %>
         <% end %>
-      <% else %>
-        <% [
-          { img: "iphone.webp",    name: "iPhone Battery",           tag: "Best Seller", color: "primary",   fit: "cover" },
-          { img: "oppo.webp",      name: "Android Battery",          tag: "Premium",     color: "secondary", fit: "cover" },
-          { img: "huawei.webp",    name: "Huawei Battery",           tag: "High Capacity", color: "accent",    fit: "cover" },
-          { img: "xiaomi.webp",    name: "Xiaomi Battery",           tag: "New Arrival", color: "primary",   fit: "cover" }
-        ].each_with_index do |yapai, i| %>
-          <div class="reveal-product group relative rounded-2xl overflow-hidden shadow-md shadow-slate-900/5 ring-1 ring-slate-200/80 hover:shadow-xl hover:shadow-slate-900/10 transition-all duration-500 hover:-translate-y-2 cursor-pointer" style="transition-delay: <%= i * 80 %>ms">
-            <div class="aspect-[3/4] overflow-hidden bg-white">
-              <%= image_tag yapai[:img], class: "w-full h-full #{yapai[:fit] == 'contain' ? 'object-contain p-4' : 'object-cover'} group-hover:scale-105 transition-transform duration-700" %>
-            </div>
-            <div class="absolute top-3 left-3">
-              <span class="bg-<%= yapai[:color] %> text-white text-[10px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full"><%= yapai[:tag] %></span>
-            </div>
-            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent px-5 pb-6 pt-16">
-              <p class="text-white font-black text-xl leading-tight drop-shadow-lg"><%= yapai[:name] %></p>
-              <p class="text-white/75 text-xs font-bold mt-1 uppercase tracking-widest">Custom · OEM · ODM</p>
-            </div>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
-</div>
-
-<!-- 2. Production Capacity (Rhythm Change: Heavy) -->
-<section id="capacity" class="section-py relative overflow-hidden bg-slate-50">
-  <%# Overlap Transition %>
-  <div class="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-slate-50 to-transparent z-10"></div>
-  
-  <div class="absolute inset-0 z-0">
-    <%= image_tag "factory5.jpg", class: "w-full h-full object-cover grayscale-[0.5] opacity-20", alt: "Production Capacity" %>
-    <div class="absolute inset-0 bg-white/95"></div>
-  </div>
-
-  <div class="narrative-container relative z-10 text-slate-900">
-    <div class="flex flex-col md:flex-row items-end justify-between mb-24 reveal-up">
-      <div class="text-left">
-        <div class="flex justify-start mb-4">
-          <span class="eyebrow-unified eyebrow-primary"> Infrastructure</span>
-        </div>
-        <h2 class="h2-unified mb-4"><%= @site_config.infra_title.presence || t('home.customize.production.title') %></h2>
-      </div>
-      <p class="text-slate-500 max-w-md md:text-right font-medium leading-relaxed border-l-2 border-primary/20 pl-6 md:border-l-0 md:border-r-2 md:pr-6"><%= @site_config.infra_subtitle.presence || t('home.customize.production.subtitle') %></p>
-    </div>
-
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-16">
-      <% [
-           { label: @site_config.infra_label_1.presence || t("home.customize.production.items.scale"), value: @site_config.infra_value_1.presence || '10,000㎡', img: (@site_config.infra_image_1.attached? ? @site_config.infra_image_1 : 'factory1.jpg') },
-           { label: @site_config.infra_label_2.presence || t("home.customize.production.items.equipment"), value: @site_config.infra_value_2.presence || '50+ Units', img: (@site_config.infra_image_2.attached? ? @site_config.infra_image_2 : 'factory2.jpg') },
-           { label: @site_config.infra_label_3.presence || t("home.customize.production.items.team"), value: @site_config.infra_value_3.presence || '200+ People', img: (@site_config.infra_image_3.attached? ? @site_config.infra_image_3 : 'worker2.jpg') },
-           { label: @site_config.infra_label_4.presence || t("home.customize.production.items.qc"), value: @site_config.infra_value_4.presence || '100% Passed', img: (@site_config.infra_image_4.attached? ? @site_config.infra_image_4 : 'factory3.jpg') }
-         ].each do |stat| %>
-        <div class="relative group h-64 overflow-hidden rounded-2xl shadow-lg shadow-slate-900/10 bg-black ring-1 ring-white/10">
-          <%= image_tag stat[:img], class: "w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" %>
-          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6">
-            <span class="text-primary/60 text-2xl font-black mb-1"><%= stat[:value] %></span>
-            <span class="text-white/60 text-xs font-bold uppercase tracking-widest"><%= stat[:label] %></span>
-          </div>
-        </div>
-      <% end %>
-    </div>
-  </div>
-</section>
-
-
-<!-- Manufacturing Excellence Section (Strength) -->
-<div id="excellence" class="bg-white section-py relative overflow-hidden z-10">
-  <%# Guiding SVG Curve (Refined for smoother flow) %>
-  <svg class="absolute top-0 left-0 w-full text-white fill-current hidden" viewBox="0 0 1440 160" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-    <path d="M0 0h1440v160C1100 60 700 60 0 160V0z"></path>
-  </svg>
-  
-  <%# Narrative Marker connecting About to Excellence %>
-  <div class="absolute top-20 left-1/2 -translate-x-1/2 w-px h-32 bg-slate-200 hidden"></div>
-
-  <div class="narrative-container relative z-10 mt-20">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-      <div class="relative order-2 lg:order-1 reveal-left">
-        <div class="grid grid-cols-2 gap-8">
-          <div class="space-y-8 pt-16">
-            <div class="aspect-square rounded-[3rem] overflow-hidden shadow-2xl hover:scale-105 transition-transform duration-700 border-4 border-white bg-black">
-              <%= image_tag "factory1.jpg", class: "w-full h-full object-cover" %>
-            </div>
-            <div class="aspect-[4/3] rounded-[3rem] overflow-hidden shadow-2xl hover:scale-105 transition-transform duration-700 border-4 border-white bg-black">
-              <%= image_tag "factory2.jpg", class: "w-full h-full object-cover" %>
-            </div>
-          </div>
-          <div class="space-y-8">
-            <div class="aspect-[3/4] rounded-[3rem] overflow-hidden shadow-2xl hover:scale-105 transition-transform duration-700 border-4 border-white bg-black">
-              <%= image_tag "factory3.jpg", class: "w-full h-full object-cover" %>
-            </div>
-            <div class="aspect-square rounded-[3rem] overflow-hidden shadow-2xl hover:scale-105 transition-transform duration-700 border-4 border-white bg-black">
-              <%= image_tag "factory4.jpg", class: "w-full h-full object-cover" %>
-            </div>
-          </div>
-        </div>
-        <div class="absolute -bottom-10 -left-10 bg-primary p-12 rounded-[3rem] shadow-3xl text-white hidden xl:block -rotate-3 hover:rotate-0 transition-transform duration-500 z-20">
-          <div class="text-6xl font-black mb-1">20</div>
-          <div class="text-[10px] font-bold uppercase tracking-[0.3em]">Years Of Excellence</div>
-        </div>
-      </div>
-      
-      <div class="order-1 lg:order-2 reveal-right">
-        <div class="flex justify-start mb-6">
-          <span class="eyebrow-unified eyebrow-primary"> Why Choose Us</span>
-        </div>
-        <h2 class="h2-unified mb-12">
-          <%= t('home.index.strength_title') %>
-        </h2>
-        
-        <div class="space-y-12">
-          <% ['no_moq', 'flexible', 'easy_process', 'direct_factory'].each_with_index do |key, idx| %>
-            <% color_class = ['text-blue-500', 'text-emerald-500', 'text-amber-500', 'text-blue-500'][idx] %>
-            <div class="flex items-start gap-4 sm:gap-6 group reveal-up" style="transition-delay: <%= idx * 100 %>ms">
-              <div class="w-12 h-12 sm:w-16 sm:h-16 bg-white rounded-2xl shadow-sm flex-shrink-0 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:-rotate-6 <%= color_class %>">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-              </div>
-              <div class="pt-2">
-                <h4 class="text-xl font-black text-slate-900 mb-2 uppercase tracking-tight"><%= t("home.index.strengths.#{key}.title") %></h4>
-                <p class="text-slate-500 font-medium leading-relaxed max-w-sm">
-                  <%= t("home.index.strengths.#{key}.desc") %>
-                </p>
-              </div>
-            </div>
-          <% end %>
-        </div>
       </div>
     </div>
-  </div>
-</div>
+  </section>
 
-<!-- Final CTA Section (Redesigned Light Version) -->
-<div id="cta" class="bg-white pt-8 pb-16 md:pb-24 relative overflow-hidden z-20">
-  <div class="narrative-container">
-    <div class="relative bg-slate-50 p-8 sm:p-12 md:p-20 rounded-3xl overflow-hidden border border-slate-100 shadow-xl text-center md:text-left flex flex-col md:flex-row items-center justify-between gap-10 group">
-      <!-- Decorative Elements -->
-      <div class="absolute -bottom-24 -right-24 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px] group-hover:bg-primary/20 transition-all duration-1000 pointer-events-none"></div>
-      <div class="absolute top-0 left-0 w-full h-full opacity-[0.03] pointer-events-none" style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;60&quot; height=&quot;60&quot; viewBox=&quot;0 0 60 60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cg fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;%3E%3Cg fill=&quot;%23000000&quot; fill-opacity=&quot;0.4&quot;%3E%3Cpath d=&quot;M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2v-4h4v-2h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2v-4h4v-2H6z&quot;/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
-
-      <div class="relative z-10 max-w-2xl reveal-left">
-        <div class="flex justify-center md:justify-start mb-6">
-          <span class="eyebrow-unified eyebrow-primary">Final Step</span>
+  <section id="factory-story" class="yp-factory yp-light-section yp-scene" data-scene="factory-story" data-state-label="<%= t("home.index.experience.states.factory") %>" data-energy-experience-target="scene">
+    <div class="yp-shell yp-factory-grid">
+      <div class="yp-factory-visual" data-section-reveal>
+        <%= image_tag "factory5.jpg", alt: "Yapai battery manufacturing facility", loading: "lazy" %>
+        <div class="yp-factory-caption">
+          <span><%= t("home.index.experience.factory.location") %></span>
+          <strong><%= t("home.index.experience.factory.caption") %></strong>
         </div>
-        <h2 class="text-4xl md:text-7xl font-black text-slate-900 mb-8 leading-[1.1] uppercase tracking-tighter">
-          <%= t('home.index.final_cta_title') %>
-        </h2>
-        <p class="text-slate-500 text-xl font-medium max-w-lg">
-          <%= t('home.index.final_cta_desc') %>
-        </p>
       </div>
-      
-      <div class="relative z-10 flex-shrink-0 reveal-right">
-        <%= link_to contact_path, class: "px-8 py-5 bg-primary hover:bg-slate-900 text-white rounded-xl font-black text-base tracking-widest transition-all shadow-xl shadow-primary/20 flex items-center group scale-100 hover:scale-105 active:scale-95" do %>
-          <%= t('home.index.get_free_quote') %>
-          <svg class="w-7 h-7 ml-4 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+
+      <div class="yp-factory-copy" data-section-reveal>
+        <p class="yp-kicker yp-kicker-dark"><%= t("home.index.experience.factory.kicker") %></p>
+        <h2><%= t("home.index.experience.factory.title") %></h2>
+        <p><%= t("home.index.experience.factory.description") %></p>
+        <dl>
+          <div><dt>10,000㎡</dt><dd><%= t("home.index.experience.factory.scale") %></dd></div>
+          <div><dt>50+</dt><dd><%= t("home.index.experience.factory.lines") %></dd></div>
+          <div><dt>100%</dt><dd><%= t("home.index.experience.factory.testing") %></dd></div>
+        </dl>
+        <%= link_to factory_path, class: "yp-text-link yp-text-link-dark" do %>
+          <%= t("home.index.experience.factory.cta") %> <span aria-hidden="true">↗</span>
         <% end %>
       </div>
     </div>
+  </section>
+
+  <section id="start-project" class="yp-final-cta yp-light-section yp-scene" data-scene="start-project" data-state-label="<%= t("home.index.experience.states.cta") %>" data-energy-experience-target="scene">
+    <div class="yp-shell">
+      <div class="yp-cta-panel" data-section-reveal>
+        <div class="yp-cta-orbit" aria-hidden="true"><span></span><i></i></div>
+        <p class="yp-kicker"><%= t("home.index.experience.cta.kicker") %></p>
+        <h2><%= t("home.index.experience.cta.title") %></h2>
+        <p><%= t("home.index.experience.cta.description") %></p>
+        <%= link_to contact_path, class: "yp-button yp-button-light", data: { energy_experience_target: "magnetic" } do %>
+          <span><%= t("home.index.experience.cta.button") %></span>
+          <i aria-hidden="true">↗</i>
+        <% end %>
+      </div>
+    </div>
+  </section>
   </div>
-</div>
-
-<style>
-  @keyframes yapai-marquee {
-    from { transform: translateX(0); }
-    to   { transform: translateX(-50%); }
-  }
-  @keyframes yapai-marquee-rev {
-    from { transform: translateX(-50%); }
-    to   { transform: translateX(0); }
-  }
-
-  .reveal-up, .reveal-left, .reveal-right, .reveal-product {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
-                transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  }
-  .reveal-left  { transform: translateX(-40px); }
-  .reveal-right { transform: translateX(40px); }
-
-  .is-visible {
-    opacity: 1 !important;
-    transform: none !important;
-  }
-
-  /* ── Narrative Tokens ── */
-  .yapai-home {
-    --container-max: 1280px;
-    --section-spacing: clamp(64px, 7vw, 104px);
-    --content-spacing: clamp(3rem, 6vw, 6rem);
-    --border-radius-lg: 3rem;
-    --border-radius-xl: 4rem;
-    --transition-narrative: all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  }
-
-  .narrative-container {
-    width: 100%;
-    max-width: var(--container-max);
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
-
-  .section-py {
-    padding-top: var(--section-spacing);
-    padding-bottom: var(--section-spacing);
-  }
-
-  .eyebrow-unified {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0.25rem 1rem;
-    border-radius: 9999px;
-    background-color: theme('colors.slate.100');
-    color: theme('colors.slate.500');
-    font-size: 10px;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 0.3em;
-    margin-bottom: 1.5rem;
-  }
-
-  .eyebrow-unified::before {
-    content: '';
-    width: 1.5rem;
-    height: 1px;
-    background-color: currentColor;
-    opacity: 0.3;
-  }
-
-  .eyebrow-primary {
-    background-color: rgba(59, 130, 246, 0.05);
-    color: theme('colors.primary');
-  }
-
-  .h2-unified {
-    font-size: clamp(2rem, 5vw, 4rem);
-    font-weight: 900;
-    line-height: 1.1;
-    color: theme('colors.slate.900');
-    text-transform: uppercase;
-    letter-spacing: -0.02em;
-  }
-
-  .card-narrative {
-    border-radius: var(--border-radius-lg);
-    border: 1px solid theme('colors.slate.100');
-    background: white;
-    box-shadow: 0 10px 30px -10px rgba(0,0,0,0.05);
-    transition: var(--transition-narrative);
-  }
-
-  .card-narrative:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1);
-  }
-
-  .cubic-bezier-narrative {
-    transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  }
-
-  .stagger-1 { transition-delay: 0.2s; }
-  .stagger-2 { transition-delay: 0.4s; }
-  .stagger-3 { transition-delay: 0.6s; }
-  .stagger-4 { transition-delay: 0.8s; }
-
-  /* ── Scroll Progress Bar ── */
-  .scroll-progress-container {
-    position: fixed;
-    left: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 3px;
-    height: 250px;
-    background: rgba(15, 23, 42, 0.05);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(0, 0, 0, 0.03);
-    border-radius: 99px;
-    z-index: 1000;
-    padding: 0;
-    box-shadow: 
-      0 10px 30px -5px rgba(0, 0, 0, 0.05),
-      inset 0 1px 1px rgba(255, 255, 255, 0.8);
-    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.6s;
-  }
-
-  .scroll-progress-bar {
-    width: 100%;
-    height: 0%;
-    background: #22c55e; /* Pure green line */
-    border-radius: 99px;
-    position: relative;
-    transition: height 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 
-      0 0 15px rgba(34, 197, 94, 0.5),
-      0 0 5px rgba(34, 197, 94, 0.8);
-  }
-
-  /* Glowing dot at the end */
-  .scroll-progress-bar::before {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 9px;
-    height: 9px;
-    background: #f97316; /* Orange thumb */
-    border: 2px solid white;
-    border-radius: 50%;
-    box-shadow: 
-      0 0 20px #f97316,
-      0 0 10px #f97316,
-      0 4px 10px rgba(0,0,0,0.2);
-    z-index: 10;
-  }
-
-  .scroll-progress-bar::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(
-      to bottom,
-      transparent 0%,
-      rgba(249, 115, 22, 0) 20%,
-      rgba(249, 115, 22, 0.9) 50%,
-      rgba(249, 115, 22, 0) 80%,
-      transparent 100%
-    );
-    background-size: 100% 200%;
-    animation: scroll-glow 1.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-    border-radius: 99px;
-    filter: brightness(1.2);
-  }
-
-  @keyframes scroll-glow {
-    0% { background-position: 0% -200%; opacity: 0; }
-    50% { opacity: 1; }
-    100% { background-position: 0% 200%; opacity: 0; }
-  }
-
-  .yapai-home {
-    scroll-behavior: smooth;
-  }
-</style>
-
-<!-- Scroll Progress Bar -->
-<div class="scroll-progress-container hidden md:block">
-  <div id="scroll-progress" class="scroll-progress-bar"></div>
-</div>
-
-<script>
-  function initHomeAnimations() {
-    // 1. Reveal Animations
-    const els = document.querySelectorAll(".reveal-up, .reveal-left, .reveal-right, .reveal-product");
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting) {
-          e.target.classList.add("is-visible");
-          obs.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.1 });
-
-    els.forEach((el) => {
-      const rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight && rect.bottom > 0) {
-        el.classList.add("is-visible");
-      } else {
-        obs.observe(el);
-      }
-    });
-  }
-
-  function initScrollProgress() {
-    const progressBar = document.getElementById('scroll-progress');
-    const container = document.querySelector('.scroll-progress-container');
-    if (!progressBar || !container) return;
-
-    const updateProgress = () => {
-      const winScroll = window.pageYOffset || document.documentElement.scrollTop;
-      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const scrolled = (winScroll / height) * 100;
-      
-      // Update height
-      progressBar.style.height = scrolled + "%";
-      
-      // Fade in/out logic
-      if (scrolled > 1) {
-        container.style.opacity = "1";
-        container.style.visibility = "visible";
-      } else {
-        container.style.opacity = "0";
-        container.style.visibility = "hidden";
-      }
-    };
-
-    window.addEventListener('scroll', updateProgress, { passive: true });
-    updateProgress(); // Initial check
-  }
-
-  document.addEventListener("DOMContentLoaded", () => {
-    initHomeAnimations();
-    initScrollProgress();
-  });
-  document.addEventListener("turbo:load", () => {
-    initHomeAnimations();
-    initScrollProgress();
-  });
-
-  // Re-run on scroll to ensure fresh state if needed
-  // window.addEventListener('scroll', () => { ... }, { passive: true });
-</script>
 </div>
