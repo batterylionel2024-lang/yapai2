@@ -462,11 +462,8 @@ export default class extends Controller {
       this.setScene("hero")
 
       if (!this.reducedMotion) {
-        gsap.fromTo(
-          this.element.querySelectorAll("[data-hero-reveal]"),
-          { autoAlpha: 0, y: 34 },
-          { autoAlpha: 1, y: 0, duration: 1.05, stagger: 0.11, ease: "power3.out", delay: 0.12 }
-        )
+        this.initSequentialReveals(gsap, ScrollTrigger)
+        this.initChapterScrollStories(gsap)
 
         gsap.timeline({
           scrollTrigger: {
@@ -476,65 +473,12 @@ export default class extends Controller {
             scrub: 1.1
           }
         })
-          .to(this.visual, { charge: 0.48, scroll: 0.8, intensity: 0.7, phase: 1.0, explode: 0.04, side: 0.54, ease: "none", duration: 1 })
-          .to(this.visual, { charge: 0.66, scroll: 1.7, intensity: 0.84, phase: 2.0, explode: 0.12, side: -0.54, ease: "none", duration: 1 })
-          .to(this.visual, { charge: 0.81, scroll: 2.7, intensity: 0.98, phase: 3.0, explode: 0.28, side: 0.54, ease: "none", duration: 1 })
+          .to(this.visual, { charge: 0.48, scroll: 0.8, intensity: 0.7, phase: 1.0, explode: 0.18, side: 0.54, ease: "none", duration: 1 })
+          .to(this.visual, { charge: 0.66, scroll: 1.7, intensity: 0.84, phase: 2.0, explode: 0.72, side: -0.54, ease: "none", duration: 1 })
+          .to(this.visual, { charge: 0.81, scroll: 2.7, intensity: 0.98, phase: 3.0, explode: 0.06, side: 0.54, ease: "none", duration: 1 })
           .to(this.visual, { charge: 0.9, scroll: 3.8, intensity: 1.08, phase: 4.0, explode: 0.92, side: 0.42, ease: "none", duration: 1.1 })
           .to(this.visual, { charge: 0.96, scroll: 5.0, intensity: 0.96, phase: 5.0, explode: 0.42, side: -0.42, ease: "none", duration: 1 })
           .to(this.visual, { charge: 1.0, scroll: 6.15, intensity: 1.12, phase: 6.0, explode: 0.02, side: 0.5, ease: "none", duration: 1 })
-
-        this.sceneTargets.slice(1).forEach((scene, index) => {
-          const card = scene.querySelector("[data-chapter-reveal]")
-          if (!card) return
-
-          gsap.fromTo(card,
-            { autoAlpha: 0, y: 64, rotateX: 4 },
-            {
-              autoAlpha: 1,
-              y: 0,
-              rotateX: 0,
-              duration: 0.9,
-              ease: "power3.out",
-              scrollTrigger: {
-                trigger: scene,
-                start: "top 68%",
-                toggleActions: "play none none reverse"
-              },
-              delay: index * 0.03
-            }
-          )
-        })
-
-        const sectionElements = this.element.querySelectorAll("[data-section-reveal]:not([data-tilt-card])")
-        sectionElements.forEach((element) => {
-          gsap.fromTo(element,
-            { autoAlpha: 0, y: 48 },
-            {
-              autoAlpha: 1,
-              y: 0,
-              duration: 0.9,
-              ease: "power3.out",
-              scrollTrigger: { trigger: element, start: "top 84%", once: true }
-            }
-          )
-        })
-
-        const productCards = this.element.querySelectorAll("[data-tilt-card]")
-        if (productCards.length) {
-          gsap.set(productCards, { autoAlpha: 0, y: 70, rotateY: -4 })
-          ScrollTrigger.batch(productCards, {
-            start: "top 86%",
-            once: true,
-            onEnter: (batch) => gsap.to(batch, {
-              autoAlpha: 1,
-              y: 0,
-              rotateY: 0,
-              duration: 0.95,
-              stagger: 0.11,
-              ease: "power3.out"
-            })
-          })
-        }
 
         const factoryImage = this.element.querySelector(".yp-factory-visual img")
         if (factoryImage) {
@@ -628,6 +572,135 @@ export default class extends Controller {
     })
   }
 
+  initSequentialReveals(gsap, ScrollTrigger) {
+    this.sceneTargets.forEach((scene) => {
+      if (["engineering", "capacity", "compatibility"].includes(scene.dataset.scene)) return
+
+      const revealItems = this.revealItemsForScene(scene)
+      if (!revealItems.length) return
+
+      gsap.set(revealItems, { autoAlpha: 0, y: 34, filter: "blur(7px)" })
+      ScrollTrigger.create({
+        trigger: scene,
+        start: "top 72%",
+        end: "bottom 22%",
+        onEnter: () => this.playRevealSequence(gsap, revealItems),
+        onEnterBack: () => this.playRevealSequence(gsap, revealItems),
+        onLeaveBack: () => gsap.set(revealItems, { autoAlpha: 0, y: 34, filter: "blur(7px)" })
+      })
+    })
+  }
+
+  initChapterScrollStories(gsap) {
+    this.sceneTargets
+      .filter((scene) => ["engineering", "capacity", "compatibility"].includes(scene.dataset.scene))
+      .forEach((scene) => {
+        const card = scene.querySelector(".yp-story-card")
+        const zone = scene.querySelector(".yp-battery-zone")
+        if (!card) return
+
+        const simpleItems = Array.from(card.children).filter((item) => {
+          return !item.matches(".yp-meter-list, .yp-brand-cloud")
+        })
+        const detailItems = [
+          ...card.querySelectorAll(".yp-spec-row > div"),
+          ...card.querySelectorAll(".yp-meter-list > div"),
+          ...card.querySelectorAll(".yp-brand-cloud > span")
+        ]
+        const allItems = [...simpleItems, ...detailItems]
+
+        gsap.set(allItems, { autoAlpha: 0, y: 48, filter: "blur(8px)" })
+        if (zone) gsap.set(zone.children, { autoAlpha: 0 })
+
+        const timeline = gsap.timeline({
+          scrollTrigger: {
+            trigger: scene,
+            start: "top 72%",
+            end: "bottom 28%",
+            scrub: 0.75
+          }
+        })
+
+        if (zone) {
+          timeline.fromTo(zone,
+            { autoAlpha: 0, scaleY: 0.35, transformOrigin: "center" },
+            { autoAlpha: 0.75, scaleY: 1, duration: 0.7, ease: "power2.out" }
+          )
+          timeline.to(zone.children, { autoAlpha: 1, stagger: 0.16, duration: 0.45 }, "<0.2")
+        }
+
+        timeline.to(allItems, {
+          autoAlpha: 1,
+          y: 0,
+          filter: "blur(0px)",
+          duration: 0.72,
+          stagger: 0.24,
+          ease: "power3.out"
+        }, zone ? "<0.28" : 0)
+
+        timeline.to(card, { y: -22, duration: 0.8, ease: "none" })
+      })
+  }
+
+  revealItemsForScene(scene) {
+    if (scene.dataset.scene === "hero") {
+      return [
+        scene.querySelector(".yp-hero-copy .yp-kicker"),
+        scene.querySelector(".yp-hero-copy h1"),
+        scene.querySelector(".yp-hero-lede"),
+        scene.querySelector(".yp-actions"),
+        scene.querySelector(".yp-hero-stats"),
+        ...scene.querySelectorAll(".yp-orbit-label")
+      ].filter(Boolean)
+    }
+
+    if (["engineering", "capacity", "compatibility"].includes(scene.dataset.scene)) {
+      const card = scene.querySelector(".yp-story-card")
+      return card ? Array.from(card.children) : []
+    }
+
+    if (scene.dataset.scene === "products") {
+      return [
+        scene.querySelector(".yp-section-heading .yp-kicker"),
+        scene.querySelector(".yp-section-heading h2"),
+        scene.querySelector(".yp-section-side p"),
+        scene.querySelector(".yp-section-side .yp-text-link"),
+        ...scene.querySelectorAll(".yp-product-card")
+      ].filter(Boolean)
+    }
+
+    if (scene.dataset.scene === "factory-story") {
+      return [
+        scene.querySelector(".yp-factory-visual"),
+        scene.querySelector(".yp-factory-copy .yp-kicker"),
+        scene.querySelector(".yp-factory-copy h2"),
+        scene.querySelector(".yp-factory-copy > p:not(.yp-kicker)"),
+        scene.querySelector(".yp-factory-copy dl"),
+        scene.querySelector(".yp-factory-copy .yp-text-link")
+      ].filter(Boolean)
+    }
+
+    if (scene.dataset.scene === "start-project") {
+      const panel = scene.querySelector(".yp-cta-panel")
+      return panel ? Array.from(panel.children).filter((item) => !item.classList.contains("yp-cta-orbit")) : []
+    }
+
+    return []
+  }
+
+  playRevealSequence(gsap, items) {
+    gsap.killTweensOf(items)
+    gsap.to(items, {
+      autoAlpha: 1,
+      y: 0,
+      filter: "blur(0px)",
+      duration: 0.72,
+      stagger: 0.13,
+      ease: "power3.out",
+      overwrite: "auto"
+    })
+  }
+
   initMagneticButtons() {
     if (this.reducedMotion || !window.gsap) return
 
@@ -698,6 +771,20 @@ export default class extends Controller {
   setScene(name) {
     const scene = this.sceneTargets.find((item) => item.dataset.scene === name)
     const label = scene?.dataset.stateLabel
+    const sceneSides = {
+      hero: 0.54,
+      engineering: 0.54,
+      capacity: -0.54,
+      compatibility: 0.54,
+      products: 0.46,
+      "factory-story": -0.44,
+      "start-project": 0.5
+    }
+
+    this.element.dataset.activeScene = name
+    if (sceneSides[name] !== undefined && this.visual && !this.reducedMotion) {
+      this.visual.side = sceneSides[name]
+    }
 
     this.sceneDotTargets.forEach((dot) => {
       const active = dot.dataset.sceneName === name

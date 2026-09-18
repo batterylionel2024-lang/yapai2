@@ -594,9 +594,16 @@
 
 .yp-chapter {
   display: grid;
-  align-items: center;
-  min-height: 88svh;
-  padding: 6rem 0;
+  align-items: start;
+  min-height: 145svh;
+  padding: 0;
+}
+
+.yp-chapter-grid {
+  position: sticky;
+  top: 9svh;
+  min-height: 82svh;
+  padding-block: clamp(3rem, 7vh, 6rem);
 }
 
 .yp-story-card {
@@ -611,6 +618,26 @@
 
 .yp-chapter-grid-reverse .yp-story-card {
   justify-self: end;
+}
+
+.yp-story-card-open {
+  width: 100%;
+  max-width: 610px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+.yp-story-card-open::before {
+  display: block;
+  width: 72px;
+  height: 1px;
+  margin-bottom: 2rem;
+  content: "";
+  background: linear-gradient(90deg, var(--yp-acid), transparent);
 }
 
 .yp-chapter-index {
@@ -685,15 +712,18 @@
 
 .yp-meter-list {
   display: grid;
-  gap: 1.15rem;
-  margin-top: 2rem;
+  gap: 0;
+  margin-top: 2.6rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .yp-meter-list div {
   display: grid;
-  grid-template-columns: 130px 1fr;
+  grid-template-columns: 34px minmax(130px, 0.48fr) 1fr;
   align-items: center;
-  gap: 1rem;
+  gap: 1.1rem;
+  min-height: 64px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .yp-meter-list span {
@@ -701,6 +731,14 @@
   font-size: 0.63rem;
   font-weight: 700;
   letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.yp-meter-list strong {
+  color: rgba(242, 255, 246, 0.86);
+  font-size: 0.72rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
@@ -720,22 +758,79 @@
   box-shadow: 0 0 10px var(--yp-green);
 }
 
+.yp-battery-zone {
+  position: relative;
+  align-self: stretch;
+  min-height: 540px;
+  border-left: 1px solid rgba(184, 255, 61, 0.14);
+  color: rgba(235, 255, 241, 0.45);
+  font-size: 0.54rem;
+  font-weight: 750;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.yp-battery-zone span {
+  position: absolute;
+  top: 12%;
+  left: 1.2rem;
+}
+
+.yp-battery-zone i {
+  position: absolute;
+  top: 50%;
+  left: -4px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--yp-acid);
+  box-shadow: 0 0 22px rgba(184, 255, 61, 0.82);
+}
+
+.yp-battery-zone small {
+  position: absolute;
+  bottom: 12%;
+  left: 1.2rem;
+  color: var(--yp-acid);
+  font-size: 0.5rem;
+  letter-spacing: 0.14em;
+}
+
 .yp-brand-cloud {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0;
+  margin-top: 2.4rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .yp-brand-cloud span {
-  padding: 0.55rem 0.8rem;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  min-height: 48px;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   color: rgba(240, 255, 244, 0.68);
-  background: rgba(255, 255, 255, 0.035);
+  background: transparent;
   font-size: 0.65rem;
   font-weight: 750;
   letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.yp-brand-cloud span:nth-child(odd) {
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.yp-brand-cloud span:nth-child(even) {
+  padding-left: 1rem;
+}
+
+.yp-brand-cloud span i {
+  color: var(--yp-acid);
+  font-size: 0.5rem;
+  font-style: normal;
 }
 
 /* Light product and factory sections */
@@ -1346,12 +1441,14 @@
 
   .yp-chapter {
     align-items: end;
-    min-height: 84svh;
-    padding: 12rem 0 3rem;
+    min-height: 132svh;
+    padding: 0;
   }
 
-  .yp-chapter-grid > div:empty {
-    display: none;
+  .yp-chapter-grid {
+    top: 0;
+    min-height: 100svh;
+    padding: 42svh 0 3rem;
   }
 
   .yp-story-card,
@@ -1361,6 +1458,12 @@
     padding: 1.45rem;
     border-radius: 22px;
     background: rgba(8, 25, 17, 0.78);
+    backdrop-filter: blur(14px);
+  }
+
+  .yp-story-card-open::before,
+  .yp-battery-zone {
+    display: none;
   }
 
   .yp-chapter-index {
@@ -1369,6 +1472,23 @@
 
   .yp-story-card h2 {
     font-size: clamp(2.3rem, 12vw, 3.7rem);
+  }
+
+  .yp-meter-list div {
+    grid-template-columns: 26px minmax(105px, 0.6fr) 1fr;
+    gap: 0.65rem;
+  }
+
+  .yp-brand-cloud {
+    grid-template-columns: 1fr;
+  }
+
+  .yp-brand-cloud span:nth-child(odd) {
+    border-right: 0;
+  }
+
+  .yp-brand-cloud span:nth-child(even) {
+    padding-left: 0;
   }
 
   .yp-section-heading {

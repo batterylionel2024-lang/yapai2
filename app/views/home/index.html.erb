@@ -106,9 +106,9 @@
         </a>
       </section>
 
-      <section id="engineering" class="yp-chapter yp-scene" data-scene="engineering" data-state-label="<%= t("home.index.experience.states.engineering") %>" data-energy-experience-target="scene">
-        <div class="yp-shell yp-chapter-grid">
-          <article class="yp-story-card" data-chapter-reveal>
+      <section id="engineering" class="yp-chapter yp-chapter--engineering yp-scene" data-scene="engineering" data-state-label="<%= t("home.index.experience.states.engineering") %>" data-energy-experience-target="scene">
+        <div class="yp-shell yp-chapter-grid yp-chapter-grid-left" data-chapter-shell>
+          <article class="yp-story-card yp-story-card-open" data-chapter-reveal>
             <div class="yp-chapter-index">01 <span>/ 03</span></div>
             <p class="yp-kicker yp-kicker-compact"><%= t("home.index.experience.engineering.kicker") %></p>
             <h2><%= t("home.index.experience.engineering.title") %></h2>
@@ -118,41 +118,43 @@
               <div><strong>4×</strong><span><%= t("home.index.experience.engineering.qc") %></span></div>
             </div>
           </article>
-          <div></div>
+          <div class="yp-battery-zone" aria-hidden="true"><span>ENGINEERED CORE</span><i></i></div>
         </div>
       </section>
 
-      <section id="capacity" class="yp-chapter yp-scene" data-scene="capacity" data-state-label="<%= t("home.index.experience.states.capacity") %>" data-energy-experience-target="scene">
-        <div class="yp-shell yp-chapter-grid yp-chapter-grid-reverse">
-          <div></div>
-          <article class="yp-story-card" data-chapter-reveal>
+      <section id="capacity" class="yp-chapter yp-chapter--capacity yp-scene" data-scene="capacity" data-state-label="<%= t("home.index.experience.states.capacity") %>" data-energy-experience-target="scene">
+        <div class="yp-shell yp-chapter-grid yp-chapter-grid-reverse" data-chapter-shell>
+          <div class="yp-battery-zone yp-battery-zone-capacity" aria-hidden="true">
+            <span>SCALABLE OUTPUT</span><i></i><small>LOW MOQ → VOLUME</small>
+          </div>
+          <article class="yp-story-card yp-story-card-open" data-chapter-reveal>
             <div class="yp-chapter-index">02 <span>/ 03</span></div>
             <p class="yp-kicker yp-kicker-compact"><%= t("home.index.experience.capacity.kicker") %></p>
             <h2><%= t("home.index.experience.capacity.title") %></h2>
             <p><%= t("home.index.experience.capacity.description") %></p>
-            <div class="yp-meter-list">
-              <div><span><%= t("home.index.experience.capacity.flexibility") %></span><i style="--meter: 92%"></i></div>
-              <div><span><%= t("home.index.experience.capacity.speed") %></span><i style="--meter: 86%"></i></div>
-              <div><span><%= t("home.index.experience.capacity.consistency") %></span><i style="--meter: 96%"></i></div>
+            <div class="yp-meter-list" data-capacity-meters>
+              <div><span>01</span><strong><%= t("home.index.experience.capacity.flexibility") %></strong><i style="--meter: 92%"></i></div>
+              <div><span>02</span><strong><%= t("home.index.experience.capacity.speed") %></strong><i style="--meter: 86%"></i></div>
+              <div><span>03</span><strong><%= t("home.index.experience.capacity.consistency") %></strong><i style="--meter: 96%"></i></div>
             </div>
           </article>
         </div>
       </section>
 
-      <section id="compatibility" class="yp-chapter yp-scene" data-scene="compatibility" data-state-label="<%= t("home.index.experience.states.compatibility") %>" data-energy-experience-target="scene">
-        <div class="yp-shell yp-chapter-grid">
-          <article class="yp-story-card" data-chapter-reveal>
+      <section id="compatibility" class="yp-chapter yp-chapter--compatibility yp-scene" data-scene="compatibility" data-state-label="<%= t("home.index.experience.states.compatibility") %>" data-energy-experience-target="scene">
+        <div class="yp-shell yp-chapter-grid yp-chapter-grid-left" data-chapter-shell>
+          <article class="yp-story-card yp-story-card-open" data-chapter-reveal>
             <div class="yp-chapter-index">03 <span>/ 03</span></div>
             <p class="yp-kicker yp-kicker-compact"><%= t("home.index.experience.compatibility.kicker") %></p>
             <h2><%= t("home.index.experience.compatibility.title") %></h2>
             <p><%= t("home.index.experience.compatibility.description") %></p>
-            <div class="yp-brand-cloud" aria-label="Supported device brands">
-              <% %w[iPhone Samsung Huawei Xiaomi OPPO vivo Motorola Infinix].each do |brand| %>
-                <span><%= brand %></span>
+            <div class="yp-brand-cloud" aria-label="Supported device brands" data-brand-stream>
+              <% %w[iPhone Samsung Huawei Xiaomi OPPO vivo Motorola Infinix].each_with_index do |brand, index| %>
+                <span><i><%= format("%02d", index + 1) %></i><%= brand %></span>
               <% end %>
             </div>
           </article>
-          <div></div>
+          <div class="yp-battery-zone yp-battery-zone-compatibility" aria-hidden="true"><span>1,000+ MODELS</span><i></i></div>
         </div>
       </section>
     </div>
