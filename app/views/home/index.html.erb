@@ -1,251 +1,171 @@
-<% content_for :title, "Yapai Battery Factory — Energy Engineered to Move" %>
-<% content_for :meta_description, "Yapai is a professional mobile phone battery manufacturer in Dongguan, China, supplying OEM/ODM replacement batteries for 1,000+ models worldwide." %>
+<% content_for :title, "Yapai Battery Factory — Professional Mobile Phone Battery Manufacturer" %>
+<% content_for :meta_description, "Yapai manufactures replacement mobile phone batteries for 1,000+ models with OEM/ODM support, flexible MOQ and global delivery." %>
 <% content_for :meta_keywords, "mobile phone battery factory, replacement battery manufacturer, OEM battery, ODM battery, Yapai Battery" %>
-<div class="yp-experience"
-     data-controller="energy-experience"
-     data-energy-experience-reduced-motion-value="false">
-  <div class="yp-progress" aria-hidden="true">
-    <span data-energy-experience-target="progress"></span>
-  </div>
 
-  <div class="yp-dark-world" data-energy-experience-target="darkWorld">
-    <div class="yp-stage" aria-hidden="true">
-      <canvas class="yp-webgl" data-energy-experience-target="canvas"></canvas>
-      <div class="yp-stage-glow"></div>
-      <div class="yp-stage-grid"></div>
-      <div class="yp-energy-reticle">
-        <span></span><span></span><span></span>
-      </div>
-      <div class="yp-battery-signature">
-        <span>YAPAI</span>
-        <small>INTELLIGENT ENERGY CORE</small>
-      </div>
-      <div class="yp-webgl-fallback" data-energy-experience-target="fallback">
-        <span class="yp-fallback-cap"></span>
-        <span class="yp-fallback-charge"></span>
-      </div>
-
-      <div class="yp-stage-hud">
-        <div class="yp-hud-state">
-          <span class="yp-hud-pulse"></span>
-          <span data-energy-experience-target="stateLabel"><%= t("home.index.experience.hud_state") %></span>
+<div class="yr-home" data-controller="home-reveal">
+  <section class="yr-hero" data-controller="slideshow" aria-label="Yapai Battery highlights">
+    <div class="yr-hero-media" aria-hidden="true">
+      <% [1, 2, 3].each_with_index do |number, index| %>
+        <div class="yr-hero-slide <%= index.zero? ? 'opacity-100 scale-100 z-10' : 'opacity-0 scale-110 z-0' %>" data-slideshow-target="slide">
+          <%= image_tag "indexbanner#{number}.jpg", alt: "", loading: index.zero? ? "eager" : "lazy" %>
         </div>
-        <div class="yp-hud-charge">
-          <span><%= t("home.index.experience.energy_core") %></span>
-          <strong data-energy-experience-target="chargeLabel">36%</strong>
-        </div>
-      </div>
-    </div>
-
-    <nav class="yp-scene-nav" aria-label="Homepage chapters">
-      <% %w[hero engineering capacity compatibility products factory-story start-project].each_with_index do |scene, index| %>
-        <a href="#<%= scene %>"
-           data-energy-experience-target="sceneDot"
-           data-scene-name="<%= scene %>"
-           class="<%= "is-active" if index.zero? %>"
-           aria-label="Go to chapter <%= index + 1 %>">
-          <span><%= format("%02d", index + 1) %></span>
-        </a>
       <% end %>
-    </nav>
-
-    <div class="yp-dark-content">
-      <section id="hero" class="yp-hero yp-scene" data-scene="hero" data-state-label="<%= t("home.index.experience.states.hero") %>" data-energy-experience-target="scene">
-        <div class="yp-shell yp-hero-grid">
-          <div class="yp-hero-copy">
-            <div class="yp-kicker" data-hero-reveal>
-              <span></span>
-              <%= t("home.index.experience.hero.kicker") %>
-            </div>
-
-            <h1 class="yp-display" data-hero-reveal>
-              <span><%= t("home.index.experience.hero.title_line_1") %></span>
-              <em><%= t("home.index.experience.hero.title_line_2") %></em>
-            </h1>
-
-            <p class="yp-hero-lede" data-hero-reveal>
-              <%= t("home.index.experience.hero.description") %>
-            </p>
-
-            <div class="yp-actions" data-hero-reveal>
-              <a href="#products" class="yp-button yp-button-primary" data-energy-experience-target="magnetic">
-                <span><%= t("home.index.experience.hero.primary_cta") %></span>
-                <i aria-hidden="true">↗</i>
-              </a>
-              <%= link_to contact_path, class: "yp-button yp-button-ghost", data: { energy_experience_target: "magnetic" } do %>
-                <span><%= t("home.index.experience.hero.secondary_cta") %></span>
-                <i aria-hidden="true">→</i>
-              <% end %>
-            </div>
-
-            <dl class="yp-hero-stats" data-hero-reveal>
-              <div>
-                <dt><%= t("home.index.experience.hero.stats.output") %></dt>
-                <dd><span data-energy-experience-target="counter" data-value="5000" data-suffix="+">5,000+</span></dd>
-              </div>
-              <div>
-                <dt><%= t("home.index.experience.hero.stats.models") %></dt>
-                <dd><span data-energy-experience-target="counter" data-value="1000" data-suffix="+">1,000+</span></dd>
-              </div>
-              <div>
-                <dt><%= t("home.index.experience.hero.stats.dispatch") %></dt>
-                <dd><span data-energy-experience-target="counter" data-value="72" data-suffix="H">72H</span></dd>
-              </div>
-            </dl>
-          </div>
-
-          <div class="yp-object-space" aria-hidden="true">
-            <div class="yp-orbit-label yp-orbit-label-a"><span>01</span> OEM / ODM</div>
-            <div class="yp-orbit-label yp-orbit-label-b"><span>02</span> QC VERIFIED</div>
-          </div>
-        </div>
-
-        <a href="#engineering" class="yp-scroll-cue" aria-label="Scroll to engineering chapter">
-          <span><%= t("home.index.experience.scroll") %></span>
-          <i></i>
-        </a>
-      </section>
-
-      <section id="engineering" class="yp-chapter yp-chapter--engineering yp-scene" data-scene="engineering" data-state-label="<%= t("home.index.experience.states.engineering") %>" data-energy-experience-target="scene">
-        <div class="yp-shell yp-chapter-grid yp-chapter-grid-left" data-chapter-shell>
-          <article class="yp-story-card yp-story-card-open" data-chapter-reveal>
-            <div class="yp-chapter-index">01 <span>/ 03</span></div>
-            <p class="yp-kicker yp-kicker-compact"><%= t("home.index.experience.engineering.kicker") %></p>
-            <h2><%= t("home.index.experience.engineering.title") %></h2>
-            <p><%= t("home.index.experience.engineering.description") %></p>
-            <div class="yp-spec-row">
-              <div><strong>20</strong><span><%= t("home.index.experience.engineering.years") %></span></div>
-              <div><strong>4×</strong><span><%= t("home.index.experience.engineering.qc") %></span></div>
-            </div>
-          </article>
-          <div class="yp-battery-zone" aria-hidden="true"><span>ENGINEERED CORE</span><i></i></div>
-        </div>
-      </section>
-
-      <section id="capacity" class="yp-chapter yp-chapter--capacity yp-scene" data-scene="capacity" data-state-label="<%= t("home.index.experience.states.capacity") %>" data-energy-experience-target="scene">
-        <div class="yp-shell yp-chapter-grid yp-chapter-grid-reverse" data-chapter-shell>
-          <div class="yp-battery-zone yp-battery-zone-capacity" aria-hidden="true">
-            <span>SCALABLE OUTPUT</span><i></i><small>LOW MOQ → VOLUME</small>
-          </div>
-          <article class="yp-story-card yp-story-card-open" data-chapter-reveal>
-            <div class="yp-chapter-index">02 <span>/ 03</span></div>
-            <p class="yp-kicker yp-kicker-compact"><%= t("home.index.experience.capacity.kicker") %></p>
-            <h2><%= t("home.index.experience.capacity.title") %></h2>
-            <p><%= t("home.index.experience.capacity.description") %></p>
-            <div class="yp-meter-list" data-capacity-meters>
-              <div><span>01</span><strong><%= t("home.index.experience.capacity.flexibility") %></strong><i style="--meter: 92%"></i></div>
-              <div><span>02</span><strong><%= t("home.index.experience.capacity.speed") %></strong><i style="--meter: 86%"></i></div>
-              <div><span>03</span><strong><%= t("home.index.experience.capacity.consistency") %></strong><i style="--meter: 96%"></i></div>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section id="compatibility" class="yp-chapter yp-chapter--compatibility yp-scene" data-scene="compatibility" data-state-label="<%= t("home.index.experience.states.compatibility") %>" data-energy-experience-target="scene">
-        <div class="yp-shell yp-chapter-grid yp-chapter-grid-left" data-chapter-shell>
-          <article class="yp-story-card yp-story-card-open" data-chapter-reveal>
-            <div class="yp-chapter-index">03 <span>/ 03</span></div>
-            <p class="yp-kicker yp-kicker-compact"><%= t("home.index.experience.compatibility.kicker") %></p>
-            <h2><%= t("home.index.experience.compatibility.title") %></h2>
-            <p><%= t("home.index.experience.compatibility.description") %></p>
-            <div class="yp-brand-cloud" aria-label="Supported device brands" data-brand-stream>
-              <% %w[iPhone Samsung Huawei Xiaomi OPPO vivo Motorola Infinix].each_with_index do |brand, index| %>
-                <span><i><%= format("%02d", index + 1) %></i><%= brand %></span>
-              <% end %>
-            </div>
-          </article>
-          <div class="yp-battery-zone yp-battery-zone-compatibility" aria-hidden="true"><span>1,000+ MODELS</span><i></i></div>
-        </div>
-      </section>
+      <div class="yr-hero-shade"></div>
+      <div class="yr-hero-grid"></div>
     </div>
 
-  <section id="products" class="yp-products yp-light-section yp-scene" data-scene="products" data-state-label="<%= t("home.index.experience.states.products") %>" data-energy-experience-target="scene">
-    <div class="yp-shell">
-      <header class="yp-section-heading" data-section-reveal>
-        <div>
-          <p class="yp-kicker yp-kicker-dark"><%= t("home.index.experience.products.kicker") %></p>
-          <h2><%= t("home.index.experience.products.title") %></h2>
-        </div>
-        <div class="yp-section-side">
-          <p><%= t("home.index.experience.products.description") %></p>
-          <%= link_to products_path, class: "yp-text-link" do %>
-            <%= t("home.index.experience.products.view_all") %> <span aria-hidden="true">↗</span>
+    <div class="yr-shell yr-hero-inner">
+      <div class="yr-hero-copy-wrap">
+        <% [1, 2, 3].each_with_index do |number, index| %>
+          <div class="yr-hero-copy <%= index.zero? ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-12 pointer-events-none' %>" data-slideshow-target="content">
+            <p class="yr-eyebrow yr-eyebrow-light">Yapai · Battery Manufacturing</p>
+            <h1>
+              <span><%= t("home.index.hero_slides.slide#{number}.title1", default: "Professional Battery Factory") %></span>
+              <strong><%= t("home.index.hero_slides.slide#{number}.title2", default: "YAPAI BATTERY") %></strong>
+            </h1>
+            <p class="yr-hero-description"><%= t("home.index.hero_slides.slide#{number}.desc", default: "Professional replacement battery manufacturing for global partners.") %></p>
+            <div class="yr-hero-actions">
+              <a href="#battery-series" class="yr-button yr-button-primary"><span><%= t("home.index.explore_more", default: "Explore products") %></span><i>↗</i></a>
+              <%= link_to factory_path, class: "yr-button yr-button-ghost" do %>
+                <span><%= t("home.index.factory_tour", default: "Factory tour") %></span><i>→</i>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="yr-hero-foot">
+        <div class="yr-slide-controls" aria-label="Slideshow controls">
+          <% 3.times do |index| %>
+            <button type="button" data-action="slideshow#goTo" data-index="<%= index %>" data-slideshow-target="indicator" aria-label="Show slide <%= index + 1 %>" aria-pressed="<%= index.zero? %>"><%= format("%02d", index + 1) %></button>
           <% end %>
+          <button type="button" class="yr-slide-toggle" data-action="slideshow#toggle" data-slideshow-target="toggle" aria-label="Pause slideshow">Pause</button>
         </div>
+        <div class="yr-hero-note"><span></span>OEM / ODM · GLOBAL SUPPLY</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="yr-proof" aria-label="Yapai production highlights">
+    <div class="yr-shell yr-proof-grid">
+      <div data-home-reveal-target="item"><strong>20</strong><span><%= t("home.index.years_history", default: "Years of experience") %></span></div>
+      <div data-home-reveal-target="item"><strong>5,000+</strong><span>Daily capacity</span></div>
+      <div data-home-reveal-target="item"><strong>1,000+</strong><span>Compatible models</span></div>
+      <div data-home-reveal-target="item"><strong>72H</strong><span>Fast dispatch</span></div>
+    </div>
+  </section>
+
+  <section class="yr-about yr-section">
+    <div class="yr-shell yr-about-grid">
+      <div class="yr-about-visual" data-home-reveal-target="item">
+        <%= image_tag "factory5.jpg", alt: "Yapai battery production facility", loading: "lazy" %>
+        <div class="yr-about-badge"><strong>20</strong><span>Years focused on mobile energy</span></div>
+      </div>
+      <div class="yr-about-copy" data-home-reveal-target="item">
+        <p class="yr-eyebrow">Factory direct · Dongguan</p>
+        <h2>Built for reliable<br>global supply.</h2>
+        <p><%= t("home.index.who_we_are_desc", default: "Yapai is a professional mobile phone battery manufacturer serving wholesalers, retailers and private-label partners worldwide.") %></p>
+        <div class="yr-feature-list">
+          <div><span>01</span><strong>Flexible MOQ</strong><p>Support market testing and scalable repeat orders.</p></div>
+          <div><span>02</span><strong>OEM / ODM</strong><p>Brand, label and packaging customization.</p></div>
+          <div><span>03</span><strong>Quality control</strong><p>Consistent inspection throughout production.</p></div>
+        </div>
+        <%= link_to factory_path, class: "yr-text-link" do %>Discover our factory <span>↗</span><% end %>
+      </div>
+    </div>
+  </section>
+
+  <section id="battery-series" class="yr-products yr-section">
+    <div class="yr-shell">
+      <header class="yr-section-heading" data-home-reveal-target="item">
+        <div><p class="yr-eyebrow">Battery series</p><h2>Find your fit.</h2></div>
+        <p>Replacement batteries engineered for the devices your market already trusts.</p>
       </header>
 
-      <div class="yp-product-grid">
-        <% battery_brands = [
-             { name: "iPhone", image: "iphone.webp", tag: "Apple series", tone: "#b8ff3d" },
-             { name: "Samsung", image: "category3.webp", tag: "Galaxy series", tone: "#66b8ff" },
-             { name: "Huawei", image: "huawei.webp", tag: "Mate · P series", tone: "#ff9c2a" },
-             { name: "Xiaomi", image: "xiaomi.webp", tag: "Mi · Redmi series", tone: "#ff6c4a" },
-             { name: "OPPO", image: "oppo.webp", tag: "Find · Reno series", tone: "#7ee8a8" },
-             { name: "vivo", image: "vivo.webp", tag: "X · V series", tone: "#a78bfa" },
-             { name: "Motorola", image: "category5.webp", tag: "Moto series", tone: "#66e0ff" },
-             { name: "Infinix", image: "category6.webp", tag: "Note · Hot series", tone: "#f7d154" }
-           ] %>
-        <% battery_brands.each_with_index do |brand, index| %>
+      <% brands = [
+        { name: "iPhone", image: "iphone.webp", models: "Apple series", tone: "#b8e84f" },
+        { name: "Samsung", image: "category3.webp", models: "Galaxy series", tone: "#77a9ff" },
+        { name: "Huawei", image: "huawei.webp", models: "Mate · P series", tone: "#ff9a62" },
+        { name: "Xiaomi", image: "xiaomi.webp", models: "Mi · Redmi", tone: "#ff795e" },
+        { name: "OPPO", image: "oppo.webp", models: "Find · Reno", tone: "#79d8a2" },
+        { name: "vivo", image: "vivo.webp", models: "X · V series", tone: "#a995ff" },
+        { name: "Motorola", image: "category5.webp", models: "Moto series", tone: "#62ccec" },
+        { name: "Infinix", image: "category6.webp", models: "Note · Hot", tone: "#eccd58" }
+      ] %>
+      <div class="yr-product-grid">
+        <% brands.each_with_index do |brand, index| %>
           <% category = @featured_categories.find { |item| item.name.to_s.downcase.include?(brand[:name].downcase) } %>
-          <% destination = category ? category_path(category) : products_path %>
-          <%= link_to destination, class: "yp-product-card yp-brand-card", style: "--card-accent: #{brand[:tone]}", data: { section_reveal: true, tilt_card: true, brand: brand[:name].downcase } do %>
-            <div class="yp-product-image">
-              <%= image_tag brand[:image], alt: "#{brand[:name]} replacement battery", loading: "lazy" %>
-              <span class="yp-product-number"><%= format("%02d", index + 1) %></span>
-              <span class="yp-brand-chip"><%= brand[:name] %></span>
-            </div>
-            <div class="yp-product-meta">
-              <div>
-                <span><%= brand[:tag] %></span>
-                <h3><%= brand[:name] %> battery</h3>
-              </div>
-              <i aria-hidden="true">↗</i>
-            </div>
+          <%= link_to(category ? category_path(category) : products_path, class: "yr-product-card", style: "--yr-accent: #{brand[:tone]}", data: { home_reveal_target: "item" }) do %>
+            <div class="yr-product-image"><%= image_tag brand[:image], alt: "#{brand[:name]} replacement battery", loading: "lazy" %><span><%= format("%02d", index + 1) %></span></div>
+            <div class="yr-product-meta"><div><small><%= brand[:models] %></small><h3><%= brand[:name] %></h3></div><i>↗</i></div>
           <% end %>
         <% end %>
       </div>
+      <div class="yr-products-foot" data-home-reveal-target="item"><%= link_to products_path, class: "yr-button yr-button-dark" do %><span>View all products</span><i>→</i><% end %></div>
     </div>
   </section>
 
-  <section id="factory-story" class="yp-factory yp-light-section yp-scene" data-scene="factory-story" data-state-label="<%= t("home.index.experience.states.factory") %>" data-energy-experience-target="scene">
-    <div class="yp-shell yp-factory-grid">
-      <div class="yp-factory-visual" data-section-reveal>
-        <%= image_tag "factory5.jpg", alt: "Yapai battery manufacturing facility", loading: "lazy" %>
-        <div class="yp-factory-caption">
-          <span><%= t("home.index.experience.factory.location") %></span>
-          <strong><%= t("home.index.experience.factory.caption") %></strong>
+  <section class="yr-capability yr-section">
+    <div class="yr-shell">
+      <header class="yr-section-heading yr-section-heading-light" data-home-reveal-target="item">
+        <div><p class="yr-eyebrow yr-eyebrow-light">Manufacturing capability</p><h2>Scale without<br>the friction.</h2></div>
+        <p>From product selection to shipment, one experienced team keeps every detail moving.</p>
+      </header>
+      <div class="yr-capability-grid">
+        <% [["01", "Select", "Choose from 1,000+ compatible models."], ["02", "Customize", "Apply your logo, label and packaging."], ["03", "Produce", "Flexible quantities with controlled output."], ["04", "Deliver", "Fast preparation for worldwide shipping."]].each do |number, title, description| %>
+          <article data-home-reveal-target="item"><span><%= number %></span><h3><%= title %></h3><p><%= description %></p></article>
+        <% end %>
+      </div>
+    </div>
+  </section>
+
+  <section class="yr-factory yr-section">
+    <div class="yr-shell yr-factory-grid">
+      <div class="yr-factory-copy" data-home-reveal-target="item">
+        <p class="yr-eyebrow">Inside Yapai</p>
+        <h2>Manufacturing you can see.</h2>
+        <p>Our Dongguan facility brings production, inspection and packing together under one roof.</p>
+        <dl><div><dt>10,000㎡</dt><dd>Factory space</dd></div><div><dt>50+</dt><dd>Production units</dd></div><div><dt>100%</dt><dd>Final inspection</dd></div></dl>
+        <%= link_to factory_path, class: "yr-text-link" do %>Explore production <span>↗</span><% end %>
+      </div>
+      <div class="yr-factory-gallery" data-home-reveal-target="item">
+        <%= image_tag "factory1.jpg", alt: "Battery production line", loading: "lazy" %>
+        <%= image_tag "worker2.jpg", alt: "Yapai production team", loading: "lazy" %>
+        <%= image_tag "factory3.jpg", alt: "Battery quality inspection", loading: "lazy" %>
+      </div>
+    </div>
+  </section>
+
+  <section class="yr-cta yr-section">
+    <div class="yr-shell">
+      <div class="yr-cta-panel" data-home-reveal-target="item">
+        <div class="yr-cta-copy">
+          <p class="yr-eyebrow yr-eyebrow-light">Human support · Factory response</p>
+          <h2>Connect with<br>our battery team.</h2>
+          <p>Share your target models, quantity and branding requirements. A dedicated specialist will turn them into a clear factory proposal.</p>
+          <div class="yr-cta-signals" aria-label="Service highlights">
+            <span><i></i>Online now</span>
+            <span><strong>&lt; 12H</strong> First response</span>
+            <span><strong>1 : 1</strong> Project support</span>
+          </div>
+          <%= link_to contact_path, class: "yr-button yr-button-light" do %><span><%= t("home.index.get_free_quote", default: "Get a quote") %></span><i>↗</i><% end %>
+        </div>
+
+        <div class="yr-support-console">
+          <div class="yr-console-grid" aria-hidden="true"></div>
+          <div class="yr-console-ring" aria-hidden="true"><span></span></div>
+          <figure class="yr-support-portrait">
+            <%= image_tag "/support-agent.jpg", alt: "Yapai customer service specialist wearing a headset", loading: "lazy" %>
+          </figure>
+          <div class="yr-agent-card">
+            <div class="yr-agent-status"><span></span>AVAILABLE</div>
+            <strong>Project Specialist</strong>
+            <small>OEM / ODM SUPPORT</small>
+          </div>
+          <div class="yr-console-data yr-console-data-a"><span>CHANNEL</span><strong>GLOBAL / 24</strong></div>
+          <div class="yr-console-data yr-console-data-b"><span>RESPONSE</span><strong>ACTIVE</strong></div>
         </div>
       </div>
-
-      <div class="yp-factory-copy" data-section-reveal>
-        <p class="yp-kicker yp-kicker-dark"><%= t("home.index.experience.factory.kicker") %></p>
-        <h2><%= t("home.index.experience.factory.title") %></h2>
-        <p><%= t("home.index.experience.factory.description") %></p>
-        <dl>
-          <div><dt>10,000㎡</dt><dd><%= t("home.index.experience.factory.scale") %></dd></div>
-          <div><dt>50+</dt><dd><%= t("home.index.experience.factory.lines") %></dd></div>
-          <div><dt>100%</dt><dd><%= t("home.index.experience.factory.testing") %></dd></div>
-        </dl>
-        <%= link_to factory_path, class: "yp-text-link yp-text-link-dark" do %>
-          <%= t("home.index.experience.factory.cta") %> <span aria-hidden="true">↗</span>
-        <% end %>
-      </div>
     </div>
   </section>
-
-  <section id="start-project" class="yp-final-cta yp-light-section yp-scene" data-scene="start-project" data-state-label="<%= t("home.index.experience.states.cta") %>" data-energy-experience-target="scene">
-    <div class="yp-shell">
-      <div class="yp-cta-panel" data-section-reveal>
-        <div class="yp-cta-orbit" aria-hidden="true"><span></span><i></i></div>
-        <p class="yp-kicker"><%= t("home.index.experience.cta.kicker") %></p>
-        <h2><%= t("home.index.experience.cta.title") %></h2>
-        <p><%= t("home.index.experience.cta.description") %></p>
-        <%= link_to contact_path, class: "yp-button yp-button-light", data: { energy_experience_target: "magnetic" } do %>
-          <span><%= t("home.index.experience.cta.button") %></span>
-          <i aria-hidden="true">↗</i>
-        <% end %>
-      </div>
-    </div>
-  </section>
-  </div>
 </div>
